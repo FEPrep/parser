@@ -12,6 +12,7 @@ pillow = "10.4.0"
 pydantic = "^2.9.2"
 pymupdf = "^1.24.10"
 nltk = "^3.9.1"
+pdfplumber = "^0.11.4"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"

@@ -2,8 +2,8 @@ import sys
 from datetime import datetime
 from typing import List, Tuple
 
+import pdfplumber
 from pydantic import BaseModel
-from pypdf import PdfReader
 
 from parser.model import (
     Page,
@@ -42,59 +42,72 @@ class Exam(BaseModel, strict=True):
             year=None,
         )
 
+    @staticmethod
+    def get_page(
+        text: str,
+        page_number: int,
+        previous_section_type: SectionType | None,
+    ) -> Tuple[Page, SectionType] | None:
+        page_type = get_page_type(text)
+        if page_type is None:
+            print(f"Breaking on page {page_number} because it is not a valid PageType")
+            return None
+
+        section_type: SectionType | None = None
+        if page_type == PageType.SECTION:
+            section_type = get_section_type(text)
+            if section_type is None:
+                print(
+                    f"Breaking on page {
+                    page_number} because it is not a valid SectionType"
+                )
+                print(text)
+                return None
+        else:
+            section_type = previous_section_type
+
+        if section_type is None:
+            raise ValueError("section_type is None")
+
+        new_page = Page(
+            page_type=page_type,
+            section_type=section_type,
+            page_number=page_number,
+            text=text,
+        )
+        return (new_page, section_type)
+
     def load_data(self, verbose: bool = False):
         assert not self.loaded
         try:
             # Open and read the PDF file
-            reader = PdfReader(self.exam_path)
+            pages: List[Page] = []
+
+            with pdfplumber.open(self.exam_path) as pdf:
+                previous_section_type: SectionType | None = None
+                for page_number, page in enumerate(pdf.pages):
+                    text = page.extract_text(
+                        keep_blank_chars=True,
+                    )
+                    # print(text)
+
+                    if previous_section_type is None:
+                        assert page_number == 0
+                        date = extract_date_from_page(text)
+                        assert date is not None
+                        semester, year = get_semester_and_year(date)
+                        self.semester = semester
+                        self.year = year
+                    new_page: Tuple[Page, SectionType] | None = Exam.get_page(
+                        text, page_number, previous_section_type
+                    )
+                    if new_page is None:
+                        break
+                    pages.append(new_page[0])
+                    previous_section_type = new_page[1]
 
             # Process the PDF content here
             # For example, you could extract text from each page:
-            pages: List[Page] = []
-            previous_section_type: SectionType | None = None
-            for page_number, page in enumerate(reader.pages):
-                if previous_section_type is None:
-                    assert page_number == 0
-                    date = extract_date_from_page(page.extract_text())
-                    assert date is not None
-                    semester, year = get_semester_and_year(date)
-                    self.semester = semester
-                    self.year = year
-
-                text = page.extract_text()
-
-                page_type = get_page_type(text)
-                if page_type is None:
-                    print(
-                        f"Breaking on page {page_number} because it is not a valid PageType"
-                    )
-                    break
-
-                section_type: SectionType | None = None
-                if page_type == PageType.SECTION:
-                    section_type = get_section_type(text)
-                    if section_type is None:
-                        print(
-                            f"Breaking on page {
-                            page_number} because it is not a valid SectionType"
-                        )
-                        print(text)
-                        break
-                else:
-                    section_type = previous_section_type
-
-                if section_type is None:
-                    raise ValueError("section_type is None")
-
-                new_page = Page(
-                    page_type=page_type,
-                    section_type=section_type,
-                    page_number=page_number,
-                    text=text,
-                )
-                pages.append(new_page)
-
-                previous_section_type = section_type
 
             if verbose:
                 write_to_file(
