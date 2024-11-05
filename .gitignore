@@ -169,4 +169,6 @@ fe_files
 
 document.json
 
-fe-exams/
+# onfoundation exam files on vecotr-notation-extraction branch
+vector-extractor/foundation-exams/
+vector-extractor/foundation-exam-pages/
