@@ -4,7 +4,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from parser.image_extraction import extract_images
+from image_extractor.image_extraction import extract_images
 from parser.dataset.exam import Exam
 from parser.model import (
     Section,
