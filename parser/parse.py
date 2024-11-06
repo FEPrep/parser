@@ -4,6 +4,7 @@ from typing import List
 
 from pydantic import BaseModel
 
+from parser.image_extraction import extract_images
 from parser.dataset.exam import Exam
 from parser.model import (
     Section,
@@ -15,6 +16,8 @@ class PreProcessedExam(BaseModel):
 
 
 def main(input_file: str, output_file: str, verbose: bool = False):
+    extract_images(input_file, output_dir="./extracted-images")
+
     exam: Exam = Exam(input_file, None)
     exam.load_data(verbose)
     exam.write(output_file)
