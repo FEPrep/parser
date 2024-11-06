@@ -16,7 +16,7 @@ class PreProcessedExam(BaseModel):
 
 
 def main(input_file: str, output_file: str, verbose: bool = False):
-    extract_images(input_file, output_dir="./extracted-images")
+    extract_images(input_file, output_dir="./parser/image_extractor/extracted-images")
 
     exam: Exam = Exam(input_file, None)
     exam.load_data(verbose)
