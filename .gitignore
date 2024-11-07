@@ -168,3 +168,10 @@ models
 fe_files
 
 document.json
+
+
+# add output of image extractor and relevant input files
+fe-exams/
+extracted-images/
+/parser/extracted-images
+fe-test-pages/
