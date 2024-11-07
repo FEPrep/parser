@@ -2,6 +2,16 @@
 
 This project includes a parser for processing FE (Foundation Exam) exam PDFs and a development environment setup using Dev Containers.
 
+## Running the Scraper
+
+To run the scraper, use the following command:
+
+```bash
+python parser/scrape.py
+```
+
+Generated file exam_paths.json provides path information for each stored exam file.
+
 ## Running the Parser
 
 To run the parser, use the following command:
