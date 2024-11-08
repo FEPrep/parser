@@ -3,7 +3,7 @@ import sys
 from copy import copy
 from typing import Dict, List
 
-from parser.model import (
+from parser.model.page_model import (
     Metadata,
     Page,
     PageType,

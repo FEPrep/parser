@@ -1,7 +1,7 @@
 import re
 from typing import List
 
-from parser.model import Question, QuestionInputType
+from parser.model.page_model import Question, QuestionInputType
 
 
 class InputTypeExtraction:
