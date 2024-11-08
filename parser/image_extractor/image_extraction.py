@@ -50,7 +50,7 @@ def print_image_positions(pdf_path):
             if block["type"] == 1:
                 bounding_box = block["bbox"]
                 x0, y0, x1, y1 = bounding_box
-                print(f"Image located at ({x0}, {y0})")
+                print(f"Image on page {page_number+1} located at ({x0}, {y0})")
 
     pdf_document.close()
     print("=============================")
