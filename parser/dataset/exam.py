@@ -5,7 +5,7 @@ from typing import List, Tuple
 from pydantic import BaseModel
 from pypdf import PdfReader
 
-from parser.model import (
+from parser.model.page_model import (
     Page,
     PageType,
     Section,

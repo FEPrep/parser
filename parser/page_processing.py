@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from typing import Tuple
 
-from parser.model import PageType, SectionType
+from parser.model.page_model import PageType, SectionType
 
 
 def extract_date_from_page(text: str) -> datetime | None:

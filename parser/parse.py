@@ -2,13 +2,11 @@ import os
 import sys
 from typing import List
 
+from image_extractor.image_extraction import extract_images
 from pydantic import BaseModel
 
-from image_extractor.image_extraction import extract_images
 from parser.dataset.exam import Exam
-from parser.model import (
-    Section,
-)
+from parser.model.page_model import Section
 
 
 class PreProcessedExam(BaseModel):

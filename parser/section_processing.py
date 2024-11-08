@@ -1,5 +1,6 @@
-from parser.model import Section, SectionType, Page, PageType
 from typing import List
+
+from parser.model.page_model import Page, PageType, Section, SectionType
 
 
 def get_sections(pages: List[Page]) -> List[Section]:

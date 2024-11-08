@@ -2,7 +2,7 @@ import os
 from typing import List
 
 from parser.dataset.exam import Exam
-from parser.model import Semester
+from parser.model.page_model import Semester
 
 
 class DataLoader:
