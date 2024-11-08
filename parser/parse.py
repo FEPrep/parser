@@ -3,6 +3,7 @@ import sys
 from typing import List
 
 from image_extractor.image_extraction import extract_images
+from image_extractor.image_extraction import print_image_positions
 from pydantic import BaseModel
 
 from parser.dataset.exam import Exam
@@ -15,6 +16,7 @@ class PreProcessedExam(BaseModel):
 
 def main(input_file: str, output_file: str, verbose: bool = False):
     extract_images(input_file, output_dir="./parser/image_extractor/extracted-images")
+    print_image_positions(input_file)
 
     exam: Exam = Exam(input_file, None)
     exam.load_data(verbose)
