@@ -2,19 +2,14 @@ import io
 import os
 
 import fitz
-
-# from PIL import Image
-from Typing import List
-from metadata_extraction import extract_metadata
-from models import Image
+from PIL import Image
 
 
-def extract_images(pdf_path, output_dir) -> List[Image]:
+def extract_images(pdf_path, output_dir):
     pdf_name = os.path.splitext(os.path.basename(pdf_path))[0]
     output_dir = os.path.join(output_dir, pdf_name)
     os.makedirs(output_dir, exist_ok=True)
     pdf_document = fitz.open(pdf_path)
-    metadata_list = []
 
     for page_number in range(len(pdf_document)):
         page = pdf_document[page_number]
@@ -37,9 +32,5 @@ def extract_images(pdf_path, output_dir) -> List[Image]:
             )
             image.save(image_path)
 
-            metadata = extract_metadata(img_index, xref, page, image_ext, image_path)
-            metadata_list.append(metadata)
-
     pdf_document.close()
     print(f"Images successfully extracted and saved to {output_dir}.")
-    return metadata_list
