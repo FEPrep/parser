@@ -1,4 +1,4 @@
-from typing import Field, Optional
+from typing import Optional, Literal
 
 from pydantic import BaseModel
 
@@ -10,10 +10,10 @@ class Position(BaseModel):
     height: int
 
 
-class Image(BaseModel):
+class ImageModel(BaseModel):
     src: str
     position: Position
-    color_profile: str = Field(default="RGB", const=True)
+    image_type: Literal["thumbnail"]
     resolution: Optional[str] = None
     z_index: int
     reading_order: int
