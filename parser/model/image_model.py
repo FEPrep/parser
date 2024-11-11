@@ -15,9 +15,9 @@ class Position(BaseModel):
 
 
 class ImageModel(BaseModel):
+    element_type: Literal["image"] = "image"
     src: str
     position: Position
-    element_type: Literal["image"] = "image"
     # resolution: Optional[str] = None
     # z_index: int
     # reading_order: int

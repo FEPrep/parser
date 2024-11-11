@@ -15,11 +15,9 @@ def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None
     for img_index, img in enumerate(images):
         xref = img[0]
         ref_name = img[7]
-        # base_image = pdf_document.extract_image(xref)
-        # image_ext = base_image["ext"]
 
         rects = page.get_image_rects(xref)
-        for rect_index, rect in enumerate(rects):
+        for rect in rects:
             position = Position(
                 xref=xref,
                 ref_name=ref_name,
@@ -38,11 +36,8 @@ def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None
                 position=position,
             )
 
-            metadata_filename = (
-                f"page_{page_number + 1}_img_{img_index + 1}_{rect_index + 1}.json"
-            )
-            print(f"The metadata filename is: {metadata_filename}")
-            print(f"The page output directory is {output_dir}")
+            metadata_filename = f"page_{page_number + 1}_img_{img_index + 1}.json"
+
             metadata_path = os.path.join(output_dir, metadata_filename)
 
             with open(metadata_path, "w") as file:
