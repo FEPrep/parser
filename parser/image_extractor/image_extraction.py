@@ -3,6 +3,8 @@ import os
 import fitz
 from PIL import Image
 
+from image_extractor.metadata_extraction import extract_metadata
+
 
 def extract_images(pdf_path, output_dir):
     pdf_name = os.path.splitext(os.path.basename(pdf_path))[0]
@@ -32,6 +34,8 @@ def extract_images(pdf_path, output_dir):
             # add conversion to see if this fixes the black image issue
             image = image.convert("RGB")
             # fun fact: this did not fix the black image issue
+
+            extract_metadata(pdf_path, output_dir, page_number)
 
             image_path = os.path.join(
                 output_dir,
