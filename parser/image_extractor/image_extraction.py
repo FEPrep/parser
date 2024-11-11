@@ -1,6 +1,5 @@
 import io
 import os
-
 import fitz
 from PIL import Image
 
@@ -11,11 +10,19 @@ def extract_images(pdf_path, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     pdf_document = fitz.open(pdf_path)
 
+    images_found = False
+    total_images = 0
+
     for page_number in range(len(pdf_document)):
         page = pdf_document[page_number]
         images = page.get_images(full=True)
 
+        if not images:
+            continue
+
+        images_found = True
         for img_index, img in enumerate(images):
+            total_images += 1
             xref = img[0]
             base_image = pdf_document.extract_image(xref)
             image_bytes = base_image["image"]
@@ -33,4 +40,10 @@ def extract_images(pdf_path, output_dir):
             image.save(image_path)
 
     pdf_document.close()
-    print(f"Images successfully extracted and saved to {output_dir}.")
+    if images_found:
+        print(
+            f"{total_images} images successfully extracted from PDF and saved to {output_dir}."
+        )
+    else:
+        print(f"No images found in this Foundation Exam, {pdf_path}")
+        print("Better luck next semester! ;P")
