@@ -46,7 +46,7 @@ def extract_images(pdf_path: str, output_dir: str) -> None:
     pdf_document.close()
     if images_found:
         print(
-            f"{total_images} images successfully extracted from PDF and saved to {output_dir}."
+            f"{total_images} images and metadata successfully extracted from PDF and saved to {output_dir}."
         )
     else:
         print(f"No images found in this Foundation Exam, {pdf_path}")

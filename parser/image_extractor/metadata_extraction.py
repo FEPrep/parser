@@ -1,7 +1,6 @@
 import fitz
 import json
 import os
-from typing import List
 from parser.model.image_model import Position, ImageModel
 
 
@@ -28,7 +27,6 @@ def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None
                 width=rect.width,
                 height=rect.height,
             )
-            print(f"Extracted metadata for image: {position}")
 
             # instantiate the image model
             image_model = ImageModel(
@@ -43,19 +41,4 @@ def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None
             with open(metadata_path, "w") as file:
                 json.dump(image_model.dict(), file, indent=4)
 
-            print(f"Metadata successfully written to {metadata_path}")
-
     pdf_document.close()
-
-
-def write_metadata_to_json(
-    image_positions: List[Position], output_file: str, output_directory: str
-) -> None:
-    updated_path = os.path.join(output_directory, output_file)
-
-    os.makedirs(os.path.dirname(updated_path), exist_ok=True)
-
-    with open(updated_path, "w") as file:
-        json.dump([position.dict() for position in image_positions], file, indent=4)
-
-    print(f"Metadata successfully written to {updated_path}")
