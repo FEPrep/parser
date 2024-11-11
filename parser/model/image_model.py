@@ -4,10 +4,14 @@ from pydantic import BaseModel
 
 
 class Position(BaseModel):
-    x: int
-    y: int
-    width: int
-    height: int
+    xref: int
+    ref_name: str
+    x0: int
+    y0: int
+    x1: int
+    y1: int
+    width: float
+    height: float
 
 
 class ImageModel(BaseModel):
