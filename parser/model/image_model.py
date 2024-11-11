@@ -1,4 +1,4 @@
-from typing import Optional, Literal
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -17,7 +17,7 @@ class Position(BaseModel):
 class ImageModel(BaseModel):
     src: str
     position: Position
-    image_type: Literal["thumbnail"]
-    resolution: Optional[str] = None
-    z_index: int
-    reading_order: int
+    element_type: Literal["image"] = "image"
+    # resolution: Optional[str] = None
+    # z_index: int
+    # reading_order: int

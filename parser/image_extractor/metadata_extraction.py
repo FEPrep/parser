@@ -2,15 +2,19 @@ import fitz
 import json
 import os
 from typing import List
-from parser.model.image_model import Position
+from parser.model.image_model import Position, ImageModel
 
 
-def extract_metadata(input_file: str, output_file: str, page_number: int) -> None:
+def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None:
     pdf_document = fitz.open(input_file)
     page = pdf_document[page_number]
     images = page.get_images(full=True)
 
-    image_positions = []
+    # image_positions = []
+
+    pdf_name = os.path.splitext(os.path.basename(input_file))[0]
+    page_output_dir = os.path.join(output_dir, pdf_name)
+    os.makedirs(page_output_dir, exist_ok=True)
 
     for img_index, img in enumerate(images):
         xref = img[0]
@@ -19,7 +23,7 @@ def extract_metadata(input_file: str, output_file: str, page_number: int) -> Non
         # image_ext = base_image["ext"]
 
         rects = page.get_image_rects(xref)
-        for rect in rects:
+        for rect_index, rect in enumerate(rects):
             position = Position(
                 xref=xref,
                 ref_name=ref_name,
@@ -30,20 +34,25 @@ def extract_metadata(input_file: str, output_file: str, page_number: int) -> Non
                 width=rect.width,
                 height=rect.height,
             )
-
-            # metadata_output = os.path.join(
-            #     output_file,
-            #     f"page_{page_number + 1}_img_{img_index + 1}.{image_ext}",
-            # )
             print(f"Extracted metadata for image: {position}")
-            image_positions.append(position)
+
+            # instantiate the image model
+            image_model = ImageModel(
+                src=f"images/page{page_number + 1}_img{img_index + 1}.png",
+                position=position,
+            )
+
+            metadata_filename = (
+                f"page_{page_number + 1}_img_{img_index + 1}_{rect_index + 1}.json"
+            )
+            metadata_path = os.path.join(page_output_dir, metadata_filename)
+
+            with open(metadata_path, "w") as file:
+                json.dump(image_model.dict(), file, indent=4)
+
+            print(f"Metadata successfully written to {metadata_path}")
 
     pdf_document.close()
-    write_metadata_to_json(
-        image_positions,
-        os.path.basename(output_file),
-        output_directory="./parser/image_extractor/extracted-metadata",
-    )
 
 
 def write_metadata_to_json(
@@ -57,4 +66,3 @@ def write_metadata_to_json(
         json.dump([position.dict() for position in image_positions], file, indent=4)
 
     print(f"Metadata successfully written to {updated_path}")
-    print("JSON file successfully written to: ", updated_path)
