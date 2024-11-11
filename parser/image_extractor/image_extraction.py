@@ -6,7 +6,7 @@ from PIL import Image
 from image_extractor.metadata_extraction import extract_metadata
 
 
-def extract_images(pdf_path, output_dir):
+def extract_images(pdf_path: str, output_dir: str) -> None:
     pdf_name = os.path.splitext(os.path.basename(pdf_path))[0]
     output_dir = os.path.join(output_dir, pdf_name)
     os.makedirs(output_dir, exist_ok=True)

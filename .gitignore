@@ -172,10 +172,10 @@ document.json
 
 # add output of image extractor and relevant input files
 fe-exams/
-/extracted-images/*
-/extracted_images/*
+*extracted-images*
+*extracted_images*
 extracted-images/
-/extracted-metadata/*
-/extracted_metadata/*
+*extracted-metadata*
+*extracted_metadata*
 /parser/extracted-images
 fe-test-pages/

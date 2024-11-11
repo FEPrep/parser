@@ -12,9 +12,11 @@ def extract_metadata(input_file: str, output_file: str, page_number: int) -> Non
 
     image_positions = []
 
-    for img in images:
+    for img_index, img in enumerate(images):
         xref = img[0]
         ref_name = img[7]
+        # base_image = pdf_document.extract_image(xref)
+        # image_ext = base_image["ext"]
 
         rects = page.get_image_rects(xref)
         for rect in rects:
@@ -28,11 +30,20 @@ def extract_metadata(input_file: str, output_file: str, page_number: int) -> Non
                 width=rect.width,
                 height=rect.height,
             )
+
+            # metadata_output = os.path.join(
+            #     output_file,
+            #     f"page_{page_number + 1}_img_{img_index + 1}.{image_ext}",
+            # )
             print(f"Extracted metadata for image: {position}")
             image_positions.append(position)
 
     pdf_document.close()
-    # write_metadata_to_json(image_positions, output_file, output_directory="./parser/image_extractor/")
+    write_metadata_to_json(
+        image_positions,
+        os.path.basename(output_file),
+        output_directory="./parser/image_extractor/extracted-metadata",
+    )
 
 
 def write_metadata_to_json(
