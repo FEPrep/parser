@@ -6,10 +6,10 @@ from pydantic import BaseModel
 class Position(BaseModel):
     xref: int
     ref_name: str
-    x0: int
-    y0: int
-    x1: int
-    y1: int
+    x0: float
+    y0: float
+    x1: float
+    y1: float
     width: float
     height: float
 
