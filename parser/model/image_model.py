@@ -1,19 +1,23 @@
-from typing import Field, Optional
+from typing import Literal
 
 from pydantic import BaseModel
 
 
 class Position(BaseModel):
-    x: int
-    y: int
-    width: int
-    height: int
+    xref: int
+    ref_name: str
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+    width: float
+    height: float
 
 
-class Image(BaseModel):
+class ImageModel(BaseModel):
+    element_type: Literal["image"] = "image"
     src: str
     position: Position
-    color_profile: str = Field(default="RGB", const=True)
-    resolution: Optional[str] = None
-    z_index: int
-    reading_order: int
+    # resolution: Optional[str] = None
+    # z_index: int
+    # reading_order: int
