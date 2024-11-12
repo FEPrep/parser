@@ -9,6 +9,7 @@
 from enum import Enum, StrEnum
 from typing import List
 
+import pymupdf as fitz  # pymupdf
 from nltk import download as nltk_download
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
@@ -54,9 +55,11 @@ class SectionType(StrEnum):
     ALGORITHMS = "Algorithms"
 
 
-class Page(BaseModel, strict=True):
+class Page(BaseModel, strict=True, arbitrary_types_allowed=True):
     page_type: PageType
     section_type: SectionType
+
+    fitz_page: fitz.Page = Field(exclude=True)  # Prevent serialization
 
     # 0-indexed page numbers, not including the section page
     page_number: int
@@ -158,6 +161,8 @@ class Metadata(BaseModel, strict=True):
     classification: QuestionClassification | None = None
     description: QuestionDescription | None = None
     classification_on_description: QuestionClassification | None = None
+
+    # bbox: Tuple[float, float, float, float]
 
     def run_nlp_preprocessing(self):
         self.removed_stop_words = self.remove_stop_words(self.original_text)
