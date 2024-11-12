@@ -2,10 +2,10 @@ import os
 import sys
 from typing import List
 
-from image_extractor.image_extraction import extract_images
 from pydantic import BaseModel
 
 from parser.dataset.exam import Exam
+from parser.image_extractor.image_extraction import extract_images
 from parser.model.page_model import Section
 
 
