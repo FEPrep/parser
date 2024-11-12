@@ -21,7 +21,7 @@ question_pattern = re.compile(
 )
 
 sub_question_pattern = re.compile(
-    r"(?m)^\s*(?:\(\s*([a-z])\s*\)|([a-z])\.|([a-z])\))\s*(?:\(\s*(\d+)\s*pts?\s*\))?\s*([\s\S]*?)(?=^\s*(?:\(\s*[a-z]\s*\)|[a-z]\.|[a-z]\))|\Z)",
+    r"(?m)^\s*(?:\(\s*([a-z])\s*\)|([a-z])[.)])\s*(?:\(\s*(\d+)\s*pts?\s*\))?\s*([\s\S]*?)(?=^(?:\(\s*[a-z]\s*\)|[a-z][.)])|\Z)",
     re.DOTALL,
 )
 
@@ -115,7 +115,7 @@ def extract_questions(text: str, section_type: SectionType) -> List[Question]:
         for sub_question in sub_questions:
             question_text = question_text.replace(
                 sub_question.original_text.text, ""
-            ).strip()
+            )  # .strip()
 
         question = Question(
             pages=[],
@@ -195,17 +195,15 @@ def extract_sub_questions(text: str) -> List[SubQuestion]:
         question_text: str
         letter: str
         letter_alt: str
-        letter_alt2: str
         points: str
 
-        letter, letter_alt, letter_alt2, points, question_text = match.groups()
+        letter, letter_alt, points, question_text = match.groups()
         assert (
-            sum(x is not None and x != "" for x in [letter, letter_alt, letter_alt2])
-            == 1
-        ), f"Only one of letter, letter_alt, and letter_alt2 should be not None. letter='{letter}', letter_alt='{letter_alt}', letter_alt2='{letter_alt2}'"
+            sum(x is not None and x != "" for x in [letter, letter_alt]) == 1
+        ), f"Only one of letter, letter_alt, and letter_alt2 should be not None. letter='{letter}', letter_alt='{letter_alt}'"
 
         letter = letter if letter else letter_alt
-        letter = letter if letter else letter_alt2
+        # letter = letter if letter else letter_alt2
 
         question_text = question_text.strip()
 

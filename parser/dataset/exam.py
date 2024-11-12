@@ -1,9 +1,10 @@
+import re
 import sys
 from datetime import datetime
 from typing import List, Tuple
 
+import pymupdf  # pymupdf
 from pydantic import BaseModel
-from pypdf import PdfReader
 
 from parser.model.page_model import (
     Page,
@@ -42,26 +43,32 @@ class Exam(BaseModel, strict=True):
             year=None,
         )
 
+    def remove_page_mentions(self, text: str) -> str:
+        # Use regular expression to find and remove "Page x of y" patterns
+        return re.sub(r"Page \d+ of \d+", "", text)
+
     def load_data(self, verbose: bool = False):
         assert not self.loaded
         try:
-            # Open and read the PDF file
-            reader = PdfReader(self.exam_path)
+            # Open and read the PDF file using pymupdf
+            document = pymupdf.open(self.exam_path)
 
             # Process the PDF content here
             # For example, you could extract text from each page:
             pages: List[Page] = []
             previous_section_type: SectionType | None = None
-            for page_number, page in enumerate(reader.pages):
+            for page_number in range(len(document)):
+                page = document.load_page(page_number)
+                text = page.get_text(sort=True)
+                text = self.remove_page_mentions(text)
+
                 if previous_section_type is None:
                     assert page_number == 0
-                    date = extract_date_from_page(page.extract_text())
+                    date = extract_date_from_page(text)
                     assert date is not None
                     semester, year = get_semester_and_year(date)
                     self.semester = semester
                     self.year = year
-
-                text = page.extract_text()
 
                 page_type = get_page_type(text)
                 if page_type is None:
@@ -75,8 +82,7 @@ class Exam(BaseModel, strict=True):
                     section_type = get_section_type(text)
                     if section_type is None:
                         print(
-                            f"Breaking on page {
-                            page_number} because it is not a valid SectionType"
+                            f"Breaking on page {page_number} because it is not a valid SectionType"
                         )
                         print(text)
                         break
