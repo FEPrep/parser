@@ -332,7 +332,10 @@ def extract_fill_in_the_blank_sub_questions(text: str) -> List[SubQuestion]:
 FUNCTION_EXTRACTION_PATTERN = regex.compile(
     r"""
     (?P<return_type>
-        (?:[\w\s\*\&\[\]]+?\s+)+
+        (?:
+            [\w\*\&\[\]]+          # Match return type characters
+            (?:\s+|/[*].*?[*]/)+    # Match whitespace or comments
+        )+
     )
     (?P<function_name>\w+)\s*
     \(
@@ -342,7 +345,7 @@ FUNCTION_EXTRACTION_PATTERN = regex.compile(
     \)\s*
     (?P<body>
         \{
-            (?>
+            (?:
                 [^{}]+
                 |
                 (?&body)
@@ -350,7 +353,7 @@ FUNCTION_EXTRACTION_PATTERN = regex.compile(
         \}
     )
     """,
-    regex.MULTILINE | regex.DOTALL,
+    regex.MULTILINE | regex.DOTALL | regex.VERBOSE,
 )
 """
 Examples Code:
