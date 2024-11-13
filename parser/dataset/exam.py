@@ -59,7 +59,7 @@ class Exam(BaseModel, strict=True):
         # Use regular expression to find and remove "Page x of y" patterns
         return re.sub(r"Page \d+ of \d+", "", text)
 
-    def load_data(self, verbose: bool = False):
+    def load_data(self, verbose: bool = False, draw_bboxes: bool = False):
         assert not self.loaded
         try:
             # Open and read the PDF file using pymupdf
@@ -147,18 +147,22 @@ class Exam(BaseModel, strict=True):
 
                     for sub in question.sub_questions:
                         sub.metadata.run_bbox_search(
-                            sub.original_text.text, [x.fitz_page for x in valid_pages]
+                            sub.original_text.text,
+                            [x.fitz_page for x in valid_pages],
+                            draw=draw_bboxes,
                         )
 
                         for sub_sub in sub.sub_questions:
                             sub_sub.metadata.run_bbox_search(
                                 sub_sub.original_text.text,
                                 [x.fitz_page for x in valid_pages],
+                                draw=draw_bboxes,
                             )
                             for sub_sub_sub in sub_sub.sub_questions:
                                 sub_sub_sub.metadata.run_bbox_search(
                                     sub_sub_sub.original_text.text,
                                     [x.fitz_page for x in valid_pages],
+                                    draw=draw_bboxes,
                                 )
 
                     question.metadata.run_bbox_search(
@@ -171,8 +175,8 @@ class Exam(BaseModel, strict=True):
             self.sections = sections
 
             self.loaded = True
-
-            document.save("joemama.pdf")
+            if draw_bboxes:
+                document.save("joemama.pdf")
         except Exception as e:
             print(f"An error occurred: {e}", file=sys.stderr)
             import traceback
