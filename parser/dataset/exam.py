@@ -124,62 +124,62 @@ class Exam(BaseModel, strict=True):
 
                 previous_section_type = section_type
 
-                if verbose:
-                    write_to_file(
-                        "raw.txt",
-                        "\n".join(pages_as_string(pages, include_metadata=False)),
-                    )
-                    write_to_file(
-                        "raw_with_meta.txt",
-                        "\n".join(pages_as_string(pages, include_metadata=True)),
-                    )
+            if verbose:
+                write_to_file(
+                    "raw.txt",
+                    "\n".join(pages_as_string(pages, include_metadata=False)),
+                )
+                write_to_file(
+                    "raw_with_meta.txt",
+                    "\n".join(pages_as_string(pages, include_metadata=True)),
+                )
 
-                sections: List[Section] = get_sections(pages)
+            sections: List[Section] = get_sections(pages)
 
-                if verbose:
-                    write_to_file(
-                        "sections.txt",
-                        "\n".join(sections_as_string(sections, include_metadata=True)),
-                    )
+            if verbose:
+                write_to_file(
+                    "sections.txt",
+                    "\n".join(sections_as_string(sections, include_metadata=True)),
+                )
 
-                for section in sections:
-                    questions = get_questions(section)
-                    for question in questions:
-                        valid_pages: List[Page] = []
-                        for page in section.pages:
-                            if page.page_number in question.pages:
-                                valid_pages.append(page)
+            for section in sections:
+                questions = get_questions(section)
+                for question in questions:
+                    valid_pages: List[Page] = []
+                    for page in section.pages:
+                        if page.page_number in question.pages:
+                            valid_pages.append(page)
 
-                        if len(question.sub_questions) > 0:
-                            for sub in question.sub_questions:
+                    if len(question.sub_questions) > 0:
+                        for sub in question.sub_questions:
+                            bbox: Rectangle | None = run_bbox_search(
+                                sub.original_text.text,
+                                [x.fitz_page for x in valid_pages],
+                            )
+                            print("bbox=", bbox)
+
+                            for sub_sub in sub.sub_questions:
                                 bbox: Rectangle | None = run_bbox_search(
-                                    sub.original_text.text,
+                                    sub_sub.original_text.text,
                                     [x.fitz_page for x in valid_pages],
                                 )
                                 print("bbox=", bbox)
 
-                                for sub_sub in sub.sub_questions:
-                                    bbox: Rectangle | None = run_bbox_search(
-                                        sub_sub.original_text.text,
-                                        [x.fitz_page for x in valid_pages],
-                                    )
-                                    print("bbox=", bbox)
+                    else:
+                        bbox: Rectangle | None = run_bbox_search(
+                            question.original_text,
+                            [x.fitz_page for x in valid_pages],
+                        )
 
-                        else:
-                            bbox: Rectangle | None = run_bbox_search(
-                                question.original_text,
-                                [x.fitz_page for x in valid_pages],
-                            )
+                        print("bbox=", bbox)
 
-                            print("bbox=", bbox)
+                section.questions = questions
 
-                    section.questions = questions
+            self.sections = sections
 
-                self.sections = sections
+            self.loaded = True
 
-                self.loaded = True
-
-                document.save("joemama.pdf")
+            document.save("joemama.pdf")
         except Exception as e:
             print(f"An error occurred: {e}", file=sys.stderr)
             import traceback
