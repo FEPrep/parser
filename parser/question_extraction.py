@@ -221,6 +221,45 @@ def extract_questions(text: str, section_type: SectionType) -> List[Question]:
     return questions
 
 
+def extract_linkedlist_subquestion(text: str) -> List[SubQuestion]:
+    # ... existing docstring ...
+
+    # Define the regex pattern to match the linked list sub-question
+    pattern = re.compile(r"head\s*→\s*(____(?:\s*→\s*____)*)")
+
+    sub_questions = []
+
+    # Use finditer to find all matches in the text
+    for match in pattern.finditer(text):
+        # Extract the underscores from the matched pattern
+        underscores = match.group(1).split("→")
+        underscores = [underscore.strip() for underscore in underscores]
+
+        # Create a SubQuestion for each underscore
+        current_position = match.start(
+            1
+        )  # Start from the beginning of the matched group
+        for idx, underscore in enumerate(underscores, start=1):
+            # Calculate the start index for each underscore
+            start_index = text.find(underscore, current_position)
+            text_t = Text.from_string(underscore, text, start_index)
+            sub_question = SubQuestion(
+                identifier=f"linkedlist_{idx}",
+                points=None,
+                filtered_text=text_t,
+                original_text=text_t,
+                sub_questions=[],
+                metadata=Metadata(
+                    extraction_type=ExtractionType.LINKED_LIST_MODIFICATION
+                ),
+            )
+            sub_questions.append(sub_question)
+            # Update current_position to search for the next underscore
+            current_position = start_index + len(underscore)
+
+    return sub_questions
+
+
 def extract_fill_in_the_blank_sub_questions(text: str) -> List[SubQuestion]:
     """
     Extracts fill-in-the-blank sub-questions from a given text, handling each
@@ -447,12 +486,11 @@ def extract_code_free_response_sub_questions(text: str) -> List[SubQuestion]:
         # arguments = match.group("arguments")
         body = match.group("body")
 
-        # print(f"Function name: {function_name}")
-        # print(f"Arguments: {arguments.strip()}")
-        # print(f"Body:\n{body.strip()}")
-        # print("-" * 50)
+        sub_sub_questions = []
 
-        if largest_subsequence_of_empty_strings(body.split("\n")) < 5:
+        if "______" in body:
+            sub_sub_questions += extract_code_free_fill_in_the_blank(text)
+        elif largest_subsequence_of_empty_strings(body.split("\n")) < 5:
             print(f"Skipping code-free-response sub-question: {raw}")
             continue
 
@@ -463,10 +501,69 @@ def extract_code_free_response_sub_questions(text: str) -> List[SubQuestion]:
             points=None,
             original_text=question_text,
             filtered_text=question_text,
-            sub_questions=[],
+            sub_questions=sub_sub_questions,
             metadata=Metadata(extraction_type=ExtractionType.CODE_FREE_RESPONSE),
         )
         sub_questions.append(sub_question)
+
+    return sub_questions
+
+
+# Regex pattern to match sets of underscores
+UNDERSCORE_PATTERN = re.compile(r"_{2,}")  # Matches two or more underscores
+
+
+def extract_code_free_fill_in_the_blank(text: str) -> List[SubQuestion]:
+    """
+    Extracts code-free-response sub-questions from a given text.
+
+    This function scans through the provided text to identify sub-questions
+    that are formatted as code-free-response. It finds all functions in the
+    text and then identifies each set of underscores within the function body
+    to create individual SubQuestions.
+
+    Args:
+        text (str): The text from which to extract fill-in-the-blank sub-questions.
+
+    Returns:
+        List[SubQuestion]: A list of SubQuestion objects representing each
+        identified fill-in-the-blank sub-question.
+    """
+    # Find all function matches
+    matches = FUNCTION_EXTRACTION_PATTERN.finditer(text)
+
+    sub_questions: List[SubQuestion] = []
+
+    for match in matches:
+        # raw_function = match.group(0)
+        function_name = match.group("function_name")
+        body = match.group("body")
+
+        # Find all sets of underscores in the function body
+        underscore_matches = UNDERSCORE_PATTERN.finditer(body)
+
+        for idx, underscore_match in enumerate(underscore_matches, start=1):
+            # underscore_text = underscore_match.group(0)
+
+            # Extract the context around the underscores for better understanding
+            start_index = max(underscore_match.start() - 30, 0)
+            end_index = min(underscore_match.end() + 30, len(body))
+            context = body[start_index:end_index]
+
+            question_text = Text.from_string(context, text, match.start() + start_index)
+
+            # Create a unique identifier for the SubQuestion
+            sub_question_id = f"{function_name}_blank_{idx}"
+
+            sub_question = SubQuestion(
+                identifier=sub_question_id,
+                points=None,
+                original_text=question_text,
+                filtered_text=question_text,
+                sub_questions=[],
+                metadata=Metadata(extraction_type=ExtractionType.CODE_FREE_RESPONSE),
+            )
+            sub_questions.append(sub_question)
 
     return sub_questions
 
@@ -588,24 +685,31 @@ def extract_sub_questions(text: str) -> List[SubQuestion]:
 
         sub_questions_in_sub_question = extract_sub_questions(question_text)
 
+        # print(f"question_text={question_text}")
+        # print(f"sub_questions_in_sub_question={sub_questions_in_sub_question}")
+
+        sub_questions_in_sub_question += extract_code_free_response_sub_questions(
+            question_text
+        )
+
         if len(sub_questions_in_sub_question) == 0:
             sub_questions_in_sub_question = extract_fill_in_the_blank_sub_questions(
                 question_text
             )
 
         if len(sub_questions_in_sub_question) == 0:
-            sub_questions_in_sub_question = extract_code_free_response_sub_questions(
+            sub_questions_in_sub_question = extract_linkedlist_subquestion(
                 question_text
             )
 
         filtered_text = copy(question_text)
         for sub_question in sub_questions_in_sub_question:
-            print(f"sub_question.original_text={sub_question.original_text}")
+            # print(f"sub_question.original_text={sub_question.original_text}")
             filtered_text = filtered_text.replace(
                 sub_question.original_text.text, ""
             ).strip()
 
-        print(f"filtered_text={filtered_text}")
+        # print(f"filtered_text={filtered_text}")
 
         sub_question = SubQuestion(
             identifier=letter,
@@ -617,10 +721,12 @@ def extract_sub_questions(text: str) -> List[SubQuestion]:
         )
         sub_questions.append(sub_question)
 
+    sub_questions += extract_code_free_response_sub_questions(text)
+    # print(f"sub_questions={sub_questions}, text={text}")
+
     if len(sub_questions) == 0:
         sub_questions = extract_fill_in_the_blank_sub_questions(text)
 
     if len(sub_questions) == 0:
-        sub_questions = extract_code_free_response_sub_questions(text)
-
+        sub_questions = extract_linkedlist_subquestion(text)
     return sub_questions

@@ -6,11 +6,6 @@ from typing import List, NamedTuple, Tuple
 import pymupdf as fitz  # pymupdf
 from pydantic import BaseModel
 
-from parser.elements.rectangle import (
-    Rectangle,
-    build_connectivity_graph,
-    find_connected_components,
-)
 from parser.model.page_model import (
     Page,
     PageType,
@@ -150,28 +145,26 @@ class Exam(BaseModel, strict=True):
                         if page.page_number in question.pages:
                             valid_pages.append(page)
 
-                    if len(question.sub_questions) > 0:
-                        for sub in question.sub_questions:
-                            bbox: Rectangle | None = run_bbox_search(
-                                sub.original_text.text,
-                                [x.fitz_page for x in valid_pages],
-                            )
-                            print("bbox=", bbox)
-
-                            for sub_sub in sub.sub_questions:
-                                bbox: Rectangle | None = run_bbox_search(
-                                    sub_sub.original_text.text,
-                                    [x.fitz_page for x in valid_pages],
-                                )
-                                print("bbox=", bbox)
-
-                    else:
-                        bbox: Rectangle | None = run_bbox_search(
-                            question.original_text,
-                            [x.fitz_page for x in valid_pages],
+                    for sub in question.sub_questions:
+                        sub.metadata.run_bbox_search(
+                            sub.original_text.text, [x.fitz_page for x in valid_pages]
                         )
 
-                        print("bbox=", bbox)
+                        for sub_sub in sub.sub_questions:
+                            sub_sub.metadata.run_bbox_search(
+                                sub_sub.original_text.text,
+                                [x.fitz_page for x in valid_pages],
+                            )
+                            for sub_sub_sub in sub_sub.sub_questions:
+                                sub_sub_sub.metadata.run_bbox_search(
+                                    sub_sub_sub.original_text.text,
+                                    [x.fitz_page for x in valid_pages],
+                                )
+
+                    question.metadata.run_bbox_search(
+                        question.original_text,
+                        [x.fitz_page for x in valid_pages],
+                    )
 
                 section.questions = questions
 
@@ -192,63 +185,6 @@ class Exam(BaseModel, strict=True):
         print(f"Writing to {output_file}")
         with open(output_file, "w") as json_file:
             json_file.write(self.model_dump_json())
-
-
-def run_bbox_search(original_text: str, fitz_page: List[fitz.Page]) -> Rectangle | None:
-    if len(fitz_page) > 1:
-        # multi-line question
-        # ignore for now
-        return None
-
-    bboxes: List[Tuple[float, float, float, float]] = fitz_page[0].search_for(
-        original_text
-    )
-
-    if len(bboxes) == 0:
-        print(f"No bboxes found for {original_text}")
-        # raise ValueError(f"No bboxes found for {original_text}")
-        return None
-
-    rectangles: List[Rectangle] = [Rectangle(*bbox) for bbox in bboxes]
-
-    MAX_DISTANCE = 800  # Maximum allowed distance to consider rectangles as neighbors
-
-    # Assign an index to each rectangle for easy reference
-    rect_indices = {i: rect for i, rect in enumerate(rectangles)}
-
-    # Step 1: Build the connectivity graph using the function
-    graph = build_connectivity_graph(rect_indices, MAX_DISTANCE)
-
-    # Step 2: Find connected components using the function
-    components = find_connected_components(graph, rect_indices)
-
-    # Step 3: Merge rectangles in each connected component
-    merged_rectangles: List[Rectangle] = []
-
-    for component in components:
-        merged_rect = rect_indices[component[0]]
-        for idx in component[1:]:
-            merged_rect = merged_rect.merge_with(rect_indices[idx])
-        merged_rectangles.append(merged_rect)
-
-    # Step 4: Select the largest rectangle
-    largest_rectangle: Rectangle = max(merged_rectangles, key=lambda r: r.area())
-
-    annot = fitz_page[0].add_rect_annot(
-        (
-            largest_rectangle.x0,
-            largest_rectangle.y0,
-            largest_rectangle.x1,
-            largest_rectangle.y1,
-        )
-    )
-    blue = (0, 0, 1)
-    gold = (1, 1, 0)
-    annot.set_border(width=1, dashes=[1, 2])
-    annot.set_colors(stroke=blue, fill=gold)
-    annot.update(opacity=0.5)
-
-    return largest_rectangle
 
 
 def get_semester_and_year(date: datetime) -> Tuple[Semester, int]:

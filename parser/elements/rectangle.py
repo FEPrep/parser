@@ -2,14 +2,19 @@ import math
 from collections import defaultdict
 from itertools import combinations
 
+from pydantic import BaseModel
+
 
 # Define a Rectangle class for clarity
-class Rectangle:
-    def __init__(self, x0, y0, x1, y1):
-        self.x0 = x0  # Left
-        self.y0 = y0  # Bottom
-        self.x1 = x1  # Right
-        self.y1 = y1  # Top
+class Rectangle(BaseModel, strict=True):
+    x0: float
+    y0: float
+    x1: float
+    y1: float
+
+    @classmethod
+    def from_points(cls, x0, y0, x1, y1):
+        return cls(x0=x0, y0=y0, x1=x1, y1=y1)
 
     def __repr__(self):
         return f"Rectangle(({self.x0}, {self.y0}), ({self.x1}, {self.y1}))"
@@ -34,7 +39,7 @@ class Rectangle:
         new_y0 = min(self.y0, other.y0)
         new_x1 = max(self.x1, other.x1)
         new_y1 = max(self.y1, other.y1)
-        return Rectangle(new_x0, new_y0, new_x1, new_y1)
+        return Rectangle(x0=new_x0, y0=new_y0, x1=new_x1, y1=new_y1)
 
 
 def build_connectivity_graph(rect_indices, max_distance):
