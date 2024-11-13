@@ -73,7 +73,7 @@ class QuestionInputType(str, Enum):
 
     BOOLEAN = "BOOLEAN"
 
-    MULTIPLE_CHOICE = "MULTIPLE_CHOICE"
+    #   MULTIPLE_CHOICE = "MULTIPLE_CHOICE"
 
     SHORT_ANSWER = "SHORT_ANSWER"
     LONG_ANSWER = "LONG_ANSWER"
@@ -129,30 +129,42 @@ class Text(BaseModel, strict=True):
 
     @staticmethod
     def from_string(text: str, parent_text: str, start_index: int) -> "Text":
+        assert start_index != -1
+        begin_index = parent_text.find(text, start_index)
+        if begin_index == -1:
+            print(f"Could not find '{text}' in '{parent_text}'")
+            print(f"Start index: {start_index}")
+            print(f"Parent text: {parent_text}")
+            raise Exception("Could not find text")
+
         return Text(
             text=text,
             location=TextLocation(
-                start_index=start_index,
-                end_index=start_index + len(text),
+                start_index=begin_index,
+                end_index=begin_index + len(text),
             ),
         )
 
 
-class SubQuestion(BaseModel, strict=True):
-    # text excluding the sub-question number and the "a) " prefix
-    original_text: Text
-    filtered_text: Text
+class ExtractionType(StrEnum):
+    DEFAULT = "DEFAULT"
 
-    # eg. "a", "b", "c"
-    identifier: str
-    sub_questions: List["SubQuestion"]
-    extracted_using_underscores: bool
-    points: int | None = None
-    classification: QuestionClassification | None = None
+    CODE_FREE_RESPONSE = "CODE_FREE_RESPONSE"
+    FILL_IN_THE_BLANKS = "FILL_IN_THE_BLANKS"
+    LLM_BASED = "LLM_BASED"
+
+
+class ExtractionMetadata(BaseModel, strict=True):
+    extraction_type: ExtractionType
+
+
+ExtractionMetadatas = List[ExtractionMetadata]
 
 
 class Metadata(BaseModel, strict=True):
     # original_text: str = Field(..., exclude=True)
+
+    extraction_type: ExtractionType
 
     generated_name: str | None = None
     removed_stop_words: str | None = None
@@ -194,6 +206,18 @@ class Metadata(BaseModel, strict=True):
                 filtered_sentence.append(w)
 
         return " ".join(filtered_sentence)
+
+
+class SubQuestion(BaseModel, strict=True):
+    # text excluding the sub-question number and the "a) " prefix
+    original_text: Text
+    filtered_text: Text
+
+    # eg. "a", "b", "c"
+    identifier: str
+    sub_questions: List["SubQuestion"]
+    points: int | None = None
+    metadata: Metadata
 
 
 class Question(BaseModel, strict=True):
