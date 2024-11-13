@@ -198,12 +198,10 @@ def extract_questions(text: str, section_type: SectionType) -> List[Question]:
     for match in matches:
         question_number, max_points, category, sub_category, question_text = match
 
-        original_text = question_text
+        original_text = copy(question_text)
         sub_questions = extract_sub_questions(question_text)
         for sub_question in sub_questions:
-            question_text = question_text.replace(
-                sub_question.original_text.text, ""
-            ).strip()
+            question_text = question_text.replace(sub_question.original_text.text, "")
 
         question = Question(
             pages=[],
@@ -225,49 +223,107 @@ def extract_questions(text: str, section_type: SectionType) -> List[Question]:
 
 def extract_fill_in_the_blank_sub_questions(text: str) -> List[SubQuestion]:
     """
-    Extracts fill-in-the-blank sub-questions from a given text.
-
-    This function scans through each line of the provided text to identify
-    sub-questions that are formatted as fill-in-the-blank. A line is considered
-    a fill-in-the-blank sub-question if it contains underscores ("_____") and
-    one of the following characters: '=', ':', or ';'. These characters are
-    typically used to denote the start of an answer or explanation.
-
-    Args:
-        text (str): The text from which to extract fill-in-the-blank sub-questions.
-
-    Returns:
-        List[SubQuestion]: A list of SubQuestion objects representing each
-        identified fill-in-the-blank sub-question. Each SubQuestion includes
-        the original text, filtered text, and metadata indicating it was
-        extracted using underscores.
+    Extracts fill-in-the-blank sub-questions from a given text, handling each
+    independently, including multi-line underscores, based on the specified formats.
     """
-    text_lines = text.split("\n")
+    text_lines = text.splitlines(
+        keepends=True
+    )  # Keep line endings for accurate indexing
     sub_questions: List[SubQuestion] = []
 
-    current_index_in_master_text = 0
-    for line in text_lines:
-        line_without_whitespace = line.replace(" ", "")
-        if "_____" in line_without_whitespace and (
-            "=" in line_without_whitespace
-            or ":" in line_without_whitespace
-            or ";" in line_without_whitespace
-        ):
-            question_text: Text = Text.from_string(
-                line, text, current_index_in_master_text
-            )
+    # Initialize variables
+    is_collecting = False
+    start_index = None
+    found_underscore = (
+        False  # Ensure underscores are found before creating a sub-question
+    )
 
-            sub_question = SubQuestion(
-                identifier="",
-                points=None,
-                original_text=question_text,
-                filtered_text=question_text,
-                sub_questions=[],
-                metadata=Metadata(extraction_type=ExtractionType.FILL_IN_THE_BLANKS),
-            )
-            sub_questions.append(sub_question)
+    # Compute cumulative lengths of lines for accurate indexing
+    line_lengths = [len(line) for line in text_lines]
+    cumulative_lengths = [0]
+    for length in line_lengths:
+        cumulative_lengths.append(cumulative_lengths[-1] + length)
 
-        current_index_in_master_text += len(line) + 1  # +1 for the newline character
+    for i, line in enumerate(text_lines):
+        stripped_line = line.strip()
+        line_without_whitespace = line.replace(" ", "").lstrip(
+            "-"
+        )  # Ignore leading hyphens
+        contains_underscore = "_____" in line_without_whitespace
+
+        # Determine if the line contains ':', '=', or ';'
+        line_contains_colon = any(
+            char in line_without_whitespace for char in [":", "=", ";"]
+        )
+
+        # Check if the line starts a sub-question
+        starts_fill_in = line_contains_colon
+
+        if starts_fill_in:
+            # If we're already collecting, finalize the previous sub-question
+            if is_collecting and found_underscore:
+                end_index = cumulative_lengths[i]
+                question_text = text[start_index:end_index]
+                question_text_obj = Text.from_string(question_text, text, start_index)
+                sub_question = SubQuestion(
+                    identifier="",
+                    points=None,
+                    original_text=question_text_obj,
+                    filtered_text=question_text_obj,
+                    sub_questions=[],
+                    metadata=Metadata(
+                        extraction_type=ExtractionType.FILL_IN_THE_BLANKS
+                    ),
+                )
+                sub_questions.append(sub_question)
+            # Start collecting the new sub-question
+            is_collecting = True
+            start_index = cumulative_lengths[i]
+            found_underscore = contains_underscore
+        elif is_collecting:
+            # Continue collecting lines
+            if stripped_line == "" or contains_underscore:
+                if contains_underscore:
+                    found_underscore = True
+                # Keep collecting
+            else:
+                # End of the current sub-question
+                if found_underscore:
+                    end_index = cumulative_lengths[i]
+                    question_text = text[start_index:end_index]
+                    question_text_obj = Text.from_string(
+                        question_text, text, start_index
+                    )
+                    sub_question = SubQuestion(
+                        identifier="",
+                        points=None,
+                        original_text=question_text_obj,
+                        filtered_text=question_text_obj,
+                        sub_questions=[],
+                        metadata=Metadata(
+                            extraction_type=ExtractionType.FILL_IN_THE_BLANKS
+                        ),
+                    )
+                    sub_questions.append(sub_question)
+                # Reset flags
+                is_collecting = False
+                start_index = None
+                found_underscore = False
+
+    # Handle any remaining collected lines at the end of the text
+    if is_collecting and found_underscore:
+        end_index = cumulative_lengths[-1]
+        question_text = text[start_index:end_index]
+        question_text_obj = Text.from_string(question_text, text, start_index)
+        sub_question = SubQuestion(
+            identifier="",
+            points=None,
+            original_text=question_text_obj,
+            filtered_text=question_text_obj,
+            sub_questions=[],
+            metadata=Metadata(extraction_type=ExtractionType.FILL_IN_THE_BLANKS),
+        )
+        sub_questions.append(sub_question)
 
     return sub_questions
 
@@ -294,7 +350,7 @@ FUNCTION_EXTRACTION_PATTERN = regex.compile(
         \}
     )
     """,
-    regex.VERBOSE | regex.MULTILINE | regex.DOTALL,
+    regex.MULTILINE | regex.DOTALL,
 )
 """
 Examples Code:
@@ -543,19 +599,18 @@ def extract_sub_questions(text: str) -> List[SubQuestion]:
 
         filtered_text = copy(question_text)
         for sub_question in sub_questions_in_sub_question:
-            filtered_text = question_text.replace(
+            print(f"sub_question.original_text={sub_question.original_text}")
+            filtered_text = filtered_text.replace(
                 sub_question.original_text.text, ""
             ).strip()
+
+        print(f"filtered_text={filtered_text}")
 
         sub_question = SubQuestion(
             identifier=letter,
             points=int(points) if points else None,
-            filtered_text=Text.from_string(
-                filtered_text, text, text.find(original_text)
-            ),
-            original_text=Text.from_string(
-                original_text, text, text.find(original_text)
-            ),
+            filtered_text=Text.from_string(filtered_text, text, 0),
+            original_text=Text.from_string(original_text, text, 0),
             sub_questions=sub_questions_in_sub_question,
             metadata=Metadata(extraction_type=ExtractionType.DEFAULT),
         )
