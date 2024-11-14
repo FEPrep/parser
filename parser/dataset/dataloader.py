@@ -14,24 +14,29 @@ class DataLoader:
         self.solutions_dir = solutions_dir
         self.loaded = False
 
+    def get_exam_paths(self) -> List[str]:
+        return [
+            os.path.join(self.exam_dir, filename)
+            for filename in os.listdir(self.exam_dir)
+            if filename.endswith(".pdf")
+        ]
+
     def load_data(self):
         self.exams = []
-        for filename in os.listdir(self.exam_dir):
-            if filename.endswith(".pdf"):
-                exam_path = os.path.join(self.exam_dir, filename)
-                # solutions_path = os.path.join(
-                #    self.solutions_dir, filename.replace(".pdf", "_solutions.pdf")
-                # )
-                exam = Exam(exam_path, None)
-                exam.load_data()
-                output_file = (
-                    os.path.dirname(exam_path)
-                    + "/"
-                    + os.path.basename(exam_path).removesuffix(".pdf")
-                    + "_extracted.json"
-                )
-                exam.write(output_file)
-                self.exams.append(exam)
+        for exam_path in self.get_exam_paths():
+            # solutions_path = os.path.join(
+            #    self.solutions_dir, filename.replace(".pdf", "_solutions.pdf")
+            # )
+            exam = Exam(exam_path, None)
+            exam.load_data()
+            output_file = (
+                os.path.dirname(exam_path)
+                + "/"
+                + os.path.basename(exam_path).removesuffix(".pdf")
+                + "_extracted.json"
+            )
+            exam.write(output_file)
+            self.exams.append(exam)
         self.loaded = True
         pass
 
