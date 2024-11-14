@@ -41,6 +41,20 @@ class Rectangle(BaseModel, strict=True):
         new_y1 = max(self.y1, other.y1)
         return Rectangle(x0=new_x0, y0=new_y0, x1=new_x1, y1=new_y1)
 
+    def is_within(self, other):
+        """
+        Check if the current rectangle is completely within another rectangle.
+        """
+        return (
+            self.x0 >= other.x0
+            and self.y0 >= other.y0
+            and self.x1 <= other.x1
+            and self.y1 <= other.y1
+        )
+
+    def as_tuple(self):
+        return (self.x0, self.y0, self.x1, self.y1)
+
 
 def build_connectivity_graph(rect_indices, max_distance):
     """
