@@ -370,14 +370,17 @@ def extract_fill_in_the_blank_sub_questions(text: str) -> List[SubQuestion]:
 # Regular expression as defined above
 FUNCTION_EXTRACTION_PATTERN = regex.compile(
     r"""
+    ^\s*                                   # Ensure the function definition starts at a line (after optional indentation)
     (?P<return_type>
-        [\w\*\&\[\]]+
+        [A-Za-z_*\&\[\]]+                   # The first part of the return type (e.g., int, void, etc.), excluding digits
         (?:
-            (?:\s+|/[*].*?[*]/|//.*?$)+
-            [\w\*\&\[\]]+
+            (?:\s+|/\*.*?\*/|//.*?$)+        # Allow whitespace or comments between return type parts
+            [A-Za-z_*\&\[\]]+               # Additional part of the return type (e.g., static, inline)
         )*
     )
-    (?P<function_name>\w+)\s*
+    \s+                                    # Some whitespace after the return type before the function name
+    (?P<function_name>\w+)                 # The function name
+    \s*                                    # Optional whitespace before the arguments
     \(
         (?P<arguments>
             (?:[^()]*|\((?:[^()]|\([^()]*\))*\))*
@@ -386,9 +389,9 @@ FUNCTION_EXTRACTION_PATTERN = regex.compile(
     (?P<body>
         \{
             (?:
-                [^{}]+
+                [^{}]+                     # Non-brace characters
                 |
-                (?&body)
+                (?&body)                   # Recursively match nested braces
             )*
         \}
     )
