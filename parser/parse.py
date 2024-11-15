@@ -8,6 +8,8 @@ from pydantic import BaseModel
 from parser.dataset.exam import Exam
 from parser.model.page_model import Section
 
+from parser.minio_store import Bucket
+
 
 class PreProcessedExam(BaseModel):
     sections: List[Section]
@@ -19,6 +21,10 @@ def main(input_file: str, output_file: str, verbose: bool = False):
     exam: Exam = Exam(input_file, None)
     exam.load_data(verbose)
     exam.write(output_file)
+
+    # Store each question in the MinIO bucket
+    minio_bucket = Bucket()
+    minio_bucket.create_exam_objs(exam)
 
 
 def write_to_file(filename: str, content: str):
