@@ -3,7 +3,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 
-class Position(BaseModel):
+class ImagePosition(BaseModel):
     xref: int
     ref_name: str
     x0: float
@@ -17,7 +17,7 @@ class Position(BaseModel):
 class ImageModel(BaseModel):
     element_type: Literal["image"] = "image"
     src: str
-    position: Position
+    position: ImagePosition
     # resolution: Optional[str] = None
     # z_index: int
     # reading_order: int

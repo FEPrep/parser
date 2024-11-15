@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, List
 
 from pydantic import BaseModel
 
@@ -18,13 +18,11 @@ class Cell(BaseModel):
 
 
 class Row(BaseModel):
-    cells: list[Cell]
+    cells: List[Cell]
 
 
 class TableModel(BaseModel):
     element_type: Literal["table"] = "table"
-    type: str = "table"
     position: CellPosition
     z_index: int
-    reading_order: int
-    rows: list[Row]
+    rows: List[Row]
