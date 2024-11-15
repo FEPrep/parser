@@ -1,7 +1,7 @@
 import fitz
 import json
 import os
-from parser.model.image_model import Position, ImageModel
+from parser.model.image_model import ImagePosition, ImageModel
 
 
 def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None:
@@ -17,7 +17,7 @@ def extract_metadata(input_file: str, output_dir: str, page_number: int) -> None
 
         rects = page.get_image_rects(xref)
         for rect in rects:
-            position = Position(
+            position = ImagePosition(
                 xref=xref,
                 ref_name=ref_name,
                 x0=rect.x0,
