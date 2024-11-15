@@ -179,5 +179,6 @@ fe-exams/
 extracted-images/
 *extracted-metadata*
 *extracted_metadata*
+*extracted-tables*
 /parser/extracted-images
 fe-test-pages/
