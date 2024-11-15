@@ -2,6 +2,7 @@ import math
 from collections import defaultdict
 from itertools import combinations
 
+import pymupdf
 from pydantic import BaseModel
 
 
@@ -15,6 +16,10 @@ class Rectangle(BaseModel, strict=True):
     @classmethod
     def from_points(cls, x0, y0, x1, y1):
         return cls(x0=x0, y0=y0, x1=x1, y1=y1)
+
+    @classmethod
+    def from_pymupdf(cls, rect: pymupdf.Rect):
+        return cls(x0=rect.x0, y0=rect.y0, x1=rect.x1, y1=rect.y1)
 
     def __repr__(self):
         return f"Rectangle(({self.x0}, {self.y0}), ({self.x1}, {self.y1}))"
