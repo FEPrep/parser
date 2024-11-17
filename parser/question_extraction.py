@@ -378,7 +378,7 @@ FUNCTION_EXTRACTION_PATTERN = regex.compile(
             [A-Za-z_*\&\[\]]+               # Additional part of the return type (e.g., static, inline)
         )*
     )
-    \s+                                    # Some whitespace after the return type before the function name
+    \s*                                    # Some whitespace after the return type before the function name
     (?P<function_name>\w+)                 # The function name
     \s*                                    # Optional whitespace before the arguments
     \(
