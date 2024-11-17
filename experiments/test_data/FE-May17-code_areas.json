@@ -13,11 +13,11 @@
                     "kind": "partially_filled_free_response",
                     "code_textarea": {
                         "x0": 54.0,
-                        "y0": 283.9735107421875,
+                        "y0": 297.53350830078125,
                         "x1": 392.4711608886719,
                         "y1": 697.52978515625
                     },
-                    "text": "   int i; \n"
+                    "text": ""
                 }
             ],
             "text": "char ** makeTVList (FILE *ifp, int numShows) { \n   char buffer[128]; \n   char **TVList = NULL; \n   int i; \n}"

@@ -37,11 +37,11 @@
                     "kind": "partially_filled_free_response",
                     "code_textarea": {
                         "x0": 54.0,
-                        "y0": 394.7335205078125,
+                        "y0": 408.29351806640625,
                         "x1": 270.0511779785156,
                         "y1": 693.7857666015625
                     },
-                    "text": "   int len = strlen(str); \n"
+                    "text": ""
                 }
             ],
             "text": "int isPalindrome(char *str) { \n   struct stack s; \n   initialize(&s); \n   int len = strlen(str); \n}"

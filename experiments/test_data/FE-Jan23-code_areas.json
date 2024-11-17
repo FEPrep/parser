@@ -78,7 +78,29 @@
     "10": [],
     "11": [],
     "12": [],
-    "13": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 407.798095703125,
+                "x1": 438.0469665527344,
+                "y1": 720.4468994140625
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 475.74090576171875,
+                        "x1": 438.0469665527344,
+                        "y1": 709.1641235351562
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "void printExtreme(int* perm, int n, int low, int high, int k) { \n   if (low > high) { \n       printPerm(perm, n); \n       return; \n   } \n}"
+        }
+    ],
     "14": [
         {
             "rect": {
@@ -92,11 +114,11 @@
                     "kind": "partially_filled_free_response",
                     "code_textarea": {
                         "x0": 54.0,
-                        "y0": 418.1335144042969,
+                        "y0": 431.7135009765625,
                         "x1": 471.701171875,
                         "y1": 703.625732421875
                     },
-                    "text": "   // merge L and R array into arr \n"
+                    "text": ""
                 }
             ],
             "text": "void merge(int arr[], int left, int mid, int right)   \n{ \n   int i, j, k; \n   int n1 = mid - left + 1; //size of the left array \n   int n2 =  right - mid; //size of the right array \n   /* create temp arrays */ \n   int *L = (int*) malloc(n1*sizeof(int)); //left array \n   int *R = (int*) malloc(n2*sizeof(int)); //right array \n   /* Copy data to temp arrays L[] and R[] */ \n   for (i = 0; i < n1; i++) \n       L[i] = arr[left + i]; \n   for (j = 0; j < n2; j++) \n       R[j] = arr[mid + 1 + j]; \n   /* Merge the temp arrays back into arr[l..r]*/ \n   i = 0; // Initial index of left subarray \n   j = 0; // Initial index of right subarray \n   k = left; // Initial index of merged subarray \n   // Complete the remaining part of the code that will  \n   // merge L and R array into arr \n}"

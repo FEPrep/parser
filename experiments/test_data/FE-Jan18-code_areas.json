@@ -58,11 +58,11 @@
                     "kind": "partially_filled_free_response",
                     "code_textarea": {
                         "x0": 54.0,
-                        "y0": 325.1335144042969,
+                        "y0": 338.6935119628906,
                         "x1": 277.25115966796875,
                         "y1": 692.249755859375
                     },
-                    "text": "   int i; \n"
+                    "text": ""
                 }
             ],
             "text": "int eval(int* expr, int len) { \n   stack s; \n   init(&s); \n   int i; \n}"

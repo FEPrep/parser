@@ -1,6 +1,28 @@
 {
     "0": [],
-    "1": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 269.8997802734375,
+                "x1": 522.1011962890625,
+                "y1": 724.8035278320312
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 297.17352294921875,
+                        "x1": 522.1011962890625,
+                        "y1": 711.2097778320312
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "GroupMember* deleteGroup (GroupMember  *group, int numMembers) { \n \nint i; \n}"
+        }
+    ],
     "2": [
         {
             "rect": {
