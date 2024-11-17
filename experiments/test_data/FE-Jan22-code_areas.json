@@ -41,7 +41,7 @@
                         "x1": 313.25115966796875,
                         "y1": 689.62353515625
                     },
-                    "text": "{ \n   struct stack s; \n   initialize(&s); \n   for(int i=0; e[i]!='\\0'; i++) { \n   } \n   ____________________________ ; \n}"
+                    "text": "{ \n   }"
                 }
             ],
             "text": "int isBalanced(char *e) { \n   struct stack s; \n   initialize(&s); \n   for(int i=0; e[i]!='\\0'; i++) { \n   } \n   ____________________________ ; \n}"
