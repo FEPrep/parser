@@ -1,7 +1,6 @@
 # Handles making and storing pdfs for each FE question in MinIO file storage bucket
 
 import pymupdf
-import uuid
 import io
 import os
 from dotenv import load_dotenv
@@ -32,8 +31,8 @@ class Bucket:
         for section in exam.sections:
             for question in section.questions:
                 # Create a new empty PDF named with a unique ID
-                unique_id = str(uuid.uuid4())
-                question_pdf_name = f"{exam.semester}-{exam.year}/{unique_id}.pdf"
+                pdf_dir = f"{exam.semester}-{exam.year}"
+                question_pdf_name = f"{pdf_dir}/{question.id}.pdf"
                 question_pdf = pymupdf.open()
 
                 for page in question.pages:
@@ -43,6 +42,11 @@ class Bucket:
                         width=rect.width, height=rect.height
                     )
                     question_pdf_page.show_pdf_page(rect, document, page)
+
+                # Save the pdf locally
+                if not os.path.exists(pdf_dir):
+                    os.makedirs(pdf_dir)
+                question_pdf.save(question_pdf_name)
 
                 pdf_bytes = question_pdf.write()
                 pdf_stream = io.BytesIO(pdf_bytes)
@@ -56,4 +60,5 @@ class Bucket:
                         content_type="application/pdf",
                     )
                 except Exception as e:
+                    # todo make this better lol
                     print(f"uh oh!\n{e}")

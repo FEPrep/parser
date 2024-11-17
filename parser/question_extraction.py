@@ -1,5 +1,6 @@
 import re
 import sys
+import uuid
 from copy import copy
 from typing import Dict, List
 
@@ -128,6 +129,7 @@ def extract_questions(text: str, section_type: SectionType) -> List[Question]:
             original_text=original_text,
             sub_questions=sub_questions,
             metadata=Metadata(),
+            id=str(uuid.uuid4()),
         )
 
         questions.append(question)
