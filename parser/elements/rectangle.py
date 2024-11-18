@@ -186,3 +186,32 @@ def find_connected_components(
             dfs(node, visited, component)
             components.append(component)
     return components
+
+
+def merge_rectangles(
+    rectangles: List[Rectangle], max_distance: float = 2000000
+) -> Rectangle:
+    # Assign an index to each rectangle for easy reference
+    rect_indices = {i: rect for i, rect in enumerate(rectangles)}
+
+    # Step 1: Build the connectivity graph using the function
+    graph = build_connectivity_graph(rect_indices, max_distance)
+
+    # Step 2: Find connected components using the function
+    components = find_connected_components(graph, rect_indices)
+
+    # Step 3: Merge rectangles in each connected component
+    merged_rectangles: List[Rectangle] = []
+
+    for component in components:
+        merged_rect = rect_indices[component[0]]
+
+        for idx in component[1:]:
+            merged_rect = merged_rect.merge_with(rect_indices[idx])
+
+        merged_rectangles.append(merged_rect)
+
+    # Step 4: Select the largest rectangle
+    largest_rectangle: Rectangle = max(merged_rectangles, key=lambda r: r.area())
+
+    return largest_rectangle
