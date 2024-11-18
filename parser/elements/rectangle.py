@@ -5,7 +5,7 @@ from itertools import combinations
 # Define a Rectangle class for clarity
 from typing import Dict, List, Set, Tuple
 
-import pymupdf
+import pymupdf  # type: ignore
 from pydantic import BaseModel
 
 

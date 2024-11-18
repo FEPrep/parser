@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-import pymupdf
+import pymupdf  # type: ignore
 from pydantic import BaseModel
 
 from parser.elements.code import (

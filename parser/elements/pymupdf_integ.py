@@ -2,7 +2,7 @@ import json
 import os
 from typing import List, Literal, Tuple
 
-import pymupdf
+import pymupdf  # type: ignore
 
 from parser.elements.rectangle import Rectangle
 

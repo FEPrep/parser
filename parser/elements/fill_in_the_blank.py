@@ -1,4 +1,4 @@
-import pymupdf
+import pymupdf  # type: ignore
 from pydantic import BaseModel
 
 from parser.elements.pymupdf_integ import PyMuPDFRect

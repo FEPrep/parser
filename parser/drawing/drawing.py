@@ -2,7 +2,7 @@ from collections import defaultdict
 from itertools import combinations
 from typing import Dict, List
 
-import pymupdf
+import pymupdf  # type: ignore
 from pydantic import BaseModel
 
 from parser.elements.rectangle import Rectangle
