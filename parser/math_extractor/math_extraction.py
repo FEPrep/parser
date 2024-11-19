@@ -3,6 +3,7 @@ import fitz
 
 # Allow some wiggle room when testing the difference between potential numerators and denominators
 FRACTION_MIDPOINT_DIFF_THRESHOLD = 0.5
+SUPERSCRIPT_FLAG = 5
 
 
 # Extract all math text into json containing necessary metadata / context
@@ -17,6 +18,7 @@ def extract_math_text(pdf_path, output_dir):
         text_blocks = page.get_text("dict")["blocks"]
 
         math_spans = get_math_span_list(text_blocks)
+        print(f"THE LENGTH: {len(math_spans)}")
 
         # Iterate through the math spans
         i = 0
@@ -33,8 +35,14 @@ def extract_math_text(pdf_path, output_dir):
                 i += (
                     1  # Already processed the next span (denominator) with the fraction
                 )
+            elif is_power(math_spans, i):
+                print("this should not print")
             else:
-                print(f"value: {span["text"]}, flags: {span["flags"]}")
+                process_math_text(span["text"], span["flags"])
+                # temporary (todo delete) print diff bewteen y0's
+                if i + 1 < len(math_spans):
+                    y0_diff = abs(span["bbox"][1] - math_spans[i + 1]["bbox"][1])
+                    print(f"y0 diff = {y0_diff}")
 
             print({span["bbox"]})
 
@@ -85,3 +93,27 @@ def is_numerator(span_list, idx):
 def process_fraction(numerator, denominator):
     assert denominator
     print(f"fraction: {numerator["text"]} / {denominator["text"]}")
+
+
+def is_power(span_list, idx):
+    print(f"is {idx+1} < {len(span_list)}????????????????????")
+    if idx + 1 < len(span_list):
+        cur = span_list[idx]
+        next = span_list[idx + 1]
+
+        if next["flags"] == SUPERSCRIPT_FLAG:
+            print("this could be the base of an exponent!")
+            text_before_base = cur["text"][:-1]
+            print(f"extraneous text: {text_before_base}")
+            print(f"the base itself = {cur["text"][-1]}")
+
+            # Get the difference between the y0's
+            y0_diff = abs(cur["bbox"][1] - next["bbox"][1])
+            print(f"y0 diff = {y0_diff}")
+
+    return False
+
+
+# Process other math text that isn't a summation, fraction, or power
+def process_math_text(text, flags):
+    print(f"value: {text}, flags: {flags}")
