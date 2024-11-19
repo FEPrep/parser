@@ -15,24 +15,20 @@ def extract_math_text(pdf_path, output_dir):
 
         math_spans = get_math_span_list(text_blocks)
 
-        bounds_to_process = 0
-        for span in math_spans:
+        i = 0
+        while i < len(math_spans):
             print("===========================")
-            if bounds_to_process > 0:
-                if bounds_to_process % 2 == 0:
-                    print("type: upper bound")
-                else:
-                    print("type: lower bound")
+            print(f"i = {i}")
+            span = math_spans[i]
 
-                bounds_to_process -= 1
+            num_sigmas = span["text"].count("\u2211")
+            if num_sigmas > 0:
+                process_summation(math_spans, i, num_sigmas)
+                i += 2 * num_sigmas
             else:
-                bounds_to_process = 2 * amt_summations_in_span(span)
-                if bounds_to_process > 0:
-                    print("type: summation")
-                else:
-                    print("type: not summation")
+                print(f"value: {span["text"]}")
 
-            print(f"value: {span["text"]}")
+            i += 1
             print("===========================")
 
 
@@ -50,5 +46,11 @@ def get_math_span_list(text_blocks):
     return result
 
 
-def amt_summations_in_span(span):
-    return span["text"].count("\u2211")
+# Saves a span containing one or more summations in the correct output format
+def process_summation(span_list, idx, num_sigmas):
+    sum_span = span_list[idx]
+    print(f"summation: {sum_span["text"]}")
+
+    for i in range((2 * num_sigmas), 0, -1):
+        bound_type = "upper" if i % 2 == 1 else "lower"
+        print(f"{bound_type} bound: {span_list[idx+i]["text"]}")
