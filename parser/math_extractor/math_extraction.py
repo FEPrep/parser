@@ -15,18 +15,25 @@ def extract_math_text(pdf_path, output_dir):
 
         math_spans = get_math_span_list(text_blocks)
 
+        # Iterate through the math spans
         i = 0
         while i < len(math_spans):
             print("===========================")
-            print(f"i = {i}")
             span = math_spans[i]
 
             num_sigmas = span["text"].count("\u2211")
             if num_sigmas > 0:
                 process_summation(math_spans, i, num_sigmas)
-                i += 2 * num_sigmas
+                i += 2 * num_sigmas  # Already processed the bounds with the summation
+            elif is_numerator(math_spans, i):
+                process_fraction(span, math_spans[i + 1])
+                i += (
+                    1  # Already processed the next span (denominator) with the fraction
+                )
             else:
-                print(f"value: {span["text"]}")
+                print(f"value: {span["text"]}, flags: {span["flags"]}")
+
+            print({span["bbox"]})
 
             i += 1
             print("===========================")
@@ -54,3 +61,24 @@ def process_summation(span_list, idx, num_sigmas):
     for i in range((2 * num_sigmas), 0, -1):
         bound_type = "upper" if i % 2 == 1 else "lower"
         print(f"{bound_type} bound: {span_list[idx+i]["text"]}")
+
+
+# Compares the current span to the next span to determine whether
+# the current span is the next span's numerator
+def is_numerator(span_list, idx):
+    # Ensure the next span exists
+    if idx + 1 < len(span_list):
+        cur_bbox = span_list[idx]["bbox"]
+        next_bbox = span_list[idx + 1]["bbox"]
+        x_midpoint_diffs = abs(
+            ((cur_bbox[0] - cur_bbox[2]) / 2) - ((next_bbox[0] - next_bbox[2]) / 2)
+        )
+        # todo: resolve: might not be enough to catch all numerators
+        return x_midpoint_diffs < 0.5
+
+    return False
+
+
+def process_fraction(numerator, denominator):
+    assert denominator
+    print(f"fraction: {numerator["text"]} / {denominator["text"]}")
