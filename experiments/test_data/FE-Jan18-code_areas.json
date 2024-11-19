@@ -95,7 +95,18 @@
     "6": [],
     "7": [],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 119.1497802734375,
+                "x1": 334.8711853027344,
+                "y1": 336.65350341796875
+            },
+            "sub_areas": [],
+            "text": "int f(int array[], int n) { \n   int i, t = 0, a = 0, b = n-1; \n   while (a < b) { \n       for (i=a; i<=b; i++) \n           t += array[i]; \n       if (array[a] < array[(a+b)/2]) \n           b = (a+b)/2-1; \n       else \n           a = (a+b)/2+1; \n   } \n   return t; \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
@@ -123,5 +134,26 @@
         }
     ],
     "14": [],
-    "15": []
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 296.6597595214844,
+                "x1": 342.0711669921875,
+                "y1": 405.4335021972656
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   int perm[SIZE]; \n   int used[SIZE]; \n   int i; \n   for (i=0; i<SIZE; i++) used[i] = 0; \n   go(perm, 0, used); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 419.07977294921875,
+                "x1": 493.3011779785156,
+                "y1": 718.2034912109375
+            },
+            "sub_areas": [],
+            "text": "void go(int perm[], int k, int used[]) { \n   if ( _________________ ) { \n       print(perm); \n       return; \n   } \n   int i; \n   for (i=0; i<SIZE; i++) { \n       if ( ___________________________________ ) continue; \n       if ( ___________________________________ ) continue; \n       perm[k] = ____ ; \n       used[ _____ ] = 1 ; \n       go(perm, _______, used); \n       used[ i ] = ___ ; \n   } \n}"
+        }
+    ]
 }

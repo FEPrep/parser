@@ -71,7 +71,28 @@
             "text": "int search(bstNode *root, char* target){ \n}"
         }
     ],
-    "6": [],
+    "6": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 146.509765625,
+                "x1": 406.8711853027344,
+                "y1": 268.853515625
+            },
+            "sub_areas": [],
+            "text": "int f1(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (256*res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 282.499755859375,
+                "x1": 378.0711669921875,
+                "y1": 404.8335266113281
+            },
+            "sub_areas": [],
+            "text": "int f2(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n}"
+        }
+    ],
     "7": [
         {
             "rect": {
@@ -96,11 +117,42 @@
         }
     ],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 174.34979248046875,
+                "x1": 313.27117919921875,
+                "y1": 228.7435302734375
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   printf(\u201c%.6f\\n\u201d, mysqrt(1000)); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 242.29974365234375,
+                "x1": 306.0711669921875,
+                "y1": 432.67352294921875
+            },
+            "sub_areas": [],
+            "text": "double mysqrt(double n) { \n   double low = 1, high = n; \n   if (n < 1) { \n       low = n; \n       high = 1; \n   } \n   while (high \u2013 low > .000001) { \n       double mid = (low+high)/2; \n       if (mid*mid < n) \n           low = mid; \n       else \n           high = mid; \n   } \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
     "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 117.94976806640625,
+                "x1": 205.2511749267578,
+                "y1": 226.7034912109375
+            },
+            "sub_areas": [],
+            "text": "int zeros(int n) { \n   int res = 0; \n   while (n != 0) { \n       res += n/5; \n       n /= 5; \n   } \n   return res; \n}"
+        },
         {
             "rect": {
                 "x0": 54.0,

@@ -103,6 +103,8 @@ def get_section_type(text: str) -> SectionType | None:
         return SectionType.BASIC_DATA_STRUCTURES
     elif "Algorithm Analysis".lower() in section_name.lower():
         return SectionType.ALGORITHM_ANALYSIS
+    elif "Algorithms Analysis".lower() in section_name.lower():
+        return SectionType.ALGORITHM_ANALYSIS  # fuck my life, look at Jan22
     elif "Algorithms".lower() in section_name.lower():
         return SectionType.ALGORITHMS
     return None

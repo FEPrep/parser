@@ -48,7 +48,18 @@
     ],
     "3": [],
     "4": [],
-    "5": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 249.999755859375,
+                "x1": 486.191162109375,
+                "y1": 603.5335083007812
+            },
+            "sub_areas": [],
+            "text": "bstNode* insert(bstNode * root, int value){ \n   if (root == NULL) { \n       bstNode* res = malloc(sizeof(bstNode)); \n       res->data = ________; \n       res->sum = _________; \n       res->left = ________; \n       res->right = _______; \n       return res; \n   } \n   if (value <= root->data) \n       _________________________________________________ ; \n   else \n       _________________________________________________ ; \n   _________________________________________________ ; \n   return root; \n}"
+        }
+    ],
     "6": [],
     "7": [],
     "8": [],
@@ -101,6 +112,16 @@
                 }
             ],
             "text": "int bestMatch(int client, int* matches, int length) { \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 624.4297485351562,
+                "x1": 298.8711853027344,
+                "y1": 719.6434936523438
+            },
+            "sub_areas": [],
+            "text": "int count(int mask) { \n   int res = 0, i; \n   for (i=0; i<32; i++) \n       if ((mask & (1<<i)) != 0) \n           res++; \n   return res; \n}"
         }
     ]
 }

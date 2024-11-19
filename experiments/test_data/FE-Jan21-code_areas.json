@@ -1,6 +1,17 @@
 {
     "0": [],
-    "1": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 340.81976318359375,
+                "x1": 478.8711853027344,
+                "y1": 544.7835083007812
+            },
+            "sub_areas": [],
+            "text": "char * trim_buffer(char * buffer) { \nchar *string; \nint length; \n    while (length < BUFFERSIZE && buffer[length] != '\\0') \n         \nlength++; \n    string = malloc(sizeof(char) * (length)); \n    length = 0; \n    while ((string[length] = buffer[length]) != '\\0') \n         \nlength++; \n    return; \n}"
+        }
+    ],
     "2": [
         {
             "rect": {
@@ -74,7 +85,28 @@
         }
     ],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 313.8697509765625,
+                "x1": 370.941162109375,
+                "y1": 354.5835266113281
+            },
+            "sub_areas": [],
+            "text": "int hash_func(char* str) { \n   return hash_func_rec(str, strlen(str)); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 368.1297607421875,
+                "x1": 399.77117919921875,
+                "y1": 463.3235168457031
+            },
+            "sub_areas": [],
+            "text": "int hash_func_rec(char* str, int k) { \n   if (k == -1) return 0; \n   int sum = 0; \n   for (int i=k-1; i>=0; i--) \n       sum = (BASE*sum + str[i])%MOD; \n   return (sum + hash_func_rec(str, k-1))%MOD; \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
@@ -101,7 +133,18 @@
             "text": "int fourTowersNumMoves(int n) { \n}"
         }
     ],
-    "14": [],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 118.69976806640625,
+                "x1": 385.3411865234375,
+                "y1": 295.5135192871094
+            },
+            "sub_areas": [],
+            "text": "void buggySelectionSort(int array[], int n) { \n   for (int i=n-1; i>=0; i--) { \n       int best = array[0]; \n       for (int j=1; j<=i; j++) { \n           if (array[j] > best) \n               best = array[j]; \n       } \n       array[i] = best; \n   } \n}"
+        }
+    ],
     "15": [
         {
             "rect": {

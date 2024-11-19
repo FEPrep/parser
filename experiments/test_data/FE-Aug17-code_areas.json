@@ -24,10 +24,32 @@
             "text": "void destroy_list(node *head) { \n}"
         }
     ],
-    "3": [],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 132.84811401367188,
+                "x1": 510.07696533203125,
+                "y1": 484.0209045410156
+            },
+            "sub_areas": [],
+            "text": "void string_shenanigans(char *str) \n{ \n  int i, len = strlen(str); \n  char *new_string = malloc(sizeof(char) * (len + 1)); \n  Stack s1, s2; \n  init(&s1); // initializes stack s1 to be empty \n  init(&s2); // initializes stack s2 to be empty \n  for (i = 0; i < len; i++) { \n     push(&s1, str[i]);  // this pushes onto stack s1 \n     push(&s2, str[i]);  // this pushes onto stack s2 \n  } \n  for (i = 0; i < len; i++) { \n     if (i % 2 == 0) { \n        // Note: pop() returns the character being removed from the stack. \n        if (!isEmpty(&s1)) \n           new_string[i] = pop(&s1); \n        if (!isEmpty(&s1)) \n           push(&s2, pop(&s1)); \n     } \n     else { \n        pop(&s2); \n        new_string[i] = pop(&s2); \n     } \n  } \n  new_string[len] = '\\0'; \n  printf(\"%s\\n\", new_string); \n  free(new_string); \n}"
+        }
+    ],
     "4": [],
     "5": [],
-    "6": [],
+    "6": [
+        {
+            "rect": {
+                "x0": 90.02400207519531,
+                "y0": 160.54974365234375,
+                "x1": 334.8711853027344,
+                "y1": 255.77349853515625
+            },
+            "sub_areas": [],
+            "text": "int hash(int key, int table_size) \n{ \n \nint a = (key % 100) / 10; \n \nint b = key % 10; \n \n \nreturn (a + b) % table_size; \n}"
+        }
+    ],
     "7": [
         {
             "rect": {

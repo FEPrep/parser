@@ -44,7 +44,28 @@
             "text": "smart_string *erase_smart_string(smart_string *s) { \n}"
         }
     ],
-    "2": [],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 118.9097900390625,
+                "x1": 478.90118408203125,
+                "y1": 268.4935302734375
+            },
+            "sub_areas": [],
+            "text": "node *funky(node *head) { \n if (head == NULL) \n   return head; \n if (head->next != NULL && (head->next->data % 2) == 0) { \n   head->next = yknuf(head->next->next, head->next); \n   head = funky(head->next->next); \n } \n else if (head->next != NULL) \n   head->next = funky(head->next); \n return head; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 282.1397705078125,
+                "x1": 298.8711853027344,
+                "y1": 350.093505859375
+            },
+            "sub_areas": [],
+            "text": "node *yknuf(node *n1, node *n2) { \n n2->next = n1->next->next; \n n1->next = n2; \n return n1; \n}"
+        }
+    ],
     "3": [],
     "4": [],
     "5": [
@@ -95,11 +116,74 @@
         }
     ],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 119.1497802734375,
+                "x1": 349.27117919921875,
+                "y1": 227.90350341796875
+            },
+            "sub_areas": [],
+            "text": "int* makeArray(int n) { \n   int* array = calloc(n, sizeof(int)); \n   int i, j; \n   for (i=0; i<n; i++)  \n       for (j=i; j<n; j = j+i+1) \n           array[j]++; \n   return array; \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
-    "13": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 253.59811401367188,
+                "x1": 408.0469665527344,
+                "y1": 332.8009033203125
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   int n; \n   printf(\"Enter the size of your derangement(2-10).\\n\"); \n   scanf(\"%d\", &n); \n   printD(n); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 332.9180908203125,
+                "x1": 390.0469665527344,
+                "y1": 412.1408996582031
+            },
+            "sub_areas": [],
+            "text": "void printD(int n) { \n   int perm[MAX]; \n   int used[MAX]; \n   int i; \n   for (i=0; i<MAX; i++) used[i] = 0; \n   printDRec(___ , __________ , __________ , ______ ); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 423.5380859375,
+                "x1": 432.07696533203125,
+                "y1": 638.7308959960938
+            },
+            "sub_areas": [],
+            "text": "void printDRec(int n, int* perm, int* used, int k) { \n   if (k == n) { \n       print(perm, n); \n       return; \n   } \n   int i; \n   for (i=0; i<n; i++) { \n       if ( _____________________________________________ ) { \n            \n           perm[ ___ ] =  ____ ; \n            \n           used[ _____ ] =  _____ ; \n           printDRec(n, perm, used, k+1); \n            \n           used[ ____ ] = ____ ; \n       } \n   } \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 650.1281127929688,
+                "x1": 270.0269470214844,
+                "y1": 718.0709228515625
+            },
+            "sub_areas": [],
+            "text": "void print(int* perm, int length) { \n   int i; \n   for (i=0; i<length; i++) \n       printf(\"%d \", perm[i]+1); \n   printf(\"\\n\"); \n}"
+        }
+    ],
     "14": [],
-    "15": []
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 146.1497802734375,
+                "x1": 334.8711853027344,
+                "y1": 377.2135009765625
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   int x = 13, y = 27, z = 74; \n   printf(\"x^y = %d\\n\", x^y); \n   printf(\"x&z = %d\\n\", x&z); \n   printf(\"x&(y|z) = %d\\n\", x&(y|z)); \n   printf(\"x|y|z = %d\\n\", x|y|z); \n   int i, sum = 0; \n   for (i=0; i<10; i++) { \n       if ((x & (1<<i)) != 0) sum++; \n       if ((y & (1<<i)) != 0) sum++; \n       if ((z & (1<<i)) != 0) sum++; \n   } \n   printf(\"sum = %d\\n\", sum); \n   return 0; \n}"
+        }
+    ]
 }

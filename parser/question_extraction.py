@@ -161,13 +161,28 @@ def apply_header_filter(text: str) -> str:
     split_text: List[str] = text.split("\n")
 
     for line in split_text:
-        if line.startswith("Page"):
+        stripped_line = line.strip()
+        if stripped_line.startswith("Page"):
             continue
-        if line.startswith("Summer"):
+        if stripped_line.startswith("Summer"):
             continue
-        if line.startswith("Spring"):
+        if stripped_line.startswith("Spring"):
             continue
-        if line.startswith("Fall"):
+        if stripped_line.startswith("Fall"):
+            continue
+        if stripped_line.startswith("Data Structures Exam"):
+            continue
+        if stripped_line.startswith("Advanced Data Structures Exam"):
+            continue
+        if stripped_line.startswith("Algorithms and Analysis Tools Exam"):
+            continue
+        if stripped_line.startswith("Section D: Algorithms"):
+            continue
+        if stripped_line.startswith("Section C: Algorithms Analysis"):
+            continue
+        if stripped_line.startswith("Section B: Advanced Data Structures"):
+            continue
+        if stripped_line.startswith("Section A: Basic Data Structures"):
             continue
         new_text.append(line)
 

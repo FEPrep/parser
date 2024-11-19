@@ -74,11 +74,42 @@
     "6": [],
     "7": [],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 147.06900024414062,
+                "x1": 331.27508544921875,
+                "y1": 274.20526123046875
+            },
+            "sub_areas": [],
+            "text": "int fun(int N, int M, int ** grid) { \n  int a1 = 0, a2 = 0; \n  for (int i = 0; i < N || i < M; i++) { \n     if (i < N) a1 += grid[i][0]; \n     if (i < M) a2 += grid[0][i]; \n  } \n  if (a1 < a2) return a2; \n  return a1; \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
     "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 294.5180969238281,
+                "x1": 288.0269470214844,
+                "y1": 351.1609191894531
+            },
+            "sub_areas": [],
+            "text": "void printExtremeWrapper(int n) { \n   int* perm = malloc(sizeof(int)*n); \n   printExtreme(perm, n, 0, n-1, 0); \n   free(perm); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 362.4381103515625,
+                "x1": 372.0469665527344,
+                "y1": 407.8009033203125
+            },
+            "sub_areas": [],
+            "text": "void printPerm(int* perm, int n) { \n   for (int i=0; i<n; i++) printf(\"%d, \", perm[i]); \n   printf(\"\\n\"); \n}"
+        },
         {
             "rect": {
                 "x0": 54.0,

@@ -1,6 +1,17 @@
 {
     "0": [],
-    "1": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 241.9097900390625,
+                "x1": 277.25115966796875,
+                "y1": 323.5735168457031
+            },
+            "sub_areas": [],
+            "text": "void freeList(node* front) { \n   if (front != NULL)  \n       free(front); \n   if (front->next != NULL) \n       freeList(front->next); \n}"
+        }
+    ],
     "2": [
         {
             "rect": {
@@ -28,6 +39,26 @@
         {
             "rect": {
                 "x0": 54.0,
+                "y0": 326.0780944824219,
+                "x1": 294.0269470214844,
+                "y1": 382.60089111328125
+            },
+            "sub_areas": [],
+            "text": "deque* makeEmptyDeque() { \n   deque* tmp = malloc(sizeof(deque)); \n   tmp->front = tmp->back = NULL; \n   return tmp; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 393.99810791015625,
+                "x1": 282.0269470214844,
+                "y1": 461.94091796875
+            },
+            "sub_areas": [],
+            "text": "node* makeNode(int val) { \n   node* tmp = malloc(sizeof(node)); \n   tmp->data = val; \n   tmp->next = NULL; \n   return tmp; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
                 "y0": 473.3381042480469,
                 "x1": 300.0269470214844,
                 "y1": 722.4868774414062
@@ -52,7 +83,18 @@
     "6": [],
     "7": [],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 189.78897094726562,
+                "x1": 423.6950988769531,
+                "y1": 345.6052551269531
+            },
+            "sub_areas": [],
+            "text": "Node * createNode(int N) { \n  Node * res = (Node *) malloc(sizeof(Node)); \n  if (N == 0) return res; \n  res->children = (Node **) malloc(sizeof(Node*) * N); \n  res->children[0] = createNode(N / 2); \n  res->val = 0; \n  for (int i = 0; i < N; i++) \n     res->val += i; \n  return res; \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],

@@ -23,7 +23,18 @@
             "text": "int ** triangularSum(int * base, int n) { \n}"
         }
     ],
-    "2": [],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 200.3897705078125,
+                "x1": 327.65118408203125,
+                "y1": 445.03350830078125
+            },
+            "sub_areas": [],
+            "text": "void whatDoYouDo(node_t * head){ \nnode_t * temp = head; \nnode_t * temp2 = head->nextptr; \nint a; \n \nwhile(temp->nextptr != NULL){ \n \na = temp->data; \n \ntemp->data = temp2->data; \n \ntemp2->data = a; \n \n \n \ntemp = temp->nextptr; \n \n \n \nif(temp->nextptr != NULL){ \n \n \ntemp = temp->nextptr; \n \n \ntemp2 = temp->nextptr; \n \n} \n} \n}"
+        }
+    ],
     "3": [],
     "4": [],
     "5": [
@@ -49,7 +60,18 @@
             "text": "int sumSingleParents(node *root) { \n}"
         }
     ],
-    "6": [],
+    "6": [
+        {
+            "rect": {
+                "x0": 60.599998474121094,
+                "y0": 519.8389892578125,
+                "x1": 542.5250854492188,
+                "y1": 689.2635498046875
+            },
+            "sub_areas": [],
+            "text": "void percolateUp(int idx){ \n \n      if ( ________ > 1) {   \n          if ( ______________________________________________ ) {  \n              swap( ________________________ , _______________________ ) \n            \n              percolateUp( ______________ );   \n          } \n    } \n}"
+        }
+    ],
     "7": [],
     "8": [],
     "9": [],

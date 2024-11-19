@@ -78,8 +78,40 @@
     "10": [],
     "11": [],
     "12": [],
-    "13": [],
-    "14": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 276.6380920410156,
+                "x1": 516.0769653320312,
+                "y1": 367.12091064453125
+            },
+            "sub_areas": [],
+            "text": "int main(void) { \n   int perm[N]; \n   int used[N]; \n   for (int i=0; i<N; i++) used[i] = 0; \n   int res = go(perm, used, 0, MYTILES); \n   printf(\"Number of tile orderings that create palindromes is %d\\n\", res); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 378.5180969238281,
+                "x1": 432.0469665527344,
+                "y1": 639.0908813476562
+            },
+            "sub_areas": [],
+            "text": "int go(int perm[], int used[], int k, char tiles[N][MAXLEN]) { \n   if (k == N)  \n       return _________________________________________ ; \n   int res = 0; \n   for (int i=0; i<N; i++) { \n       if (used[i]) continue; \n       used[i] = ____ ; \n       perm[k] = ____ ; \n       _________________________________________________ ; \n        \n       used[i] = ____ ; \n   } \n   return res; \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 50.388099670410156,
+                "x1": 330.0269470214844,
+                "y1": 242.8909454345703
+            },
+            "sub_areas": [],
+            "text": "int eval(int perm[], char tiles[N][MAXLEN]) { \n   char tmp[N*MAXLEN]; \n   int idx = 0; \n   for (int i=0; i<N; i++) { \n       int len = strlen(tiles[perm[i]]); \n       for (int j=0; j<len; j++) \n           tmp[idx++] = tiles[perm[i]][j]; \n   } \n   tmp[idx] = '\\0'; \n   for (int i=0; i<idx/2; i++) \n       if (tmp[i] != tmp[idx-1-i]) \n           return 0; \n   return 1; \n}"
+        }
+    ],
     "15": [
         {
             "rect": {

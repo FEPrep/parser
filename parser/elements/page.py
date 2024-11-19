@@ -1,6 +1,7 @@
-from typing import List, Tuple
+from typing import Dict, List, Literal, Tuple
 
 import pymupdf  # type: ignore
+import regex
 from pydantic import BaseModel
 
 from parser.elements.code import (
@@ -11,6 +12,7 @@ from parser.elements.code import (
 )
 from parser.elements.pymupdf_integ import PyMuPDFRect
 from parser.elements.rectangle import Rectangle, merge_rectangles
+from parser.model.page_model import PageType, SectionType, Semester
 from parser.question_extraction import FUNCTION_EXTRACTION_PATTERN
 
 
@@ -38,27 +40,201 @@ class PageBlocks(BaseModel):
         )
 
 
+class StructDefinition(BaseModel, extra="forbid", strict=True):
+    name: str
+    rect: Rectangle
+    raw: str
+
+
+class MacroDefinition(BaseModel, extra="forbid", strict=True):
+    kind: Literal["define", "include"]
+    name: str
+    rect: Rectangle
+    raw: str
+
+
+class Paragraph(BaseModel, extra="forbid", strict=True):
+    rect: Rectangle
+    raw: str
+
+
 class PageResult(BaseModel, extra="forbid", strict=True):
     page_number: int
+    section_type: SectionType
+    page_type: PageType
+    raw_text: str
+    filtered_text: str
+
     code_areas: List[CodeArea]
     fill_in_the_blank_areas: List[Rectangle]
+    struct_definitions: List[StructDefinition]
+    macro_definitions: List[MacroDefinition]
+    # paragraphs: List[Paragraph] | None
+
+
+class SubQuestion(BaseModel, extra="forbid", strict=True):
+    rects: List[Rectangle]
+    raw: str
+    identifier: str
+    points: int | None = None
+
+
+MultiPageRectangles = Dict[int, Rectangle]
+
+
+class Question(BaseModel, extra="forbid", strict=True):
+    rects: MultiPageRectangles
+    raw: str
+    sub_questions: List[SubQuestion]
+    question_number: int
 
 
 class ExamResult(BaseModel, extra="forbid", strict=True):
+    semester: Semester
+    year: int
     page_results: List[PageResult]
+    questions: Dict[SectionType, Dict[int, Question]]
 
 
-def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[CodeArea]:
-    # Find all matches
+def extract_paragraphs(
+    page: pymupdf.Page, page_blocks: PageBlocks, blocked_areas: List[Rectangle]
+) -> List[Paragraph]:
+    paragraphs: List[Paragraph] = []
 
-    print(f"page_blocks.merged_text={page_blocks.merged_text}")
+    split = page_blocks.merged_text.split("\n")
+    previous_blank = False
+    running_text = ""
+    for line in split:
+        if len(line.strip()) == 0:
+            previous_blank = True
+            continue
+        else:
+            if previous_blank:
+                rect = merge_rectangles(
+                    [
+                        Rectangle.from_points(*x[0:4])
+                        for x in page.search_for(
+                            running_text, clip=page_blocks.merged.as_tuple()
+                        )
+                    ]
+                )
+                paragraphs.append(Paragraph(rect=rect, raw=running_text))
+                running_text = ""
+            running_text += line
+            previous_blank = False
 
+    return paragraphs
+
+
+MACRO_DEFINITION_PATTERN = regex.compile(
+    r"""
+    ^\s*(
+        \#include\s+(?P<include>[<"][^>"]+[>"])
+        |
+        \#define\s+(?P<defname>\w+(?:\s*\([^)]*\))?)\s*(?P<defvalue>.*)
+    )\s*$
+""",
+    regex.MULTILINE | regex.VERBOSE,
+)
+
+
+def extract_macro_definitions(
+    page: pymupdf.Page, page_blocks: PageBlocks
+) -> List[MacroDefinition]:
+    macro_definitions: List[MacroDefinition] = []
+    for match in MACRO_DEFINITION_PATTERN.finditer(page_blocks.merged_text):
+        groups = match.groupdict()
+        raw = match.group(0)
+        rect = merge_rectangles(
+            [
+                Rectangle.from_points(*x[0:4])
+                for x in page.search_for(raw, clip=page_blocks.merged.as_tuple())
+            ]
+        )
+        if groups.get("include"):
+            macro_definitions.append(
+                MacroDefinition(
+                    kind="include",
+                    name=groups["include"],
+                    rect=rect,
+                    raw=raw,
+                )
+            )
+        elif groups.get("defname"):
+            macro_definitions.append(
+                MacroDefinition(
+                    kind="define",
+                    name=groups["defname"],
+                    rect=rect,
+                    raw=raw,
+                )
+            )
+
+    return macro_definitions
+
+
+def extract_struct_definitions(
+    page: pymupdf.Page, page_blocks: PageBlocks
+) -> List[StructDefinition]:
+    # Regular expression pattern to match C-like struct definitions
+    pattern = r"""
+    (?P<typedef>typedef\s+)?          # Optional 'typedef' keyword
+    struct\s+                         # 'struct' keyword
+    (?P<name_before>\w+)?             # Optional struct name before '{'
+    \s*                               # Optional whitespace
+    (?P<struct_body>                  # Start of 'struct_body' group
+    \{
+        (?:
+            [^{}]                     # Any character except braces
+            |                         # OR
+            (?P>struct_body)          # Recursively match nested braces
+        )*
+    \}
+    )
+    (?:\s*(?P<name_after>\w+)\s*;)?   # Optional 'name_after' followed by semicolon
+    """
+    # Compile the regex with VERBOSE and DOTALL flags
+    compiled_re = regex.compile(pattern, regex.VERBOSE | regex.DOTALL)
+
+    struct_definitions: List[StructDefinition] = []
+
+    # Find all struct definitions in the text
+    for match in compiled_re.finditer(page_blocks.merged_text):
+        # print("Match found:")
+        # print(match.group())
+
+        raw = match.group()
+
+        name_before = match.group("name_before")
+        name_after = match.group("name_after")
+        if name_before is None:
+            struct_name = name_after
+        else:
+            assert name_before is not None
+            struct_name = name_before
+
+        rect = merge_rectangles(
+            [
+                Rectangle.from_points(*x[0:4])
+                for x in page.search_for(raw, clip=page_blocks.merged.as_tuple())
+            ]
+        )
+        struct_definition = StructDefinition(
+            name=struct_name,
+            rect=rect,
+            raw=raw,
+        )
+
+        struct_definitions.append(struct_definition)
+
+    return struct_definitions
+
+
+def extract_functions(page: pymupdf.Page, page_blocks: PageBlocks) -> List[CodeArea]:
     matches = FUNCTION_EXTRACTION_PATTERN.finditer(page_blocks.merged_text)
 
-    print(f"matches={matches}")
     code_areas: List[CodeArea] = []
 
-    print(f"page_number={page_blocks.page_number}")
     for match in matches:
         code_sub_areas: List[CodeInputSubArea] = []
 
@@ -66,11 +242,7 @@ def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[Cod
         raw = raw.strip()
         if raw.startswith("\n"):
             raw = raw[1:]
-
-        print(f"raw={raw}")
-        print(f"match={match}")
-        function_name = match.group("function_name")
-        print(f"parsing function_name='{function_name}'")
+        # function_name = match.group("function_name")
         # arguments = match.group("arguments")
         body = match.group("body")
 
@@ -148,20 +320,11 @@ def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[Cod
                 continue
 
             if len(second_to_last_line_bbox) > 1 or len(last_line_bbox) > 1:
-                print(
-                    "There are multiple locations for second to last line or last line."
-                )
-                print(f"second_to_last_line_bbox={second_to_last_line_bbox}")
-                print(f"second_to_last_line={second_to_last_line}")
-                print(f"last_line_bbox={last_line_bbox}")
-                print(f"last_line={last_line}")
                 # Choose the lower of the two
                 # Loop over
                 last_line_bbox = [find_lowest_bbox(last_line_bbox)]
-                print(f"last_line_bbox={last_line_bbox}")
 
                 second_to_last_line_bbox = [find_lowest_bbox(second_to_last_line_bbox)]
-                print(f"second_to_last_line_bbox={second_to_last_line_bbox}")
 
                 # continue
 
@@ -171,16 +334,10 @@ def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[Cod
             last_line_rect = Rectangle.from_pymupdf(last_line_bbox[0])
 
             # Find vertical distance between second to last line and last line
-            print(f"last_line_rect={last_line_rect}")
-            print(f"second_to_last_line_rect={second_to_last_line_rect}")
             vertical_distance = last_line_rect.y0 - second_to_last_line_rect.y0
 
             print(f"vertical_distance={vertical_distance}")
             if vertical_distance > 200:
-                print(
-                    "Found candidate for partially filled in code area question. Creating Question now."
-                )
-
                 merged_code_area = merge_rectangles(
                     [
                         Rectangle.from_points(*x[0:4])
@@ -211,21 +368,15 @@ def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[Cod
 
             # return []
 
-        if len(code_sub_areas) > 0:
-            merged_code_area = merge_rectangles(
-                [
-                    Rectangle.from_points(*x[0:4])
-                    for x in page.search_for(raw, clip=page_blocks.merged.as_tuple())
-                ]
-            )
-            # merged_code_area = merge_rectangles(
-            #    [x.code_textarea for x in code_sub_areas if x.code_textarea is not None]
-            # )
+        merged_code_area = merge_rectangles(
+            [
+                Rectangle.from_points(*x[0:4])
+                for x in page.search_for(raw, clip=page_blocks.merged.as_tuple())
+            ]
+        )
 
-            code_area = CodeArea(
-                rect=merged_code_area, text=raw, sub_areas=code_sub_areas
-            )
-            code_areas.append(code_area)
+        code_area = CodeArea(rect=merged_code_area, text=raw, sub_areas=code_sub_areas)
+        code_areas.append(code_area)
 
     return code_areas
 
@@ -233,7 +384,7 @@ def extract_code_inputs(page: pymupdf.Page, page_blocks: PageBlocks) -> List[Cod
 def is_code_page(
     page: pymupdf.Page, page_blocks: PageBlocks
 ) -> Tuple[bool, List[CodeArea]]:
-    code: List[CodeArea] = extract_code_inputs(page, page_blocks)
+    code: List[CodeArea] = extract_functions(page, page_blocks)
     if len(code) > 0:
         return True, code
     return False, None

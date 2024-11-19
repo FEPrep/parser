@@ -102,5 +102,46 @@
         }
     ],
     "14": [],
-    "15": []
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 319.8381042480469,
+                "x1": 462.07696533203125,
+                "y1": 365.2008972167969
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   printf(\"There were %d Top Left Knight Paths.\\n\", countTours()); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 365.1980895996094,
+                "x1": 300.0469665527344,
+                "y1": 444.4208984375
+            },
+            "sub_areas": [],
+            "text": "int countTours() { \n   int used[R][C], i, j; \n   for (i=0; i<R; i++) \n       for (j=0; j<C; j++) \n           used[i][j] = 0; \n   return countToursRec(used, 0, 0, 0); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 444.5380859375,
+                "x1": 534.0969848632812,
+                "y1": 682.410888671875
+            },
+            "sub_areas": [],
+            "text": "int countToursRec(int used[][C], int numMarked, int curR, int curC) { \n   if (numMarked == __________________ ) \n       return  ____; \n   int i, res = 0; \n   for (i=0; i<NUMDIR; i++) { \n       int nextR = _____________________________; \n       int nextC = _____________________________; \n       if (inbounds(nextR, nextC) && _____________________________________ ) { \n           used[nextR][nextC] = ____ ; \n           res += countToursRec(used, _______________, ________ , ________ ); \n           used[nextR][nextC] = ____ ; \n       } \n   } \n   return res; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 693.828125,
+                "x1": 432.07696533203125,
+                "y1": 727.6708984375
+            },
+            "sub_areas": [],
+            "text": "int inbounds(int nextR, int nextC) { \n   return nextR >= 0 && nextR < R && nextC >= 0 && nextC < C; \n}"
+        }
+    ]
 }

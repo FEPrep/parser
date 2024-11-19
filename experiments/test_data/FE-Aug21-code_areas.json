@@ -23,7 +23,18 @@
             "text": "struct present* delete_present_list(struct present* present_list, int \nnum) { \n     \n}"
         }
     ],
-    "2": [],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 200.749755859375,
+                "x1": 306.0511779785156,
+                "y1": 567.7935180664062
+            },
+            "sub_areas": [],
+            "text": "int whatDoesItDo (node * head) { \nstruct node * current = head; \nstruct node * other, *temp; \nif (current == NULL) \n       return head; \nother = current->next; \n   if (other == NULL) \n       return head; \n   other = other->next; \n   temp = current->next;  \n   current->next = other->next;  \n   current = other->next; \n   if (current == NULL) { \n       head->next = temp; \n       return head; \n   } \n   other->next = current->next;  \n   current->next = temp; \n   return head;  \n}"
+        }
+    ],
     "3": [
         {
             "rect": {
@@ -48,11 +59,43 @@
         }
     ],
     "4": [],
-    "5": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 207.54898071289062,
+                "x1": 337.8750915527344,
+                "y1": 319.80523681640625
+            },
+            "sub_areas": [],
+            "text": "btreenode* somefunction(btreenode* root) { \n   if (root == NULL) return NULL; \n   somefunction(root->left); \n   somefunction(root->right); \n   btreenode* tmp = root->left; \n   root->left = root->right; \n   root->right = tmp; \n   return root; \n}"
+        }
+    ],
     "6": [],
     "7": [],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 270.9797668457031,
+                "x1": 428.4711608886719,
+                "y1": 311.6935119628906
+            },
+            "sub_areas": [],
+            "text": "int makeBalance(int weights[], int n, int target) { \n   return makeBalanceRec(weights, n, 0, target); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 325.3397521972656,
+                "x1": 543.701171875,
+                "y1": 434.093505859375
+            },
+            "sub_areas": [],
+            "text": "int makeBalanceRec(int weights[], int n, int k, int target) { \n   if (k == n) return target == 0; \n   int left = makeBalanceRec(weights, n, k+1, target-weights[k]); \n   if (left) return 1; \n   int right = makeBalanceRec(weights, n, k+1, target+weights[k]); \n   if (right) return 1; \n   return makeBalanceRec(weights, n, k+1, target); \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
@@ -100,7 +143,38 @@
                 }
             ],
             "text": "int getPartitionIndex(int array[], int low, int high) { \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 664.8697509765625,
+                "x1": 442.8711853027344,
+                "y1": 719.1395263671875
+            },
+            "sub_areas": [],
+            "text": "int randInt(int a, int b) { \n   int base = ((rand()%32768)<<15) + (rand()%32768); \n   return a + base%(b-a+1); \n}"
         }
     ],
-    "15": []
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 310.69976806640625,
+                "x1": 406.8711853027344,
+                "y1": 392.3335266113281
+            },
+            "sub_areas": [],
+            "text": "void printWrapper(int x, int y) { \n   char* buffer = malloc(sizeof(char)*(x+y+1)); \n   buffer[x+y] = '\\0'; \n   printAll(buffer, 0, x, y); \n   free(buffer); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 405.8597717285156,
+                "x1": 558.1011962890625,
+                "y1": 677.7435302734375
+            },
+            "sub_areas": [],
+            "text": "void printAll(char buffer[], int k, int x, int y) { \n   if (x == 0 && y == 0) { \n       printf(\"%s\\n\", buffer); \n       return; \n   } \n   if (x > y-1) { \n       buffer[k] = 'A' ; \n       printAll(buffer, ______ , ______ , ______ ); \n   } \n   if ( _______ && ( _______ || (_______ && __________________) ) ){ \n       buffer[k] = 'B' ; \n       printAll(buffer, ______ , ______ , ______ ); \n   } \n}"
+        }
+    ]
 }

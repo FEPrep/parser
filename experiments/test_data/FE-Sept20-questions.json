@@ -1,0 +1,125 @@
+{
+    "Basic Data Structures-1": {
+        "rects": {
+            "1": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 561.18408203125,
+                "y1": 726.4595336914062
+            }
+        },
+        "raw": "Suppose we are planning a party and we would like to create an array to store our list of supplies. Currently \nour list is stored in a text file with the name of each item to be purchased on a line by itself.  Write a \nfunction called make_grocery_list that reads these items from a file and stores them in a two-dimensional \ncharacter array.  Your function should take 2 parameters: a pointer to the file and an integer indicating the \nnumber of grocery items in the file.  It should return a pointer to the array of items.  Be sure to allocate \nmemory for the array dynamically and only allocate as much space as is needed. You may assume that all \nof the strings stored in the file representing grocery items are alphabetic strings of no more than 127 \ncharacters (so the buffer declared is adequate to initially read in the string). \n#include <stdlib.h> \n#include <string.h> \n#include <stdio.h> \nchar ** make_grocery_list (FILE *ifp, int numItems) { \n \nchar buffer[128]; \nchar **list = NULL; \n \nint i; \n}",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Basic Data Structures-2": {
+        "rects": {
+            "2": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 561.219970703125,
+                "y1": 718.0595092773438
+            }
+        },
+        "raw": "Suppose we have a queue implemented as a doubly linked list using the structures shown below.  Use \nhead for the front of the queue and tail for the end of the queue. \nstruct node { \n   int data; \n   struct node* next, *prev; \n}  \nstruct queue { \nint size; \nstruct node *head, *tail; \n} \nWrite a dequeue function for this queue. If the queue is NULL or is already empty, return 0 and take no \nother action. If the queue isn't empty, dequeue the appropriate value, make the necessary adjustments, and \nreturn the dequeued value. (Note: You must free the node that previously stored the dequeued value.)\nint dequeue(queue *thisQ) { \n}",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Advanced Data Structures-1": {
+        "rects": {
+            "5": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 561.2079467773438,
+                "y1": 638.3619995117188
+            },
+            "6": {
+                "x0": 54.02399826049805,
+                "y0": 61.78398132324219,
+                "x1": 404.2350769042969,
+                "y1": 756.7080078125
+            }
+        },
+        "raw": "Complete the function on the next page so that it takes the root of a binary search tree (root) and an integer \n(key) and, if key is in the tree, returns the smallest integer in the BST that is strictly greater than key. If \nkey is not present, or if there is no integer in the tree greater than key, simply return INT_MIN (which is \ndefined in limits.h). \nYour function must be iterative (not recursive), with a worst-case runtime that does not exceed O(n) (so, \nyou can\u2019t drop the elements into an array and sort them in order to solve the problem). \nYou may assume the tree does not contain any duplicate values. However, root could be NULL. \nFor example: \n       18           next_up(root, 18) would return 20 \n      /  \\          next_up(root, 1) would return 4 \n     4    20        next_up(root, 4) would return 7 \n    / \\             next_up(root, 10) would return 18 \n   1  10            next_up(root, 20) would return INT_MIN \n      /             next_up(root, 9) would return INT_MIN \n     7 \nIn your solution, you may make as single call to either of the following functions. Assume they\u2019re \nalready written and that they each have a worst-case runtime of O(n): \n   // Takes the root of a binary search tree (possibly the root of a \n   // subtree within a larger BST) and returns the smallest value in that \n   // (sub)tree. If the tree is empty, it returns INT_MAX. \n   int find_min(node *root); \n   // Takes the root of a binary search tree (possibly the root of a \n   // subtree within a larger BST) and returns the largest value in that \n   // (sub)tree. If the tree is empty, it returns INT_MIN. \n   int find_max(node *root); \nAn incomplete version of the function and node struct are provided on the following page, along with ten \nblanks for you to fill in to complete the solution. Note that one of these blanks ought to be left blank \nand has been included so that part of the solution isn't given away. Thus, each blank is worth one \npoint, and for at least one of the ten blanks, leaving it blank is the only way to get credit for it. \n \n\n \n(\u2026continued from previous page) \n// Assume these are included from limits.h. \n#define INT_MAX 2147483647 \n#define INT_MIN -2147483648 \ntypedef struct node \n{ \n  struct node *left; \n  struct node *right; \n  int data; \n} node; \nint next_up(node *root, int key) \n{ \n  node *parent = ________ ; \n  while (root != NULL) \n  { \n     if (key < root->data) \n     { \n         ______________________ ; \n         ______________________ ; \n         \n     } \n     else if (key > root->data) \n     { \n         ______________________ ; \n         ______________________ ; \n     } \n     else \n     { \n        if ( ___________________________ ) \n           return _______________________________ ;\n        else if (parent != NULL) \n           return ________________ ; \n        else \n           return _________________ ; \n     } \n  } \n  return ___________________ ; \n}",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Advanced Data Structures-2": {
+        "rects": {
+            "7": {
+                "x0": 54.02399826049805,
+                "y0": 89.1200180053711,
+                "x1": 557.0740966796875,
+                "y1": 593.4619750976562
+            }
+        },
+        "raw": "a. (3 pts) Fill in the array representation of a heap that meets all of the following conditions: \ni. \nThe minheap contains exactly eight integer values, without any duplicate values. \nii. \nThe minheap does not contain the value 14. \niii. \nInserting 14 into the minheap would cause us to incur the best-case possible runtime for \ninsertion. \nNote: Index 0 is omitted because in the traditional storage of a heap using an array, that index is not \nused. \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \nValue \n \n \n \n \n \n \n \n \nb. (3 pts) Fill in the array representation of a heap that meets all of the following conditions: \n \ni. \nThe minheap contains exactly eight integer values, without any duplicate values. \nii. \nThe minheap does not contain the value 98. \niii. \nInserting 98 into the minheap would cause us to incur the worst-case possible runtime for \ninsertion. \nNote: Index 0 is omitted because in the traditional storage of a heap using an array, that index is not \nused. \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \nValue \n \n \n \n \n \n \n \n \nc. (4 pts) Is it possible to draw a single minheap that simultaneously meets all of the conditions \ngiven in parts (a) and (b) of this problem? If so, draw such a minheap. If not, explain why not. If \nyou\u2019re giving an explanation, be brief and clear, but also complete. \nIf possible, fill in this table, if not, explain why it's not possible below the table and leave it blank: \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \nValue",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithm Analysis-1": {
+        "rects": {
+            "10": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 560.9361572265625,
+                "y1": 361.072021484375
+            }
+        },
+        "raw": "Consider the following function that takes a list of unique integers for input \n1. The list is empty return 0 \n2. Choose a random integer, x, from the list \n3. Place every value from the list less than the value x in list 1 every value greater than x in list 2. \n4. Run this function on list 1 and store the result in a variable called left_answer. \n5. Run this function on list 2 and store the result a variable called right_answer. \n6. Add to the answer the function run on list 2 \n7. Return the value left_answer + right_answer + x \nWhat is the best case runtime and the worst case runtime for the above function, in terms of the input list \nsize, n? What standard algorithm taught in COP 3502 is this algorithm closest to? In terms of that \nstandard algorithm, what does the return value of this function represent? Provide proof of the runtimes, \nbut in doing so, you may use results about known algorithms from COP 3502 without proving those \nresults.",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Algorithm Analysis-2": {
+        "rects": {
+            "11": {
+                "x0": 54.02399826049805,
+                "y0": 90.82402038574219,
+                "x1": 560.8761596679688,
+                "y1": 713.9639892578125
+            }
+        },
+        "raw": "For a certain known data structure a lookup takes O(\u221a\ud835\udc5b) time, where n is the number of stored items.\nFor a data set of 8,000,000 items the runtime for a look up was approximately 10ms. On a different data \nset the look up took 40ms. About how many items do you expect to be stored in the second data set? \n________________",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithms-1": {
+        "rects": {
+            "14": {
+                "x0": 54.02399826049805,
+                "y0": 148.85211181640625,
+                "x1": 560.97998046875,
+                "y1": 714.435546875
+            }
+        },
+        "raw": "If Annabelle plays a video game for t minutes, she\u2019ll earn f(t) points. (The function f is provided below.) f is a \nnon-decreasing function. (This means that if a < b, then f(a) \u2264 f(b).) Annabelle wants to earn at least target\nnumber of points, but since she gets in trouble if she plays too much, she would like to play the least number of \nminutes that allows her to score at least target number of points. Complete the function below to be recursive and\nefficient (max # of recursive calls should be around 30) to solve the problem. You may assume that 0 < target < \n60000, thus it\u2019s guaranteed that 0 < t < 109 (for the function f given below.) \n#include <math.h> \nint f(int t) { \n   return (int)(2*sqrt(t)+log(t)); \n} \nint minPlay(int target) { \n   return minPlayRec(target, 0, 1000000000); \n} \nint minPlayRec(int target, int low, int high) { \n}",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Algorithms-2": {
+        "rects": {
+            "15": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 560.6141357421875,
+                "y1": 275.36199951171875
+            }
+        },
+        "raw": "Show the result after each iteration of performing Insertion Sort on the array shown below. For \nconvenience, the result after the first and last iteration are provided. The first row of the table contains\nthe original values of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n13 \n6 \n9 \n27 \n3  \n15 \n1 \n12 \n1 \n6 \n13 \n9 \n27 \n3 \n15 \n1 \n12 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n1 \n3 \n6 \n9 \n12 \n13 \n15 \n27",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithms-3": {
+        "rects": {
+            "16": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 561.2080078125,
+                "y1": 706.9954833984375
+            }
+        },
+        "raw": "A company is looking to hire an employee based on answers to a questionnaire. The questionnaire has \n20 yes/no questions (labeled from question 0 to question 19) and an applicant\u2019s set of responses is stored \nas a single integer such that the ith bit is set to 1 if the response to question i is yes, and it\u2019s set to 0 if the \nresponse to question i is no. For example, if an applicant answered yes to questions 0, 2, 3, 5, 8, and 10 \nand no to the other 14 questions, her responses would be stored as the single integer 1325, since \n000000000101001011012 = 1325. For all questions, the company prefers yes answers to no answers. \nHowever, since it\u2019s unlikely that a candidate will answer yes to all of the questions, they have developed \na modified scoring system for each candidate. The company has ranked each of the 20 questions in order \nof preference from most important to least important. This ranking is an array, preferences, that stores a \npermutation of the integers from 0 to 19, inclusive. For example, if preferences[0] = 8, preferences[1] = \n10 and preferences[2] = 1, then the company cares most about the answer to question 8, second most \nabout the answer to question 10 and third most about the answer to question 1. A candidate's score is \nsimply the maximum number of the most important questions they answered yes without a single no. \nFor example, the sample candidate described above would have a score of 2, because she said yes to \nquestions 8 and 10, but no to question 1, which was third on the preference list. Any candidate who said \nno to question 8 would be assigned a score of 0. Complete the function below so it returns the score of \nthe applicant whose answers are stored in the formal parameter applicant. The formal parameter \npreferences is an array of size 20 which stores the order of importance of the questions as previously \ndescribed. (Note: You must use bitwise operators to earn full credit for this question.) \n#define SIZE 20 \nint score(int preferences[], int applicant) { \n}",
+        "sub_questions": [],
+        "question_number": 3
+    }
+}

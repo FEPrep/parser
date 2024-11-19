@@ -15,6 +15,10 @@ InputAreaKind = Literal[
     "code_textarea",
     "entire_function_area",
     "generic_block",
+    "struct_definition",
+    "macro_definition",
+    "paragraph",
+    "question",
 ]
 
 
@@ -30,22 +34,29 @@ def mark_rect(page: pymupdf.Page, rect: PyMuPDFRect | Rectangle, kind: InputArea
         bbox = rect_to_bbox(rect)
 
     annot = page.add_rect_annot(bbox)  # underline
-    blue = (0, 0, 1)
+    blue = (0.5, 0.5, 1)  # Light Blue
     if kind == "underscores":
-        fill = (153 / 255, 240 / 255, 234 / 255)
+        fill = (1, 0.5, 0.5)  # Light Red
     elif kind == "textarea":
-        fill = (234 / 255, 240 / 255, 153 / 255)
+        fill = (0.5, 1, 0.5)  # Light Green
     elif kind == "code_textarea":
-        fill = (234 / 255, 153 / 255, 240 / 255)
+        fill = (0.5, 0.5, 1)  # Light Blue
     elif kind == "code_underscores":
-        fill = (153 / 255, 240 / 255, 234 / 255)
+        fill = (1, 1, 0.5)  # Light Yellow
     elif kind == "entire_function_area":
-        fill = (234 / 255, 153 / 255, 240 / 255)
+        fill = (1, 0.5, 1)  # Light Magenta
     elif kind == "generic_block":
-        fill = (234 / 255, 153 / 255, 240 / 255)
+        fill = (0.5, 1, 1)  # Light Cyan
+    elif kind == "struct_definition":
+        fill = (0.75, 0.75, 0.75)  # Light Gray
+    elif kind == "macro_definition":
+        fill = (1, 0.75, 0.5)  # Light Orange
+    elif kind == "paragraph":
+        fill = (0.75, 0.75, 0.5)  # Light Yellow
+    elif kind == "question":
+        fill = (1, 0.5, 0.5)  # Light Red
     else:
         raise ValueError(f"Invalid kind: {kind}")
-
     annot.set_border(width=1, dashes=[1, 2])
     annot.set_colors(stroke=blue, fill=fill)
     annot.update(opacity=0.5)

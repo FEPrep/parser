@@ -1,0 +1,119 @@
+{
+    "Basic Data Structures-1": {
+        "rects": {
+            "1": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 561.219970703125,
+                "y1": 726.4595336914062
+            }
+        },
+        "raw": "Suppose we have a structure to store information about cases of juice. The structure is shown below: the \nname of the juice in the case is statically allocated.  The structure also contains the number of containers\nof juice in that case. Complete the function below so that will takes 2 parameters: the name of a juice and \nan integer.  Your function should create a new case of juice by allocating space for it, copying in the \ncontents specified by the formal parameters into the struct and returning a pointer to the new case. You\nmay assume that the pointer new_name is pointing to a valid string storing the name of a juice for which \nmemory has already been allocated and is 127 or fewer characters. \n#include <string.h> \n#include <stdlib.h> \nstruct juice_case { \nchar name[128]; \nint num_bottles; \n}; \nstruct juice_case* create_case(char *new_name, int new_number) { \n}",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Basic Data Structures-2": {
+        "rects": {
+            "2": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 561.0580444335938,
+                "y1": 664.7535400390625
+            }
+        },
+        "raw": "Suppose we have a linked list implemented with the structure below.  The function below takes in a \npointer, head, to a linked list which is guaranteed to store data in strictly ascending order. If the list \ndoesn't contain the value 3, the function should create a struct node storing 3 in its data component, insert\nthe node so that the listed pointed to by head stores its data, including 3, in strictly ascending order, and \nreturns a pointer to the front of the resulting list. If a node already exists storing 3 in the list pointed to by \nhead, then return head and make no changes to the list. \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nnode* addValue3(node* head) { \n   if ( __________________ || _______________________ ) { \n       node* tmp = malloc(sizeof(node)); \n       tmp->data = 3; \n       tmp->next = head; \n       return tmp; \n   } \n   if ( _____________________ ) \n       return head; \n   node* iter = head; \n   while (iter->next != NULL && _________________________ ) \n       iter = ________________; \n   if ( _______________________ && _____________________ ) \n       return head; \n   node* tmp = malloc(sizeof(node)); \n   tmp->data = 3; \n   tmp->next = ______________________ ;  \n \n   iter->next = _____________________ ; \n \n \n \n \n \n   return __________________ ;      \n \n \n \n \n \n \n}",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Advanced Data Structures-1": {
+        "rects": {
+            "5": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 545.0020751953125,
+                "y1": 258.7457275390625
+            }
+        },
+        "raw": "Consider the following tree traversals: \nPre-order:  7  2  9  14  16 \nPost-order:  2  16  14  9  7 \nIn-order:  2  7  9  14  16 \nIs it possible for a single binary search tree to give rise to all three of those traversals? If so, draw the \ntree. If not, clearly explain why it\u2019s not possible.",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Advanced Data Structures-2": {
+        "rects": {
+            "6": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 557.5560913085938,
+                "y1": 677.9619750976562
+            }
+        },
+        "raw": "Consider the following hash table and the strings it already contains, along with the hash function being \nused to insert strings into the table. Assume the table only stores alphabetic strings. \nNote: The length of the hash table is 11.  \nllama \nxenon \nwant \nyurt \n \nmop \nnook \n \n \nuvula \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \n // This function (which is pretty bad for hashing strings in the real  \n // world, by the way) assumes str is non-NULL and non-empty. \n int hash(char *str) \n { \n    // Note: This converts letters on the range 'a' through 'z' or \n    // 'A' through 'Z' to integers on the range 0 through 25. \n    // For example: 'a' -> 0, 'b' -> 1, ..., 'z' -> 25.  \n    return (tolower(str[0]) \u2013 'a')%11; \n } \nFor each of the following questions, refer to the original hash table above. For example, in part (b), refer\nto the original table \u2013 not the table that contains the string you come up with in part (a). \na. (2 pts) Give a string that, if inserted into the table above using quadratic probing, would cause \nus to encounter the minimum number of collisions possible. \n \n \n \nb. (2 pts) Give a string that, if inserted into the table above using quadratic probing, would cause \nus to encounter the maximum number of collisions possible. \n \n \n \nc. (5 pts) Give all the alphabetic letters someone could have used to start their string in order to \ngive a correct answer for part (b) of this problem. \n \n \n \nd. (1 pt) Give a string that, if inserted into the table above using linear probing, would cause us to \nencounter the maximum number of collisions possible.",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithm Analysis-1": {
+        "rects": {
+            "9": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 561.1719970703125,
+                "y1": 315.7120056152344
+            }
+        },
+        "raw": "There is a very long corridor of rooms, labeled 1 through n, from left to right. It is reputed that in the \nvery last room, room n, there is the Treasure of the Golden Knight. Unfortunately, you don't know what \nn is equal to. Whenever you are in a particular room, you are allowed to ask questions of the form, \"Is \nthere a room 2k slots to the right of my current location?\", where k is a non-negative integer. For a fee, \nKnightro, an omnipresent, omnipotent, omniscient knight, will answer your question correctly, with\neither \"yes\" or \"no.\" After you ask 1 or more questions from a single room, Knightro will move you, for \nfree, to any of the rooms you asked a question about for which he replied \"yes.\" Your goal is to get to \nroom n by asking as few questions as possible, to reduce the fee that you pay Knightro. Devise a \nstrategy to find the value of n and clearly outline this strategy. How many questions, in terms of n, will \nyour strategy use, in the worst case? Answer, with proof, this last question with a Big-Oh bound in terms \nof n. (Note: Any strategy that works will be given some credit. The amount of credit given will be \nbased on how efficient your strategy is, in relation to the intended solution.)",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Algorithm Analysis-2": {
+        "rects": {
+            "10": {
+                "x0": 54.02399826049805,
+                "y0": 88.88021087646484,
+                "x1": 561.219970703125,
+                "y1": 712.5239868164062
+            }
+        },
+        "raw": "An algorithm to find a particular value among n total values takes O(log(n)). On a data set with n = 230,\nit took 1.2 seconds to find the desired value. How many milliseconds will it take to find a value in a data \nset with n = 220? (Note: For ease of computation, you may use a logarithm with base 2.) \n________________",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithms-1": {
+        "rects": {
+            "13": {
+                "x0": 54.02399826049805,
+                "y0": 147.01402282714844,
+                "x1": 561.1719360351562,
+                "y1": 573.5335083007812
+            }
+        },
+        "raw": "Write a recursive function that returns the sum of all of the even elements in an integer array vals, in\nbetween the indexes low and high, inclusive. For example, for the function call sumEven(vals, 3, 8) with \nthe array vals shown below, the function should return 24 + 8 + 10 = 42, since these three numbers are \nthe only even numbers stored in the array in between index 3 and index 8, inclusive. \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \nvals[i] \n15 \n13  \n28 \n19 \n24 \n8 \n7 \n99 \n10 \n14 \nint sumEven(int vals[], int low, int high) { \n    \n    \n}",
+        "sub_questions": [],
+        "question_number": 1
+    },
+    "Algorithms-2": {
+        "rects": {
+            "14": {
+                "x0": 54.02399826049805,
+                "y0": 89.14402770996094,
+                "x1": 560.9361572265625,
+                "y1": 561.7820434570312
+            }
+        },
+        "raw": "(a) (5 pts) Consider running a Bubble Sort on the array shown below. How many swaps will execute for\nthe duration of the algorithm running on the array shown below? Explain how you got your answer. \n97 \n16 \n45 \n63 \n13 \n22 \n7 \n58 \n72 \nReasoning: \nNumber of Swaps: _________ \n(b) (5 pts) List the best case run time of each of the following sorting algorithms, in terms of n, the \nnumber of items being sorted. Assume all items being sorted are distinct. \n(i) Insertion Sort \n \n \n \n____________ \n(ii) Selection Sort \n \n \n \n____________ \n(iii) Heap Sort  \n \n \n \n____________ \n(iv) Merge Sort \n \n \n \n____________ \n(v) Quick Sort  \n \n \n \n____________",
+        "sub_questions": [],
+        "question_number": 2
+    },
+    "Algorithms-3": {
+        "rects": {
+            "15": {
+                "x0": 54.02399826049805,
+                "y0": 91.32666015625,
+                "x1": 561.1060180664062,
+                "y1": 718.0595092773438
+            }
+        },
+        "raw": "A \u201cunique\u201d positive integer of n digits is such that no two adjacent digits differ by less than 2. \nSpecifically, given an n digit number, d0d1\u2026dn-1, where d0 is the most significant digit, (and thus, this\none digit can\u2019t be 0), |di \u2013 di+1| \u2265 2 for all i (0 \u2264 i \u2264 n-2). Consider the problem of printing out all\n\u201cunique\u201d positive integers of n digits via backtracking, in numerical order. Fill in the code below to\ncomplete the task. (To run the code, one would have to call printWrapper with their desired parameter.) \n#include <stdio.h> \n#include <math.h> \nvoid print(int number[], int n); \nvoid printWrapper(int n); \nvoid printRec(int number[], int k, int n); \nvoid printWrapper(int n) { \n   int* array = malloc(sizeof(int)*n); \n   printRec(array, 0, n); \n   free(array); \n} \nvoid printRec(int number[], int k, int n) { \n   if (k == n) { \n       ______________________ ; \n       ______________________ ; \n   } \n   int start = 0; \n   if ( ______________ ) \n       start = ___ ; \n   for (int i=start; i < ____ ; i++) { \n       if (k > 0 && _________________________ ) \n           continue; \n       number[ ____ ] = _____ ; \n       __________________________________ ; \n   } \n} \nvoid print(int number[], int n) { \n   for (int i=0; i<n; i++) \n       printf(\"%d\", number[i]); \n   printf(\"\\n\"); \n}",
+        "sub_questions": [],
+        "question_number": 3
+    }
+}

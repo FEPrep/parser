@@ -23,7 +23,18 @@
             "text": "struct tv_show * delete_show_list (struct tv_show *show_list, int length) { \n}"
         }
     ],
-    "2": [],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 200.8697509765625,
+                "x1": 457.3011779785156,
+                "y1": 499.9935302734375
+            },
+            "sub_areas": [],
+            "text": "int whatDoesItDo (node * head, int size) { \nnode * current = head; \nnode * other; \nif (size < 2) \n \nreturn size; \nother = head->next; \nwhile (current != NULL) { \n \ncurrent->next = other->next; \n \nfree(other); \n \ncurrent = current->next; \n \nsize--; \n \nif(current != NULL && current->next !=NULL) { \n \n \ncurrent = current->next; \n \n \nother = current->next; \n \n} \n} \nreturn size; \n}"
+        }
+    ],
     "3": [
         {
             "rect": {
@@ -71,7 +82,18 @@
             "text": "int fsl(node *root) { \n}"
         }
     ],
-    "6": [],
+    "6": [
+        {
+            "rect": {
+                "x0": 60.599998474121094,
+                "y0": 143.70901489257812,
+                "x1": 502.9250793457031,
+                "y1": 255.9652557373047
+            },
+            "sub_areas": [],
+            "text": "int hash(char *str) { \n    int index = strlen(str) \u2013 1; \n \n    // Note: This converts letters on the range 'a' through 'z' or \n    // 'A' through 'Z' to integers on the range 0 through 25. \n    // For example: 'a' -> 0, 'b' -> 1, ..., 'z' -> 25.  \n    return tolower(str[index]) \u2013 'a'; \n }"
+        }
+    ],
     "7": [
         {
             "rect": {
@@ -96,11 +118,43 @@
         }
     ],
     "8": [],
-    "9": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 132.94976806640625,
+                "x1": 363.6711730957031,
+                "y1": 323.3335266113281
+            },
+            "sub_areas": [],
+            "text": "int foo(int * arr, int n){ \n  if (n == 0) \n     return 0; \n  int j = 0, i; \n  for (i = 0; i < n; i++) \n     if (arr[i] > arr[j]) \n        j = i; \n  int nLen = n - j - 1; \n  return arr[j] + foo(arr + j + 1, nLen); \n}"
+        }
+    ],
     "10": [],
     "11": [],
     "12": [],
-    "13": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 320.0780944824219,
+                "x1": 540.0969848632812,
+                "y1": 569.2509155273438
+            },
+            "sub_areas": [],
+            "text": "void floodfill(int grid[][NUMCOLS], int flooded[][NUMCOLS], int row, int col) { \n   if ( _____________________________ ) return; \n   flooded[ ______ ][ _______ ] = _____ ; \n   for (int i=0; i<4; i++) { \n       int nextR = _________________________ ; \n       int nextC = _________________________ ; \n       if ( _________________________________________________________________ ) \n           floodfill(grid, flooded, nextR, nextC); \n   } \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 580.6481323242188,
+                "x1": 456.07696533203125,
+                "y1": 614.6109008789062
+            },
+            "sub_areas": [],
+            "text": "int inbounds(int row, int col) { \n   return row >= 0 && row < NUMROWS && col >= 0 && col < NUMCOLS; \n}"
+        }
+    ],
     "14": [
         {
             "rect": {
@@ -122,6 +176,16 @@
                 }
             ],
             "text": "int partition(int array[], int low, int high) { \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 650.3497314453125,
+                "x1": 298.8711853027344,
+                "y1": 718.4434814453125
+            },
+            "sub_areas": [],
+            "text": "void swap(int* ptrA, int* ptrB) { \n   int temp = *ptrA; \n   *ptrA = *ptrB; \n   *ptrB = temp; \n}"
         }
     ],
     "15": []
