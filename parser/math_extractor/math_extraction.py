@@ -1,6 +1,9 @@
 import os
 import fitz
 
+# Allow some wiggle room when testing the difference between potential numerators and denominators
+FRACTION_MIDPOINT_DIFF_THRESHOLD = 0.5
+
 
 # Extract all math text into json containing necessary metadata / context
 def extract_math_text(pdf_path, output_dir):
@@ -74,7 +77,7 @@ def is_numerator(span_list, idx):
             ((cur_bbox[0] - cur_bbox[2]) / 2) - ((next_bbox[0] - next_bbox[2]) / 2)
         )
         # todo: resolve: might not be enough to catch all numerators
-        return x_midpoint_diffs < 0.5
+        return x_midpoint_diffs < FRACTION_MIDPOINT_DIFF_THRESHOLD
 
     return False
 
