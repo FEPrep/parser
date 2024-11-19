@@ -198,6 +198,7 @@ class Question(BaseModel, strict=True):
     max_points: int
     category: str
     sub_category: str
+    id: str
 
     # text excluding the question number, category, max points,
     original_text: str

@@ -94,7 +94,10 @@ See below for an example (may not be exactly the same):
 
 ![python-env-2](./docs/images/python-env-2.png)
 
+## Environment Variables for MinIO
+Exam questions will be stored in a MinIO bucket. <br>
 
+Instructions for obtaining the necessary environment variables for configuring connection to the MinIO client can be located in the FEPrep Notion page.
 
 ## Common Issues
 
