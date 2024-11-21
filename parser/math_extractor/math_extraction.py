@@ -17,13 +17,12 @@ def extract_math_text(pdf_path, output_dir):
         page = pdf_document[page_num]
         text_blocks = page.get_text("dict")["blocks"]
 
+        # Get the list of math spans for the current page
         math_spans = get_math_span_list(text_blocks)
-        print(f"THE LENGTH: {len(math_spans)}")
 
         # Iterate through the math spans
         i = 0
         while i < len(math_spans):
-            print("===========================")
             span = math_spans[i]
 
             num_sigmas = span["text"].count("\u2211")
@@ -36,18 +35,12 @@ def extract_math_text(pdf_path, output_dir):
                     1  # Already processed the next span (denominator) with the fraction
                 )
             elif is_power(math_spans, i):
-                print("this should not print")
+                process_power(span, math_spans[i + 1])
+                i += 1  # Already processed the next span (exponent) with the base
             else:
                 process_math_text(span["text"], span["flags"])
-                # temporary (todo delete) print diff bewteen y0's
-                if i + 1 < len(math_spans):
-                    y0_diff = abs(span["bbox"][1] - math_spans[i + 1]["bbox"][1])
-                    print(f"y0 diff = {y0_diff}")
-
-            print({span["bbox"]})
 
             i += 1
-            print("===========================")
 
 
 # Returns a list of spans containing math text
@@ -67,11 +60,14 @@ def get_math_span_list(text_blocks):
 # Saves a span containing one or more summations in the correct output format
 def process_summation(span_list, idx, num_sigmas):
     sum_span = span_list[idx]
+    print("=====================================")
     print(f"summation: {sum_span["text"]}")
 
     for i in range((2 * num_sigmas), 0, -1):
         bound_type = "upper" if i % 2 == 1 else "lower"
         print(f"{bound_type} bound: {span_list[idx+i]["text"]}")
+    print("=====================================")
+    print()
 
 
 # Compares the current span to the next span to determine whether
@@ -82,7 +78,7 @@ def is_numerator(span_list, idx):
         cur_bbox = span_list[idx]["bbox"]
         next_bbox = span_list[idx + 1]["bbox"]
         x_midpoint_diffs = abs(
-            ((cur_bbox[0] - cur_bbox[2]) / 2) - ((next_bbox[0] - next_bbox[2]) / 2)
+            ((cur_bbox[0] + cur_bbox[2]) / 2) - ((next_bbox[0] + next_bbox[2]) / 2)
         )
         # todo: resolve: might not be enough to catch all numerators
         return x_midpoint_diffs < FRACTION_MIDPOINT_DIFF_THRESHOLD
@@ -92,28 +88,37 @@ def is_numerator(span_list, idx):
 
 def process_fraction(numerator, denominator):
     assert denominator
+    print("=====================================")
     print(f"fraction: {numerator["text"]} / {denominator["text"]}")
+    print("=====================================")
+    print()
 
 
 def is_power(span_list, idx):
-    print(f"is {idx+1} < {len(span_list)}????????????????????")
     if idx + 1 < len(span_list):
         cur = span_list[idx]
         next = span_list[idx + 1]
 
-        if next["flags"] == SUPERSCRIPT_FLAG:
-            print("this could be the base of an exponent!")
-            text_before_base = cur["text"][:-1]
-            print(f"extraneous text: {text_before_base}")
-            print(f"the base itself = {cur["text"][-1]}")
-
-            # Get the difference between the y0's
-            y0_diff = abs(cur["bbox"][1] - next["bbox"][1])
-            print(f"y0 diff = {y0_diff}")
+        if next["flags"] == SUPERSCRIPT_FLAG and cur["size"] > next["size"]:
+            # let's assume this is a fraction (todo this probably needs to be more robust)
+            return True
 
     return False
 
 
+def process_power(base, exponent):
+    process_math_text(base["text"][:-1], base["flags"])
+    print("=====================================")
+    print(f"base: {base["text"][-1]}, exponent: {exponent["text"]}")
+    print("=====================================")
+    print()
+
+
 # Process other math text that isn't a summation, fraction, or power
 def process_math_text(text, flags):
-    print(f"value: {text}, flags: {flags}")
+    # Ensure the string is not empty
+    if text:
+        print("=====================================")
+        print(f"value: {text}, flags: {flags}")
+        print("=====================================")
+        print()
