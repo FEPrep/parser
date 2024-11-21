@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0999755859375,
-                "y1": 718.0595092773438
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 718.0595092773438
+                }
+            },
+            "raw": "The struct Monster_List maintains a list of monsters using a dynamically sized array of pointers to \nMonster. A function prototype is given for a function initializeMonster, which takes in a pointer to a \nMonster that must already be pointing to memory that is allocated, and then fills that memory with \ninformation about a default monster. Write a function getDefaultMonsters which takes in a positive integer \nn, creates a pointer to a Monster_List, allocates room for it, and then fills it with n default Monsters, and\nthen returns a pointer to the Monster_list created. (Note: You must call initializeMonster in your solution.)\ntypedef struct Monster { \n   // Details not necessary to solve the problem. \n} Monster; \ntypedef struct Monster_List { \n   Monster** mArray; \n   int numMonsters; \n} Monster_List; \n// Initializes the monster pointed to by mPtr to be the default \n// monster. \nvoid initializeMonster(Monster* mPtr); \nMonster_List* getDefaultMonsters(int n) { \n    \n \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "The struct Monster_List maintains a list of monsters using a dynamically sized array of pointers to \nMonster. A function prototype is given for a function initializeMonster, which takes in a pointer to a \nMonster that must already be pointing to memory that is allocated, and then fills that memory with \ninformation about a default monster. Write a function getDefaultMonsters which takes in a positive integer \nn, creates a pointer to a Monster_List, allocates room for it, and then fills it with n default Monsters, and\nthen returns a pointer to the Monster_list created. (Note: You must call initializeMonster in your solution.)\ntypedef struct Monster { \n   // Details not necessary to solve the problem. \n} Monster; \ntypedef struct Monster_List { \n   Monster** mArray; \n   int numMonsters; \n} Monster_List; \n// Initializes the monster pointed to by mPtr to be the default \n// monster. \nvoid initializeMonster(Monster* mPtr); \nMonster_List* getDefaultMonsters(int n) { \n    \n \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 549.2500610351562,
+                    "y1": 710.6279907226562
+                }
+            },
+            "raw": "Suppose we have a singly linked list implemented with the structure below and a function that takes in\nthe head of the list.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nvoid whatDoesItDo (node * head) { \n    \n   int tot = 0; \n   while (head != NULL) { \n       head->data += tot; \n       tot = head->data; \n       head = head->next; \n   } \n} \nIf we call whatDoesItDo(head) on the following list, show the list after the function has finished. \nhead \u2192  3 \u2192 9 \u2192 7 \u2192 1 \u2192 4 \u2192 NULL? Please fill in the designated slots below.  \n \n\u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 NULL",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 549.2500610351562,
-                "y1": 710.6279907226562
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 719.1395263671875
+                }
+            },
+            "raw": "Consider using the following struct definition for a node of a binary search tree: \ntypedef struct node { \n   int data; \n   int height; \n   struct node* left; \n   struct node* right; \n} node; \nAssume that a binary search tree has been built with the data values in each struct filled in, but the heights \nare uninitialized. Write a void recursive function, assignHeights, with no helper functions, which \ntakes in a pointer, root, to the root of a binary search tree, and assigns the height component of each \nnode in the subtree pointed to by root to its correct height in the tree. Recall that the height of a leaf node \nis 0, and that more generally, the height of a node is the maximum number of links (left or right) to follow \nfrom that node to any leaf node in that subtree. (If root is NULL, then no action should be taken.) \nvoid assignHeights(node* root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a singly linked list implemented with the structure below and a function that takes in\nthe head of the list.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nvoid whatDoesItDo (node * head) { \n    \n   int tot = 0; \n   while (head != NULL) { \n       head->data += tot; \n       tot = head->data; \n       head = head->next; \n   } \n} \nIf we call whatDoesItDo(head) on the following list, show the list after the function has finished. \nhead \u2192  3 \u2192 9 \u2192 7 \u2192 1 \u2192 4 \u2192 NULL? Please fill in the designated slots below.  \n \n\u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 NULL",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.0999145507812,
+                    "y1": 625.6635131835938
+                }
+            },
+            "raw": "A mininum heap is typically implemented with an array, with the root node (minimum value) being \nstored in index 1 of the array. To insert a new value into a heap, it\u2019s originally placed in the first open slot, \nfollowed by running a \u201cpercolate up\u201d operation. Write a function that inserts a value into a heap in this \nmanner. You may assume that the array is allocated to be big enough to store the newly inserted value. \nThe function prototype is as follows: \nvoid insert(int* heap, int curSize, int newVal); \nheap is a pointer to an array which currently stores curSize number of values (but has room for at \nleast 1 more). newVal is the new number to be inserted into the heap. Write this function which inserts \nthe value newVal into this minimum heap. Take care to avoid infinite loops or array out of bounds issues. \nYou may assume that index curSize+1 is in bounds for the array heap. Also, remember that index 0 of the\narray heap is unused. You may not write any helper functions. \nvoid insert(int* heap, int curSize, int newVal) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Heaps"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0999755859375,
-                "y1": 719.1395263671875
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0880126953125,
+                    "y1": 326.5820007324219
+                }
+            },
+            "raw": "Consider the following problem: \nGiven two input values, n and k, determine the number of strings of length n, which only contains A\u2019s \nand B\u2019s, that have a run of k or more consecutive B\u2019s. \nOne algorithm to solve the problem is as follows: \nRecursively generate each possible string of n letters, each A\u2019s and B\u2019s. These can be generated in \nalphabetical order, never storing more than 1 of the strings at the same time. \nFor each string generated, loop through the string from left to right, keeping a running tally of the \ncurrent number of B\u2019s. (For example, with the string ABBABBBAAB, the running counter would \nupdate as follows 0 \u2192 1 \u2192 2 \u2192 0 \u2192 1 \u2192 2 \u2192 3 \u2192 0 \u2192 0 \u2192 1.) If this running tally ever equals or \nexceeds k, add 1 to a global counter storing the final result. For simplicities sake, assume that the loop \ncompletes going through the whole string before 1 is potentially added to the global counter. \nWith proof, determine the Big-Oh runtime of this algorithm in terms of the input parameter, n.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Consider using the following struct definition for a node of a binary search tree: \ntypedef struct node { \n   int data; \n   int height; \n   struct node* left; \n   struct node* right; \n} node; \nAssume that a binary search tree has been built with the data values in each struct filled in, but the heights \nare uninitialized. Write a void recursive function, assignHeights, with no helper functions, which \ntakes in a pointer, root, to the root of a binary search tree, and assigns the height component of each \nnode in the subtree pointed to by root to its correct height in the tree. Recall that the height of a leaf node \nis 0, and that more generally, the height of a node is the maximum number of links (left or right) to follow \nfrom that node to any leaf node in that subtree. (If root is NULL, then no action should be taken.) \nvoid assignHeights(node* root) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.0999755859375,
+                    "y1": 146.91197204589844
+                }
+            },
+            "raw": "A program takes O(nlgm) time to process n data sets, each which have m values. For 100,000 data sets, \neach with 216 values, the program takes 500 ms (milliseconds) to complete. Given this information, how \nmany milliseconds would we expect the program to take to process 60,000 data sets, each with 220 \nvalues?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.0999145507812,
-                "y1": 625.6635131835938
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0400390625,
+                    "y1": 648.9434814453125
+                }
+            },
+            "raw": "Imagine that a virus is spreading through an area we can model as a 2-dimensional integer array of size \nn by n, where each value in the array stores the current level of virus at that grid location. The virus can\nbe activated at a particular location. If that location currently has a virus level that is an even integer, \nthen the virus level in that square increases by 1, and then the activation recursively activates the \nlocations above, below, left and right of the immediate location. If the virus level in that square was odd, \nno change occurs and the virus doesn\u2019t spread. Luckily, once the virus level in a square increases by 1 \ndue to an activation, it can\u2019t increase again. Here is a small example of a before and after picture of \nactivating the virus in row 2, column 0: \n \nComplete the recursive function below so that it takes in a pointer to the array storing the grid, the value \nof n, and the row and column of where the virus is activated, and updates the virus levels accordingly. \nDon\u2019t forget to make sure you don\u2019t go out of bounds of the array! \nvoid activate(int** grid, int n, int row, int col) { \n   if (row < 0 || row >= n) return; \n   if ( ___________________________ ) return; // col out of bounds \n   if ( ____________________________ ) return; // odd square \n   ______________ ++; \n   _____________________________________ ; \n   _____________________________________ ; \n   _____________________________________ ; \n   _____________________________________ ; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "A mininum heap is typically implemented with an array, with the root node (minimum value) being \nstored in index 1 of the array. To insert a new value into a heap, it\u2019s originally placed in the first open slot, \nfollowed by running a \u201cpercolate up\u201d operation. Write a function that inserts a value into a heap in this \nmanner. You may assume that the array is allocated to be big enough to store the newly inserted value. \nThe function prototype is as follows: \nvoid insert(int* heap, int curSize, int newVal); \nheap is a pointer to an array which currently stores curSize number of values (but has room for at \nleast 1 more). newVal is the new number to be inserted into the heap. Write this function which inserts \nthe value newVal into this minimum heap. Take care to avoid infinite loops or array out of bounds issues. \nYou may assume that index curSize+1 is in bounds for the array heap. Also, remember that index 0 of the\narray heap is unused. You may not write any helper functions. \nvoid insert(int* heap, int curSize, int newVal) { \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0880126953125,
-                "y1": 326.5820007324219
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.1119384765625,
+                    "y1": 275.7020263671875
+                }
+            },
+            "raw": "Show the result after each iteration of performing Insertion Sort on the array shown below. For\nconvenience, the result after the first and last iterations are provided. The first row of the table contains \nthe original values of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n16 \n3 \n18 \n15 \n1 \n8 \n12 \n4 \n1 \n3 \n16 \n18 \n15 \n1 \n8 \n12 \n4 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n1 \n3 \n4 \n8 \n12 \n15 \n16 \n18",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "Consider the following problem: \nGiven two input values, n and k, determine the number of strings of length n, which only contains A\u2019s \nand B\u2019s, that have a run of k or more consecutive B\u2019s. \nOne algorithm to solve the problem is as follows: \nRecursively generate each possible string of n letters, each A\u2019s and B\u2019s. These can be generated in \nalphabetical order, never storing more than 1 of the strings at the same time. \nFor each string generated, loop through the string from left to right, keeping a running tally of the \ncurrent number of B\u2019s. (For example, with the string ABBABBBAAB, the running counter would \nupdate as follows 0 \u2192 1 \u2192 2 \u2192 0 \u2192 1 \u2192 2 \u2192 3 \u2192 0 \u2192 0 \u2192 1.) If this running tally ever equals or \nexceeds k, add 1 to a global counter storing the final result. For simplicities sake, assume that the loop \ncompletes going through the whole string before 1 is potentially added to the global counter. \nWith proof, determine the Big-Oh runtime of this algorithm in terms of the input parameter, n.",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.0999755859375,
-                "y1": 146.91197204589844
-            }
-        },
-        "raw": "A program takes O(nlgm) time to process n data sets, each which have m values. For 100,000 data sets, \neach with 216 values, the program takes 500 ms (milliseconds) to complete. Given this information, how \nmany milliseconds would we expect the program to take to process 60,000 data sets, each with 220 \nvalues?",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0400390625,
-                "y1": 648.9434814453125
-            }
-        },
-        "raw": "Imagine that a virus is spreading through an area we can model as a 2-dimensional integer array of size \nn by n, where each value in the array stores the current level of virus at that grid location. The virus can\nbe activated at a particular location. If that location currently has a virus level that is an even integer, \nthen the virus level in that square increases by 1, and then the activation recursively activates the \nlocations above, below, left and right of the immediate location. If the virus level in that square was odd, \nno change occurs and the virus doesn\u2019t spread. Luckily, once the virus level in a square increases by 1 \ndue to an activation, it can\u2019t increase again. Here is a small example of a before and after picture of \nactivating the virus in row 2, column 0: \n \nComplete the recursive function below so that it takes in a pointer to the array storing the grid, the value \nof n, and the row and column of where the virus is activated, and updates the virus levels accordingly. \nDon\u2019t forget to make sure you don\u2019t go out of bounds of the array! \nvoid activate(int** grid, int n, int row, int col) { \n   if (row < 0 || row >= n) return; \n   if ( ___________________________ ) return; // col out of bounds \n   if ( ____________________________ ) return; // odd square \n   ______________ ++; \n   _____________________________________ ; \n   _____________________________________ ; \n   _____________________________________ ; \n   _____________________________________ ; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.1119384765625,
-                "y1": 275.7020263671875
-            }
-        },
-        "raw": "Show the result after each iteration of performing Insertion Sort on the array shown below. For\nconvenience, the result after the first and last iterations are provided. The first row of the table contains \nthe original values of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n16 \n3 \n18 \n15 \n1 \n8 \n12 \n4 \n1 \n3 \n16 \n18 \n15 \n1 \n8 \n12 \n4 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n1 \n3 \n4 \n8 \n12 \n15 \n16 \n18",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 532.2999877929688,
-                "y1": 533.6019897460938
-            }
-        },
-        "raw": "Perform each of the requested base conversions (the base of each number is written as a subscript):\n( a ) (2 pts) 34710 = ________ 5 \n( b ) (2 pts) 3617 = _________ 10 \n( c ) (3 pts) 3AD16 = ________________________________ 2 \n( d ) (3 pts) 2473218 = ________________________________ 4",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 532.2999877929688,
+                    "y1": 533.6019897460938
+                }
+            },
+            "raw": "Perform each of the requested base conversions (the base of each number is written as a subscript):\n( a ) (2 pts) 34710 = ________ 5 \n( b ) (2 pts) 3617 = _________ 10 \n( c ) (3 pts) 3AD16 = ________________________________ 2 \n( d ) (3 pts) 2473218 = ________________________________ 4",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Base Conversion"
+        }
     }
 }

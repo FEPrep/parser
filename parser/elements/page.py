@@ -87,6 +87,9 @@ class Question(BaseModel, extra="forbid", strict=True):
     raw: str
     sub_questions: List[SubQuestion]
     question_number: int
+    max_points: int
+    category: str
+    sub_category: str
 
 
 class ExamResult(BaseModel, extra="forbid", strict=True):

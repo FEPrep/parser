@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.62400817871094,
-                "x1": 561.1000366210938,
-                "y1": 721.2994995117188
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.62400817871094,
+                    "x1": 561.1000366210938,
+                    "y1": 721.2994995117188
+                }
+            },
+            "raw": "Consider the following structures and the main function shown below: \ntypedef struct StringType {   \n   char *string;   \n   int length;  \n} StringType; \ntypedef struct Employee { \n   StringType *ename;  \n   double salary; \n} Employee; \n \n#include <string.h> \n#include <stdio.h> \nint main() { \n //array of employees\u2019 names \n char nameList[][50] = {\"Adam\", \"Josh\", \"Kyle\", \"Ali\", \"Mohammed\"};  \n //array of salaries, where 15.80 is the salary of Adam, 13.50 is  \n // the salary of Josh, etc. \n double salaries[5] = {15.80, 13.5, 20.9, 12.99, 10.5};  \n Employee *employees = createEmployees(nameList, salaries, 5);  \n  // Other code here\u2026 \n  return 0; \n} \nWrite a function createEmployees() that takes the list of employees' names, list of their salaries, and \nlength of the list (empCount) as the parameters, and returns a pointer to a dynamically allocated array \nof Employee storing the relevant information for empCount employees. The function dynamically \nallocates memory for empCount number of employees and assigns the name and salaries for each of them \nfrom the input parameters. During this process, the names are stored in the dynamically allocated memory \nof StringType, and also make sure you assign the length of the name appropriately. Your code should use \nexact amount of memory needed to store the corresponding names. You may assume no name is longer \nthan 49 characters.  \nEmployee* createEmployees(char names[][50], double *salaries, int empCount) \n{ \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Consider the following structures and the main function shown below: \ntypedef struct StringType {   \n   char *string;   \n   int length;  \n} StringType; \ntypedef struct Employee { \n   StringType *ename;  \n   double salary; \n} Employee; \n \n#include <string.h> \n#include <stdio.h> \nint main() { \n //array of employees\u2019 names \n char nameList[][50] = {\"Adam\", \"Josh\", \"Kyle\", \"Ali\", \"Mohammed\"};  \n //array of salaries, where 15.80 is the salary of Adam, 13.50 is  \n // the salary of Josh, etc. \n double salaries[5] = {15.80, 13.5, 20.9, 12.99, 10.5};  \n Employee *employees = createEmployees(nameList, salaries, 5);  \n  // Other code here\u2026 \n  return 0; \n} \nWrite a function createEmployees() that takes the list of employees' names, list of their salaries, and \nlength of the list (empCount) as the parameters, and returns a pointer to a dynamically allocated array \nof Employee storing the relevant information for empCount employees. The function dynamically \nallocates memory for empCount number of employees and assigns the name and salaries for each of them \nfrom the input parameters. During this process, the names are stored in the dynamically allocated memory \nof StringType, and also make sure you assign the length of the name appropriately. Your code should use \nexact amount of memory needed to store the corresponding names. You may assume no name is longer \nthan 49 characters.  \nEmployee* createEmployees(char names[][50], double *salaries, int empCount) \n{ \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 557.8900146484375,
+                    "y1": 571.4020385742188
+                }
+            },
+            "raw": "Suppose we have a linked list implemented with the structure below.  We also have a function that takes\nin the head of the list and returns a node pointer.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nnode* something(node* head) { \n   node* t = head; \n   if(t==NULL || t->next == NULL )  return t; \n    \n   while(t->next->next != NULL) \n       t = t->next; \n    \n   t->next->next = head; \n   head = t->next; \n   t->next = NULL; \n    \n   return head; \n} \nA linked list, mylist, has the following nodes: 1 -> 9 -> 6 -> 7 -> 4 -> 8, where 1 is at the head node of \nthe list.  \na) What will be the status of the linked list (draw the full list) after following function call. \nmylist = something(mylist);  \nDraw the updated linked list after the function call: \nmylist -> \nb) What general task does the function something perform? Please answer in a single sentence.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 557.8900146484375,
-                "y1": 571.4020385742188
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0880737304688,
+                    "y1": 726.806884765625
+                }
+            },
+            "raw": "The goal of a function named legacyCount() is to take the root of a binary tree (root) and return the number \nof nodes that contain a value greater than at least one of their ancestors. For example, this function would \nreturn 4 for the following tree, since 60 is greater than both of its ancestors (3 and 14), 40 is greater than \ntwo of its ancestors (3 and 14) (even though 40 isn\u2019t greater than its parent!), 28 is greater than both of its \nancestors (9 and 14), and 2 is greater than one of its ancestors (1). \n          14             Our node struct is as follows: \n        /    \\ \n       3      9          typedef struct node { \n      / \\      \\            int data; \n     1   60     28          struct node *left; \n    /     \\                 struct node *right; \n   2       40            } node; \nTo make the code work, legacyCount() is a wrapper function for a recursive function called \nlegacyHelper(). Included below is the code for legacyCount() as well as the function signature for \nlegacyHelper(). Write all of the code for the legacyHelper() function. Note: If root is NULL, you should \nreturn 0. \nint legacyCount(node *root) { \n   if (root == NULL) return 0; \n   return legacyHelper(root->left, root->data) +  \n          legacyHelper(root->right, root->data); \n} \nint legacyHelper(node* root, int minAncestor) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a linked list implemented with the structure below.  We also have a function that takes\nin the head of the list and returns a node pointer.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nnode* something(node* head) { \n   node* t = head; \n   if(t==NULL || t->next == NULL )  return t; \n    \n   while(t->next->next != NULL) \n       t = t->next; \n    \n   t->next->next = head; \n   head = t->next; \n   t->next = NULL; \n    \n   return head; \n} \nA linked list, mylist, has the following nodes: 1 -> 9 -> 6 -> 7 -> 4 -> 8, where 1 is at the head node of \nthe list.  \na) What will be the status of the linked list (draw the full list) after following function call. \nmylist = something(mylist);  \nDraw the updated linked list after the function call: \nmylist -> \nb) What general task does the function something perform? Please answer in a single sentence.",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.08203125,
+                    "y1": 487.6419982910156
+                }
+            },
+            "raw": "Suppose have some hash function that produces the following hash values for the following strings.  \nString \nhash value \nWicked \n35429 \nCheesy \n171745742 \nLasagna \n72457241 \nFor \n559079 \nDinner \n96879 \nUsing the hash values above, insert the strings (one by one, in the order given above, from \u201cwicked\u201d down\nthrough \u201cdinner\u201d) into the following hash table. Use quadratic probing to resolve any collisions. Note \nthat there is a standard technique for dealing with hash values that exceed the length of a table (e.g., values \nthat exceed 9 in the case of this particular table), and it\u2019s up to you to use that technique here. \nNote: The length of the hash table is 10.  \n \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0880737304688,
-                "y1": 726.806884765625
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.9619750976562,
+                    "y1": 337.1335144042969
+                }
+            },
+            "raw": "What is the best and worst case runtime for the following algorithm, in terms of the input parameter n? \nYou may assume that the array pointed to by arr is of length n. Give a brief explanation for your\nanswers. \nint foo(int * arr, int n, int value){ \n   int cur = 0, jump = n/2; \n   while (jump > 0) { \n       if (value > arr[cur]) \n           cur += jump; \n       else if (value == arr[cur]) \n           return cur; \n       jump = jump/2; \n   }    \n   return cur; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "The goal of a function named legacyCount() is to take the root of a binary tree (root) and return the number \nof nodes that contain a value greater than at least one of their ancestors. For example, this function would \nreturn 4 for the following tree, since 60 is greater than both of its ancestors (3 and 14), 40 is greater than \ntwo of its ancestors (3 and 14) (even though 40 isn\u2019t greater than its parent!), 28 is greater than both of its \nancestors (9 and 14), and 2 is greater than one of its ancestors (1). \n          14             Our node struct is as follows: \n        /    \\ \n       3      9          typedef struct node { \n      / \\      \\            int data; \n     1   60     28          struct node *left; \n    /     \\                 struct node *right; \n   2       40            } node; \nTo make the code work, legacyCount() is a wrapper function for a recursive function called \nlegacyHelper(). Included below is the code for legacyCount() as well as the function signature for \nlegacyHelper(). Write all of the code for the legacyHelper() function. Note: If root is NULL, you should \nreturn 0. \nint legacyCount(node *root) { \n   if (root == NULL) return 0; \n   return legacyHelper(root->left, root->data) +  \n          legacyHelper(root->right, root->data); \n} \nint legacyHelper(node* root, int minAncestor) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0760498046875,
+                    "y1": 132.7519989013672
+                }
+            },
+            "raw": "An algorithm processes an array of size r by c in O(rc2) time. For an array of size r = 200 and c = 500, \nthe algorithm takes 5.0 seconds. How long, in seconds, will the algorithm take to process an input array \nof size r = 800 and c = 300? Please express your answer with exactly one digit after the decimal point.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.08203125,
-                "y1": 487.6419982910156
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0880737304688,
+                    "y1": 652.6635131835938
+                }
+            },
+            "raw": "Consider the problem of a frog jumping out of a well. Initially, the frog is n feet below the top of the \nwell. When the frog jumps up, it elevates u feet. If a jump gets the frog to the top of the well or past it, \nthe frog escapes the well. If not, unfortunately, the frog slips down by d feet before clinging to the side \nof the well. (Note that d < u.) Write a recursive function that takes in positive integers, n, u, and d, and \nreturns the number of times the frog must jump to get out of the well.  \nFor example, if n = 10, u = 5 and d = 3, the function should return 4. On the first jump, the frog goes \nfrom 10 feet below the top to 8 feet below (5-3 is the progress). On the second jump, the frog goes from \n8 feet below the top to 6 feet below the top. On the third jump, the frog goes from 6 feet below the top to \n4 feet below the top. On the last jump, since 5 feet is enough to clear the top of the well, the frog does \nnot slip down and gets out. In this case, had n = 11, the frog would have also gotten out in 4 jumps. \n(Note: Although one can do some math to arrive at an O(1) solution without recursion, please use \nrecursion to simulate the jumping process described as this is what is being tested - the ability to take a \nprocess and express it in code, recursively. Also, though this is a toy problem, it's surprisingly similar to \nthe real life process of paying off a loan, though in the latter process, the amount you \"slip down\" slowly \ndecreases, month after month.)  \nint numJumps(int n, int u, int d) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Suppose have some hash function that produces the following hash values for the following strings.  \nString \nhash value \nWicked \n35429 \nCheesy \n171745742 \nLasagna \n72457241 \nFor \n559079 \nDinner \n96879 \nUsing the hash values above, insert the strings (one by one, in the order given above, from \u201cwicked\u201d down\nthrough \u201cdinner\u201d) into the following hash table. Use quadratic probing to resolve any collisions. Note \nthat there is a standard technique for dealing with hash values that exceed the length of a table (e.g., values \nthat exceed 9 in the case of this particular table), and it\u2019s up to you to use that technique here. \nNote: The length of the hash table is 10.  \n \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 560.9619750976562,
-                "y1": 337.1335144042969
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.075927734375,
+                    "y1": 351.8935241699219
+                }
+            },
+            "raw": "Jesse has mistakenly written his Merge Sort so that instead of making recursive calls on each half of the \narray (code below), he calls a function that runs an Insertion Sort on each half of the array. You may \nassume the function insertionSort runs properly and executes the steps of an Insertion Sort. He tests his \nfunction on an array of size 100,000 in reverse sorted order, and discovers that instead of running in \nunder one second, his code takes 9 seconds. How long (in seconds) would sorting the same array \n(100,000 elements in reverse order), on the same computer, using a single Insertion Sort, be expected to \ntake?  \nTo earn full credit, you must justify your answer by looking at the number of simple operations in \nboth algorithms and comparing the differences in multiplicative constants between the two \nalgorithms. \nvoid mergeSort(int array[], int low, int high) { \n   if (low >= high) return; \n   int mid = (low+high)/2; \n   insertionSort(array, low, mid); \n   insertionSort(array, mid+1, high); \n   merge(array, low, mid, high); \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Sorting"
         },
-        "raw": "What is the best and worst case runtime for the following algorithm, in terms of the input parameter n? \nYou may assume that the array pointed to by arr is of length n. Give a brief explanation for your\nanswers. \nint foo(int * arr, int n, int value){ \n   int cur = 0, jump = n/2; \n   while (jump > 0) { \n       if (value > arr[cur]) \n           cur += jump; \n       else if (value == arr[cur]) \n           return cur; \n       jump = jump/2; \n   }    \n   return cur; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.0760498046875,
-                "y1": 132.7519989013672
-            }
-        },
-        "raw": "An algorithm processes an array of size r by c in O(rc2) time. For an array of size r = 200 and c = 500, \nthe algorithm takes 5.0 seconds. How long, in seconds, will the algorithm take to process an input array \nof size r = 800 and c = 300? Please express your answer with exactly one digit after the decimal point.",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0880737304688,
-                "y1": 652.6635131835938
-            }
-        },
-        "raw": "Consider the problem of a frog jumping out of a well. Initially, the frog is n feet below the top of the \nwell. When the frog jumps up, it elevates u feet. If a jump gets the frog to the top of the well or past it, \nthe frog escapes the well. If not, unfortunately, the frog slips down by d feet before clinging to the side \nof the well. (Note that d < u.) Write a recursive function that takes in positive integers, n, u, and d, and \nreturns the number of times the frog must jump to get out of the well.  \nFor example, if n = 10, u = 5 and d = 3, the function should return 4. On the first jump, the frog goes \nfrom 10 feet below the top to 8 feet below (5-3 is the progress). On the second jump, the frog goes from \n8 feet below the top to 6 feet below the top. On the third jump, the frog goes from 6 feet below the top to \n4 feet below the top. On the last jump, since 5 feet is enough to clear the top of the well, the frog does \nnot slip down and gets out. In this case, had n = 11, the frog would have also gotten out in 4 jumps. \n(Note: Although one can do some math to arrive at an O(1) solution without recursion, please use \nrecursion to simulate the jumping process described as this is what is being tested - the ability to take a \nprocess and express it in code, recursively. Also, though this is a toy problem, it's surprisingly similar to \nthe real life process of paying off a loan, though in the latter process, the amount you \"slip down\" slowly \ndecreases, month after month.)  \nint numJumps(int n, int u, int d) { \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.075927734375,
-                "y1": 351.8935241699219
-            }
-        },
-        "raw": "Jesse has mistakenly written his Merge Sort so that instead of making recursive calls on each half of the \narray (code below), he calls a function that runs an Insertion Sort on each half of the array. You may \nassume the function insertionSort runs properly and executes the steps of an Insertion Sort. He tests his \nfunction on an array of size 100,000 in reverse sorted order, and discovers that instead of running in \nunder one second, his code takes 9 seconds. How long (in seconds) would sorting the same array \n(100,000 elements in reverse order), on the same computer, using a single Insertion Sort, be expected to \ntake?  \nTo earn full credit, you must justify your answer by looking at the number of simple operations in \nboth algorithms and comparing the differences in multiplicative constants between the two \nalgorithms. \nvoid mergeSort(int array[], int low, int high) { \n   if (low >= high) return; \n   int mid = (low+high)/2; \n   insertionSort(array, low, mid); \n   insertionSort(array, mid+1, high); \n   merge(array, low, mid, high); \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 560.998046875,
-                "y1": 726.6995239257812
-            }
-        },
-        "raw": "Imagine the task of painting a picket fence with 20 pickets. Let each picket be numbered from 0 to 19, \nfrom left to right and initially each is painted white. A pattern is 5 pickets long and can be placed with \nthe pattern's left end aligned with any picket in between number 0 and number 15, inclusive. (If you line \nthe pattern up with any of the pickets 16 through 19, the right end of the pattern goes past the right end \nof the fence and this isn't allowed.) Below is a picture of an example pattern, with the 3 of the 5 possible \npickets painted: \n \n \n \n \n        \n \nIf this pattern was lined up with picket number 4, then pickets 4, 5 and 7 would get painted. Think of the \nprocess as a placing a stamp on a portion of the whole fence. We can represent this pattern with the \ninteger 11 (20 + 21 + 23), the integer where bits 0, 1 and 3 are set to 1. The bit positions represent, \nrelative to the left end of the pattern, which positions have paint on them. \nOne way to paint a fence with a pattern is to line up the pattern with a few different picket numbers and \napply the pattern. For example, if we lined up this pattern with the pickets at positions 1 and 4, then the \npickets that would be painted would be at positions 1, 2, 4, 5 and 7. (Notice that painting an individual \npicket more than once leaves it still painted.) \nComplete the function below so that it takes in an integer, pattern, in between 0 and 31, inclusive, \nrepresenting the pattern, an integer array, paintLoc, which stores the locations to line up the pattern with \nfor painting, and paintLen, representing the length of the array paintLoc and returns a single integer \nstoring the state of the painted fence (for each picket number, k, that is painted, bit k in the returned \ninteger should be set to 1). Each of the values in paintLoc will be distinct integers in between 0 and 15, \ninclusive. \nint paintFence(int pattern, int paintLoc[], int paintLen) { \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.998046875,
+                    "y1": 726.6995239257812
+                }
+            },
+            "raw": "Imagine the task of painting a picket fence with 20 pickets. Let each picket be numbered from 0 to 19, \nfrom left to right and initially each is painted white. A pattern is 5 pickets long and can be placed with \nthe pattern's left end aligned with any picket in between number 0 and number 15, inclusive. (If you line \nthe pattern up with any of the pickets 16 through 19, the right end of the pattern goes past the right end \nof the fence and this isn't allowed.) Below is a picture of an example pattern, with the 3 of the 5 possible \npickets painted: \n \n \n \n \n        \n \nIf this pattern was lined up with picket number 4, then pickets 4, 5 and 7 would get painted. Think of the \nprocess as a placing a stamp on a portion of the whole fence. We can represent this pattern with the \ninteger 11 (20 + 21 + 23), the integer where bits 0, 1 and 3 are set to 1. The bit positions represent, \nrelative to the left end of the pattern, which positions have paint on them. \nOne way to paint a fence with a pattern is to line up the pattern with a few different picket numbers and \napply the pattern. For example, if we lined up this pattern with the pickets at positions 1 and 4, then the \npickets that would be painted would be at positions 1, 2, 4, 5 and 7. (Notice that painting an individual \npicket more than once leaves it still painted.) \nComplete the function below so that it takes in an integer, pattern, in between 0 and 31, inclusive, \nrepresenting the pattern, an integer array, paintLoc, which stores the locations to line up the pattern with \nfor painting, and paintLen, representing the length of the array paintLoc and returns a single integer \nstoring the state of the painted fence (for each picket number, k, that is painted, bit k in the returned \ninteger should be set to 1). Each of the values in paintLoc will be distinct integers in between 0 and 15, \ninclusive. \nint paintFence(int pattern, int paintLoc[], int paintLen) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
     }
 }

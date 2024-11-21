@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0879516601562,
-                "y1": 716.259521484375
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0879516601562,
+                    "y1": 716.259521484375
+                }
+            },
+            "raw": "Using 0-based indexing, on row i of Pascal\u2019s Triangle, there are i+1 positive integer values. One way we \ncan efficiently store the triangle is to allocate the correct amount of memory for each row. Here is a picture \nof the first five rows of the triangle (rows 0 through 4, inclusive.): \n \nIf the name of the array is tri, then the rule to fill in the entries in the table are as follows: \ntri[i][0] = 1, for all positive ints i \ntri[i][i] = 1, for all positive ints i \ntri[i][j] = tri[i-1][j-1]+tri[i-1][j], for all ints j, 0 < j < i \nWrite a function that takes in an integer, n, dynamically allocates an array of n arrays, where the ith array \n(0-based) is allocated to store exactly i+1 ints, fills the contents of the array with the corresponding values \nof Pascal\u2019s Triangle as designated above, and returns a pointer to the array of arrays. You may assume \nthat 1 < n < 31. \nint** getPascalsTriangle(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Using 0-based indexing, on row i of Pascal\u2019s Triangle, there are i+1 positive integer values. One way we \ncan efficiently store the triangle is to allocate the correct amount of memory for each row. Here is a picture \nof the first five rows of the triangle (rows 0 through 4, inclusive.): \n \nIf the name of the array is tri, then the rule to fill in the entries in the table are as follows: \ntri[i][0] = 1, for all positive ints i \ntri[i][i] = 1, for all positive ints i \ntri[i][j] = tri[i-1][j-1]+tri[i-1][j], for all ints j, 0 < j < i \nWrite a function that takes in an integer, n, dynamically allocates an array of n arrays, where the ith array \n(0-based) is allocated to store exactly i+1 ints, fills the contents of the array with the corresponding values \nof Pascal\u2019s Triangle as designated above, and returns a pointer to the array of arrays. You may assume \nthat 1 < n < 31. \nint** getPascalsTriangle(int n) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 560.8199462890625,
+                    "y1": 717.5795288085938
+                }
+            },
+            "raw": "Consider using a linked list to store a string, where each node, in order, stores one letter in the string. The \nstruct used for a single node is included below. Write a function that takes in two pointers to linked lists \nstoring 2 strings, and prints out the letters in the string in alternating order, starting with the first letter of \nthe first string. If one string runs out of letters, just skip over it. For example, if the two strings passed to \nthe function were \u201chello\u201d and \u201ccomputer\u201d, then the function should print \u201chceolmlpouter\u201d. \ntypedef struct node { \n   char letter; \n   struct node* next; \n} node; \nvoid printMixed(node* word1, node* word2) {       \n \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 560.8199462890625,
-                "y1": 717.5795288085938
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 726.2069091796875
+                }
+            },
+            "raw": "Write a recursive function called prune() that takes the root of a binary tree and deletes all leaf nodes \nfrom the tree. Be sure to update any pointers that need to be updated to account for deleted nodes, carefully \navoid any potential segmentation faults, and avoid memory leaks. (You may assume all the nodes in the \ntree have been dynamically allocated.) \nFor example: \n              Initial Tree                          Resulting Tree \n    (leaf nodes underlined and bold)                (after pruning) \n                  18                                     18 \n                 /  \\                                      \\ \n               25    1                                      1 \n                    / \\                                      \\ \n                   2   9                                      9 \n                        \\ \n                         16 \nThis function should return NULL if the root it receives gets deleted. Otherwise, it should return root \nitself. Note that if root is NULL, the function should simply return NULL without taking any further \naction. \nYou cannot write any helper functions for this problem. All your work must be contained in a single \nfunction called prune(). The node struct definition and function signature are as follows: \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nnode *prune(node *root) \n{ \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Consider using a linked list to store a string, where each node, in order, stores one letter in the string. The \nstruct used for a single node is included below. Write a function that takes in two pointers to linked lists \nstoring 2 strings, and prints out the letters in the string in alternating order, starting with the first letter of \nthe first string. If one string runs out of letters, just skip over it. For example, if the two strings passed to \nthe function were \u201chello\u201d and \u201ccomputer\u201d, then the function should print \u201chceolmlpouter\u201d. \ntypedef struct node { \n   char letter; \n   struct node* next; \n} node; \nvoid printMixed(node* word1, node* word2) {       \n \n}",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 557.7601318359375,
+                    "y1": 646.31201171875
+                }
+            },
+            "raw": "Consider the following problem: Suppose we have a rather large text file that contains up to 50 million \nstrings of 9-digit integers (each separated by a space), and we know that exactly one of those integers \noccurs twice. (The rest, we know for certain, occur only once.) Suppose our goal is to find the single 9-\ndigit integer that occurs twice. \nSome clever cheddar of a computer scientist thinks they have come up with a great solution to this \nproblem. They have a rock-solid implementation of hash tables (written in C) that has been thoroughly \ntested by the open-source community and is known to be reliable and bug-free. This implementation of \nhash tables has some great features: \n\u2022 The hash tables have a lovely, effective, widely-used hash function for dealing with integers. \n\u2022 The hash tables expand automatically without creating any memory leaks. \n\u2022 In addition to keeping track of the elements in the hash table, this implementation keeps track of a \nfew extra pieces of information inside the HashTable struct. One of those extra pieces of \ninformation is how many collisions have occurred over the lifetime of this hash table. (That value \nis, of course, initialized to zero (0) by the function used to create new hash tables.) \nIt is this last property that has caught our clever cheddar\u2019s eye. They reason that they can loop through the \ninput file, throw each integer into a hash table one-by-one, and as soon as a collision occurs in the hash \ntable, they must have found the duplicate integer they were searching for! So, they write up a piece of \ncode that effectively does this: \nfunction find_that_duplicate(file): \n \ncreate a hash table, h \n \nfor each integer, n, in file: \n \n \ninsert n into h \n \n \nif h->num_collisions > 0: \n \n \n \ndestroy h \n \n \n \nclose file \n \n \n \nreturn n \nThe idea above is just pseudocode, of course. You may assume that the person implementing this in C is \ncareful to avoid memory leaks and segmentation faults, that there is enough memory to hold all those \nintegers in the hash table, that the hash table implementation works well and is rock solid, and that the \ncode has no syntax errors. You may also assume this function will only be called with a file that actually \nexists, and that we know for sure there is exactly one duplicate integer in that file. (So, we do not need to \nworry about what happens if there is no duplicate.) \nWhat is wrong with this proposed solution? In your response, be as clear and precise as possible. Long, \nrambling word salads will not receive credit.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0999755859375,
-                "y1": 726.2069091796875
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 550.1400146484375,
+                    "y1": 274.20526123046875
+                }
+            },
+            "raw": "What is the big O runtime for the following segment of code in terms of N and M? (Note: let min(x, y)\ndenote the minimum of x and y and max(x, y) denote the maximum of x and y. You may use either of \nthese in your answer. In addition to your answer, please provide justification for your answer. \nint fun(int N, int M, int ** grid) { \n  int a1 = 0, a2 = 0; \n  for (int i = 0; i < N || i < M; i++) { \n     if (i < N) a1 += grid[i][0]; \n     if (i < M) a2 += grid[0][i]; \n  } \n  if (a1 < a2) return a2; \n  return a1; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Write a recursive function called prune() that takes the root of a binary tree and deletes all leaf nodes \nfrom the tree. Be sure to update any pointers that need to be updated to account for deleted nodes, carefully \navoid any potential segmentation faults, and avoid memory leaks. (You may assume all the nodes in the \ntree have been dynamically allocated.) \nFor example: \n              Initial Tree                          Resulting Tree \n    (leaf nodes underlined and bold)                (after pruning) \n                  18                                     18 \n                 /  \\                                      \\ \n               25    1                                      1 \n                    / \\                                      \\ \n                   2   9                                      9 \n                        \\ \n                         16 \nThis function should return NULL if the root it receives gets deleted. Otherwise, it should return root \nitself. Note that if root is NULL, the function should simply return NULL without taking any further \naction. \nYou cannot write any helper functions for this problem. All your work must be contained in a single \nfunction called prune(). The node struct definition and function signature are as follows: \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nnode *prune(node *root) \n{ \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.67486572265625,
+                    "x1": 560.8518676757812,
+                    "y1": 148.74461364746094
+                }
+            },
+            "raw": "You are using an algorithm that can multiply 2 N-digit integers in O(N1.5) time. It takes (10/13)3 seconds to \nmultiply 2 numbers that have 100,000 digits. What is the expected number of digits of 2 numbers we could \nmultiply together that would take exactly 1 second? Please show all your work, including algebraic \nsimplification, which is part of what is being tested with this question.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 557.7601318359375,
-                "y1": 646.31201171875
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0880126953125,
+                    "y1": 720.4468994140625
+                }
+            },
+            "raw": "Define an extreme permutation of the integers 0 to n \u2013 1 as any permutation where each value in the \npermutation (from left to right) is either the smallest or largest value not yet placed. For example, for n = \n6, [0, 1, 5, 2, 3, 4] is an extreme permutation but [0, 5, 2, 4, 1, 3] is not. The latter is not because the only \nvalid values that can be placed where the 2 is are either 1 or 4, the smallest and largest values, \nrespectively, that have not been placed. Complete the recursive function below so that it prints out all \nextreme permutations of length n. A completed wrapper function has been provided. Note: low \nrepresents the lowest unplaced value, high represents the highest unplaced value, and k represents the \nnumber of items in the permutation that have already been filled. \n#include <stdio.h> \n#include <stdlib.h> \nvoid printExtremeWrapper(int n); \nvoid printExtreme(int* perm, int n, int low, int high, int k); \nvoid printPerm(int* perm, int n); \nvoid printExtremeWrapper(int n) { \n   int* perm = malloc(sizeof(int)*n); \n   printExtreme(perm, n, 0, n-1, 0); \n   free(perm); \n} \nvoid printPerm(int* perm, int n) { \n   for (int i=0; i<n; i++) printf(\"%d, \", perm[i]); \n   printf(\"\\n\"); \n} \nvoid printExtreme(int* perm, int n, int low, int high, int k) { \n   if (low > high) { \n       printPerm(perm, n); \n       return; \n   } \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Consider the following problem: Suppose we have a rather large text file that contains up to 50 million \nstrings of 9-digit integers (each separated by a space), and we know that exactly one of those integers \noccurs twice. (The rest, we know for certain, occur only once.) Suppose our goal is to find the single 9-\ndigit integer that occurs twice. \nSome clever cheddar of a computer scientist thinks they have come up with a great solution to this \nproblem. They have a rock-solid implementation of hash tables (written in C) that has been thoroughly \ntested by the open-source community and is known to be reliable and bug-free. This implementation of \nhash tables has some great features: \n\u2022 The hash tables have a lovely, effective, widely-used hash function for dealing with integers. \n\u2022 The hash tables expand automatically without creating any memory leaks. \n\u2022 In addition to keeping track of the elements in the hash table, this implementation keeps track of a \nfew extra pieces of information inside the HashTable struct. One of those extra pieces of \ninformation is how many collisions have occurred over the lifetime of this hash table. (That value \nis, of course, initialized to zero (0) by the function used to create new hash tables.) \nIt is this last property that has caught our clever cheddar\u2019s eye. They reason that they can loop through the \ninput file, throw each integer into a hash table one-by-one, and as soon as a collision occurs in the hash \ntable, they must have found the duplicate integer they were searching for! So, they write up a piece of \ncode that effectively does this: \nfunction find_that_duplicate(file): \n \ncreate a hash table, h \n \nfor each integer, n, in file: \n \n \ninsert n into h \n \n \nif h->num_collisions > 0: \n \n \n \ndestroy h \n \n \n \nclose file \n \n \n \nreturn n \nThe idea above is just pseudocode, of course. You may assume that the person implementing this in C is \ncareful to avoid memory leaks and segmentation faults, that there is enough memory to hold all those \nintegers in the hash table, that the hash table implementation works well and is rock solid, and that the \ncode has no syntax errors. You may also assume this function will only be called with a file that actually \nexists, and that we know for sure there is exactly one duplicate integer in that file. (So, we do not need to \nworry about what happens if there is no duplicate.) \nWhat is wrong with this proposed solution? In your response, be as clear and precise as possible. Long, \nrambling word salads will not receive credit.",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 550.1400146484375,
-                "y1": 274.20526123046875
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 560.9619750976562,
+                    "y1": 717.219482421875
+                }
+            },
+            "raw": "Complete the following merge function that is used as part of the merge sort process. The function\nperforms the merge operation from left to mid and mid+1 to right index of the array.  \nvoid merge(int arr[], int left, int mid, int right)   \n{ \n   int i, j, k; \n   int n1 = mid - left + 1; //size of the left array \n   int n2 =  right - mid; //size of the right array \n   /* create temp arrays */ \n   int *L = (int*) malloc(n1*sizeof(int)); //left array \n   int *R = (int*) malloc(n2*sizeof(int)); //right array \n   /* Copy data to temp arrays L[] and R[] */ \n   for (i = 0; i < n1; i++) \n       L[i] = arr[left + i]; \n   for (j = 0; j < n2; j++) \n       R[j] = arr[mid + 1 + j]; \n   /* Merge the temp arrays back into arr[l..r]*/ \n   i = 0; // Initial index of left subarray \n   j = 0; // Initial index of right subarray \n   k = left; // Initial index of merged subarray \n   // Complete the remaining part of the code that will  \n   // merge L and R array into arr \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Sorting"
         },
-        "raw": "What is the big O runtime for the following segment of code in terms of N and M? (Note: let min(x, y)\ndenote the minimum of x and y and max(x, y) denote the maximum of x and y. You may use either of \nthese in your answer. In addition to your answer, please provide justification for your answer. \nint fun(int N, int M, int ** grid) { \n  int a1 = 0, a2 = 0; \n  for (int i = 0; i < N || i < M; i++) { \n     if (i < N) a1 += grid[i][0]; \n     if (i < M) a2 += grid[0][i]; \n  } \n  if (a1 < a2) return a2; \n  return a1; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.67486572265625,
-                "x1": 560.8518676757812,
-                "y1": 148.74461364746094
-            }
-        },
-        "raw": "You are using an algorithm that can multiply 2 N-digit integers in O(N1.5) time. It takes (10/13)3 seconds to \nmultiply 2 numbers that have 100,000 digits. What is the expected number of digits of 2 numbers we could \nmultiply together that would take exactly 1 second? Please show all your work, including algebraic \nsimplification, which is part of what is being tested with this question.",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0880126953125,
-                "y1": 720.4468994140625
-            }
-        },
-        "raw": "Define an extreme permutation of the integers 0 to n \u2013 1 as any permutation where each value in the \npermutation (from left to right) is either the smallest or largest value not yet placed. For example, for n = \n6, [0, 1, 5, 2, 3, 4] is an extreme permutation but [0, 5, 2, 4, 1, 3] is not. The latter is not because the only \nvalid values that can be placed where the 2 is are either 1 or 4, the smallest and largest values, \nrespectively, that have not been placed. Complete the recursive function below so that it prints out all \nextreme permutations of length n. A completed wrapper function has been provided. Note: low \nrepresents the lowest unplaced value, high represents the highest unplaced value, and k represents the \nnumber of items in the permutation that have already been filled. \n#include <stdio.h> \n#include <stdlib.h> \nvoid printExtremeWrapper(int n); \nvoid printExtreme(int* perm, int n, int low, int high, int k); \nvoid printPerm(int* perm, int n); \nvoid printExtremeWrapper(int n) { \n   int* perm = malloc(sizeof(int)*n); \n   printExtreme(perm, n, 0, n-1, 0); \n   free(perm); \n} \nvoid printPerm(int* perm, int n) { \n   for (int i=0; i<n; i++) printf(\"%d, \", perm[i]); \n   printf(\"\\n\"); \n} \nvoid printExtreme(int* perm, int n, int low, int high, int k) { \n   if (low > high) { \n       printPerm(perm, n); \n       return; \n   } \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 560.9619750976562,
-                "y1": 717.219482421875
-            }
-        },
-        "raw": "Complete the following merge function that is used as part of the merge sort process. The function\nperforms the merge operation from left to mid and mid+1 to right index of the array.  \nvoid merge(int arr[], int left, int mid, int right)   \n{ \n   int i, j, k; \n   int n1 = mid - left + 1; //size of the left array \n   int n2 =  right - mid; //size of the right array \n   /* create temp arrays */ \n   int *L = (int*) malloc(n1*sizeof(int)); //left array \n   int *R = (int*) malloc(n2*sizeof(int)); //right array \n   /* Copy data to temp arrays L[] and R[] */ \n   for (i = 0; i < n1; i++) \n       L[i] = arr[left + i]; \n   for (j = 0; j < n2; j++) \n       R[j] = arr[mid + 1 + j]; \n   /* Merge the temp arrays back into arr[l..r]*/ \n   i = 0; // Initial index of left subarray \n   j = 0; // Initial index of right subarray \n   k = left; // Initial index of merged subarray \n   // Complete the remaining part of the code that will  \n   // merge L and R array into arr \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 544.5621948242188,
-                "y1": 106.23201751708984
-            }
-        },
-        "raw": "Convert 375 in base 10 to binary. Please show your work and put a box around your final answer.",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 544.5621948242188,
+                    "y1": 106.23201751708984
+                }
+            },
+            "raw": "Convert 375 in base 10 to binary. Please show your work and put a box around your final answer.",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Base Conversion"
+        }
     }
 }

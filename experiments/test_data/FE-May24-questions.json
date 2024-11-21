@@ -1,138 +1,208 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 560.833984375,
-                "y1": 716.8919677734375
-            }
-        },
-        "raw": "Given the following C code. \nint **arr1 = malloc(3 * sizeof(int *)); \nfor(int i = 0; i < 3; ++i) \narr1[i] = malloc(2 * sizeof(int)); \nint *arr2 = malloc(3 * 2 * sizeof(int)); \nAnswer the following questions about the above lines of code. \na) Does arr1 and arr2 require the same number of total bytes allocated to be stored in the heap \nspace? Please write yes or no. No reason is needed. \nb) Are all the addresses associated with arr1 (excluding arr1 itself on the stack space) \nadjacent in memory? Please write yes or no only. No reason is needed. \nc) Are all the addresses associated with arr2 (excluding arr2 itself on the stack space) \nadjacent in memory? Please write yes or no only. No reason is needed. \nd) Complete the following stack and heap space visual below showing how the memory state looks\nfor both arr1 and arr2 from the above lines of code (after all lines execute properly). For each\nbox you draw in the heap space, indicate what type of variable is stored in the box. \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nStack Space \nHeap Space",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0999755859375,
-                "y1": 719.1635131835938
-            }
-        },
-        "raw": "Given a singly integer linked list, complete the following user defined function definition \nmoveHeadNearTail. The user defined function moves the head node of some singly linked list that is \npassed to the second last position of the list (the node that comes before the tail node itself). The following \nfigure shows a sample scenario. The function returns the head of the modified linked list. You may \nassume the linked list pointed to by head has at least 3 elements in it. \n \ntypedef struct node_s { \n   int data; \n   struct node_s* next; \n} node_t; \nnode_t * moveHeadNearTail(node_t * head) {       \n \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Basic Data Structures-3": {
-        "rects": {
-            "3": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.3400268554688,
-                "y1": 664.5509033203125
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 560.833984375,
+                    "y1": 716.8919677734375
+                }
             },
-            "4": {
-                "x0": 54.0,
-                "y0": 63.608131408691406,
-                "x1": 336.1700134277344,
-                "y1": 756.8519897460938
-            }
+            "raw": "Given the following C code. \nint **arr1 = malloc(3 * sizeof(int *)); \nfor(int i = 0; i < 3; ++i) \narr1[i] = malloc(2 * sizeof(int)); \nint *arr2 = malloc(3 * 2 * sizeof(int)); \nAnswer the following questions about the above lines of code. \na) Does arr1 and arr2 require the same number of total bytes allocated to be stored in the heap \nspace? Please write yes or no. No reason is needed. \nb) Are all the addresses associated with arr1 (excluding arr1 itself on the stack space) \nadjacent in memory? Please write yes or no only. No reason is needed. \nc) Are all the addresses associated with arr2 (excluding arr2 itself on the stack space) \nadjacent in memory? Please write yes or no only. No reason is needed. \nd) Complete the following stack and heap space visual below showing how the memory state looks\nfor both arr1 and arr2 from the above lines of code (after all lines execute properly). For each\nbox you draw in the heap space, indicate what type of variable is stored in the box. \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nStack Space \nHeap Space",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "You are playing a scoring game that uses a LIFO approach for keeping track of scores. Here are how the \nscores are managed. You are given a character array (string) of moves where each index represents some \nrule for managing the score. You must go through the array in index order to properly manage the score. \nHere are the rules for managing the score: \n\u2022 If the move is some character representing an integer (0-9 both inclusive), record the integer itself.\n\u2022 If the move is the character \u2018+\u2019. You will need to retrieve the last 2 scores recorded and compute \nthe sum. After computing the sum, you will need to add this sum to the recorded list of scores. \n \nOnce all moves have been processed, you will need to compute the total sum of all the scores and return \nthis value. For example, if the string passed to the function is \u201c25+3++1\u201d, then after processing the first \nplus sign the corresponding stack of values from bottom to top would be [2, 5, 7]. After processing the \nsecond plus sign the corresponding stack of values from bottom to top would be [2, 5, 7, 3, 10]. After \nprocessing the string completely, the stack would store [2, 5, 7, 3, 10, 13, 1]. The sum of these values, 41, \nshould be returned. Complete the following function definition that simulates this scoring game. You may \nassume that the string header file is included. The provided functions and stack structure are here to assist \nyou with completing this function. Note: There exists a solution that doesn\u2019t use the stack and this or \nany such solution will get full credit, if correctly implemented. The parameter represents the character \narray of moves, and is guaranteed to be valid. Namely, the string will consist solely of digits and plus \nsigns, and if the string has any plus signs, they will only appear in an index 2 or greater (meaning that \nthere will be two previous scores to add.) \n \nThis code is fairly long, so go ahead and write your code on the following page. The structs and functions \nyou may use are listed on this page, below: \n \ntypedef struct node_s { \nint data; \nstruct node_s * next; \n} node_t; \ntypedef struct { \nnode_t * top; \n} stack_t; \n// Initializes a stack to be empty. \nvoid init(stact_t* s);  \n// Pushes data onto the stack pointed to by s. \nvoid push(stack_t* s, int data); \n// Removes and returns the integer at the top of the stack pointed to by s. \nint pop(stack_t* s); \n// Returns 1 if and only if the stack pointed to by s is empty. Returns 0 \n// otherwise. \nint empty(stack_t* s); \n\n \nint computeScore(char * moves) { \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 719.1635131835938
+                }
+            },
+            "raw": "Given a singly integer linked list, complete the following user defined function definition \nmoveHeadNearTail. The user defined function moves the head node of some singly linked list that is \npassed to the second last position of the list (the node that comes before the tail node itself). The following \nfigure shows a sample scenario. The function returns the head of the modified linked list. You may \nassume the linked list pointed to by head has at least 3 elements in it. \n \ntypedef struct node_s { \n   int data; \n   struct node_s* next; \n} node_t; \nnode_t * moveHeadNearTail(node_t * head) {       \n \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        },
+        "3": {
+            "rects": {
+                "3": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.3400268554688,
+                    "y1": 664.5509033203125
+                },
+                "4": {
+                    "x0": 54.0,
+                    "y0": 63.608131408691406,
+                    "x1": 336.1700134277344,
+                    "y1": 756.8519897460938
+                }
+            },
+            "raw": "You are playing a scoring game that uses a LIFO approach for keeping track of scores. Here are how the \nscores are managed. You are given a character array (string) of moves where each index represents some \nrule for managing the score. You must go through the array in index order to properly manage the score. \nHere are the rules for managing the score: \n\u2022 If the move is some character representing an integer (0-9 both inclusive), record the integer itself.\n\u2022 If the move is the character \u2018+\u2019. You will need to retrieve the last 2 scores recorded and compute \nthe sum. After computing the sum, you will need to add this sum to the recorded list of scores. \n \nOnce all moves have been processed, you will need to compute the total sum of all the scores and return \nthis value. For example, if the string passed to the function is \u201c25+3++1\u201d, then after processing the first \nplus sign the corresponding stack of values from bottom to top would be [2, 5, 7]. After processing the \nsecond plus sign the corresponding stack of values from bottom to top would be [2, 5, 7, 3, 10]. After \nprocessing the string completely, the stack would store [2, 5, 7, 3, 10, 13, 1]. The sum of these values, 41, \nshould be returned. Complete the following function definition that simulates this scoring game. You may \nassume that the string header file is included. The provided functions and stack structure are here to assist \nyou with completing this function. Note: There exists a solution that doesn\u2019t use the stack and this or \nany such solution will get full credit, if correctly implemented. The parameter represents the character \narray of moves, and is guaranteed to be valid. Namely, the string will consist solely of digits and plus \nsigns, and if the string has any plus signs, they will only appear in an index 2 or greater (meaning that \nthere will be two previous scores to add.) \n \nThis code is fairly long, so go ahead and write your code on the following page. The structs and functions \nyou may use are listed on this page, below: \n \ntypedef struct node_s { \nint data; \nstruct node_s * next; \n} node_t; \ntypedef struct { \nnode_t * top; \n} stack_t; \n// Initializes a stack to be empty. \nvoid init(stact_t* s);  \n// Pushes data onto the stack pointed to by s. \nvoid push(stack_t* s, int data); \n// Removes and returns the integer at the top of the stack pointed to by s. \nint pop(stack_t* s); \n// Returns 1 if and only if the stack pointed to by s is empty. Returns 0 \n// otherwise. \nint empty(stack_t* s); \n\n \nint computeScore(char * moves) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Stacks"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.4800033569336,
-                "x1": 548.1699829101562,
-                "y1": 368.218017578125
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.4800033569336,
+                    "x1": 548.1699829101562,
+                    "y1": 368.218017578125
+                }
+            },
+            "raw": "a) Draw a binary search tree of with 5 nodes (storing positive integers) that has the maximum \npossible height. (1 pt) \nb) Draw another binary search tree with 7 nodes (storing positive integers)  that has the minimum\npossible height. (1 pt) \n \n \n \n \nc) Re-draw the following binary search tree after deleting the root node. (3 pts)",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "a) Draw a binary search tree of with 5 nodes (storing positive integers) that has the maximum \npossible height. (1 pt) \nb) Draw another binary search tree with 7 nodes (storing positive integers)  that has the minimum\npossible height. (1 pt) \n \n \n \n \nc) Re-draw the following binary search tree after deleting the root node. (3 pts)",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "7": {
+                    "x0": 54.0,
+                    "y0": 91.51998138427734,
+                    "x1": 535.8951416015625,
+                    "y1": 703.4520263671875
+                }
+            },
+            "raw": "a) (6 pts) Consider the following struct that represents a binary minheap. \ntypedef struct heap { \n   int* elements; //points to the array of heap elements \n   int capacity; // total size of the array \n   int size;     // actual number of elements in the heap \n} heapStruct; \nAlso, the following functions are available to you, and you are free to call them as needed: \n- int removeMin(heapStruct *h);//removes the smallest item from the heap \npointed to by h. \n- int size(heapStruct* h); // returns the number of elements in the heap \npointed to by h. \nWrite a function called heapsort that takes a pointer to a heap, and returns those values in a sorted \ninteger array. At the end of the function, the heap pointed to by h will be empty. \nint* heapsort(heapStruct* h) { //complete this function  \n} \nb) (4 pts) Specify the worst run-time when efficiently implemented for the following operations: \n \nOperation \nRun-time \nBuilding a binary heap from an unordered array of size n using heapify O(_______) \nInserting an item into a binary heap with n items. \nO(_______) \nDeleting the minimum item from a binary heap with n items \nO(_______) \nHeapsort of n items. \nO(_______)",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Heaps"
+        },
+        "3": {
+            "rects": {
+                "8": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.1000366210938,
+                    "y1": 704.2835083007812
+                }
+            },
+            "raw": "As an afficionado of Wordle, you\u2019re curious how many five letter words there are in a dictionary stored \nin a trie. Write a recursive function that takes in a pointer to a trie node and an integer k, representing the \ndepth of the node in the trie, and returns the number of five letter words stored within that subtrie. A \nwrapper function is provided which makes the initial recursive call on the root node of the trie storing the \ndictionary. Please use the struct shown below. Assume all necessary includes. \ntypedef struct trieNode { \n   int isWord; \n   struct trieNode* children[26]; \n} trieNode; \nint num5LetterWrapper(trieNode* root) { \n   return num5Rec(root, 0); \n} \nint num5Rec(trieNode* root, int k) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Tries"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "7": {
-                "x0": 54.0,
-                "y0": 91.51998138427734,
-                "x1": 535.8951416015625,
-                "y1": 703.4520263671875
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.91485595703125,
+                    "x1": 560.81494140625,
+                    "y1": 691.4519653320312
+                }
+            },
+            "raw": "What is the worst-case Big O runtime for the following function, in terms of the input parameter, n? (You may \nassume that the array pointed to by list is of length n.) In order to receive full credit, you must use words to \nexplain your reasoning AND arrive at the correct answer. \nint mystery(int* list, int n) { \n    \n   int i = 0, j = 1; \n   if (n < 2) return 0; \n   while (j < n) { \n       while (i < j && list[i] < list[j]) i++; \n       j++; \n   } \n   return i; \n} \nREASON: \nRUN-TIME: ( ____________ )",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "a) (6 pts) Consider the following struct that represents a binary minheap. \ntypedef struct heap { \n   int* elements; //points to the array of heap elements \n   int capacity; // total size of the array \n   int size;     // actual number of elements in the heap \n} heapStruct; \nAlso, the following functions are available to you, and you are free to call them as needed: \n- int removeMin(heapStruct *h);//removes the smallest item from the heap \npointed to by h. \n- int size(heapStruct* h); // returns the number of elements in the heap \npointed to by h. \nWrite a function called heapsort that takes a pointer to a heap, and returns those values in a sorted \ninteger array. At the end of the function, the heap pointed to by h will be empty. \nint* heapsort(heapStruct* h) { //complete this function  \n} \nb) (4 pts) Specify the worst run-time when efficiently implemented for the following operations: \n \nOperation \nRun-time \nBuilding a binary heap from an unordered array of size n using heapify O(_______) \nInserting an item into a binary heap with n items. \nO(_______) \nDeleting the minimum item from a binary heap with n items \nO(_______) \nHeapsort of n items. \nO(_______)",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "11": {
+                    "x0": 54.0,
+                    "y0": 91.06401062011719,
+                    "x1": 561.0999755859375,
+                    "y1": 162.2720184326172
+                }
+            },
+            "raw": "An algorithm that processes a list of size n takes \ud835\udc42(\u221a\ud835\udc5b\ud835\udc59\ud835\udc54\ud835\udc5b) time. On Shannon\u2019s computer, when she \nruns the algorithm on a list of size n = 216, her computer takes c milliseconds. (Shannon is very \nsecretive, so she hasn\u2019t told you the value of c unfortunately!) In terms of c, how long, in milliseconds, \nshould we expect the algorithm to take on her computer when she is processing a list of size 220? (Your \nanswer should be of the form kc, where k is a positive real number.)",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "3": {
+            "rects": {
+                "12": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 548.7860717773438,
+                    "y1": 160.48602294921875
+                }
+            },
+            "raw": "Using the iteration technique, determine the Big-Oh solution to the recurrence relation below, in terms\nof n. \n\ud835\udc47(\ud835\udc5b) = 2\ud835\udc47(\n\ud835\udc5b\n2) + \ud835\udc5b3, for n > 1 \n\ud835\udc47(1) = 1",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Recurrence Relations"
+        }
     },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.91485595703125,
-                "x1": 560.81494140625,
-                "y1": 691.4519653320312
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.1240234375,
+                    "y1": 718.6708984375
+                }
+            },
+            "raw": "Write a recursive function that determines if player X, who goes first, can win a game of tic-tac-toe \n(played on a 3 by 3 int board). You can use the following helper functions. You don\u2019t have to implement \nany of the listed helper functions. Functions that do not use recursion will receive 0 points. Note: \nboard is a 3 by 3 array of integers, storing either EMPTY(0), X(1), or O(2). The three given functions \nreturn the current state of the board, as it is, from player X\u2019s perspective, not what \u201ccould happen\u201d in the \nfuture. myTurn is 1, when it\u2019s X\u2019s turn and 0 when it\u2019s O\u2019s turn. You will have to place and unplace X\u2019s \nand O\u2019s in your solution. Finally, the intention here is that player \u2018O\u2019 plays pessimistic. Namely, if there \nis ANY set of moves that players X and O could make from the current state of the board that result in X \nwinning, the function should return 1. \n#define EMPTY 0 \n#define X 1 \n#define O 2 \nint XWin(int ** board); // returns 1 if I have won and 0 otherwise \nint XLose(int ** board); // returns 1 if I have lost and 0 otherwise \nint tied(int ** board); // returns 1 if the board is in a tied state \nint canXWin(int ** board, int myTurn) { \n   \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "What is the worst-case Big O runtime for the following function, in terms of the input parameter, n? (You may \nassume that the array pointed to by list is of length n.) In order to receive full credit, you must use words to \nexplain your reasoning AND arrive at the correct answer. \nint mystery(int* list, int n) { \n    \n   int i = 0, j = 1; \n   if (n < 2) return 0; \n   while (j < n) { \n       while (i < j && list[i] < list[j]) i++; \n       j++; \n   } \n   return i; \n} \nREASON: \nRUN-TIME: ( ____________ )",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "11": {
-                "x0": 54.0,
-                "y0": 91.06401062011719,
-                "x1": 561.0999755859375,
-                "y1": 162.2720184326172
-            }
+        "2": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.0759887695312,
+                    "y1": 559.9119873046875
+                }
+            },
+            "raw": "(a) (1 pt) Which of the sorting algorithms (listed in part d) could encounter problems if an array can \ncontain duplicates? (Specifically, for four of the algorithms, whether or not there are duplicates in the \narray don\u2019t alter the run-time of the algorithm on individual cases, but one of the algorithms, in its \noriginal form, is definitively affected.) \n(b) (2 pts) What problem could be encountered? \n \n(c) (2 pts) Pick one of the algorithms that aren\u2019t affected by duplicates and explain why it runs similarly \nwith or without duplicates. \n(d) (5 pts) What is the worst case runtime for the following sorting algorithms on an array with n distinct \nvalues? Please list your answers with Big-Oh notation, using proper conventions. \nQuick  \n_______ \nBubble  \n_______ \nInsertion \n_______ \nMerge  \n_______ \nSelection \n_______",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "An algorithm that processes a list of size n takes \ud835\udc42(\u221a\ud835\udc5b\ud835\udc59\ud835\udc54\ud835\udc5b) time. On Shannon\u2019s computer, when she \nruns the algorithm on a list of size n = 216, her computer takes c milliseconds. (Shannon is very \nsecretive, so she hasn\u2019t told you the value of c unfortunately!) In terms of c, how long, in milliseconds, \nshould we expect the algorithm to take on her computer when she is processing a list of size 220? (Your \nanswer should be of the form kc, where k is a positive real number.)",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.1240234375,
-                "y1": 718.6708984375
-            }
-        },
-        "raw": "Write a recursive function that determines if player X, who goes first, can win a game of tic-tac-toe \n(played on a 3 by 3 int board). You can use the following helper functions. You don\u2019t have to implement \nany of the listed helper functions. Functions that do not use recursion will receive 0 points. Note: \nboard is a 3 by 3 array of integers, storing either EMPTY(0), X(1), or O(2). The three given functions \nreturn the current state of the board, as it is, from player X\u2019s perspective, not what \u201ccould happen\u201d in the \nfuture. myTurn is 1, when it\u2019s X\u2019s turn and 0 when it\u2019s O\u2019s turn. You will have to place and unplace X\u2019s \nand O\u2019s in your solution. Finally, the intention here is that player \u2018O\u2019 plays pessimistic. Namely, if there \nis ANY set of moves that players X and O could make from the current state of the board that result in X \nwinning, the function should return 1. \n#define EMPTY 0 \n#define X 1 \n#define O 2 \nint XWin(int ** board); // returns 1 if I have won and 0 otherwise \nint XLose(int ** board); // returns 1 if I have lost and 0 otherwise \nint tied(int ** board); // returns 1 if the board is in a tied state \nint canXWin(int ** board, int myTurn) { \n   \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.0759887695312,
-                "y1": 559.9119873046875
-            }
-        },
-        "raw": "(a) (1 pt) Which of the sorting algorithms (listed in part d) could encounter problems if an array can \ncontain duplicates? (Specifically, for four of the algorithms, whether or not there are duplicates in the \narray don\u2019t alter the run-time of the algorithm on individual cases, but one of the algorithms, in its \noriginal form, is definitively affected.) \n(b) (2 pts) What problem could be encountered? \n \n(c) (2 pts) Pick one of the algorithms that aren\u2019t affected by duplicates and explain why it runs similarly \nwith or without duplicates. \n(d) (5 pts) What is the worst case runtime for the following sorting algorithms on an array with n distinct \nvalues? Please list your answers with Big-Oh notation, using proper conventions. \nQuick  \n_______ \nBubble  \n_______ \nInsertion \n_______ \nMerge  \n_______ \nSelection \n_______",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "16": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 544.2022094726562,
-                "y1": 106.23201751708984
-            }
-        },
-        "raw": "Convert 277 in base 8 to base 16. Please show your work and put a box around your final answer.",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "16": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 544.2022094726562,
+                    "y1": 106.23201751708984
+                }
+            },
+            "raw": "Convert 277 in base 8 to base 16. Please show your work and put a box around your final answer.",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Base Conversion"
+        }
     }
 }

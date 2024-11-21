@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0159301757812,
-                "y1": 679.9119873046875
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0159301757812,
+                    "y1": 679.9119873046875
+                }
+            },
+            "raw": "There is something terribly wrong with the code given below: it has two memory leaks. After carefully \ninspecting the code, answer the questions below. \n1: \nint main(void) \n2: \n{ \n3: \n  char *str1 = malloc(sizeof(char) * 16); \n4: \n  char *str2 = malloc(sizeof(char) * 16); \n5: \n6: \n  str1[0] = 'p'; \n7: \n  str1[1] = 'a'; \n8: \n  str1[2] = 's'; \n9: \n  str1[3] = 's'; \n10:   str1[4] = ','; \n11:   str1[5] = '\\0'; \n12: \n13:   printf(\"%s \", str1); \n14:   str2 = str1; \n15:   printf(\"%s \", str2); \n16:   str2 = NULL; \n17:   strcpy(str1, \"pass the exam!\"); \n18:   printf(\"%s\\n\", str1); \n19: \n20:   free(str1); \n21:   free(str2); \n22: \n23:   return 0; \n24: } \n(a) (3 pts) Draw a picture that indicates the relevant state of memory after line 14 has completed. (Draw \na rectangular box to indicate dynamically allocated memory.) \n(b) (1 pt) Explain why line 14 causes a memory leak. \n(c) (1 pt) Why is it possible for the code to crash on line 21?",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "There is something terribly wrong with the code given below: it has two memory leaks. After carefully \ninspecting the code, answer the questions below. \n1: \nint main(void) \n2: \n{ \n3: \n  char *str1 = malloc(sizeof(char) * 16); \n4: \n  char *str2 = malloc(sizeof(char) * 16); \n5: \n6: \n  str1[0] = 'p'; \n7: \n  str1[1] = 'a'; \n8: \n  str1[2] = 's'; \n9: \n  str1[3] = 's'; \n10:   str1[4] = ','; \n11:   str1[5] = '\\0'; \n12: \n13:   printf(\"%s \", str1); \n14:   str2 = str1; \n15:   printf(\"%s \", str2); \n16:   str2 = NULL; \n17:   strcpy(str1, \"pass the exam!\"); \n18:   printf(\"%s\\n\", str1); \n19: \n20:   free(str1); \n21:   free(str2); \n22: \n23:   return 0; \n24: } \n(a) (3 pts) Draw a picture that indicates the relevant state of memory after line 14 has completed. (Draw \na rectangular box to indicate dynamically allocated memory.) \n(b) (1 pt) Explain why line 14 causes a memory leak. \n(c) (1 pt) Why is it possible for the code to crash on line 21?",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.9920654296875,
+                    "y1": 718.5635375976562
+                }
+            },
+            "raw": "Write a recursive function that takes in the head of a linked list and frees all dynamically allocated \nmemory associated with that list. You may assume that all the nodes in any linked list passed to your \nfunction (including the head node) have been dynamically allocated. It\u2019s possible that your function\nmight receive an empty linked list (i.e., a NULL pointer), and you should handle that case appropriately. \nNote that your function must be recursive in order to be eligible for credit. \nThe linked list node struct and the function signature are as follows: \ntypedef struct node { \nstruct node *next; \nint data; \n} node; \nvoid destroy_list(node *head) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 560.9920654296875,
-                "y1": 718.5635375976562
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 72.02400207519531,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1079711914062,
+                    "y1": 478.0420227050781
+                }
+            },
+            "raw": "(a) (6 pts) Following are three traversals produced by the exact same binary search tree. Using\nyour powers of inference, determine which one is which. (Fill in each blank with \u201cin-order,\u201d\n\u201cpre-order,\u201d \u201cpost-order.\u201d) (Note: All sets of answers which don't contain each traversal \nexactly once will automatically be awarded 0 points.) \n \n___________________ traversal:   18   14   12   9   31   24   19   22   23   36 \n \n___________________ traversal:   9   12   14   23   22   19   24   36   31   18 \n \n___________________ traversal:   9   12   14   18   19   22   23   24   31   36 \n \n \n(b) (1 pt) What value must be at the root of the BST that produced the traversals listed in part (a)? \n \n \n \n(c) (1 pt) Using big-oh notation, what is the best-case runtime for searching for a particular value in \na BST with n nodes? \n \n \n \n(d) (1 pt) Using big-oh notation, what is the worst-case runtime for searching for a particular value \nin a binary tree (a regular old binary tree, not necessarily a BST) with n nodes? \n \n \n \n(e) (1 pt) Using big-oh notation, what is the worst-case runtime for searching for a particular value \nin a BST with n nodes?",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Binary Search Trees"
         },
-        "raw": "Write a recursive function that takes in the head of a linked list and frees all dynamically allocated \nmemory associated with that list. You may assume that all the nodes in any linked list passed to your \nfunction (including the head node) have been dynamically allocated. It\u2019s possible that your function\nmight receive an empty linked list (i.e., a NULL pointer), and you should handle that case appropriately. \nNote that your function must be recursive in order to be eligible for credit. \nThe linked list node struct and the function signature are as follows: \ntypedef struct node { \nstruct node *next; \nint data; \n} node; \nvoid destroy_list(node *head) { \n}",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.06396484375,
+                    "y1": 372.5420227050781
+                }
+            },
+            "raw": "Use the following hash function to insert the given elements into the hash table below. Use quadratic\nprobing to resolve any collisions. You may assume that the correct table size (in this case, 10) is always \npassed to the function with the key that is being hashed. \nint hash(int key, int table_size) \n{ \n \nint a = (key % 100) / 10; \n \nint b = key % 10; \n \n \nreturn (a + b) % table_size; \n} \nKeys to insert (one by one, in the following order):  2555, 1523, 5893, 800, 956 \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 72.02400207519531,
-                "y0": 89.38401794433594,
-                "x1": 561.1079711914062,
-                "y1": 478.0420227050781
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0640258789062,
+                    "y1": 322.98199462890625
+                }
+            },
+            "raw": "Consider the problem of taking n sorted lists of n integers each, and combining those lists into a single \nsorted list. For ease of analysis, assume that n is a perfect power of 2. Here are two potential algorithms \nto solve the problem: \nAlgorithm A: Run the Merge Algorithm, defined between two lists, on lists 1 and 2 to create a single \nmerged list. Then rerun the algorithm on this merged list and list 3, creating a merged list of all items \nfrom lists 1, 2 and 3. Continue in this fashion, running the Merge Algorithm n-1 times, always between \nthe currently \"growing\" list and the next list to be merged into it, until list n is merged in, creating a \nsingle sorted list. \nAlgorithm B: Pair up the lists into \n\ud835\udc5b\n2 pairs of lists of size n. Run the Merge Algorithm on each of these \npairs. Once this phase finishes, there will be \n\ud835\udc5b\n2 lists with 2n integers. With the new lists, repeat the \nprocess until we are left with a single sorted list. \nWith sufficient work and proof, determine the Big-Oh run time, in terms of n, of both of these \nalgorithms. Clearly put a box around your final answer for both algorithms.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "(a) (6 pts) Following are three traversals produced by the exact same binary search tree. Using\nyour powers of inference, determine which one is which. (Fill in each blank with \u201cin-order,\u201d\n\u201cpre-order,\u201d \u201cpost-order.\u201d) (Note: All sets of answers which don't contain each traversal \nexactly once will automatically be awarded 0 points.) \n \n___________________ traversal:   18   14   12   9   31   24   19   22   23   36 \n \n___________________ traversal:   9   12   14   23   22   19   24   36   31   18 \n \n___________________ traversal:   9   12   14   18   19   22   23   24   31   36 \n \n \n(b) (1 pt) What value must be at the root of the BST that produced the traversals listed in part (a)? \n \n \n \n(c) (1 pt) Using big-oh notation, what is the best-case runtime for searching for a particular value in \na BST with n nodes? \n \n \n \n(d) (1 pt) Using big-oh notation, what is the worst-case runtime for searching for a particular value \nin a binary tree (a regular old binary tree, not necessarily a BST) with n nodes? \n \n \n \n(e) (1 pt) Using big-oh notation, what is the worst-case runtime for searching for a particular value \nin a BST with n nodes?",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 90.82402038574219,
+                    "x1": 561.0280151367188,
+                    "y1": 714.0120239257812
+                }
+            },
+            "raw": "An algorithm processing an array of size n runs in \ud835\udc42(\ud835\udc5b\u221a\ud835\udc5b) time. For an array of size 10,000 the \nalgorithm processes the array in 16 ms. How long would it be expected for the algorithm to take when \nprocessing an array of size 160,000? Please express your answer in seconds, writing out exactly three \ndigits past the decimal. \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.06396484375,
-                "y1": 372.5420227050781
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.86399841308594,
+                    "x1": 561.0880737304688,
+                    "y1": 434.353515625
+                }
+            },
+            "raw": "Define the weighted sum of an integer array a[0], a[1], ..., a[n-1] to be \u2211\n(\ud835\udc56\ud835\udc4e[\ud835\udc56\u22121])\n\ud835\udc5b\n\ud835\udc56=1\n. For example, the\nweighted sum of the array [7, 5, 8] would be 1 \u00d7 7 + 2 \u00d7 5 + 3 \u00d7 8 = 41. Write a recursive function \nthat takes in an array numbers and its length n, and returns its weighted sum. You may assume that \nthere will be no issues with integer overflow. \nint weightedSum(int numbers[], int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Use the following hash function to insert the given elements into the hash table below. Use quadratic\nprobing to resolve any collisions. You may assume that the correct table size (in this case, 10) is always \npassed to the function with the key that is being hashed. \nint hash(int key, int table_size) \n{ \n \nint a = (key % 100) / 10; \n \nint b = key % 10; \n \n \nreturn (a + b) % table_size; \n} \nKeys to insert (one by one, in the following order):  2555, 1523, 5893, 800, 956 \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0640258789062,
-                "y1": 322.98199462890625
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.97998046875,
+                    "y1": 260.9420166015625
+                }
+            },
+            "raw": "Show the contents of the following array after each iteration of Insertion Sort. The result after the last\niteration has been included. (Note: due to the nature of this question, relatively little partial credit will be \nawarded for incorrect answers.) \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \nInitial \n17 \n22 \n16 \n5 \n18 \n14 \n2 \n1st iter \n \n \n \n \n \n \n \n2nd iter \n \n \n \n \n \n \n \n3rd iter \n \n \n \n \n \n \n \n4th iter \n \n \n \n \n \n \n \n5th iter \n \n \n \n \n \n \n \n6th iter \n2 \n5 \n14 \n16 \n17 \n18 \n22",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "Consider the problem of taking n sorted lists of n integers each, and combining those lists into a single \nsorted list. For ease of analysis, assume that n is a perfect power of 2. Here are two potential algorithms \nto solve the problem: \nAlgorithm A: Run the Merge Algorithm, defined between two lists, on lists 1 and 2 to create a single \nmerged list. Then rerun the algorithm on this merged list and list 3, creating a merged list of all items \nfrom lists 1, 2 and 3. Continue in this fashion, running the Merge Algorithm n-1 times, always between \nthe currently \"growing\" list and the next list to be merged into it, until list n is merged in, creating a \nsingle sorted list. \nAlgorithm B: Pair up the lists into \n\ud835\udc5b\n2 pairs of lists of size n. Run the Merge Algorithm on each of these \npairs. Once this phase finishes, there will be \n\ud835\udc5b\n2 lists with 2n integers. With the new lists, repeat the \nprocess until we are left with a single sorted list. \nWith sufficient work and proof, determine the Big-Oh run time, in terms of n, of both of these \nalgorithms. Clearly put a box around your final answer for both algorithms.",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 90.82402038574219,
-                "x1": 561.0280151367188,
-                "y1": 714.0120239257812
-            }
-        },
-        "raw": "An algorithm processing an array of size n runs in \ud835\udc42(\ud835\udc5b\u221a\ud835\udc5b) time. For an array of size 10,000 the \nalgorithm processes the array in 16 ms. How long would it be expected for the algorithm to take when \nprocessing an array of size 160,000? Please express your answer in seconds, writing out exactly three \ndigits past the decimal. \n________________",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.86399841308594,
-                "x1": 561.0880737304688,
-                "y1": 434.353515625
-            }
-        },
-        "raw": "Define the weighted sum of an integer array a[0], a[1], ..., a[n-1] to be \u2211\n(\ud835\udc56\ud835\udc4e[\ud835\udc56\u22121])\n\ud835\udc5b\n\ud835\udc56=1\n. For example, the\nweighted sum of the array [7, 5, 8] would be 1 \u00d7 7 + 2 \u00d7 5 + 3 \u00d7 8 = 41. Write a recursive function \nthat takes in an array numbers and its length n, and returns its weighted sum. You may assume that \nthere will be no issues with integer overflow. \nint weightedSum(int numbers[], int n) { \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 560.97998046875,
-                "y1": 260.9420166015625
-            }
-        },
-        "raw": "Show the contents of the following array after each iteration of Insertion Sort. The result after the last\niteration has been included. (Note: due to the nature of this question, relatively little partial credit will be \nawarded for incorrect answers.) \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \nInitial \n17 \n22 \n16 \n5 \n18 \n14 \n2 \n1st iter \n \n \n \n \n \n \n \n2nd iter \n \n \n \n \n \n \n \n3rd iter \n \n \n \n \n \n \n \n4th iter \n \n \n \n \n \n \n \n5th iter \n \n \n \n \n \n \n \n6th iter \n2 \n5 \n14 \n16 \n17 \n18 \n22",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.1079711914062,
-                "y1": 724.08349609375
-            }
-        },
-        "raw": "Two useful utility functions when dealing with integers in their binary representation are \n(a) int lowestOneBit(int n) - returns the value of the lowest bit set to 1 in the binary \nrepresentation of n. (eg. lowestOneBit(12)returns 4, lowestOneBit(80)returns 16.) \n(b) int highestOneBit(int n) - returns the value of the highest bit set to 1 in the binary \nrepresentation of n. (eg. highestOneBit(12)returns 8, highestOneBit(80)returns 64.) Note:\nYou may assume that the input is less than 109. The largest positive bit value in an integer is equal \nto 230 > 109. \nThe pre-condition for the first function is that n must be a positive integer. The pre-condition for the\nsecond function is that n must be a positive integer less than 109. Write both of these functions in the \nspace below. To earn full credit, you must use bitwise operators when appropriate. (Namely, there are \nways to solve this question without using bitwise operators, but these solutions will NOT receive full \ncredit.) \nint lowestOneBit(int n) { \n} \nint highestOnebit(int n) { \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1079711914062,
+                    "y1": 724.08349609375
+                }
+            },
+            "raw": "Two useful utility functions when dealing with integers in their binary representation are \n(a) int lowestOneBit(int n) - returns the value of the lowest bit set to 1 in the binary \nrepresentation of n. (eg. lowestOneBit(12)returns 4, lowestOneBit(80)returns 16.) \n(b) int highestOneBit(int n) - returns the value of the highest bit set to 1 in the binary \nrepresentation of n. (eg. highestOneBit(12)returns 8, highestOneBit(80)returns 64.) Note:\nYou may assume that the input is less than 109. The largest positive bit value in an integer is equal \nto 230 > 109. \nThe pre-condition for the first function is that n must be a positive integer. The pre-condition for the\nsecond function is that n must be a positive integer less than 109. Write both of these functions in the \nspace below. To earn full credit, you must use bitwise operators when appropriate. (Namely, there are \nways to solve this question without using bitwise operators, but these solutions will NOT receive full \ncredit.) \nint lowestOneBit(int n) { \n} \nint highestOnebit(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise operators"
+        }
     }
 }

@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 116.98399353027344,
-                "x1": 561.0640258789062,
-                "y1": 713.0435180664062
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 116.98399353027344,
+                    "x1": 561.0640258789062,
+                    "y1": 713.0435180664062
+                }
+            },
+            "raw": "Consider allocating space for an array of arrays, where each of the individual lengths of the different one\ndimensional arrays may differ. For example, we might want 5 arrays, which have lengths 10, 5, 20, 100 \nand 50, respectively. Write a function makeArray that takes in an array of integers itself and the length \nof that array (so for the example above the first parameter would be the array storing 10, 5, 20, 100 and \n50 and the second parameter would have a value of 5) and allocates space for an array of arrays where \neach of the individual arrays have the lengths specified by the values of the input array. Before returning \na pointer to the array of arrays, the function should store 0 in every element of every array allocated. \nint** makeArray(int* lengths, int numarrays) { \n \n \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Consider allocating space for an array of arrays, where each of the individual lengths of the different one\ndimensional arrays may differ. For example, we might want 5 arrays, which have lengths 10, 5, 20, 100 \nand 50, respectively. Write a function makeArray that takes in an array of integers itself and the length \nof that array (so for the example above the first parameter would be the array storing 10, 5, 20, 100 and \n50 and the second parameter would have a value of 5) and allocates space for an array of arrays where \neach of the individual arrays have the lengths specified by the values of the input array. Before returning \na pointer to the array of arrays, the function should store 0 in every element of every array allocated. \nint** makeArray(int* lengths, int numarrays) { \n \n \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 91.086669921875,
+                    "x1": 561.1199951171875,
+                    "y1": 724.8035278320312
+                }
+            },
+            "raw": "Consider storing an integer in a linked list by storing one digit in each node where the one\u2019s digit is stored \nin the first node, the ten\u2019s digit is stored in the second node, and so forth. Write a recursive function that\ntakes in a pointer to the head of a linked list storing an integer in this fashion and returns the value of the \ninteger. Assume that the linked list has 9 or fewer nodes, so that the computation will not cause any integer \noverflows. (For example, 295 would be stored as 5 followed by 9 followed by 2.) Use the struct shown \nbelow: \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nint getValue(node *head) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 91.086669921875,
-                "x1": 561.1199951171875,
-                "y1": 724.8035278320312
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1079711914062,
+                    "y1": 717.0035400390625
+                }
+            },
+            "raw": "Complete writing the function shown below recursively, so that it takes in a pointer to the root of a binary \nsearch tree of strings, root, and a string, target, and returns 1 if the string is contained in the binary search \ntree and false otherwise. You may assume all strings stored in the tree contain lowercase letters only. In \norder to receive full credit, your function must run in O(h) time, where h is the height of the binary search \ntree storing all of the words. \ntypedef struct bstNode { \n  struct bstNode *left, *right; \n  char str[100]; \n} bstNode; \nint search(bstNode *root, char* target){ \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Search Trees"
         },
-        "raw": "Consider storing an integer in a linked list by storing one digit in each node where the one\u2019s digit is stored \nin the first node, the ten\u2019s digit is stored in the second node, and so forth. Write a recursive function that\ntakes in a pointer to the head of a linked list storing an integer in this fashion and returns the value of the \ninteger. Assume that the linked list has 9 or fewer nodes, so that the computation will not cause any integer \noverflows. (For example, 295 would be stored as 5 followed by 9 followed by 2.) Use the struct shown \nbelow: \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nint getValue(node *head) { \n}",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.998046875,
+                    "y1": 404.8335266113281
+                }
+            },
+            "raw": "There are two hash functions that take in strings as input shown below. Each returns an integer in between\n0 and 1,000,002. (Note: 1,000,003 is a prime number.) Which of these two is a better hash function? \nExplain the weakness in the other function. \nint f1(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (256*res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n} \nint f2(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.1079711914062,
-                "y1": 717.0035400390625
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0399780273438,
+                    "y1": 432.67352294921875
+                }
+            },
+            "raw": "Below is a program which includes a single function call to the function mysqrt. The function mysqrt\nincludes a while loop. Give an estimate as to how many times that while loop will run during the single \nfunction call from main. (Note: a portion of credit for this question will be awarded to the theoretical \nanalysis of the code and the rest of the credit will be awarded to applying that analysis in concert with \nestimation techniques without a calculator.) \nint main() { \n   printf(\u201c%.6f\\n\u201d, mysqrt(1000)); \n   return 0; \n} \ndouble mysqrt(double n) { \n   double low = 1, high = n; \n   if (n < 1) { \n       low = n; \n       high = 1; \n   } \n   while (high \u2013 low > .000001) { \n       double mid = (low+high)/2; \n       if (mid*mid < n) \n           low = mid; \n       else \n           high = mid; \n   } \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Complete writing the function shown below recursively, so that it takes in a pointer to the root of a binary \nsearch tree of strings, root, and a string, target, and returns 1 if the string is contained in the binary search \ntree and false otherwise. You may assume all strings stored in the tree contain lowercase letters only. In \norder to receive full credit, your function must run in O(h) time, where h is the height of the binary search \ntree storing all of the words. \ntypedef struct bstNode { \n  struct bstNode *left, *right; \n  char str[100]; \n} bstNode; \nint search(bstNode *root, char* target){ \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.1199951171875,
+                    "y1": 629.8720092773438
+                }
+            },
+            "raw": "An algorithm to process input data about n cities takes O(\ud835\udc5b2\ud835\udc5b) time. For n = 10, the algorithm runs in 5\nmilliseconds. How many seconds should the algorithm take to run for an input size of n = 20? \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 560.998046875,
-                "y1": 404.8335266113281
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.55487060546875,
+                    "x1": 320.2300109863281,
+                    "y1": 526.2735595703125
+                }
+            },
+            "raw": "The code below returns the number of zeros at the end of n! \nint zeros(int n) { \n   int res = 0; \n   while (n != 0) { \n       res += n/5; \n       n /= 5; \n   } \n   return res; \n} \nRewrite this method recursively: \nint zeros(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "There are two hash functions that take in strings as input shown below. Each returns an integer in between\n0 and 1,000,002. (Note: 1,000,003 is a prime number.) Which of these two is a better hash function? \nExplain the weakness in the other function. \nint f1(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (256*res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n} \nint f2(char* str) { \n   int i = 0, res = 0; \n   while (str[i] != \u2018\\0\u2019) { \n       res = (res + (int)(str[i]))%1000003; \n       i++; \n   } \n   return res; \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0399780273438,
-                "y1": 432.67352294921875
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 545.0399780273438,
+                    "y1": 233.31199645996094
+                }
+            },
+            "raw": "Show the state of the array below for each iteration of selection sort: \nOriginal \n13 \n27 \n12 \n9 \n88 \n45 \n22 \n31\n1st iteration \n13 \n27 \n12 \n9 \n31 \n45 \n22 \n88\n2nd iteration \n \n \n \n \n \n \n \n \n3rd iteration \n \n \n \n \n \n \n \n \n4th iteration \n \n \n \n \n \n \n \n \n5th iteration \n \n \n \n \n \n \n \n \n6th iteration \n \n \n \n \n \n \n \n \n7th iteration \n9 \n12 \n13 \n22 \n27 \n31 \n45 \n88",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "Below is a program which includes a single function call to the function mysqrt. The function mysqrt\nincludes a while loop. Give an estimate as to how many times that while loop will run during the single \nfunction call from main. (Note: a portion of credit for this question will be awarded to the theoretical \nanalysis of the code and the rest of the credit will be awarded to applying that analysis in concert with \nestimation techniques without a calculator.) \nint main() { \n   printf(\u201c%.6f\\n\u201d, mysqrt(1000)); \n   return 0; \n} \ndouble mysqrt(double n) { \n   double low = 1, high = n; \n   if (n < 1) { \n       low = n; \n       high = 1; \n   } \n   while (high \u2013 low > .000001) { \n       double mid = (low+high)/2; \n       if (mid*mid < n) \n           low = mid; \n       else \n           high = mid; \n   } \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.1199951171875,
-                "y1": 629.8720092773438
-            }
-        },
-        "raw": "An algorithm to process input data about n cities takes O(\ud835\udc5b2\ud835\udc5b) time. For n = 10, the algorithm runs in 5\nmilliseconds. How many seconds should the algorithm take to run for an input size of n = 20? \n________________",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.55487060546875,
-                "x1": 320.2300109863281,
-                "y1": 526.2735595703125
-            }
-        },
-        "raw": "The code below returns the number of zeros at the end of n! \nint zeros(int n) { \n   int res = 0; \n   while (n != 0) { \n       res += n/5; \n       n /= 5; \n   } \n   return res; \n} \nRewrite this method recursively: \nint zeros(int n) { \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 545.0399780273438,
-                "y1": 233.31199645996094
-            }
-        },
-        "raw": "Show the state of the array below for each iteration of selection sort: \nOriginal \n13 \n27 \n12 \n9 \n88 \n45 \n22 \n31\n1st iteration \n13 \n27 \n12 \n9 \n31 \n45 \n22 \n88\n2nd iteration \n \n \n \n \n \n \n \n \n3rd iteration \n \n \n \n \n \n \n \n \n4th iteration \n \n \n \n \n \n \n \n \n5th iteration \n \n \n \n \n \n \n \n \n6th iteration \n \n \n \n \n \n \n \n \n7th iteration \n9 \n12 \n13 \n22 \n27 \n31 \n45 \n88",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.083984375,
-                "y1": 313.1419982910156
-            }
-        },
-        "raw": "We define a number as Digit Sum Divisible if, for each value of i, the sum of its first i digits is divisible \nby i. For example, the number 6451 is Digit Sum Divisible because 6 is divisible by 1, 6 + 4 = 10 is \ndivisible by 2, 6 + 4 + 5 = 15 is divisible by 3 and 6 + 4 + 5 + 1 = 16 is divisible by 4. Consider writing \na backtracking function that outputs all Digit Sum Divisible numbers of a particular length given a \nparticular prefix. This function would take in a prefix, such as \u201c64\u201d and a number of digits left to add to \nit (for this example, 2), and the function would print out each Digit Sum Divisible number starting with \nthe digits 64 that are four digits long. The function would use backtracking because instead of adding \neach possible digit to the given prefix and making a recursive call, it would first check to see if doing so \nwould maintain the divisibility requirement for the next length. (In this example, 640 would be skipped \nsince 6 + 4 + 0 = 10 and 10 isn\u2019t divisible by 3.) Write out a tree structure that shows each unique \nprefix that occurs for each recursive call for the specific function call with the prefix 64 and 2 digits \nleft to add to it. (Note: The root node of your tree should be 64, each child of 64 should be a three digit \nnumber, and each child of those children should have a four digit number. There should be eight leaf \nnodes in the tree, so make sure to leave enough room for eight nodes at the bottom level. These leaf \nnodes are the eight numbers the function would print out for this specific call.) Note: Please do NOT \nwrite any code for this problem, just write out the underlined specified task above.",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.083984375,
+                    "y1": 313.1419982910156
+                }
+            },
+            "raw": "We define a number as Digit Sum Divisible if, for each value of i, the sum of its first i digits is divisible \nby i. For example, the number 6451 is Digit Sum Divisible because 6 is divisible by 1, 6 + 4 = 10 is \ndivisible by 2, 6 + 4 + 5 = 15 is divisible by 3 and 6 + 4 + 5 + 1 = 16 is divisible by 4. Consider writing \na backtracking function that outputs all Digit Sum Divisible numbers of a particular length given a \nparticular prefix. This function would take in a prefix, such as \u201c64\u201d and a number of digits left to add to \nit (for this example, 2), and the function would print out each Digit Sum Divisible number starting with \nthe digits 64 that are four digits long. The function would use backtracking because instead of adding \neach possible digit to the given prefix and making a recursive call, it would first check to see if doing so \nwould maintain the divisibility requirement for the next length. (In this example, 640 would be skipped \nsince 6 + 4 + 0 = 10 and 10 isn\u2019t divisible by 3.) Write out a tree structure that shows each unique \nprefix that occurs for each recursive call for the specific function call with the prefix 64 and 2 digits \nleft to add to it. (Note: The root node of your tree should be 64, each child of 64 should be a three digit \nnumber, and each child of those children should have a four digit number. There should be eight leaf \nnodes in the tree, so make sure to leave enough room for eight nodes at the bottom level. These leaf \nnodes are the eight numbers the function would print out for this specific call.) Note: Please do NOT \nwrite any code for this problem, just write out the underlined specified task above.",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Backtracking"
+        }
     }
 }

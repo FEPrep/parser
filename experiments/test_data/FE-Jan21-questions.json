@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 146.86399841308594,
-                "x1": 559.1179809570312,
-                "y1": 544.7835083007812
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 146.86399841308594,
+                    "x1": 559.1179809570312,
+                    "y1": 544.7835083007812
+                }
+            },
+            "raw": "Suppose we have a function that is designed to take in a large string and trim it down to only the needed \nsize.  The function is called trim_buffer. It takes in 1 parameter: the buffer, which is a string with a max \nsize of 1024 characters.  It returns a string that is only the size needed to represent the valid characters in\nthe buffer. The function is implemented below. \nIdentify all of the errors (there are multiple errors) with the following trim_buffer function. \n#define BUFFERSIZE 1024 \n// Pre-condition: buffer has a '\\0' character at or before index \n//                BUFFERSIZE-1. \n// Post-condition: returns a pointer to a dynamically allocated \n//                 string that is a copy of the contents of buffer, \n//                 dynamically resized to the appropriate size. \nchar * trim_buffer(char * buffer) { \nchar *string; \nint length; \n    while (length < BUFFERSIZE && buffer[length] != '\\0') \n         \nlength++; \n    string = malloc(sizeof(char) * (length)); \n    length = 0; \n    while ((string[length] = buffer[length]) != '\\0') \n         \nlength++; \n    return; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Suppose we have a function that is designed to take in a large string and trim it down to only the needed \nsize.  The function is called trim_buffer. It takes in 1 parameter: the buffer, which is a string with a max \nsize of 1024 characters.  It returns a string that is only the size needed to represent the valid characters in\nthe buffer. The function is implemented below. \nIdentify all of the errors (there are multiple errors) with the following trim_buffer function. \n#define BUFFERSIZE 1024 \n// Pre-condition: buffer has a '\\0' character at or before index \n//                BUFFERSIZE-1. \n// Post-condition: returns a pointer to a dynamically allocated \n//                 string that is a copy of the contents of buffer, \n//                 dynamically resized to the appropriate size. \nchar * trim_buffer(char * buffer) { \nchar *string; \nint length; \n    while (length < BUFFERSIZE && buffer[length] != '\\0') \n         \nlength++; \n    string = malloc(sizeof(char) * (length)); \n    length = 0; \n    while ((string[length] = buffer[length]) != '\\0') \n         \nlength++; \n    return; \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0760498046875,
+                    "y1": 609.2235107421875
+                }
+            },
+            "raw": "Suppose we have a singly linked list implemented with the structure below.  Write a recursive function \nthat takes in the list and returns 1 if the list is non-empty AND all of the numbers in the list are even, and \nreturns 0 if the list is empty OR contains at least one odd integer. (For example, the function should return \n0 for an empty list, 1 for a list that contains 2 only, and 0 for a list that contains 3 only.) \nstruct node { \n   int data; \n   struct node* next; \n};  \nint check_all_even(struct node *head) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.0760498046875,
-                "y1": 609.2235107421875
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 146.86399841308594,
+                    "x1": 561.0999755859375,
+                    "y1": 725.8352661132812
+                }
+            },
+            "raw": "Write a function named find_below() that takes a pointer to the root of a binary tree (root) and an integer \nvalue (val) and returns the greatest value in the tree that is strictly less than val. If no such value exists, \nsimply return val itself. Note that the tree passed to your function will not necessarily be a binary search\ntree; it\u2019s just a regular binary tree. \nFor example: \n       18           find_below(root, 196) would return 22 \n      /  \\          find_below(root, 1) would return 1 \n     7    4         find_below(root, 4) would return 1 \n    / \\             find_below(root, 22) would return 18 \n   1  22            find_below(root, 20) would return 18 \n        \\           find_below(root, 8) would return 7 \n         8          find_below(root, -23) would return -23 \nYou must write your solution in a single function. You cannot write any helper functions. \nThe function signature and node struct are given below. \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nint find_below(node *root, int val) \n{ \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a singly linked list implemented with the structure below.  Write a recursive function \nthat takes in the list and returns 1 if the list is non-empty AND all of the numbers in the list are even, and \nreturns 0 if the list is empty OR contains at least one odd integer. (For example, the function should return \n0 for an empty list, 1 for a list that contains 2 only, and 0 for a list that contains 3 only.) \nstruct node { \n   int data; \n   struct node* next; \n};  \nint check_all_even(struct node *head) { \n}",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 102.94401550292969,
+                    "x1": 545.9139404296875,
+                    "y1": 216.8509063720703
+                }
+            },
+            "raw": "Show the state of the following minheap after performing the deleteMin operation. (Instead of writing \nthis with a pen or pencil, typing the result in text similarly to how the drawing of the heap below was \nconstructed will suffice.) \n       14 \n     /    \\ \n   22      72 \n  /  \\    /  \\ \n38   40  80  90",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 146.86399841308594,
-                "x1": 561.0999755859375,
-                "y1": 725.8352661132812
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.02399826049805,
+                    "y0": 147.49400329589844,
+                    "x1": 561.0020141601562,
+                    "y1": 463.3235168457031
+                }
+            },
+            "raw": "What is the run-time of the function hash_func shown below, in terms of n, the length of its input\nstring? Please provide sufficient proof of your answer. (9 out of the 10 points are awarded for the proof. \n1 point is awarded for the answer.) \n#include <stdio.h> \n#include <string.h> \n#define MOD 1072373 \n#define BASE 256 \nint hash_func(char* str); \nint hash_func_rec(char* str, int k); \nint hash_func(char* str) { \n   return hash_func_rec(str, strlen(str)); \n} \nint hash_func_rec(char* str, int k) { \n   if (k == -1) return 0; \n   int sum = 0; \n   for (int i=k-1; i>=0; i--) \n       sum = (BASE*sum + str[i])%MOD; \n   return (sum + hash_func_rec(str, k-1))%MOD; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Write a function named find_below() that takes a pointer to the root of a binary tree (root) and an integer \nvalue (val) and returns the greatest value in the tree that is strictly less than val. If no such value exists, \nsimply return val itself. Note that the tree passed to your function will not necessarily be a binary search\ntree; it\u2019s just a regular binary tree. \nFor example: \n       18           find_below(root, 196) would return 22 \n      /  \\          find_below(root, 1) would return 1 \n     7    4         find_below(root, 4) would return 1 \n    / \\             find_below(root, 22) would return 18 \n   1  22            find_below(root, 20) would return 18 \n        \\           find_below(root, 8) would return 7 \n         8          find_below(root, -23) would return -23 \nYou must write your solution in a single function. You cannot write any helper functions. \nThe function signature and node struct are given below. \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nint find_below(node *root, int val) \n{ \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.02399826049805,
+                    "y0": 90.82402038574219,
+                    "x1": 560.80810546875,
+                    "y1": 700.2839965820312
+                }
+            },
+            "raw": "A sorting algorithm takes O(\ud835\udc5b\u221a\ud835\udc5b) time to sort n values. The algorithm took .2 milliseconds to sort an \narray of 1000 values. How many seconds would it take to sort an array of size 900,000?  \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 102.94401550292969,
-                "x1": 545.9139404296875,
-                "y1": 216.8509063720703
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.02399826049805,
+                    "y0": 147.06488037109375,
+                    "x1": 560.9800415039062,
+                    "y1": 709.635498046875
+                }
+            },
+            "raw": "Imagine a Towers of Hanoi puzzle with 4 towers, labeled A, B, C and D, with a tower of n disks, starting on \ntower A, to be moved to tower B, using the usual rules of the puzzle. One strategy to solve the puzzle would be to \nmove the k smallest disks recursively to tower D, where all 4 towers are used. Then, with the remaining n - k\ndisks, use the usual strategy (since tower D is unavailable), which will take exactly 2n-k - 1 moves, to transfer the \nbottom n - k disks to tower B. Finally, now that you can use all 4 towers again, recursively transfer the k smallest \ndisks on tower D to tower B, completing the puzzle. Sonia has decided that she wants the value of k to be set at \n(3n)/4, using integer division. For this question, write a recursive function that takes in n, the number of disks in \nthe game, and returns the number of moves that it will take to solve the game using Sonia's strategy. A function \nprototype with pre and post conditions is provided below. (Note: In order to get full credit you MUST NOT \nUSE the pow function in math.h because it returns a double which has inherent floating point error. Please \nmanually use integers to calculate an exponent or bitwise operators.) \n// Pre-condition: 1 <= n <= 115 (ensures no overflow) \n// Post-condition: Returns the number of moves Sonia's strategy \n//                 will take to solve a Towers of Hanoi with n \n//                 disks with 4 towers. \nint fourTowersNumMoves(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Show the state of the following minheap after performing the deleteMin operation. (Instead of writing \nthis with a pen or pencil, typing the result in text similarly to how the drawing of the heap below was \nconstructed will suffice.) \n       14 \n     /    \\ \n   22      72 \n  /  \\    /  \\ \n38   40  80  90",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.02399826049805,
-                "y0": 147.49400329589844,
-                "x1": 561.0020141601562,
-                "y1": 463.3235168457031
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.02399826049805,
+                    "y0": 89.14402770996094,
+                    "x1": 554.64208984375,
+                    "y1": 530.072021484375
+                }
+            },
+            "raw": "The code below is a buggy implementation Selection Sort. \nvoid buggySelectionSort(int array[], int n) { \n   for (int i=n-1; i>=0; i--) { \n       int best = array[0]; \n       for (int j=1; j<=i; j++) { \n           if (array[j] > best) \n               best = array[j]; \n       } \n       array[i] = best; \n   } \n} \n(a) Conceptually, the variable best is storing the wrong thing. What should it store instead? \n(b) If we fix the code so that best stores what it ought to, conceptually, we will have to change both the \nif statement inside of the j for loop as well as the assignment statement inside of the if. (With these two \nchanges, best will store what it is supposed to store.) Once we make those changes, we can finish fixing\nthe sort completely by replacing the line  \n                          array[i] = best; \nwith three lines of code (where one more variable is declared). Show the three line fix, assuming that \nbest stored the conceptually correct value.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "What is the run-time of the function hash_func shown below, in terms of n, the length of its input\nstring? Please provide sufficient proof of your answer. (9 out of the 10 points are awarded for the proof. \n1 point is awarded for the answer.) \n#include <stdio.h> \n#include <string.h> \n#define MOD 1072373 \n#define BASE 256 \nint hash_func(char* str); \nint hash_func_rec(char* str, int k); \nint hash_func(char* str) { \n   return hash_func_rec(str, strlen(str)); \n} \nint hash_func_rec(char* str, int k) { \n   if (k == -1) return 0; \n   int sum = 0; \n   for (int i=k-1; i>=0; i--) \n       sum = (BASE*sum + str[i])%MOD; \n   return (sum + hash_func_rec(str, k-1))%MOD; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.02399826049805,
-                "y0": 90.82402038574219,
-                "x1": 560.80810546875,
-                "y1": 700.2839965820312
-            }
-        },
-        "raw": "A sorting algorithm takes O(\ud835\udc5b\u221a\ud835\udc5b) time to sort n values. The algorithm took .2 milliseconds to sort an \narray of 1000 values. How many seconds would it take to sort an array of size 900,000?  \n________________",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.02399826049805,
-                "y0": 147.06488037109375,
-                "x1": 560.9800415039062,
-                "y1": 709.635498046875
-            }
-        },
-        "raw": "Imagine a Towers of Hanoi puzzle with 4 towers, labeled A, B, C and D, with a tower of n disks, starting on \ntower A, to be moved to tower B, using the usual rules of the puzzle. One strategy to solve the puzzle would be to \nmove the k smallest disks recursively to tower D, where all 4 towers are used. Then, with the remaining n - k\ndisks, use the usual strategy (since tower D is unavailable), which will take exactly 2n-k - 1 moves, to transfer the \nbottom n - k disks to tower B. Finally, now that you can use all 4 towers again, recursively transfer the k smallest \ndisks on tower D to tower B, completing the puzzle. Sonia has decided that she wants the value of k to be set at \n(3n)/4, using integer division. For this question, write a recursive function that takes in n, the number of disks in \nthe game, and returns the number of moves that it will take to solve the game using Sonia's strategy. A function \nprototype with pre and post conditions is provided below. (Note: In order to get full credit you MUST NOT \nUSE the pow function in math.h because it returns a double which has inherent floating point error. Please \nmanually use integers to calculate an exponent or bitwise operators.) \n// Pre-condition: 1 <= n <= 115 (ensures no overflow) \n// Post-condition: Returns the number of moves Sonia's strategy \n//                 will take to solve a Towers of Hanoi with n \n//                 disks with 4 towers. \nint fourTowersNumMoves(int n) { \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.02399826049805,
-                "y0": 89.14402770996094,
-                "x1": 554.64208984375,
-                "y1": 530.072021484375
-            }
-        },
-        "raw": "The code below is a buggy implementation Selection Sort. \nvoid buggySelectionSort(int array[], int n) { \n   for (int i=n-1; i>=0; i--) { \n       int best = array[0]; \n       for (int j=1; j<=i; j++) { \n           if (array[j] > best) \n               best = array[j]; \n       } \n       array[i] = best; \n   } \n} \n(a) Conceptually, the variable best is storing the wrong thing. What should it store instead? \n(b) If we fix the code so that best stores what it ought to, conceptually, we will have to change both the \nif statement inside of the j for loop as well as the assignment statement inside of the if. (With these two \nchanges, best will store what it is supposed to store.) Once we make those changes, we can finish fixing\nthe sort completely by replacing the line  \n                          array[i] = best; \nwith three lines of code (where one more variable is declared). Show the three line fix, assuming that \nbest stored the conceptually correct value.",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.02399826049805,
-                "y0": 89.38401794433594,
-                "x1": 561.0819702148438,
-                "y1": 513.9835205078125
-            }
-        },
-        "raw": "In the game of NIM, there are several piles with stones and two players alternate taking 1 or more stones \nfrom a single pile, until there are no more stones left. The person who takes the last stone wins. It turns \nout that if it's someone's turn, if they play optimally, they can win as long as the bitwise XOR of all of \nthe number of stones in each pile is not equal to 0. Write a function that takes in an array of values\nrepresenting the number of stones in the piles of NIM and the length of that array, and returns 1, if the \ncurrent player can win, and 0 otherwise, assuming both players play optimally. \n \nint canWinNIM(int piles[], int numPiles) { \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.02399826049805,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0819702148438,
+                    "y1": 513.9835205078125
+                }
+            },
+            "raw": "In the game of NIM, there are several piles with stones and two players alternate taking 1 or more stones \nfrom a single pile, until there are no more stones left. The person who takes the last stone wins. It turns \nout that if it's someone's turn, if they play optimally, they can win as long as the bitwise XOR of all of \nthe number of stones in each pile is not equal to 0. Write a function that takes in an array of values\nrepresenting the number of stones in the piles of NIM and the length of that array, and returns 1, if the \ncurrent player can win, and 0 otherwise, assuming both players play optimally. \n \nint canWinNIM(int piles[], int numPiles) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
     }
 }

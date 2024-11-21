@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.1320190429688,
-                "y1": 719.1635131835938
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1320190429688,
+                    "y1": 719.1635131835938
+                }
+            },
+            "raw": "Suppose we have an array of structures containing information about Cartesian points. The struct shown \nbelow contains two integers, one for the x coordinate and one for the y coordinate. For this problem, write \na function, createPoints, to create some random Cartesian points with each coordinate set to a random \ninteger in between 0 and 10, inclusive. \ncreatePoints takes in the number of points to be created, numPoints.  Your function should dynamically \nallocate an array of numPoints CartPoints structs and set each of their x and y coordinates with \npseudorandom integer values in between 0 to 10, inclusive. You may assume that the random number \ngenerator has been seeded already. Your function should return a pointer to the array that was created and \ninitialized. \ntypedef struct CartPoint { \nint x; \nint y; \n} CartPoint; \nCartPoint* createPoints(int numPoints) { \n \nint i; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Suppose we have an array of structures containing information about Cartesian points. The struct shown \nbelow contains two integers, one for the x coordinate and one for the y coordinate. For this problem, write \na function, createPoints, to create some random Cartesian points with each coordinate set to a random \ninteger in between 0 and 10, inclusive. \ncreatePoints takes in the number of points to be created, numPoints.  Your function should dynamically \nallocate an array of numPoints CartPoints structs and set each of their x and y coordinates with \npseudorandom integer values in between 0 to 10, inclusive. You may assume that the random number \ngenerator has been seeded already. Your function should return a pointer to the array that was created and \ninitialized. \ntypedef struct CartPoint { \nint x; \nint y; \n} CartPoint; \nCartPoint* createPoints(int numPoints) { \n \nint i; \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 565.3211669921875,
+                    "y1": 719.4035034179688
+                }
+            },
+            "raw": "Suppose we have a queue implemented as a doubly linked list using the structures shown below with head \npointing to node at the front of the queue and tail pointing to the node at the end of the queue. \ntypedef struct node { \n   int data; \n   struct node *next, *prev; \n} node;  \ntypedef struct queue { \nint size; \nnode *head, *tail; \n} queue; \nWrite an enqueue function for this queue. If the queue is already full, return 0 and take no other action. If \nthe queue has not been created yet, return 0 and take no other action. If the queue isn't full, enqueue the \ninteger item into the queue, make the necessary adjustments, and return 1. Since there is no fixed size, \nthe queue will be considered full if a new node can't be allocated.  \nint enqueue(queue *thisQ, int item) { \nstruct node *newNode = ____________________________________ ; \n \nif(thisQ == NULL) return 0; \n \n \n \n \n \n \n \n \nif(newNode == NULL) return 0;  \n \n \n \n \n \nnewNode->data = _________; \n \n \n \n \n \n \n \nnewNode->next = _________; \n \n \n \n \nthisQ->size = _______________________; \nif(thisQ->head == NULL) { \n \n \n \n \n \n \n \nnewNode->prev = ____________;  \n \n \n \n \n  \n \nthisQ->head = ______________;  \n \n \n \n \n \nthisQ->tail = ______________;  \n \n \n \n \n \n \nreturn 1; \n} \n_____________________________________________; \n    _____________________________________________; \n    _____________________________________________; \n    return 1;  \n \n \n \n \n \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 565.3211669921875,
-                "y1": 719.4035034179688
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 90.10398864746094,
+                    "x1": 561.1199951171875,
+                    "y1": 716.7720336914062
+                }
+            },
+            "raw": "What does the function call solve(root) print out if root is pointing to the node storing 50 in the tree \nshown below? The necessary struct and function are provided below as well. Please fill in the blanks \nshown below. (Note: the left pointer of the node storing 50 points to the node storing 5, and all of the \npointers shown correspond to the direction they are drawn in the picture below.) \n \n \n \n \n \n \n \n \ntypedef struct bstNode { \n   int data; \n   struct bstNode *left; \n   struct bstNode *right; \n} bstNode; \n \n \nint solve(bstNode* root) { \n   if (root == NULL) return 0; \n   int res = root->data; \n   int left = solve(root->left); \n   int right = solve(root->right); \n   if (left+right > res) \n       res = left+right; \n   printf(\"%d, \", res); \n   return res; \n} \n_____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ ,",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a queue implemented as a doubly linked list using the structures shown below with head \npointing to node at the front of the queue and tail pointing to the node at the end of the queue. \ntypedef struct node { \n   int data; \n   struct node *next, *prev; \n} node;  \ntypedef struct queue { \nint size; \nnode *head, *tail; \n} queue; \nWrite an enqueue function for this queue. If the queue is already full, return 0 and take no other action. If \nthe queue has not been created yet, return 0 and take no other action. If the queue isn't full, enqueue the \ninteger item into the queue, make the necessary adjustments, and return 1. Since there is no fixed size, \nthe queue will be considered full if a new node can't be allocated.  \nint enqueue(queue *thisQ, int item) { \nstruct node *newNode = ____________________________________ ; \n \nif(thisQ == NULL) return 0; \n \n \n \n \n \n \n \n \nif(newNode == NULL) return 0;  \n \n \n \n \n \nnewNode->data = _________; \n \n \n \n \n \n \n \nnewNode->next = _________; \n \n \n \n \nthisQ->size = _______________________; \nif(thisQ->head == NULL) { \n \n \n \n \n \n \n \nnewNode->prev = ____________;  \n \n \n \n \n  \n \nthisQ->head = ______________;  \n \n \n \n \n \nthisQ->tail = ______________;  \n \n \n \n \n \n \nreturn 1; \n} \n_____________________________________________; \n    _____________________________________________; \n    _____________________________________________; \n    return 1;  \n \n \n \n \n \n}",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 558.9600219726562,
+                    "y1": 458.4383239746094
+                }
+            },
+            "raw": "Insert the following numbers (in the order that they are shown from left to right) into a hash table with \nan array of size 10, using the hash function, H(x) = x mod 10.  \n234  \n344  \n483 \n564 \n814 \n \nShow the result of the insertions, assuming any hash collisions are resolved through quadratic probing. \n \nIndex \nValue \n0 \n \n \n1 \n \n \n2 \n \n \n3 \n \n \n4 \n \n \n5 \n \n \n6 \n \n \n7 \n \n \n8 \n \n \n9",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 90.10398864746094,
-                "x1": 561.1199951171875,
-                "y1": 716.7720336914062
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 88.99390411376953,
+                    "x1": 561.1199951171875,
+                    "y1": 341.7019958496094
+                }
+            },
+            "raw": "Consider storing a table with indexes 0 to N-1, where N = k2, for some positive integer k, that starts with \nall entries equal to 0 and allows two types of operations: (1) adding some value to a particular index, and \n(2) querying the sum of all the values in the table from index 0 through index m, for any positive integer \nm < N. One way to implement a \"table\" to handle these two operations is to store two separate arrays, \ngroups, of size k and freq, of size N. freq stores the current value of each index in the table. For the \narray groups, index i (0 \u2264 i < k) stores the sum of the values in freq from index ik to index (i+1)k-1. (For \nexample, if N = 25, then groups[2] stores the sum of the values of freq, from freq[10] through freq[14], \ninclusive.  \nDetermine, with proof, the run-time of implementing operation (1) on this table using this storage \nmechanism and determine, with proof, the run-time of implementing operation (2) on this table using \nthis storage mechanism. (For example, if N = 100 and we had a query with m = 67, to get our answer we \nwould add groups[0], groups[1], groups[2], groups[3], groups[4], groups[5], freq[60], freq[61], \nfreq[62], freq[63], freq[64], freq[65], freq[66] and freq[67]. Notice that since the ranges 0-9, 10-19, \n20-29, 30-39, 40-49, and 50-59 are fully covered in our query, we could just use the groups array for \neach of those sums. We only had to access the freq array for the individual elements in the 60s.) \nYour answers should be Big-Oh answers in terms of N as defined above.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "What does the function call solve(root) print out if root is pointing to the node storing 50 in the tree \nshown below? The necessary struct and function are provided below as well. Please fill in the blanks \nshown below. (Note: the left pointer of the node storing 50 points to the node storing 5, and all of the \npointers shown correspond to the direction they are drawn in the picture below.) \n \n \n \n \n \n \n \n \ntypedef struct bstNode { \n   int data; \n   struct bstNode *left; \n   struct bstNode *right; \n} bstNode; \n \n \nint solve(bstNode* root) { \n   if (root == NULL) return 0; \n   int res = root->data; \n   int left = solve(root->left); \n   int right = solve(root->right); \n   if (left+right > res) \n       res = left+right; \n   printf(\"%d, \", res); \n   return res; \n} \n_____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ , _____ ,",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 90.43390655517578,
+                    "x1": 561.1199951171875,
+                    "y1": 714.0120239257812
+                }
+            },
+            "raw": "An algorithm to process a query on an array of size n takes O(\u221a\ud835\udc5b) time. For n = 106, the algorithm runs \nin 125 milliseconds. How many seconds should the algorithm take to run for an input size of n = \n64,000,000? \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 558.9600219726562,
-                "y1": 458.4383239746094
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.55487060546875,
+                    "x1": 562.92333984375,
+                    "y1": 587.0234985351562
+                }
+            },
+            "raw": "Consider writing a recursive method that counts the number of paths from a starting (x, y) location on the \nCartesian plane to an ending (x, y) location. Let the starting location be (sx, sy) and the ending location be (ex, ey), \nwhere all four coordinates are integers with sx \u2264 ex and sy \u2264 ey, and for each step on a valid path, either 1 must get \nadded to the current x coordinate or 1 must get added to the current y coordinate. In addition, some given \nlocations are disallowed as intermediate locations on the path. Complete the function shown below to solve this \ntask. The input to the function takes in sx, sy, ex, ey and a two dimensional integer array named allowed, such that \nallowed[x][y] is set to 1 if a path is allowed to go on coordinate (x, y) or set to 0 otherwise. It is guaranteed that \n(sx, sy) and (ex, ey) are coordinates which are both inbounds and an inbounds function is provided for you. It's not \nguaranteed that both (sx, sy) and (ex, ey) are valid locations to be on. In this case, the answer is 0. \n#define N 10 \nint inbounds(int x, int y); \nint numpaths(int sx, int sy, int ex, int ey, int allowed[][N]) { \n    \n   if (!allowed[sx][sy]) return ___; \n   if (sx > ex || sy > ey) return ___; \n   if (sx == ex && sy == ey) return  ___; \n   int res = ___ ; \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   return res; \n} \nint inbounds(int x, int y) { \n   return x >= 0 && x < N && y >= 0 && y < N; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Insert the following numbers (in the order that they are shown from left to right) into a hash table with \nan array of size 10, using the hash function, H(x) = x mod 10.  \n234  \n344  \n483 \n564 \n814 \n \nShow the result of the insertions, assuming any hash collisions are resolved through quadratic probing. \n \nIndex \nValue \n0 \n \n \n1 \n \n \n2 \n \n \n3 \n \n \n4 \n \n \n5 \n \n \n6 \n \n \n7 \n \n \n8 \n \n \n9",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 88.99390411376953,
-                "x1": 561.1199951171875,
-                "y1": 341.7019958496094
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1559448242188,
+                    "y1": 160.3519744873047
+                }
+            },
+            "raw": "In both Merge Sort and Quick Sort, in class we are taught to break down the sorting problem recursively \nsuch that the base case is a subarray of size 1 (or 0). It turns out that for both, on average, the \nimplementation is faster if we have a base case with a subarray of size in between 20 and 50 and use a \nO(n2) sort (typically insertion sort) to sort the base case subarray. Even though insertion sort is O(n2),\nwhy does this modification to the algorithm result in a speed up for both Merge Sort and Quick Sort?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Sorting"
         },
-        "raw": "Consider storing a table with indexes 0 to N-1, where N = k2, for some positive integer k, that starts with \nall entries equal to 0 and allows two types of operations: (1) adding some value to a particular index, and \n(2) querying the sum of all the values in the table from index 0 through index m, for any positive integer \nm < N. One way to implement a \"table\" to handle these two operations is to store two separate arrays, \ngroups, of size k and freq, of size N. freq stores the current value of each index in the table. For the \narray groups, index i (0 \u2264 i < k) stores the sum of the values in freq from index ik to index (i+1)k-1. (For \nexample, if N = 25, then groups[2] stores the sum of the values of freq, from freq[10] through freq[14], \ninclusive.  \nDetermine, with proof, the run-time of implementing operation (1) on this table using this storage \nmechanism and determine, with proof, the run-time of implementing operation (2) on this table using \nthis storage mechanism. (For example, if N = 100 and we had a query with m = 67, to get our answer we \nwould add groups[0], groups[1], groups[2], groups[3], groups[4], groups[5], freq[60], freq[61], \nfreq[62], freq[63], freq[64], freq[65], freq[66] and freq[67]. Notice that since the ranges 0-9, 10-19, \n20-29, 30-39, 40-49, and 50-59 are fully covered in our query, we could just use the groups array for \neach of those sums. We only had to access the freq array for the individual elements in the 60s.) \nYour answers should be Big-Oh answers in terms of N as defined above.",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 90.43390655517578,
-                "x1": 561.1199951171875,
-                "y1": 714.0120239257812
-            }
-        },
-        "raw": "An algorithm to process a query on an array of size n takes O(\u221a\ud835\udc5b) time. For n = 106, the algorithm runs \nin 125 milliseconds. How many seconds should the algorithm take to run for an input size of n = \n64,000,000? \n________________",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.55487060546875,
-                "x1": 562.92333984375,
-                "y1": 587.0234985351562
-            }
-        },
-        "raw": "Consider writing a recursive method that counts the number of paths from a starting (x, y) location on the \nCartesian plane to an ending (x, y) location. Let the starting location be (sx, sy) and the ending location be (ex, ey), \nwhere all four coordinates are integers with sx \u2264 ex and sy \u2264 ey, and for each step on a valid path, either 1 must get \nadded to the current x coordinate or 1 must get added to the current y coordinate. In addition, some given \nlocations are disallowed as intermediate locations on the path. Complete the function shown below to solve this \ntask. The input to the function takes in sx, sy, ex, ey and a two dimensional integer array named allowed, such that \nallowed[x][y] is set to 1 if a path is allowed to go on coordinate (x, y) or set to 0 otherwise. It is guaranteed that \n(sx, sy) and (ex, ey) are coordinates which are both inbounds and an inbounds function is provided for you. It's not \nguaranteed that both (sx, sy) and (ex, ey) are valid locations to be on. In this case, the answer is 0. \n#define N 10 \nint inbounds(int x, int y); \nint numpaths(int sx, int sy, int ex, int ey, int allowed[][N]) { \n    \n   if (!allowed[sx][sy]) return ___; \n   if (sx > ex || sy > ey) return ___; \n   if (sx == ex && sy == ey) return  ___; \n   int res = ___ ; \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   return res; \n} \nint inbounds(int x, int y) { \n   return x >= 0 && x < N && y >= 0 && y < N; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.1559448242188,
-                "y1": 160.3519744873047
-            }
-        },
-        "raw": "In both Merge Sort and Quick Sort, in class we are taught to break down the sorting problem recursively \nsuch that the base case is a subarray of size 1 (or 0). It turns out that for both, on average, the \nimplementation is faster if we have a base case with a subarray of size in between 20 and 50 and use a \nO(n2) sort (typically insertion sort) to sort the base case subarray. Even though insertion sort is O(n2),\nwhy does this modification to the algorithm result in a speed up for both Merge Sort and Quick Sort?",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.0960083007812,
-                "y1": 665.2635498046875
-            }
-        },
-        "raw": "Consider an arbitrary permutation of the integers 0, 1, 2, \u2026, n-1. We define the \"jumps\" in a \npermutation array perm to be the set of values of the form perm[i] - perm[i-1], with 1 \u2264 i \u2264 n-1. For this \nproblem you will write a backtracking solution count the number of permutations that can be created \ngiven a limited set of jumps. The function will take in arrays perm, representing the current permutation \narray, used, storing which items were used in the current permutation, k, the number of fixed items in the \ncurrent permutation, jumps, an array storing the valid jumps allowed, and len, representing the length of \nthe jumps array. The length of the perm and used arrays will be the constant N. Note that the jumps array \ncontains both positive and negative values. For example, the permutation 3, 0, 2, 1 has the following \njumps: -3, 2 and -1. Complete the framework that has been given below to solve the problem. \n#include <stdio.h> \n#define N 10 \nint numperms(int perm[], int used[], int k, int* jumps, int len) { \n   int i, j, res = 0; \n   if (k == N) return ___; \n   for (i=0; i<N; i++) { \n       if (used[i]) _____________; \n       int flag = 0; \n       if (k == 0) \n           flag = ___; \n       else { \n           for (j=0; j < ____; j++) \n               if ( ____________ == jumps[j]) \n                   flag = ___; \n       } \n       if (flag) { \n           used[i] = ___; \n           perm[k] = ___; \n           res += numperms(perm, used, _____, jumps, len); \n           used[i] = ___; \n       } \n   } \n   return res; \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0960083007812,
+                    "y1": 665.2635498046875
+                }
+            },
+            "raw": "Consider an arbitrary permutation of the integers 0, 1, 2, \u2026, n-1. We define the \"jumps\" in a \npermutation array perm to be the set of values of the form perm[i] - perm[i-1], with 1 \u2264 i \u2264 n-1. For this \nproblem you will write a backtracking solution count the number of permutations that can be created \ngiven a limited set of jumps. The function will take in arrays perm, representing the current permutation \narray, used, storing which items were used in the current permutation, k, the number of fixed items in the \ncurrent permutation, jumps, an array storing the valid jumps allowed, and len, representing the length of \nthe jumps array. The length of the perm and used arrays will be the constant N. Note that the jumps array \ncontains both positive and negative values. For example, the permutation 3, 0, 2, 1 has the following \njumps: -3, 2 and -1. Complete the framework that has been given below to solve the problem. \n#include <stdio.h> \n#define N 10 \nint numperms(int perm[], int used[], int k, int* jumps, int len) { \n   int i, j, res = 0; \n   if (k == N) return ___; \n   for (i=0; i<N; i++) { \n       if (used[i]) _____________; \n       int flag = 0; \n       if (k == 0) \n           flag = ___; \n       else { \n           for (j=0; j < ____; j++) \n               if ( ____________ == jumps[j]) \n                   flag = ___; \n       } \n       if (flag) { \n           used[i] = ___; \n           perm[k] = ___; \n           res += numperms(perm, used, _____, jumps, len); \n           used[i] = ___; \n       } \n   } \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Backtracking"
+        }
     }
 }

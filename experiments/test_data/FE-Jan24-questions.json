@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.1000366210938,
-                "y1": 703.8995361328125
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.1000366210938,
+                    "y1": 703.8995361328125
+                }
+            },
+            "raw": "Starting with a 0-indexed dynamic integer 1D array called base, compute the triangular sum with only \nthe EXACT proper amount of allocated space needed (no more or no less) by completing the user defined \nfunction definition. The triangular sum is the value of the elements present in the current dynamic array \n(based on the row) after the following process. For each row, the current index i will result in the value \nsum of the previous row (row \u2013 1) at index i and i + 1. If the 2D array is named trisum, then the \nprocess to populate the values properly of the triangular sum will be as follows: \ntrisum[row][i] = trisum[row \u2013 1][i] + trisum[row \u2013 1][i + 1] \nThe below picture shows a nice visual representation of the triangular sum. Note that base is row 0. \n \nThis function will return an address to an array of arrays (dynamic 2D array) that visually represents the \ntriangular sum. The second parameter n represents the number of elements in the base array row 0. \nint ** triangularSum(int * base, int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Starting with a 0-indexed dynamic integer 1D array called base, compute the triangular sum with only \nthe EXACT proper amount of allocated space needed (no more or no less) by completing the user defined \nfunction definition. The triangular sum is the value of the elements present in the current dynamic array \n(based on the row) after the following process. For each row, the current index i will result in the value \nsum of the previous row (row \u2013 1) at index i and i + 1. If the 2D array is named trisum, then the \nprocess to populate the values properly of the triangular sum will be as follows: \ntrisum[row][i] = trisum[row \u2013 1][i] + trisum[row \u2013 1][i + 1] \nThe below picture shows a nice visual representation of the triangular sum. Note that base is row 0. \n \nThis function will return an address to an array of arrays (dynamic 2D array) that visually represents the \ntriangular sum. The second parameter n represents the number of elements in the base array row 0. \nint ** triangularSum(int * base, int n) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 549.2500610351562,
+                    "y1": 681.2319946289062
+                }
+            },
+            "raw": "Suppose we have a singly linked list implemented with the structure below and a function that takes in\nthe head of the list.  \ntypedef struct node_s { \n   int data; \n   struct node_s * nextptr; \n} node_t; \nvoid whatDoYouDo(node_t * head){ \nnode_t * temp = head; \nnode_t * temp2 = head->nextptr; \nint a; \n \nwhile(temp->nextptr != NULL){ \n \na = temp->data; \n \ntemp->data = temp2->data; \n \ntemp2->data = a; \n \n \n \ntemp = temp->nextptr; \n \n \n \nif(temp->nextptr != NULL){ \n \n \ntemp = temp->nextptr; \n \n \ntemp2 = temp->nextptr; \n \n} \n} \n} \nIf we call whatDoYouDo (head) on the following list, show the list after the function has finished. \nhead ->  5 -> 2 -> 1 -> 8 -> 7? Please fill in the designated slots below. \nhead \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 549.2500610351562,
-                "y1": 681.2319946289062
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.06396484375,
+                    "y1": 724.779541015625
+                }
+            },
+            "raw": "Write a function named sumSingleParents() that takes a pointer to the root of a binary tree (root) and\nreturns the sum of all the values in the nodes with a single child. \nFor example, if you pass the root of the following binary tree, the function should return 31 (=3+8+20) as \nthe nodes containing 3, 8, and 20 have only one child: \n \nYou must write your solution in a single function. You cannot write any helper functions. \nThe function signature and node struct are given below. \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nint sumSingleParents(node *root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a singly linked list implemented with the structure below and a function that takes in\nthe head of the list.  \ntypedef struct node_s { \n   int data; \n   struct node_s * nextptr; \n} node_t; \nvoid whatDoYouDo(node_t * head){ \nnode_t * temp = head; \nnode_t * temp2 = head->nextptr; \nint a; \n \nwhile(temp->nextptr != NULL){ \n \na = temp->data; \n \ntemp->data = temp2->data; \n \ntemp2->data = a; \n \n \n \ntemp = temp->nextptr; \n \n \n \nif(temp->nextptr != NULL){ \n \n \ntemp = temp->nextptr; \n \n \ntemp2 = temp->nextptr; \n \n} \n} \n} \nIf we call whatDoYouDo (head) on the following list, show the list after the function has finished. \nhead ->  5 -> 2 -> 1 -> 8 -> 7? Please fill in the designated slots below. \nhead \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____ \u2192 ____",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.701171875,
+                    "y1": 689.2635498046875
+                }
+            },
+            "raw": "(a) (3 pts) A heap is represented by the array below. The first item is stored at index 1. Answer the \nfollowing questions (please answer the data not the index where it\u2019s stored.) \nindex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \ndata \n7 \n11 \n13 \n16 \n18 \n19 \n24 \n21 \n20 \n35 \ni). Who is the left child of 13: _____, ii). Right child of 16: ________iii) parent of 24:______ \n(b) (2 pts) Consider the following tree. Is this a valid minheap? Justify your answer. Just saying yes/no \nhas no credit without justification.  \n \n \n(c) (5 pts) Consider a minheap stored in an integer array int heaparray[100], which is globally declared.\nComplete the percolateUp function below that takes an index and perform the full percolate up operation \nfor the item at that index. While writing the code, you can assume that there is a swap function available \nfor you that is described below. \n// swap(int* ptrA, int* ptrB) \u2013 swaps the contents in the variables \n//                              pointed to by ptrA and ptrB. \n void percolateUp(int idx){ \n \n      if ( ________ > 1) {   \n          if ( ______________________________________________ ) {  \n              swap( ________________________ , _______________________ ) \n            \n              percolateUp( ______________ );   \n          } \n    } \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.06396484375,
-                "y1": 724.779541015625
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 67.8239974975586,
+                    "y0": 482.7248840332031,
+                    "x1": 200.74351501464844,
+                    "y1": 497.4522399902344
+                }
+            },
+            "raw": "What is the worst case run-time of each of the following algorithms/operations? Please give your answers in Big-\nOh form, using the appropriate variables in each question. \n(a) Inserting 1 item into a binary search tree storing n items. \n \n \n_____________________ \n(b) Inserting 1 item into an AVL Tree storing n items. \n \n \n \n_____________________ \n(c) Printing out each number in base b with exactly k digits. Assume \n \n_____________________ \n    printing one digit takes O(1) time. \n(d) Creating a heap using the most efficient algorithm out of n unsorted  \n_____________________ \n     values. \n(e) Deleting the third item in a linked list (of more than 3 items) and returning \n_____________________ \n    a pointer to the front of the adjusted list. \n(f) Determining the number of integers that are included in both of two   \n_____________________ \n     separate lists of n sorted integers, using the most efficient algorithm.  \n \n     \n(g) Executing p consecutive pop operations on a stack that initially had n  \n_____________________ \n     elements. (Note: p < n.)  \n(h) Sorting n unsorted items via Heap Sort. \n \n \n \n \n_____________________ \n(i) Converting a positive integer n expressed in decimal into binary. \n \n_____________________ \n(j) Adding a c digit integer to a d digit integer, where the integers are \n \n_____________________ \n    stored in arrays, digit by digit.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Write a function named sumSingleParents() that takes a pointer to the root of a binary tree (root) and\nreturns the sum of all the values in the nodes with a single child. \nFor example, if you pass the root of the following binary tree, the function should return 31 (=3+8+20) as \nthe nodes containing 3, 8, and 20 have only one child: \n \nYou must write your solution in a single function. You cannot write any helper functions. \nThe function signature and node struct are given below. \ntypedef struct node \n{ \n  int data; \n  struct node *left; \n  struct node *right; \n} node; \nint sumSingleParents(node *root) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.67486572265625,
+                    "x1": 560.6921997070312,
+                    "y1": 134.2246551513672
+                }
+            },
+            "raw": "A O(n3) image processing algorithm took 125 milliseconds to index n = 400 images. How long would it be \nexpected for this algorithm to take to index 640 images, in milliseconds? Please show all your work, including \nalgebraic simplification, which is part of what is being tested with this question.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 89.50401306152344,
-                "x1": 561.701171875,
-                "y1": 689.2635498046875
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.1119995117188,
+                    "y1": 718.4194946289062
+                }
+            },
+            "raw": "Finish the function below so that it determines the number of permutations of size n (values 0 through\nn-1, inclusive) such that each pair of adjacent values is within maxgap of each other. You can assume \nany spot in the permutation that has not been filled in yet will be 0. The function should also take in an \narray, perm, the permutation, a second array, used, which indicates the values that have been used in the \npermutation, and an integer, k, representing which is the current empty spot (0-indexed) to be filled in. \nFunctions that fail to utilize recursion will receive 0 points. (For example, if n = 4, maxgap = 2 and k \n= 0, the only permutations of size 4 that would not be counted are the ones that have 1 and 4 adjacent, \nsince the difference between these is 3, which is bigger than maxgap.) \nint kClosePerm(int* perm, int* used, int n, int maxgap, int k) { \n   if (n == k)  \n        \n       ______________________ ; \n   int res = 0; \n   for (int i=0; i<n; i++) { \n   } \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "(a) (3 pts) A heap is represented by the array below. The first item is stored at index 1. Answer the \nfollowing questions (please answer the data not the index where it\u2019s stored.) \nindex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \ndata \n7 \n11 \n13 \n16 \n18 \n19 \n24 \n21 \n20 \n35 \ni). Who is the left child of 13: _____, ii). Right child of 16: ________iii) parent of 24:______ \n(b) (2 pts) Consider the following tree. Is this a valid minheap? Justify your answer. Just saying yes/no \nhas no credit without justification.  \n \n \n(c) (5 pts) Consider a minheap stored in an integer array int heaparray[100], which is globally declared.\nComplete the percolateUp function below that takes an index and perform the full percolate up operation \nfor the item at that index. While writing the code, you can assume that there is a swap function available \nfor you that is described below. \n// swap(int* ptrA, int* ptrB) \u2013 swaps the contents in the variables \n//                              pointed to by ptrA and ptrB. \n void percolateUp(int idx){ \n \n      if ( ________ > 1) {   \n          if ( ______________________________________________ ) {  \n              swap( ________________________ , _______________________ ) \n            \n              percolateUp( ______________ );   \n          } \n    } \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 67.8239974975586,
-                "y0": 482.7248840332031,
-                "x1": 200.74351501464844,
-                "y1": 497.4522399902344
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 317.9420166015625
+                }
+            },
+            "raw": "Show the result after each iteration of performing Selection Sort, where we select for the maximum\nelement in each iteration, on the array show below. For convenience, the result after the first and last \niterations are provided. The first row (iteration 0) of the table contains the original values of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n13 \n11 \n9 \n16 \n12 \n15 \n10 \n5 \n1 \n13 \n11 \n9 \n5 \n12 \n15 \n10 \n16 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n5 \n9 \n10 \n11 \n12 \n13 \n15 \n16",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
         },
-        "raw": "What is the worst case run-time of each of the following algorithms/operations? Please give your answers in Big-\nOh form, using the appropriate variables in each question. \n(a) Inserting 1 item into a binary search tree storing n items. \n \n \n_____________________ \n(b) Inserting 1 item into an AVL Tree storing n items. \n \n \n \n_____________________ \n(c) Printing out each number in base b with exactly k digits. Assume \n \n_____________________ \n    printing one digit takes O(1) time. \n(d) Creating a heap using the most efficient algorithm out of n unsorted  \n_____________________ \n     values. \n(e) Deleting the third item in a linked list (of more than 3 items) and returning \n_____________________ \n    a pointer to the front of the adjusted list. \n(f) Determining the number of integers that are included in both of two   \n_____________________ \n     separate lists of n sorted integers, using the most efficient algorithm.  \n \n     \n(g) Executing p consecutive pop operations on a stack that initially had n  \n_____________________ \n     elements. (Note: p < n.)  \n(h) Sorting n unsorted items via Heap Sort. \n \n \n \n \n_____________________ \n(i) Converting a positive integer n expressed in decimal into binary. \n \n_____________________ \n(j) Adding a c digit integer to a d digit integer, where the integers are \n \n_____________________ \n    stored in arrays, digit by digit.",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 89.67486572265625,
-                "x1": 560.6921997070312,
-                "y1": 134.2246551513672
-            }
-        },
-        "raw": "A O(n3) image processing algorithm took 125 milliseconds to index n = 400 images. How long would it be \nexpected for this algorithm to take to index 640 images, in milliseconds? Please show all your work, including \nalgebraic simplification, which is part of what is being tested with this question.",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.1119995117188,
-                "y1": 718.4194946289062
-            }
-        },
-        "raw": "Finish the function below so that it determines the number of permutations of size n (values 0 through\nn-1, inclusive) such that each pair of adjacent values is within maxgap of each other. You can assume \nany spot in the permutation that has not been filled in yet will be 0. The function should also take in an \narray, perm, the permutation, a second array, used, which indicates the values that have been used in the \npermutation, and an integer, k, representing which is the current empty spot (0-indexed) to be filled in. \nFunctions that fail to utilize recursion will receive 0 points. (For example, if n = 4, maxgap = 2 and k \n= 0, the only permutations of size 4 that would not be counted are the ones that have 1 and 4 adjacent, \nsince the difference between these is 3, which is bigger than maxgap.) \nint kClosePerm(int* perm, int* used, int n, int maxgap, int k) { \n   if (n == k)  \n        \n       ______________________ ; \n   int res = 0; \n   for (int i=0; i<n; i++) { \n   } \n   return res; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 561.0999755859375,
-                "y1": 317.9420166015625
-            }
-        },
-        "raw": "Show the result after each iteration of performing Selection Sort, where we select for the maximum\nelement in each iteration, on the array show below. For convenience, the result after the first and last \niterations are provided. The first row (iteration 0) of the table contains the original values of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n13 \n11 \n9 \n16 \n12 \n15 \n10 \n5 \n1 \n13 \n11 \n9 \n5 \n12 \n15 \n10 \n16 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n5 \n9 \n10 \n11 \n12 \n13 \n15 \n16",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.74400329589844,
-                "x1": 560.9620361328125,
-                "y1": 705.4595336914062
-            }
-        },
-        "raw": "It is getting harder and harder to stay green while using computers. You decided that you will reduce \nyour carbon footprint by storing fewer bits for your integers. How you might ask? You will store your \ninteger plus some power of 2. Your goal will be to use as few on-bits as possible in the resulting sum. \nThis way you will have less bits on and just like turning off the lights when you leave a room you will \nbe saving energy and the planet. Complete the function below so that it determines and returns the least \nnumber of bits that will be on after adding a positive power of 2 to your number. For full credit your \nfunction should take O(b) time where b is the number of bits in an int. You are guaranteed that no \npositive power of 2 added to the original number will result in an overflow. \nFor example, the value 76 = 22 + 23 + 26 can have 4 added to it to result in 80 = 24 + 26, which requires \nonly 2 on-bits. No better result can be achieved by adding a different power of 2. \nint leastBitsOn(int x) { \n   int numOn = 0; \n   int cur = 0; \n   int longest = 0; \n   for (int i = 0; i < 8 * sizeof(int); i++) { \n   } \n   return _________________________________________ ; \n}",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 560.9620361328125,
+                    "y1": 705.4595336914062
+                }
+            },
+            "raw": "It is getting harder and harder to stay green while using computers. You decided that you will reduce \nyour carbon footprint by storing fewer bits for your integers. How you might ask? You will store your \ninteger plus some power of 2. Your goal will be to use as few on-bits as possible in the resulting sum. \nThis way you will have less bits on and just like turning off the lights when you leave a room you will \nbe saving energy and the planet. Complete the function below so that it determines and returns the least \nnumber of bits that will be on after adding a positive power of 2 to your number. For full credit your \nfunction should take O(b) time where b is the number of bits in an int. You are guaranteed that no \npositive power of 2 added to the original number will result in an overflow. \nFor example, the value 76 = 22 + 23 + 26 can have 4 added to it to result in 80 = 24 + 26, which requires \nonly 2 on-bits. No better result can be achieved by adding a different power of 2. \nint leastBitsOn(int x) { \n   int numOn = 0; \n   int cur = 0; \n   int longest = 0; \n   for (int i = 0; i < 8 * sizeof(int); i++) { \n   } \n   return _________________________________________ ; \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
     }
 }

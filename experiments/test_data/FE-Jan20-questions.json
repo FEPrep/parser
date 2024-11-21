@@ -1,119 +1,154 @@
 {
-    "Basic Data Structures-1": {
-        "rects": {
-            "1": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0401000976562,
-                "y1": 716.3909301757812
-            }
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0401000976562,
+                    "y1": 716.3909301757812
+                }
+            },
+            "raw": "Suppose we have an array to store the TV shows we wanted to watch over break.  Now that the break is \nover, we have watched all the shows and we need to delete our list.  Our array is an array of structures that \ncontains the name of each show and the number of seasons to watch for that show.  The name of the show \nis a dynamically allocated string to support the different lengths of show names.  Write a function called \ndelete_show_list that will take in the show array as well as the length of that array, and free all the memory \nspace that the array previously took up.  Your function should take in 2 parameters: the array called \nshow_list and the length of that array, length. It should free all the dynamically allocated memory \nassociated with the list and return NULL, to indicate that the list has been deleted. \nstruct tv_show { \nchar *show_name; \nint number_of_seasons; \n}; \nstruct tv_show * delete_show_list (struct tv_show *show_list, int length) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
         },
-        "raw": "Suppose we have an array to store the TV shows we wanted to watch over break.  Now that the break is \nover, we have watched all the shows and we need to delete our list.  Our array is an array of structures that \ncontains the name of each show and the number of seasons to watch for that show.  The name of the show \nis a dynamically allocated string to support the different lengths of show names.  Write a function called \ndelete_show_list that will take in the show array as well as the length of that array, and free all the memory \nspace that the array previously took up.  Your function should take in 2 parameters: the array called \nshow_list and the length of that array, length. It should free all the dynamically allocated memory \nassociated with the list and return NULL, to indicate that the list has been deleted. \nstruct tv_show { \nchar *show_name; \nint number_of_seasons; \n}; \nstruct tv_show * delete_show_list (struct tv_show *show_list, int length) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 557.8900146484375,
+                    "y1": 720.7319946289062
+                }
+            },
+            "raw": "Suppose we have a linked list implemented with the structure below.  We also have a function that takes\nin the head of the list and the current number of nodes in the list.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nint whatDoesItDo (node * head, int size) { \nnode * current = head; \nnode * other; \nif (size < 2) \n \nreturn size; \nother = head->next; \nwhile (current != NULL) { \n \ncurrent->next = other->next; \n \nfree(other); \n \ncurrent = current->next; \n \nsize--; \n \nif(current != NULL && current->next !=NULL) { \n \n \ncurrent = current->next; \n \n \nother = current->next; \n \n} \n} \nreturn size; \n} \nIf we call what DoesItDo(head, 8) on the following list, show the list after the function has finished and \nstate the return value. \nhead ->  3 -> 8 -> 12 -> 5 -> 1 -> 7 -> 19 -> 2 \nPicture of List Pointed to by head After Function Call: \nFunction Return Value: _______",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
     },
-    "Basic Data Structures-2": {
-        "rects": {
-            "2": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 557.8900146484375,
-                "y1": 720.7319946289062
-            }
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0281372070312,
+                    "y1": 705.0035400390625
+                }
+            },
+            "raw": "Write a function named fsl() (which stands for \u201cfind smallest leaf\u201d) that takes a pointer to the root of a \nbinary tree as its only argument and returns the value of the smallest leaf node in the tree. Note that the \ntree passed to your function will not necessarily be a binary search tree. If the pointer root is NULL, fsl \nshould return INT_MAX, which is defined below. \nYou cannot write any helper functions for this problem. You must complete all of your work in a single \nfunction. The function signature and node struct are given below. \n#define INT_MAX 2147483647 \ntypedef struct node { \n   int data; \n   struct node *left; \n   struct node *right; \n} node; \nint fsl(node *root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
         },
-        "raw": "Suppose we have a linked list implemented with the structure below.  We also have a function that takes\nin the head of the list and the current number of nodes in the list.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nint whatDoesItDo (node * head, int size) { \nnode * current = head; \nnode * other; \nif (size < 2) \n \nreturn size; \nother = head->next; \nwhile (current != NULL) { \n \ncurrent->next = other->next; \n \nfree(other); \n \ncurrent = current->next; \n \nsize--; \n \nif(current != NULL && current->next !=NULL) { \n \n \ncurrent = current->next; \n \n \nother = current->next; \n \n} \n} \nreturn size; \n} \nIf we call what DoesItDo(head, 8) on the following list, show the list after the function has finished and \nstate the return value. \nhead ->  3 -> 8 -> 12 -> 5 -> 1 -> 7 -> 19 -> 2 \nPicture of List Pointed to by head After Function Call: \nFunction Return Value: _______",
-        "sub_questions": [],
-        "question_number": 2
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 102.94401550292969,
+                    "x1": 560.9300537109375,
+                    "y1": 621.2319946289062
+                }
+            },
+            "raw": "Consider the following hash function, and then answer the questions that follow: \n // This function assumes str is non-NULL and non-empty. \n int hash(char *str) { \n    int index = strlen(str) \u2013 1; \n \n    // Note: This converts letters on the range 'a' through 'z' or \n    // 'A' through 'Z' to integers on the range 0 through 25. \n    // For example: 'a' -> 0, 'b' -> 1, ..., 'z' -> 25.  \n    return tolower(str[index]) \u2013 'a'; \n } \na) (2 pts) Give the hash code produced for each of the following strings: \nhash(\u201cNot\u201d) = ________ \nhash(\u201cKnow\u201d) = ________ \nhash(\u201cBright\u201d) = ________ \nhash(\u201cMoon\u201d) = ________ \nhash(\u201cNow\u201d) = ________ \nb) (3 pts) Using the hash values above, insert the strings (one by one, in the order given above) into the \nfollowing hash table. Use quadratic probing to resolve any collisions. Note that there is a standard\ntechnique for dealing with hash values that exceed the length of a table (e.g., values that exceed 9 in the \ncase of this particular table), and it\u2019s up to you to use that technique here. \nNote: The length of the hash table is 10.  \n \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
     },
-    "Advanced Data Structures-1": {
-        "rects": {
-            "5": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0281372070312,
-                "y1": 705.0035400390625
-            }
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 550.7439575195312,
+                    "y1": 323.3335266113281
+                }
+            },
+            "raw": "What is the best and worst case runtime for the following algorithm, in terms of the input parameter n?\nGive a brief explanation for your answers. \nint foo(int * arr, int n){ \n  if (n == 0) \n     return 0; \n  int j = 0, i; \n  for (i = 0; i < n; i++) \n     if (arr[i] > arr[j]) \n        j = i; \n  int nLen = n - j - 1; \n  return arr[j] + foo(arr + j + 1, nLen); \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
         },
-        "raw": "Write a function named fsl() (which stands for \u201cfind smallest leaf\u201d) that takes a pointer to the root of a \nbinary tree as its only argument and returns the value of the smallest leaf node in the tree. Note that the \ntree passed to your function will not necessarily be a binary search tree. If the pointer root is NULL, fsl \nshould return INT_MAX, which is defined below. \nYou cannot write any helper functions for this problem. You must complete all of your work in a single \nfunction. The function signature and node struct are given below. \n#define INT_MAX 2147483647 \ntypedef struct node { \n   int data; \n   struct node *left; \n   struct node *right; \n} node; \nint fsl(node *root) { \n}",
-        "sub_questions": [],
-        "question_number": 1
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 88.75385284423828,
+                    "x1": 561.0520629882812,
+                    "y1": 146.55198669433594
+                }
+            },
+            "raw": "A backtracking solution took O(n(kn)) time where n is the number of decisions, and k was the number of \noptions for each decision. With n of 20 and k of 1 the time it took was approximately 10 seconds. What \nis the expected time required for an input of 10 decisions (n=10) where each decision has 2 options\n(k=2) in seconds?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
     },
-    "Advanced Data Structures-2": {
-        "rects": {
-            "6": {
-                "x0": 54.0,
-                "y0": 102.94401550292969,
-                "x1": 560.9300537109375,
-                "y1": 621.2319946289062
-            }
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0640258789062,
+                    "y1": 614.6109008789062
+                }
+            },
+            "raw": "Model an area of land as a two dimensional grid of integers, where each integer represents the elevation \nof that portion of land. Water can only flow from a grid square of higher elevation to lower elevation in \none of the four cardinal directions (north, south, east and west). Complete the recursive function below\nthat takes in a 2D array of integers storing the elevation levels of each portion of land, another 2D array \nof integers (storing 0 or 1 in each entry) representing which grid squares have been flooded with water \n(1 for flooded, 0 for not flooded), as well as the current row and column value of a grid square that just \nflooded, and marks the current and all subsequent squares that will get flooded as a result of the water at \nthe given location. Once a square is flooded it remains in that state. An inbounds function and DR,DC \narrays are provided for convenience. \n#define NUMROWS 10 \n#define NUMCOLS 12 \nconst int DR[] = {-1,0,0,1}; \nconst int DC[] = {0,-1,1,0};  \nint inbounds(int row, int col); \nvoid floodfill(int grid[][NUMCOLS], int flooded[][NUMCOLS], int row, int col) { \n   if ( _____________________________ ) return; \n   flooded[ ______ ][ _______ ] = _____ ; \n   for (int i=0; i<4; i++) { \n       int nextR = _________________________ ; \n       int nextC = _________________________ ; \n       if ( _________________________________________________________________ ) \n           floodfill(grid, flooded, nextR, nextC); \n   } \n} \nint inbounds(int row, int col) { \n   return row >= 0 && row < NUMROWS && col >= 0 && col < NUMCOLS; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
         },
-        "raw": "Consider the following hash function, and then answer the questions that follow: \n // This function assumes str is non-NULL and non-empty. \n int hash(char *str) { \n    int index = strlen(str) \u2013 1; \n \n    // Note: This converts letters on the range 'a' through 'z' or \n    // 'A' through 'Z' to integers on the range 0 through 25. \n    // For example: 'a' -> 0, 'b' -> 1, ..., 'z' -> 25.  \n    return tolower(str[index]) \u2013 'a'; \n } \na) (2 pts) Give the hash code produced for each of the following strings: \nhash(\u201cNot\u201d) = ________ \nhash(\u201cKnow\u201d) = ________ \nhash(\u201cBright\u201d) = ________ \nhash(\u201cMoon\u201d) = ________ \nhash(\u201cNow\u201d) = ________ \nb) (3 pts) Using the hash values above, insert the strings (one by one, in the order given above) into the \nfollowing hash table. Use quadratic probing to resolve any collisions. Note that there is a standard\ntechnique for dealing with hash values that exceed the length of a table (e.g., values that exceed 9 in the \ncase of this particular table), and it\u2019s up to you to use that technique here. \nNote: The length of the hash table is 10.  \n \n \n \n \n \n \n \n \n \n \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithm Analysis-1": {
-        "rects": {
-            "9": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 550.7439575195312,
-                "y1": 323.3335266113281
-            }
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0401000976562,
+                    "y1": 718.4434814453125
+                }
+            },
+            "raw": "The partition function in quick sort takes in an array, a low index, and a high index, which specifies a \nsubsection of the array to partition, and returns the index where the partition element lies after\nperforming the partition. Though there are many strategies to pick the partition element, to make grading \neasier, do the following: (a) use the element initially in index low to be the partition element, and (b) \nexecute the in place partition where pairs of elements which are out of place are swapped and the \npartition element is swapped into its correct location at the very end right before the function returns this \nlocation. The swap function is provided for your use. You may assume that low < high. \nvoid swap(int* ptrA, int* ptrB); \nint partition(int array[], int low, int high) { \n} \nvoid swap(int* ptrA, int* ptrB) { \n   int temp = *ptrA; \n   *ptrA = *ptrB; \n   *ptrB = temp; \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Sorting"
         },
-        "raw": "What is the best and worst case runtime for the following algorithm, in terms of the input parameter n?\nGive a brief explanation for your answers. \nint foo(int * arr, int n){ \n  if (n == 0) \n     return 0; \n  int j = 0, i; \n  for (i = 0; i < n; i++) \n     if (arr[i] > arr[j]) \n        j = i; \n  int nLen = n - j - 1; \n  return arr[j] + foo(arr + j + 1, nLen); \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithm Analysis-2": {
-        "rects": {
-            "10": {
-                "x0": 54.0,
-                "y0": 88.75385284423828,
-                "x1": 561.0520629882812,
-                "y1": 146.55198669433594
-            }
-        },
-        "raw": "A backtracking solution took O(n(kn)) time where n is the number of decisions, and k was the number of \noptions for each decision. With n of 20 and k of 1 the time it took was approximately 10 seconds. What \nis the expected time required for an input of 10 decisions (n=10) where each decision has 2 options\n(k=2) in seconds?",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-1": {
-        "rects": {
-            "13": {
-                "x0": 54.0,
-                "y0": 89.38401794433594,
-                "x1": 561.0640258789062,
-                "y1": 614.6109008789062
-            }
-        },
-        "raw": "Model an area of land as a two dimensional grid of integers, where each integer represents the elevation \nof that portion of land. Water can only flow from a grid square of higher elevation to lower elevation in \none of the four cardinal directions (north, south, east and west). Complete the recursive function below\nthat takes in a 2D array of integers storing the elevation levels of each portion of land, another 2D array \nof integers (storing 0 or 1 in each entry) representing which grid squares have been flooded with water \n(1 for flooded, 0 for not flooded), as well as the current row and column value of a grid square that just \nflooded, and marks the current and all subsequent squares that will get flooded as a result of the water at \nthe given location. Once a square is flooded it remains in that state. An inbounds function and DR,DC \narrays are provided for convenience. \n#define NUMROWS 10 \n#define NUMCOLS 12 \nconst int DR[] = {-1,0,0,1}; \nconst int DC[] = {0,-1,1,0};  \nint inbounds(int row, int col); \nvoid floodfill(int grid[][NUMCOLS], int flooded[][NUMCOLS], int row, int col) { \n   if ( _____________________________ ) return; \n   flooded[ ______ ][ _______ ] = _____ ; \n   for (int i=0; i<4; i++) { \n       int nextR = _________________________ ; \n       int nextC = _________________________ ; \n       if ( _________________________________________________________________ ) \n           floodfill(grid, flooded, nextR, nextC); \n   } \n} \nint inbounds(int row, int col) { \n   return row >= 0 && row < NUMROWS && col >= 0 && col < NUMCOLS; \n}",
-        "sub_questions": [],
-        "question_number": 1
-    },
-    "Algorithms-2": {
-        "rects": {
-            "14": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 561.0401000976562,
-                "y1": 718.4434814453125
-            }
-        },
-        "raw": "The partition function in quick sort takes in an array, a low index, and a high index, which specifies a \nsubsection of the array to partition, and returns the index where the partition element lies after\nperforming the partition. Though there are many strategies to pick the partition element, to make grading \neasier, do the following: (a) use the element initially in index low to be the partition element, and (b) \nexecute the in place partition where pairs of elements which are out of place are swapped and the \npartition element is swapped into its correct location at the very end right before the function returns this \nlocation. The swap function is provided for your use. You may assume that low < high. \nvoid swap(int* ptrA, int* ptrB); \nint partition(int array[], int low, int high) { \n} \nvoid swap(int* ptrA, int* ptrB) { \n   int temp = *ptrA; \n   *ptrA = *ptrB; \n   *ptrB = temp; \n}",
-        "sub_questions": [],
-        "question_number": 2
-    },
-    "Algorithms-3": {
-        "rects": {
-            "15": {
-                "x0": 54.0,
-                "y0": 89.14402770996094,
-                "x1": 544.031982421875,
-                "y1": 270.781982421875
-            }
-        },
-        "raw": "Determine the value of each of these arithmetic expressions in C. Please use the space below for your\nscratch work. \n(i) 56 | 17 \n \n \n________________ \n \n(ii) 47 & 83 \n \n \n________________ \n \n(iii) 79 ^ 36 \n \n \n________________ \n \n(iv) 13 << 3 \n \n \n________________ \n \n(v) 187 >> 4  \n \n________________",
-        "sub_questions": [],
-        "question_number": 3
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 544.031982421875,
+                    "y1": 270.781982421875
+                }
+            },
+            "raw": "Determine the value of each of these arithmetic expressions in C. Please use the space below for your\nscratch work. \n(i) 56 | 17 \n \n \n________________ \n \n(ii) 47 & 83 \n \n \n________________ \n \n(iii) 79 ^ 36 \n \n \n________________ \n \n(iv) 13 << 3 \n \n \n________________ \n \n(v) 187 >> 4  \n \n________________",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Bitwise Operators"
+        }
     }
 }
