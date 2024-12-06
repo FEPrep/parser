@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 90.10398864746094,
+                    "x1": 561.1199951171875,
+                    "y1": 722.0435180664062
+                }
+            },
+            "raw": "The struct, dataTOD, shown below, is used to collect data from different devices connected to the\nCPU. Every time the data is updated a new buffer containing the structure\u2019s data is created and \npopulated. \ntypedef struct dataTOD { \n    int seconds;      // seconds since midnight \n    double data;      // data sample \n    char * dataName;  // data name (optional) \n} dataTOD; \n(a) (8 pts) Write the code necessary to create and initialize the members of dataTOD in a function\nnamed init_dataTOD that returns a pointer to the newly created buffer. Return NULL in the \nevent a buffer cannot be created. Otherwise, set the seconds and data values according to the \ncorresponding input parameters to init_dataTOD, dynamically allocate the proper space for \ndataName and then copy the contents of name into it (not a pointer copy) and a return a pointer to \nthe newly created struct. \n \ndataTOD * init_dataTOD(int sec, double val, char* name){ \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n} \n(b) (2 pts) Complete the function below so that it frees all the dynamically allocated memory pointed to \nby its formal parameter zapThis. You may assume that the pointer itself is pointing to a valid struct \nand its dataName pointer is pointing to a dynamically allocated character array. \nvoid free_dataTOD(dataTOD *zapThis){ \n \n \n \n \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.86399841308594,
+                    "x1": 560.8460693359375,
+                    "y1": 545.3920288085938
+                }
+            },
+            "raw": "Given the linked list structure named node, defined in lines 1 through 4, and the function named\neFunction defined in lines 6 through 14, answer the questions below. \n \n 1 typedef struct node { \n 2         int data; \n 3         struct node * next; \n 4 } node; \n 5  \n 6 node* eFunction(node* aNode){ \n 7    if(aNode == NULL) return NULL; \n 8    if(aNode->next == NULL) return aNode; \n 9  \n10    node* rest = eFunction(aNode->next); \n11    aNode->next->next = aNode; \n12    aNode->next = NULL; \n13    return rest; \n14 } \n(a) (1 pt) Is this function recursive? (Circle the correct answer below.) \n \nYES \n \n \nNO \n \n(b) (2 pts) What does the function eFunction do, in general to the list pointed to by its formal \nparameter, aNode? \n \n \n \n \n \n(c) (2 pts) What important task does line 12 perform?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.8900146484375,
+                    "y1": 717.9635009765625
+                }
+            },
+            "raw": "Write a recursive function to find the leaf node in a binary search tree storing the minimum \nvalue. (Thus, of all leaf nodes in the binary search tree, the function must return a pointer to the \none that stores the smallest value.) If the pointer passed to the function is NULL (empty tree), the \nfunction should return NULL. \ntypedef struct bstNode { \n    int data; \n    struct bstNode *left; \n    struct bstNode *right; \n} bstNode; \n \nbstNode* find_min_leaf(bstNode* root) { \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Search Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.7740478515625,
+                    "y1": 175.3519744873047
+                }
+            },
+            "raw": "The array below stores a minimum binary heap. Draw the tree version of the corresponding binary heap. \nThen, remove the minimum value and show the resulting heap, in tree form. (Note: Index 0 isn't shown \nbecause index 1 stores the value at the root/top of heap.) \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \n11 \nValue \n2 \n16  \n3 \n22  \n17 \n12 \n13 \n23 \n30 \n18 \n20",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Binary Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 549.5999755859375,
+                    "y1": 372.02288818359375
+                }
+            },
+            "raw": "With proof, determine the Big-Oh run time of the function, f, below, in terms of the input parameter n:\nint f(int array[], int n) { \n   int i, t = 0, a = 0, b = n-1; \n   while (a < b) { \n       for (i=a; i<=b; i++) \n           t += array[i]; \n       if (array[a] < array[(a+b)/2]) \n           b = (a+b)/2-1; \n       else \n           a = (a+b)/2+1; \n   } \n   return t; \n} \nIn your work, you may use the following result: \u2211\n(\n1\n2)\ud835\udc56\n\u221e\n\ud835\udc56=0\n= 2.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.62400817871094,
+                    "x1": 561.1199951171875,
+                    "y1": 699.0120239257812
+                }
+            },
+            "raw": "An algorithm processing an array of size n runs in \ud835\udc42(\ud835\udc5b3) time. For an array of size 500 the algorithm \nprocesses the array in 200 ms. How long would it be expected for the algorithm to take when processing \nan array of size 1,500? Please express your answer in seconds. \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 90.10398864746094,
+                    "x1": 561.1200561523438,
+                    "y1": 436.5135192871094
+                }
+            },
+            "raw": "Write an efficient recursive function that takes in a sorted array numbers, two integers, low and\nhigh, representing indexes into the array, and another integer, value, and returns the index in the \narray where value is found in the array in between index low and high, inclusive. If value is NOT \nfound in the array in between indexes low and high, inclusive, then the function should return -1. \nint search(int numbers[], int low, int high, int value) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.7319946289062,
+                    "y1": 339.7820129394531
+                }
+            },
+            "raw": "(a) (3 pts) Explain why, in the worst case, Quick Sort runs more slowly than Merge Sort. \n(b) (2 pts) In practice, Quick Sort runs slightly faster than Merge Sort. This is because the partition \nfunction can be run \"in place\" while the merge function can not. More clearly explain what it means to \nrun the partition function \"in place\".",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.9500732421875,
+                    "y1": 718.2034912109375
+                }
+            },
+            "raw": "Consider the problem of placing 8 kings on an 8 x 8 chessboard, so that no two of the kings can attack \neach other AND no two kings are on the same row or column. (Recall that a King can move one space \nin each of the eight possible directions of movement: up, down, left, right or any of the four diagonals.) \nComplete the code skeleton below so that it prints out each solution to the 8 Kings problem. (Note: \nassume that the function print, which isn't included, prints out the solution that corresponds to a \nparticular permutation of kings. For example, the permutation {2, 4, 6, 1, 3, 5, 7, 0} represents kings at \nthe following locations (0, 2), (1, 4), (2, 6), (3, 1), (4, 3), (5, 5), (6, 7), and (7, 0).) \n#include <stdio.h> \n#include <math.h> \n#define SIZE 8 \nvoid go(int perm[], int k, int used[]); \nvoid print(int perm[]); \nint main() { \n   int perm[SIZE]; \n   int used[SIZE]; \n   int i; \n   for (i=0; i<SIZE; i++) used[i] = 0; \n   go(perm, 0, used); \n   return 0; \n} \nvoid go(int perm[], int k, int used[]) { \n   if ( _________________ ) { \n       print(perm); \n       return; \n   } \n   int i; \n   for (i=0; i<SIZE; i++) { \n       if ( ___________________________________ ) continue; \n       if ( ___________________________________ ) continue; \n       perm[k] = ____ ; \n       used[ _____ ] = 1 ; \n       go(perm, _______, used); \n       used[ i ] = ___ ; \n   } \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Backtracking"
+        }
+    }
+}

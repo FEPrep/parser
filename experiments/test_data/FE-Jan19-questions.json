@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0640869140625,
+                    "y1": 592.7709350585938
+                }
+            },
+            "raw": "This problem relies on the following struct definition: \n    typedef struct Employee \n    { \n      char *first; // Employee's first name. \n      char *last;  // Employee's last name. \n      int ID;      // Employee ID. \n    } Employee; \nConsider the following function, which takes three arrays \u2013 each of length n \u2013 containing the first \nnames, last names, and ID numbers of n employees for some company. The function dynamically \nallocates an array of n Employee structs, copies the information from the array arguments into the \ncorresponding array of structs, and returns the dynamically allocated array. \n    Employee *makeArray(char **firstNames, char **lastNames, int *IDs, int n) \n    { \n      int i; \n      Employee *array = malloc(                                          ); \n \n      for (i = 0; i < n; i++) \n      { \n        array[i].first = malloc(                                               ); \n        array[i].last = malloc(                                                ); \n        strcpy(array[i].first, firstNames[i]); \n        strcpy(array[i].last, lastNames[i]); \n        array[i].ID = IDs[i]; \n      } \n      return array; \n    } \na) Fill in the blanks above with the appropriate arguments for each malloc() statement. \nb) Next, write a function that takes a pointer to the array created by the makeArray() function, along \nwith the number of employee records in that array (n) and frees all the dynamically allocated \nmemory associated with that array. The function signature is as follows: \n    void freeEmployeeArray(Employee *array, int n) \n    {",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.06396484375,
+                    "y1": 614.1520385742188
+                }
+            },
+            "raw": "Consider the following code: \n    void doTheThing(node *head, node *current) \n    { \n      if (current == NULL) \n        return; \n      else if (current == head->next) \n      { \n        if (current->data == head->next->next->data) \n          doTheThing(head, head->next->next->next); \n        else if (current->data == head->next->next->data + 1) \n          doTheThing(head, head->next->next->next->next); \n        else if (current->data == head->next->next->data + 5) \n          doTheThing(head, current->next->next->next); \n        else if (current->data == head->next->next->data + 10) \n          doTheThing(head, head->next); \n        else \n          doTheThing(head, current->next); \n      } \n      else \n        doTheThing(head, current->next); \n    } \nDraw a linked list that simultaneously satisfies both of the following properties: \n1. The linked list has exactly four nodes. Be sure to indicate the integer value contained in \neach node. \n \n2. If the linked list were passed to the function above, the program would either crash with a \nsegmentation fault, get stuck in an infinite loop, or crash as a result of a stack overflow \n(infinite recursion). \n \nNote: When this function is first called, the head of your linked list will be passed as both arguments to \nthe function, like so: \n    doTheThing(head, head); \nHint: Notice that all the recursive calls always pass head as the first parameter. So, within this function, \nhead will always refer to the actual head of the linked list. The second parameter is the only one that \never changes.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.028076171875,
+                    "y1": 234.5209503173828
+                }
+            },
+            "raw": "Write a recursive function to print a postorder traversal of all the integers in a binary tree. The node \nstruct and function signature are as follows: \n typedef struct node \n { \n   struct node *left; \n   struct node *right; \n   int data; \n } node; \n void print_postorder(node *root) \n {",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.1200180053711,
+                    "x1": 560.8900146484375,
+                    "y1": 668.9920043945312
+                }
+            },
+            "raw": "a) Show the result of inserting the value 24 into the following minheap. \n        33 \n      /    \\ \n    41      89 \n   /  \\    / \n  77  50  92 \nb) Show the result of deleting the root of the following minheap. \n        33 \n      /    \\ \n    41      89 \n   /  \\    / \n  77  50  92 \nc) Using big-oh notation, what is the worst-case runtime for deleting the minimum element from a\nminheap that has n nodes?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Minheaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.902099609375,
+                    "y1": 459.67352294921875
+                }
+            },
+            "raw": "With proof, determine the Big-Oh run time of the function, f, below, in terms of the input parameter n.\n(Note: You may use results from algorithms studied previously in COP 3502 without restating the full \nproof of run time.) \n#include <math.h> \nint f(int array[], int n) { \n   return frec(array, 0, n-1); \n} \nint frec(int array[], int lo, int hi) { \n    \n   if (lo == hi) return array[lo]; \n   int left = frec(array, lo, (lo+hi)/2); \n   int right = frec(array, (lo+hi)/2+1, hi); \n   int i, lCnt = 0, rCnt = 0; \n   for (i=lo; i<=hi; i++) { \n       if (abs(array[i]-left) < abs(array[i]-right)) \n           lCnt++; \n       else \n           rCnt++; \n   } \n   if (lCnt > rCnt) return lCnt; \n   return rCnt; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.62400817871094,
+                    "x1": 561.1199951171875,
+                    "y1": 712.81201171875
+                }
+            },
+            "raw": "An algorithm processing a two dimensional array with R rows and C columns runs in \ud835\udc42(\ud835\udc45\ud835\udc362) time. For \nan array with 100 rows and 200 columns, the algorithm processes the array in 120 ms. How long would \nit be expected for the algorithm to take when processing an array with 200 rows and 500 columns? \nPlease express your answer in seconds. \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 88.99390411376953,
+                    "x1": 561.0718994140625,
+                    "y1": 554.863525390625
+                }
+            },
+            "raw": "Mathematically, given a function f, we recursively define fk(n) as follows: if k = 1, f1(n) = f(n).\nOtherwise, for k > 1, fk(n) = f(fk-1(n)). Assume that a function, f, which takes in a single integer and \nreturns an integer already exists. Write a recursive function fcomp, which takes in both n and k (k > 0), \nand returns fk(n). \nint f(int n); \nint fcomp(int n, int k) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1199951171875,
+                    "y1": 616.7919921875
+                }
+            },
+            "raw": "(a) (5 pts) Consider using Merge Sort to sort the array shown below. What would the state of the \narray be right before the last call to the Merge function occurs? \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \nvalue \n20 \n15 \n98 \n45 \n13 \n83 \n66 \n51 \n88 \n32 \nAnswer: \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \nvalue \n \n \n \n \n \n \n \n \n \n \n(b) (5 pts) An inversion in an array, arr, is a distinct pair of values i and j, such that i < j and arr[i] > \narr[j]. The function below is attempting to count the number of inversions in its input array, arr, \nof size n. Unfortunately, there is a bug in the program. Given that the array passed to the function \nhas all distinct values, what will the function always return (no matter the order of values in the \ninput array), in terms of n? Also, suggest a quick fix so that the function runs properly. (Note: \nanalyzing inversions is important to studying sorting algorithm run times.) \nint countInversions(int arr[], int n) { \n// line 1 \n    int i, j, res = 0;  \n \n \n \n// line 2 \n    for (i = 0; i < n; i++) { \n \n \n// line 3 \n        for (j = 0; j < n; j++) { \n \n// line 4 \n            if (arr[i] > arr[j])  \n \n// line 5 \n                res++;  \n \n \n \n// line 6 \n        } \n \n \n \n \n \n \n// line 7 \n    } \n \n \n \n \n \n \n \n// line 8 \n    return res; \n \n \n \n \n \n// line 9 \n}  \n \n \n \n \n \n \n \n// line 10  \n \n \n \n \n \n \n \n \n \n \n \nReturn value of the function in terms of n: _______________________ \n \nLine number to change to fix the function: _____________ \n \nLine of code to replace that line: _____________________________________________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1080322265625,
+                    "y1": 650.863525390625
+                }
+            },
+            "raw": "In this problem we will consider buying a collection of 20 figurines, labeled 0 through 19, inclusive. The \nfigurines come in packages. Each package has some non-empty subset of figurines. We can represent \nthe contents of a single package using an integer in between 1 and 220 \u2013 1, inclusive, where the bits that \nare on represent which figurines are in the package. For example, the integer 22 = 24 + 22 + 21, would \nrepresent a package with figurines 1, 2 and 4. Each month, one package comes out. You greedily buy \nevery package until you have all 20 figurines. Write a function that takes in an array of integers, \npackages, and its length, n, where packages[i] stores an integer representing the contents of the package \non sale during month i, and returns the number of months you will have to buy packages to complete the \nset. It is guaranteed that each figurine belongs to at least one of the packages and that each value in the \narray packages is in between 1 and 220-1, inclusive. For full credit, you must use bitwise operators. \nint monthsTillComplete(int packages[], int n) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

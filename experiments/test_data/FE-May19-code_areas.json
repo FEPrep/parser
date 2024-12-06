@@ -1,0 +1,105 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 311.2997741699219,
+                "x1": 349.27117919921875,
+                "y1": 719.1635131835938
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 338.5735168457031,
+                        "x1": 349.27117919921875,
+                        "y1": 705.5697631835938
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "CartPoint* createPoints(int numPoints) { \n \nint i; \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 338.6597595214844,
+                "x1": 565.3211669921875,
+                "y1": 719.4035034179688
+            },
+            "sub_areas": [],
+            "text": "int enqueue(queue *thisQ, int item) { \nstruct node *newNode = ____________________________________ ; \n \nif(thisQ == NULL) return 0; \n \n \n \n \n \n \n \n \nif(newNode == NULL) return 0;  \n \n \n \n \n \nnewNode->data = _________; \n \n \n \n \n \n \n \nnewNode->next = _________; \n \n \n \n \nthisQ->size = _______________________; \nif(thisQ->head == NULL) { \n \n \n \n \n \n \n \nnewNode->prev = ____________;  \n \n \n \n \n  \n \nthisQ->head = ______________;  \n \n \n \n \n \nthisQ->tail = ______________;  \n \n \n \n \n \n \nreturn 1; \n} \n_____________________________________________; \n    _____________________________________________; \n    _____________________________________________; \n    return 1;  \n \n \n \n \n \n}"
+        }
+    ],
+    "3": [],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 403.8397521972656,
+                "x1": 313.27117919921875,
+                "y1": 594.2235107421875
+            },
+            "sub_areas": [],
+            "text": "int solve(bstNode* root) { \n   if (root == NULL) return 0; \n   int res = root->data; \n   int left = solve(root->left); \n   int right = solve(root->right); \n   if (left+right > res) \n       res = left+right; \n   printf(\"%d, \", res); \n   return res; \n}"
+        }
+    ],
+    "6": [],
+    "7": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 269.77978515625,
+                "x1": 522.1011962890625,
+                "y1": 582.4635009765625
+            },
+            "sub_areas": [],
+            "text": "int countWords(TrieNode* root, int freq[]) { \n   int res = ______________________ ; \n   int i; \n   for (i=0; i<26; i++) { \n        \n       if ( ___________________ || __________________________ ) \n           continue; \n        \n       __________________________________________ ; \n        \n       res += ______________________________________________ ; \n       __________________________________________ ; \n   } \n   return res; \n}"
+        }
+    ],
+    "8": [],
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 260.77978515625,
+                "x1": 522.1011962890625,
+                "y1": 532.633544921875
+            },
+            "sub_areas": [],
+            "text": "int numpaths(int sx, int sy, int ex, int ey, int allowed[][N]) { \n    \n   if (!allowed[sx][sy]) return ___; \n   if (sx > ex || sy > ey) return ___; \n   if (sx == ex && sy == ey) return  ___; \n   int res = ___ ; \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   if ( _______________________ ) \n \n       res += numpaths(____, ____, ____, ____, __________); \n   return res; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 546.3097534179688,
+                "x1": 392.4711608886719,
+                "y1": 587.0234985351562
+            },
+            "sub_areas": [],
+            "text": "int inbounds(int x, int y) { \n   return x >= 0 && x < N && y >= 0 && y < N; \n}"
+        }
+    ],
+    "14": [],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 270.9797668457031,
+                "x1": 536.5211791992188,
+                "y1": 665.2635498046875
+            },
+            "sub_areas": [],
+            "text": "int numperms(int perm[], int used[], int k, int* jumps, int len) { \n   int i, j, res = 0; \n   if (k == N) return ___; \n   for (i=0; i<N; i++) { \n       if (used[i]) _____________; \n       int flag = 0; \n       if (k == 0) \n           flag = ___; \n       else { \n           for (j=0; j < ____; j++) \n               if ( ____________ == jumps[j]) \n                   flag = ___; \n       } \n       if (flag) { \n           used[i] = ___; \n           perm[k] = ___; \n           res += numperms(perm, used, _____, jumps, len); \n           used[i] = ___; \n       } \n   } \n   return res; \n}"
+        }
+    ]
+}

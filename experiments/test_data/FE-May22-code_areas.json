@@ -1,0 +1,137 @@
+{
+    "0": [],
+    "1": [],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 256.81976318359375,
+                "x1": 385.27117919921875,
+                "y1": 705.4595336914062
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 256.81976318359375,
+                        "x1": 385.27117919921875,
+                        "y1": 705.4595336914062
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "void insertAfterN(node* head, int M, int N) { \n}"
+        }
+    ],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 347.05975341796875,
+                "x1": 270.0511779785156,
+                "y1": 707.3795166015625
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 408.29351806640625,
+                        "x1": 270.0511779785156,
+                        "y1": 693.7857666015625
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "int isPalindrome(char *str) { \n   struct stack s; \n   initialize(&s); \n   int len = strlen(str); \n}"
+        }
+    ],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 174.60812377929688,
+                "x1": 504.07696533203125,
+                "y1": 265.24090576171875
+            },
+            "sub_areas": [],
+            "text": "int foo(node *root) { \n   if (root == NULL) return 1; \n   if (root->left == NULL && root->right == NULL) return 2; \n   if (root->left == NULL) return 3 * foo(root->right); \n   if (root->right == NULL) return 4 * foo(root->left); \n   if (root->right->data > root->left->data) return 5 * foo(root->right); \n   return 6 * foo(root->left); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 276.6380920410156,
+                "x1": 246.0269775390625,
+                "y1": 695.7269287109375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 276.6380920410156,
+                        "x1": 246.0269775390625,
+                        "y1": 695.7269287109375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int iterative_foo(node *root) { \n}"
+        }
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 147.00808715820312,
+                "x1": 288.0269470214844,
+                "y1": 180.9709014892578
+            },
+            "sub_areas": [],
+            "text": "int f(int* arr, int n, int minVal) { \n   return fHelp(arr, 0, n-1, minVal); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 192.36807250976562,
+                "x1": 372.0469665527344,
+                "y1": 464.2209167480469
+            },
+            "sub_areas": [],
+            "text": "int fHelp(int* arr, int low, int high, int minVal) { \n   if (low > high) return 0; \n   if (low == high) return arr[low] >= minVal; \n   int mid = (low+high)/2; \n   int left = fHelp(arr, low, mid, minVal); \n   int right = fHelp(arr, mid+1, high, minVal); \n   int res = left; \n   if (right > left) \n       res = right; \n   int alt = 0, i; \n   for (i=mid; i>=low; i--) { \n       if (arr[i] < minVal) break; \n       alt++; \n   } \n   for (i=mid+1; i<=high; i++) { \n       if (arr[i] < minVal) break; \n       alt++; \n   } \n   if (alt > res) res = alt; \n   return res; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 320.1797790527344,
+                "x1": 226.85116577148438,
+                "y1": 564.9135131835938
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 320.1797790527344,
+                        "x1": 226.85116577148438,
+                        "y1": 564.9135131835938
+                    },
+                    "text": "{ \n    \n}"
+                }
+            ],
+            "text": "int towersCost(int n) { \n    \n}"
+        }
+    ],
+    "14": [],
+    "15": []
+}

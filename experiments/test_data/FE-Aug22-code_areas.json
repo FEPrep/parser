@@ -1,0 +1,138 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 437.6797790527344,
+                "x1": 270.0511779785156,
+                "y1": 709.6595458984375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 437.6797790527344,
+                        "x1": 270.0511779785156,
+                        "y1": 709.6595458984375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "Team *createTeam (FILE *fp) { \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 255.979736328125,
+                "x1": 334.8711853027344,
+                "y1": 704.6195068359375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 255.979736328125,
+                        "x1": 334.8711853027344,
+                        "y1": 704.6195068359375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "node* deleteMe(node* head, node* me) { \n}"
+        }
+    ],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 343.23809814453125,
+                "x1": 342.0469665527344,
+                "y1": 660.450927734375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 343.23809814453125,
+                        "x1": 342.0469665527344,
+                        "y1": 660.450927734375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int maxPrefixMatch(TrieNode* root, char* str) { \n}"
+        }
+    ],
+    "8": [],
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 276.6380920410156,
+                "x1": 516.0769653320312,
+                "y1": 367.12091064453125
+            },
+            "sub_areas": [],
+            "text": "int main(void) { \n   int perm[N]; \n   int used[N]; \n   for (int i=0; i<N; i++) used[i] = 0; \n   int res = go(perm, used, 0, MYTILES); \n   printf(\"Number of tile orderings that create palindromes is %d\\n\", res); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 378.5180969238281,
+                "x1": 432.0469665527344,
+                "y1": 639.0908813476562
+            },
+            "sub_areas": [],
+            "text": "int go(int perm[], int used[], int k, char tiles[N][MAXLEN]) { \n   if (k == N)  \n       return _________________________________________ ; \n   int res = 0; \n   for (int i=0; i<N; i++) { \n       if (used[i]) continue; \n       used[i] = ____ ; \n       perm[k] = ____ ; \n       _________________________________________________ ; \n        \n       used[i] = ____ ; \n   } \n   return res; \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 50.388099670410156,
+                "x1": 330.0269470214844,
+                "y1": 242.8909454345703
+            },
+            "sub_areas": [],
+            "text": "int eval(int perm[], char tiles[N][MAXLEN]) { \n   char tmp[N*MAXLEN]; \n   int idx = 0; \n   for (int i=0; i<N; i++) { \n       int len = strlen(tiles[perm[i]]); \n       for (int j=0; j<len; j++) \n           tmp[idx++] = tiles[perm[i]][j]; \n   } \n   tmp[idx] = '\\0'; \n   for (int i=0; i<idx/2; i++) \n       if (tmp[i] != tmp[idx-1-i]) \n           return 0; \n   return 1; \n}"
+        }
+    ],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 482.7997741699219,
+                "x1": 363.6711730957031,
+                "y1": 713.8594970703125
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 482.7997741699219,
+                        "x1": 363.6711730957031,
+                        "y1": 713.8594970703125
+                    },
+                    "text": "{ \n    \n}"
+                }
+            ],
+            "text": "int pressButtons(int buttons[], int len) { \n    \n}"
+        }
+    ]
+}

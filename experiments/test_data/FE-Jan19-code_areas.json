@@ -1,0 +1,127 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 60.0,
+                "y0": 269.7981262207031,
+                "x1": 552.0969848632812,
+                "y1": 473.7008972167969
+            },
+            "sub_areas": [],
+            "text": "Employee *makeArray(char **firstNames, char **lastNames, int *IDs, int n) \n    { \n      int i; \n      Employee *array = malloc(                                          ); \n \n      for (i = 0; i < n; i++) \n      { \n        array[i].first = malloc(                                               ); \n        array[i].last = malloc(                                                ); \n        strcpy(array[i].first, firstNames[i]); \n        strcpy(array[i].last, lastNames[i]); \n        array[i].ID = IDs[i]; \n      } \n      return array; \n    }"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 60.0,
+                "y0": 118.8080825805664,
+                "x1": 438.07696533203125,
+                "y1": 368.0809020996094
+            },
+            "sub_areas": [],
+            "text": "void doTheThing(node *head, node *current) \n    { \n      if (current == NULL) \n        return; \n      else if (current == head->next) \n      { \n        if (current->data == head->next->next->data) \n          doTheThing(head, head->next->next->next); \n        else if (current->data == head->next->next->data + 1) \n          doTheThing(head, head->next->next->next->next); \n        else if (current->data == head->next->next->data + 5) \n          doTheThing(head, current->next->next->next); \n        else if (current->data == head->next->next->data + 10) \n          doTheThing(head, head->next); \n        else \n          doTheThing(head, current->next); \n      } \n      else \n        doTheThing(head, current->next); \n    }"
+        }
+    ],
+    "3": [
+        {
+            "rect": {
+                "x0": 60.0,
+                "y0": 119.04813385009766,
+                "x1": 522.0769653320312,
+                "y1": 458.94091796875
+            },
+            "sub_areas": [],
+            "text": "void doTheThing(void) \n    { \n      int i, n = 9;  // Note: There are 9 elements in the following array. \n      int array[] = {3, 18, 58, 23, 12, 31, 19, 26, 3}; \n      Stack *s1 = createStack(); \n      Stack *s2 = createStack(); \n      Queue *q = createQueue(); \n      for (i = 0; i < n; i++) \n        push(s1, array[i]); \n      while (!isEmptyStack(s1)) \n      { \n         while (!isEmptyStack(s1)) \n           enqueue(q, pop(s1));   // pop element from s1 and enqueue it in q \n         while (!isEmptyQueue(q)) \n           push(s2, dequeue(q));  // dequeue from q and push onto s2 \n         printf(\"%d \", pop(s2));  // pop from s2 and print element \n         while (!isEmptyStack(s2)) \n           push(s1, pop(s2));     // pop from s2 and push onto s1 \n      } \n      printf(\"Tada!\\n\"); \n      freeStack(s1); \n      freeStack(s2); \n      freeQueue(q); \n    }"
+        }
+    ],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 174.1097412109375,
+                "x1": 284.451171875,
+                "y1": 214.94354248046875
+            },
+            "sub_areas": [],
+            "text": "int f(int array[], int n) { \n   return frec(array, 0, n-1); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 228.499755859375,
+                "x1": 442.90118408203125,
+                "y1": 459.67352294921875
+            },
+            "sub_areas": [],
+            "text": "int frec(int array[], int lo, int hi) { \n    \n   if (lo == hi) return array[lo]; \n   int left = frec(array, lo, (lo+hi)/2); \n   int right = frec(array, (lo+hi)/2+1, hi); \n   int i, lCnt = 0, rCnt = 0; \n   for (i=lo; i<=hi; i++) { \n       if (abs(array[i]-left) < abs(array[i]-right)) \n           lCnt++; \n       else \n           rCnt++; \n   } \n   if (lCnt > rCnt) return lCnt; \n   return rCnt; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 187.66973876953125,
+                "x1": 241.2511749267578,
+                "y1": 554.863525390625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 187.66973876953125,
+                        "x1": 241.2511749267578,
+                        "y1": 554.863525390625
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int fcomp(int n, int k) { \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 72.02400207519531,
+                "y0": 370.3397521972656,
+                "x1": 450.1011657714844,
+                "y1": 506.353515625
+            },
+            "sub_areas": [],
+            "text": "int countInversions(int arr[], int n) { \n// line 1 \n    int i, j, res = 0;  \n \n \n \n// line 2 \n    for (i = 0; i < n; i++) { \n \n \n// line 3 \n        for (j = 0; j < n; j++) { \n \n// line 4 \n            if (arr[i] > arr[j])  \n \n// line 5 \n                res++;  \n \n \n \n// line 6 \n        } \n \n \n \n \n \n \n// line 7 \n    } \n \n \n \n \n \n \n \n// line 8 \n    return res; \n \n \n \n \n \n// line 9 \n}"
+        }
+    ],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 242.8997802734375,
+                "x1": 399.6711730957031,
+                "y1": 650.863525390625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 242.8997802734375,
+                        "x1": 399.6711730957031,
+                        "y1": 650.863525390625
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int monthsTillComplete(int packages[], int n) { \n}"
+        }
+    ]
+}

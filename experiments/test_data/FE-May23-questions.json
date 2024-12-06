@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0401000976562,
+                    "y1": 517.7620239257812
+                }
+            },
+            "raw": "The struct below is used to define a node in a linked list. Below it is a function, freeList, that is given a \npointer to the front/head of a linked list. The function is supposed to free all the dynamically allocated \nmemory associated with the linked list that the given pointer is pointing to. Unfortunately, the function \ndoes not work. Explain why the function doesn\u2019t work and propose a fix to the function, in words only, \nconceptually explaining the order in which the key steps have to be executed. \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nvoid freeList(node* front) { \n   if (front != NULL)  \n       free(front); \n   if (front->next != NULL) \n       freeList(front->next); \n} \nProblem(s) with current code \nProposed fixes (conceptually, in words)",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0999755859375,
+                    "y1": 724.5394897460938
+                }
+            },
+            "raw": "Consider the problem of determining the number of changes in direction of a sequence of integers stored \nin a linked list. We define a change in direction as any three consecutive values a, b, and c in the sequence \nwhere either a > b and b < c, or where a < b and b > c. For example, the sequence 3, 8, 2, 2, 5, 6, 4, 8, 3 \nhas 4 changes in direction: (3, 8, 2), (5, 6, 4), (6, 4, 8) and (4, 8, 3). Notice how consecutive equal values \nin a sequence affect whether an actual change of direction is detected by this definition. Write an iterative \nfunction that takes in a pointer to the front/head of a linked list, front, and returns the number of changes \nof direction, as defined above, in the sequence of integers in the linked list pointed to by front. Note: lists \nof size 0, 1 or 2, by definition, have no changes of direction. \ntypedef struct node { \n   int data; \n   struct node* next; \n} node;  \nint numDirChange(node *front) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0880126953125,
+                    "y1": 408.4219970703125
+                }
+            },
+            "raw": "Consider the following tree, which is a ternary tree (i.e., a tree where each node can have up to three \nchildren: a left child, a middle child, and a right child): \n          12 \n         / | \\ \n        /  |  \\ \n      40  14   73 \n       \\      / | \\ \n        11   8 39  62 \n                | \n               24 \nGive the preorder and postorder traversals of that tree. Follow the same general algorithms you use for \ngiving the preorder and postorder traversals of a binary tree, but extend those ideas to work for a ternary\ntree without upending the fundamental principles behind those traversal algorithms. \nPreorder traversal:                                                                       \nPostorder traversal:",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 88.54399108886719,
+                    "x1": 560.6111450195312,
+                    "y1": 726.8606567382812
+                }
+            },
+            "raw": "Suppose we insert nine strings into a hash table and end up with the following: \nlime \n \nkiwi \npeach \n \nlemon coconut \n \nmango orange \napple \n \nbanana \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \n11 \n12 \nFurthermore, suppose we no longer know the order in which those strings were inserted or what their hash values \nwere. \nIn solving this problem, you may assume quadratic probing for collisions during the insertions. You should also \nassume that no strings have been deleted from the table and that each of these strings was inserted exactly once (no \nmore, no less). You may also assume the table length was 13 for all insertions (i.e., none of the insertions triggered \nan expansion of the hash table). \nFill in the 10 blanks below to indicate whether the hash value for banana, when modded by the table length (13), \nmight have been the value indicated. For example, it's impossible that hash(\"banana\")%13 could have been 1, \nbecause if it were, then banana would be located in position 1 (which is empty now) and not position 12. But, it is \npossible that that hash(\"banana\")%13 equals 12, because that's where it ended up. \n \n0 \n________  \nFill in each of these blanks with \u201cYES\u201d or \u201cNO.\u201d Do not leave any blank. \n \n1 \nNO                 \n \n2 \n________                   \n \n3 \n________                   \n \n4 \nNO                  \n \n5 \n________                   \n \n6 \n________                   \n \n7 \n________                   \n \n8 \n________                   \n \n9 \n________                   \n \n10 ________                   \n \n11 ________                   \n \n12 YES",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Hash Tables"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 63.134891510009766,
+                    "x1": 560.7377319335938,
+                    "y1": 345.6052551269531
+                }
+            },
+            "raw": "What is the Big-Oh memory usage for the function call \ncreateNode(N)? Please provide your answer in terms of the input parameter, N. Please justify your answer \nby either evaluating an appropriate recurrence relation or summation. \ntypedef struct Node Node; \nstruct Node { \n  Node ** children; \n  int val; \n}; \nNode * createNode(int N) { \n  Node * res = (Node *) malloc(sizeof(Node)); \n  if (N == 0) return res; \n  res->children = (Node **) malloc(sizeof(Node*) * N); \n  res->children[0] = createNode(N / 2); \n  res->val = 0; \n  for (int i = 0; i < N; i++) \n     res->val += i; \n  return res; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.67486572265625,
+                    "x1": 560.800537109375,
+                    "y1": 118.92224884033203
+                }
+            },
+            "raw": "An O(N2) sorting algorithm took 500ms to sort an array of size 5,000. How many values can the same algorithm \nsort in 8 seconds?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.74400329589844,
+                    "x1": 561.0280151367188,
+                    "y1": 461.7135009765625
+                }
+            },
+            "raw": "Write a recursive function, countDown, which takes in a single positive integer, n, and prints each\nof the integers, from n down to 1, with one integer per line. For example, the function call \ncountdown(4) should produce the following output: \n4 \n3 \n2 \n1 \nComplete the function below: \nvoid countDown(int n) { \n    \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.1119995117188,
+                    "y1": 518.4819946289062
+                }
+            },
+            "raw": "(a) (6 pts) Consider the array below passed to merge sort. After dividing the full array into the smallest \npieces, it will start calling the merge operation. In total, how many times will the merge function will be \ncalled for the following array? Show the content of the array right before the last merge operation. \n17 \n12 \n11 \n14 \n15 \n16 \n10 \n13 \nNumber of merge function calls:________________________ \nContents of the array right before the last merge function call: \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \ndata \n \n \n \n \n \n \n \n \n(b) (4 pts) List the Big-Oh run-times requested for the following sorting algorithms, in terms of n, the\nnumber of items being sorted: \n     Worst case run-time of quick sort : \n___________ \n     Average case run-time of quick sort :  \n___________ \n     Worst case run-time of merge sort :  \n___________ \n       \n     Average case run-time of merge sort :  \n___________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 91.4466552734375,
+                    "x1": 561.0999755859375,
+                    "y1": 707.6195068359375
+                }
+            },
+            "raw": "An organization has 30 groups of employees, labeled as group 0, 1, 2, \u2026, 29.  Each individual employee \nis assigned to some subset of those groups. The set of groups to which an employee belongs can be \nstored in a single integer, called the employee's ACCESS CODE, based on the bits of that integer. For \nexample, an employee in groups 0, 3, 13 and 18 would have ACCESS CODE 20 + 23 + 213 + 218 (this is \nequal to 270345.) There are several shared drives at the organization. Each shared drive is accessible by \nany employees in a specified set of employee groups. The ACCESS CODE of a drive is specified \nexactly as that of an employee. If all employees who belong to either groups 2, 3 or 6 should have access \nto a shared drive, then that drive's access code is 22 + 23 + 26 (76). An employee with ACCESS CODE \n270345 would have access to a drive with ACCESS CODE 76, since the employee is part of group 3, \nand all employees in group 3 get access to the drive. Write a function that takes in an employee's access \ncode, empCode, (as a single integer), an array of integers (driveCodes) storing the access codes of \nevery shared drive in the organization, and the length of that array (numDrives), and returns the \nnumber of the shared drives that the employee with the given access code has access to. \nint numDrivesAccess(int empCode, int* driveCodes, int numDrives) { \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

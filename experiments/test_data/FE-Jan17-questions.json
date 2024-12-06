@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 564.1000366210938,
+                    "y1": 719.7635498046875
+                }
+            },
+            "raw": "A catalogue of apps and their price is stored in a text file.  Each line of the file contains the name of an \napp (1-19 letters) followed by its price with a space in between.  Write a function called \nmakeAppArray that reads the app information from the file and stores it in an array of app pointers. \nYour function should take 2 parameters: a pointer to the file containing the app information and an \ninteger indicating the number of apps in the file.  It should return a pointer to the array of apps.  An app \nis stored in a struct as follows: \ntypedef struct{ \n char name[20]; \n float price; \n} app; \nMake sure to allocate memory dynamically. The function signature is: \napp** makeAppArray(FILE* fp, int numApps) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.86399841308594,
+                    "x1": 554.4000244140625,
+                    "y1": 723.2520141601562
+                }
+            },
+            "raw": "Consider the following function that takes in as a parameter a pointer to the front of a linked list(list) \nand the number of items in the list(size). node is defined as follows: \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nint mystery(node* list, int size) { \n   node* prev = list; \n   node* temp = list->next; \n   while (temp != NULL) { \n       if (list->data == temp->data) { \n           prev->next = temp->next; \n           free(temp); \n           size--; \n           temp = prev->next; \n       } \n       else { \n           prev = prev->next; \n           temp = temp->next; \n       } \n   } \n   return size; \n} \nIf mystery(head, 7), is called, where head is shown below, what will the function return and \ndraw a picture of the resulting list, right after the call completes? \n+----+   +----+   +----+   +----+   +----+   +----+   +----+ \n| 26 |-->| 39 |-->| 26 |-->| 20 |-->| 26 |-->| 32 |-->| 39 |-->NULL \n+----+   +----+   +----+   +----+   +----+   +----+   +----+ \n   ^ head \nAdjusted List \n------------- \n                         \n                    \nReturn Value = _____",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 103.18400573730469,
+                    "x1": 561.1199951171875,
+                    "y1": 722.2835083007812
+                }
+            },
+            "raw": "Michael took CS 1 last semester.   During the Winter break he thought that it would be cool to keep track \nof all of the new words that he learned while reading a novel.  He has stored all of his words (all 1-19\nlowercase letters only) in alphabetic order in a binary search tree (BST). The nodes of his BST are stored \nin the following structure: \ntypedef struct { \n  struct node *left, *right; \n  char word[20]; \n} bsNode; \nMichael wants to count the number of words in his binary search tree that come before a specified word\nin alphabetical order. Write a recursive function countBefore which takes in a pointer to the root of \na binary search tree storing the words and a string target (of 1-19 lowercase letters only) and returns \nthe number of words in the tree that come before target, alphabetically. \nint countBefore(bsNode* root, char target[]){ \n     \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1200561523438,
+                    "y1": 423.56201171875
+                }
+            },
+            "raw": "(a) (3 pts) A set of students\u2019 names are stored in a hash table implemented as an array of size 25.  Their \ngrades out of 100 are used as input to the hashing function.  Suggest one hash function that can be used to \nstore the names.  Would your function cause clashes? Explain your answer. \n   \n(b) (2 pts) If the following students have the grades shown, and your hash function given in (a) is used, \ndraw the state of the hash map after these 3 entries are inserted into the table. (Note: No need to show all \n25 array slots, just clearly label the index and contents of each of the non-empty array slots.) \nMary  60 \nBen 75 \nDona 13",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Hash Maps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.9920043945312,
+                    "y1": 364.50201416015625
+                }
+            },
+            "raw": "Consider the following function with integer inputs n and m: \nvoid solveit(int* array, int n, int m) { \n   int i, res = 0; \n   for (i=0; i<n; i++) { \n       int low = 0, high = m; \n       while (low < high) { \n           int mid = (low+high)/2; \n           if (f(mid) < array[i]) \n               low = mid+1; \n           else \n               high = mid; \n       } \n       printf(\"%d\\n\", low); \n   } \n} \nYou may assume that the function f that is called from solveit defines a monotonically increasing\nfunction that runs in O(1) time. With proof, determine the run-time of this function in terms of n and m.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 88.75385284423828,
+                    "x1": 561.1079711914062,
+                    "y1": 723.7319946289062
+                }
+            },
+            "raw": "(a) (5 pts) An algorithm to process an array of size n takes O(n2) time. If the algorithm takes 113 ms to \nprocess an array of size 10,000 how long will it take to process an array of size 100,000, in seconds? \n________________ \n(b) (5 pts) A search algorithm on an array of size n runs in O(lg n) time. If 200,000 searches on an array \nof size 218 takes 20 ms, how long will 540,000 searches take on an array of size 220 take, in \nmilliseconds? \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1199951171875,
+                    "y1": 557.0234985351562
+                }
+            },
+            "raw": "Write a recursive function that returns 1 if an array of size n is in sorted order from smallest to largest\nwith all values less than or equal to max, and 0 otherwise. Note: If array a stores 3, 6, 7, 7, 12, then \nisSorted(a, 12, 5) should return 1 but isSorted(a, 11, 5) should return 0. If array b \nstores 3, 4, 9, 8, then isSorted(b, 20, 4) should return 0, since 9 is bigger than 8 but appears\nbefore it. \nint isSorted(int* array, int max, int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1079711914062,
+                    "y1": 245.70201110839844
+                }
+            },
+            "raw": "Consider running a Merge Sort on the array shown below. Show the state of the array right before the\nlast Merge is performed. (Note: due to the nature of this question, relatively little partial credit will be \nawarded for incorrect answers.) \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \nvalue \n13 \n8 \n9 \n2 \n1 \n17 \n6 \n5 \nYour answer: \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \nvalue",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0759887695312,
+                    "y1": 726.8308715820312
+                }
+            },
+            "raw": "A D-digit divisible number is a positive integer of D digits (with no leading digits zero) such that each \nof its prefixes of k digits is a number divisible by k. For example, 52240 is a 5-digit divisble number \nbecause 5 is divisible by 1, 52 is divisible by 2, 522 is divisible by 3, 5224 is divisible by 4 and 52240 is \ndivisible by 5. Assume that there exists a function as specified below: \nint kDigitPrefixValue(char* number, int k); \nsuch that if number is storing the string version of an integer that is at least k digits long, then the \nfunction will return the integer value of the first k digits represented in number. For example, \nkDigitPrefixValue(\"52240\", 4) will return the integer 5224. \nComplete the recursive function below so that it will print out all 6-digit divisible numbers. (A complete \nwrapper function is provided for you, so just fill out the blanks in the recursive function.) \n#include <stdio.h> \n#include <stdlib.h> \n#include <string.h> \nint kDigitPrefixValue(char* number, int k); \nvoid printkDivisibleRec(char* number, int k); \nvoid wrapper(int numdigits); \nint main() { \n   wrapper(6); \n   return 0; \n} \nvoid wrapper(int numdigits) { \n   char* tmp = malloc(sizeof(char)*(numdigits+1)); \n   int i; \n   for (i=0; i<numdigits; i++) tmp[i] = '0'; \n   tmp[numdigits] = '\\0'; \n   printkDivisibleRec(tmp, 0); \n   free(tmp); \n} \nvoid printkDivisibleRec(char* number, int k) { \n   if (k == strlen(number)) { \n       printf(\"%s\\n\", number); \n       return; \n   } \n   int i = k == 0 ? 1 : 0; \n   for (; i < ____ ; i++) { \n       number[ ___ ] = (char)( ____ +'0'); \n       int prefix = ___________________________(number, _______ ); \n       if ( __________ %( ________ ) == ____ )  \n           _____________________________(number, ________ ); \n   } \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Backtracking"
+        }
+    }
+}

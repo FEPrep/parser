@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0521240234375,
+                    "y1": 719.0435180664062
+                }
+            },
+            "raw": "Consider the following struct, which contains a string and its length in one nice, neat package: \ntypedef struct smart_string { \n char *word; \n int length; \n} smart_string; \nWrite a function that takes a string as its input, creates a new smart_string struct, and stores a new copy \nof that string in the word field of the struct and the length of that string in the length member of the \nstruct. The function should then return a pointer to that new smart_string struct. Use dynamic memory \nmanagement as necessary. The function signature is: \nsmart_string *create_smart_string(char *str) { \n} \nNow write a function that takes a smart_string pointer (which might be NULL) as its only argument, \nfrees all dynamically allocated memory associated with that struct, and returns NULL when it\u2019s finished. \nsmart_string *erase_smart_string(smart_string *s) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.9739379882812,
+                    "y1": 626.8720092773438
+                }
+            },
+            "raw": "Consider the following function, which takes the head of a linked list as its only input parameter: \nnode *funky(node *head) { \n if (head == NULL) \n   return head; \n if (head->next != NULL && (head->next->data % 2) == 0) { \n   head->next = yknuf(head->next->next, head->next); \n   head = funky(head->next->next); \n } \n else if (head->next != NULL) \n   head->next = funky(head->next); \n return head; \n} \nnode *yknuf(node *n1, node *n2) { \n n2->next = n1->next->next; \n n1->next = n2; \n return n1; \n} \nSuppose someone passes the head of the following linked list to the funky() function: \n+----+   +----+   +----+   +----+   +----+   +----+ \n| 31 |-->| 27 |-->| 84 |-->| 50 |-->| 40 |-->| 32 |-->NULL \n+----+   +----+   +----+   +----+   +----+   +----+ \n   ^ head \nThe function call is: funky(head); \nThis program is going to crash spectacularly, but before it does, it will change the structure of the linked \nlist a bit. Trace through the function call(s) and draw a new diagram that shows how the links in this \nlinked list will be arranged at the moment when the program crashes. (In particular, show where the next \npointer for each node except the one storing 32 will point.) \n+----+   +----+   +----+   +----+   +----+   +----+ \n| 31 |   | 27 |   | 84 |   | 50 |   | 40 |   | 32 | \n+----+   +----+   +----+   +----+   +----+   +----+ \n   ^ head",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.083984375,
+                    "y1": 726.6752319335938
+                }
+            },
+            "raw": "A binary search tree is considered \u201clopsided\u201d if the root\u2019s left subtree height and right subtree height\ndiffer by more than one (i.e., the left subtree is more than one level deeper or shallower than the right \nsubtree). This is different from the definition of \u201cbalanced\u201d that comes up in relation to AVL trees, \nbecause the \u201clopsided\u201d property only applies to the root of the tree \u2013 not every single node in the tree. \nWrite a function, isLopsided(), that takes the root of a binary search tree and returns 1 if the tree is \nlopsided, and 0 otherwise. You may write helper functions as you see fit. The node struct and function \nsignature are as follows: \ntypedef struct node { \n  struct node *left, *right; \n  int data; \n} node; \nint isLopsided(node *root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.6719970703125,
+                    "y1": 450.5052490234375
+                }
+            },
+            "raw": "(a) (2 pts) Is the following tree a valid minheap? If so, give an array representation of this minheap. If\nnot, explain why it\u2019s not a minheap. \n        3 \n      /   \\ \n     93   44 \n    /  \\  \n  207  99 \n(b) (3 pts) Insert the value 3 into the following minheap. Clearly show each step of the process \n        2 \n      /   \\ \n     28   48 \n    / \\   / \\ \n  48  68 78 99",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Advanced Data Structures: Binary Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 558.048095703125,
+                    "y1": 565.6719970703125
+                }
+            },
+            "raw": "Consider the following function: \nint* makeArray(int n) { \n   int* array = calloc(n, sizeof(int)); \n   int i, j; \n   for (i=0; i<n; i++)  \n       for (j=i; j<n; j = j+i+1) \n           array[j]++; \n   return array; \n} \n(a) (1 pt) Assuming that the function is called with a value of n = 12 or greater, what will array[11] store \nwhen the array is returned from the function? \n______ \n(b) (3 pts) In general, what will array[k] store when the function completes, assuming the function was \ncalled with an input value of k+1 or greater? \n(c) (2 pts) Write a summation that provides a tight upper bound on the number of times the line of code \narray[j]++ runs when the function is called with the input value n. \n(d) (4 pts) Utilizing the fact that \u2211\n1\n\ud835\udc56= \ud835\udc42(\ud835\udc59\ud835\udc54\ud835\udc5b)\n\ud835\udc5b\n\ud835\udc56=1\n, determine the run time of the function makeArray for \nan input of size n. (Note: This run time is equal to the summation from part c.)",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 88.75385284423828,
+                    "x1": 561.1199951171875,
+                    "y1": 132.7519989013672
+                }
+            },
+            "raw": "An image processing algorithm takes O(n3) time to run to filter an n x n pixel picture. If it takes 8 \nseconds to process a 1024 x 1024 pixel picture, how long will it take to process a 1536 x 1536 pixel \npicture?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 91.32666015625,
+                    "x1": 560.7320556640625,
+                    "y1": 718.0709228515625
+                }
+            },
+            "raw": "A derangement is a permutation of the integers 1, 2, 3, ..., n such that for all i, 1 \u2264 i \u2264 n, the value in the \nith location isn't i. For example, (2, 1, 4, 3) is a derangement of 4 items since the first item isn't 1, the \nsecond item isn't 2, the third item isn't 3 and the fourth item isn't 4. But (3, 1, 5, 4, 2) is NOT a \nderangement of 5 items since the 4th item on this list is 4.  Complete the code below so that it prints out \nall derangements of size n (2 \u2264 n \u2264 10), where n is entered by the user. \n#include <stdio.h> \n#define MAX 10 \nvoid printD(int n); \nvoid printDRec(int n, int* perm, int* used, int k); \nvoid print(int* perm, int length); \nint main() { \n   int n; \n   printf(\"Enter the size of your derangement(2-10).\\n\"); \n   scanf(\"%d\", &n); \n   printD(n); \n   return 0; \n} \nvoid printD(int n) { \n   int perm[MAX]; \n   int used[MAX]; \n   int i; \n   for (i=0; i<MAX; i++) used[i] = 0; \n   printDRec(___ , __________ , __________ , ______ ); \n} \nvoid printDRec(int n, int* perm, int* used, int k) { \n   if (k == n) { \n       print(perm, n); \n       return; \n   } \n   int i; \n   for (i=0; i<n; i++) { \n       if ( _____________________________________________ ) { \n            \n           perm[ ___ ] =  ____ ; \n            \n           used[ _____ ] =  _____ ; \n           printDRec(n, perm, used, k+1); \n            \n           used[ ____ ] = ____ ; \n       } \n   } \n} \nvoid print(int* perm, int length) { \n   int i; \n   for (i=0; i<length; i++) \n       printf(\"%d \", perm[i]+1); \n   printf(\"\\n\"); \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0400390625,
+                    "y1": 491.6020202636719
+                }
+            },
+            "raw": "(a) (6 pts) In quick sort, when running the partition function, the first step is to choose a random \npartition element. In some implementations, instead of just choosing a random element, 3 or 5 random \nelements are chosen and the median of those elements is then selected as the partition element, as \nopposed to making the partition element a single randomly selected item. What is the potential benefit of \nusing this strategy (median of 3 or median of 5) versus the default strategy of just choosing a single\nrandom element? \n(b) (4 pts) The best case run time of an insertion sort of n elements is O(n) and the worst case run time \nof an insertion sort is O(n2). Describe how to (a) construct a list of n distinct integers that, when sorted\nby insertion sort, gets sorted in the best case run time, and (b) construct a list of n distinct integers that, \nwhen sorted by insertion sort, gets sorted in the worst case run time.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 334.8711853027344,
+                    "y1": 554.0234985351562
+                }
+            },
+            "raw": "What is the output of the following C program? \n#include <stdio.h> \nint main() { \n   int x = 13, y = 27, z = 74; \n   printf(\"x^y = %d\\n\", x^y); \n   printf(\"x&z = %d\\n\", x&z); \n   printf(\"x&(y|z) = %d\\n\", x&(y|z)); \n   printf(\"x|y|z = %d\\n\", x|y|z); \n   int i, sum = 0; \n   for (i=0; i<10; i++) { \n       if ((x & (1<<i)) != 0) sum++; \n       if ((y & (1<<i)) != 0) sum++; \n       if ((z & (1<<i)) != 0) sum++; \n   } \n   printf(\"sum = %d\\n\", sum); \n   return 0; \n} \nx^y = _____ \nx&z = _____ \nx&(y|z) = _____ \nx|y|z = _____ \nsum = _____",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

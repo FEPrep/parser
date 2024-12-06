@@ -1,0 +1,159 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 284.7797546386719,
+                "x1": 370.8711853027344,
+                "y1": 719.7635498046875
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 284.7797546386719,
+                        "x1": 370.8711853027344,
+                        "y1": 719.7635498046875
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "app** makeAppArray(FILE* fp, int numApps) { \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 202.66973876953125,
+                "x1": 342.0711669921875,
+                "y1": 447.4335021972656
+            },
+            "sub_areas": [],
+            "text": "int mystery(node* list, int size) { \n   node* prev = list; \n   node* temp = list->next; \n   while (temp != NULL) { \n       if (list->data == temp->data) { \n           prev->next = temp->next; \n           free(temp); \n           size--; \n           temp = prev->next; \n       } \n       else { \n           prev = prev->next; \n           temp = temp->next; \n       } \n   } \n   return size; \n}"
+        }
+    ],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 318.8597717285156,
+                "x1": 334.8711853027344,
+                "y1": 699.4835205078125
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 318.8597717285156,
+                        "x1": 334.8711853027344,
+                        "y1": 699.4835205078125
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int enqueue(cQueue* thisQ, int item) { \n}"
+        }
+    ],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 306.0140075683594,
+                "x1": 381.07000732421875,
+                "y1": 722.2835083007812
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 306.0140075683594,
+                        "x1": 381.07000732421875,
+                        "y1": 722.2835083007812
+                    },
+                    "text": "{ \n     \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+                }
+            ],
+            "text": "int countBefore(bsNode* root, char target[]){ \n     \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+        }
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 119.1497802734375,
+                "x1": 349.27117919921875,
+                "y1": 323.093505859375
+            },
+            "sub_areas": [],
+            "text": "void solveit(int* array, int n, int m) { \n   int i, res = 0; \n   for (i=0; i<n; i++) { \n       int low = 0, high = m; \n       while (low < high) { \n           int mid = (low+high)/2; \n           if (f(mid) < array[i]) \n               low = mid+1; \n           else \n               high = mid; \n       } \n       printf(\"%d\\n\", low); \n   } \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 176.3897705078125,
+                "x1": 363.6711730957031,
+                "y1": 557.0234985351562
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 176.3897705078125,
+                        "x1": 363.6711730957031,
+                        "y1": 557.0234985351562
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int isSorted(int* array, int max, int n) { \n}"
+        }
+    ],
+    "14": [],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 375.6380920410156,
+                "x1": 149.99697875976562,
+                "y1": 421.0209045410156
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   wrapper(6); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 432.298095703125,
+                "x1": 366.0469665527344,
+                "y1": 522.9009399414062
+            },
+            "sub_areas": [],
+            "text": "void wrapper(int numdigits) { \n   char* tmp = malloc(sizeof(char)*(numdigits+1)); \n   int i; \n   for (i=0; i<numdigits; i++) tmp[i] = '0'; \n   tmp[numdigits] = '\\0'; \n   printkDivisibleRec(tmp, 0); \n   free(tmp); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 534.328125,
+                "x1": 462.07696533203125,
+                "y1": 726.8308715820312
+            },
+            "sub_areas": [],
+            "text": "void printkDivisibleRec(char* number, int k) { \n   if (k == strlen(number)) { \n       printf(\"%s\\n\", number); \n       return; \n   } \n   int i = k == 0 ? 1 : 0; \n   for (; i < ____ ; i++) { \n       number[ ___ ] = (char)( ____ +'0'); \n       int prefix = ___________________________(number, _______ ); \n       if ( __________ %( ________ ) == ____ )  \n           _____________________________(number, ________ ); \n   } \n}"
+        }
+    ]
+}

@@ -1,0 +1,171 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 340.81976318359375,
+                "x1": 478.8711853027344,
+                "y1": 544.7835083007812
+            },
+            "sub_areas": [],
+            "text": "char * trim_buffer(char * buffer) { \nchar *string; \nint length; \n    while (length < BUFFERSIZE && buffer[length] != '\\0') \n         \nlength++; \n    string = malloc(sizeof(char) * (length)); \n    length = 0; \n    while ((string[length] = buffer[length]) != '\\0') \n         \nlength++; \n    return; \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 228.3797607421875,
+                "x1": 342.0511779785156,
+                "y1": 609.2235107421875
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 228.3797607421875,
+                        "x1": 342.0511779785156,
+                        "y1": 609.2235107421875
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int check_all_even(struct node *head) { \n}"
+        }
+    ],
+    "3": [],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 488.9989929199219,
+                "x1": 291.6750793457031,
+                "y1": 725.8352661132812
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 501.47900390625,
+                        "x1": 67.2250747680664,
+                        "y1": 725.8352661132812
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int find_below(node *root, int val) \n{ \n}"
+        }
+    ],
+    "6": [],
+    "7": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 340.0589904785156,
+                "x1": 304.8750915527344,
+                "y1": 723.7235107421875
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 352.4189758300781,
+                        "x1": 67.2250747680664,
+                        "y1": 723.7235107421875
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int ends_with_q_count(TrieNode *root) \n{ \n}"
+        }
+    ],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 313.8697509765625,
+                "x1": 370.941162109375,
+                "y1": 354.5835266113281
+            },
+            "sub_areas": [],
+            "text": "int hash_func(char* str) { \n   return hash_func_rec(str, strlen(str)); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 368.1297607421875,
+                "x1": 399.77117919921875,
+                "y1": 463.3235168457031
+            },
+            "sub_areas": [],
+            "text": "int hash_func_rec(char* str, int k) { \n   if (k == -1) return 0; \n   int sum = 0; \n   for (int i=k-1; i>=0; i--) \n       sum = (BASE*sum + str[i])%MOD; \n   return (sum + hash_func_rec(str, k-1))%MOD; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 369.80975341796875,
+                "x1": 284.52117919921875,
+                "y1": 709.635498046875
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.02399826049805,
+                        "y0": 369.80975341796875,
+                        "x1": 284.52117919921875,
+                        "y1": 709.635498046875
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int fourTowersNumMoves(int n) { \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 118.69976806640625,
+                "x1": 385.3411865234375,
+                "y1": 295.5135192871094
+            },
+            "sub_areas": [],
+            "text": "void buggySelectionSort(int array[], int n) { \n   for (int i=n-1; i>=0; i--) { \n       int best = array[0]; \n       for (int j=1; j<=i; j++) { \n           if (array[j] > best) \n               best = array[j]; \n       } \n       array[i] = best; \n   } \n}"
+        }
+    ],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.02399826049805,
+                "y0": 201.27978515625,
+                "x1": 363.7411804199219,
+                "y1": 513.9835205078125
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.02399826049805,
+                        "y0": 201.27978515625,
+                        "x1": 363.7411804199219,
+                        "y1": 513.9835205078125
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int canWinNIM(int piles[], int numPiles) { \n}"
+        }
+    ]
+}

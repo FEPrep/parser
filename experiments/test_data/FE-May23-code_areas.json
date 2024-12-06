@@ -1,0 +1,148 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 241.9097900390625,
+                "x1": 277.25115966796875,
+                "y1": 323.5735168457031
+            },
+            "sub_areas": [],
+            "text": "void freeList(node* front) { \n   if (front != NULL)  \n       free(front); \n   if (front->next != NULL) \n       freeList(front->next); \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 283.3397521972656,
+                "x1": 284.451171875,
+                "y1": 724.5394897460938
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 283.3397521972656,
+                        "x1": 284.451171875,
+                        "y1": 724.5394897460938
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int numDirChange(node *front) { \n}"
+        }
+    ],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 326.0780944824219,
+                "x1": 294.0269470214844,
+                "y1": 382.60089111328125
+            },
+            "sub_areas": [],
+            "text": "deque* makeEmptyDeque() { \n   deque* tmp = malloc(sizeof(deque)); \n   tmp->front = tmp->back = NULL; \n   return tmp; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 393.99810791015625,
+                "x1": 282.0269470214844,
+                "y1": 461.94091796875
+            },
+            "sub_areas": [],
+            "text": "node* makeNode(int val) { \n   node* tmp = malloc(sizeof(node)); \n   tmp->data = val; \n   tmp->next = NULL; \n   return tmp; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 473.3381042480469,
+                "x1": 300.0269470214844,
+                "y1": 722.4868774414062
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 473.3381042480469,
+                        "x1": 300.0269470214844,
+                        "y1": 722.4868774414062
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "void addFront(deque* myDeque, int val) { \n}"
+        }
+    ],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 189.78897094726562,
+                "x1": 423.6950988769531,
+                "y1": 345.6052551269531
+            },
+            "sub_areas": [],
+            "text": "Node * createNode(int N) { \n  Node * res = (Node *) malloc(sizeof(Node)); \n  if (N == 0) return res; \n  res->children = (Node **) malloc(sizeof(Node*) * N); \n  res->children[0] = createNode(N / 2); \n  res->val = 0; \n  for (int i = 0; i < N; i++) \n     res->val += i; \n  return res; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 257.77978515625,
+                "x1": 226.85116577148438,
+                "y1": 461.7135009765625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 257.77978515625,
+                        "x1": 226.85116577148438,
+                        "y1": 461.7135009765625
+                    },
+                    "text": "{ \n    \n}"
+                }
+            ],
+            "text": "void countDown(int n) { \n    \n}"
+        }
+    ],
+    "14": [],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 286.2197570800781,
+                "x1": 536.5011596679688,
+                "y1": 707.6195068359375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 286.2197570800781,
+                        "x1": 536.5011596679688,
+                        "y1": 707.6195068359375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int numDrivesAccess(int empCode, int* driveCodes, int numDrives) { \n}"
+        }
+    ]
+}

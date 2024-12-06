@@ -1,0 +1,203 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 198.72811889648438,
+                "x1": 474.07696533203125,
+                "y1": 312.0408935546875
+            },
+            "sub_areas": [],
+            "text": "int main() { \n //array of employees\u2019 names \n char nameList[][50] = {\"Adam\", \"Josh\", \"Kyle\", \"Ali\", \"Mohammed\"};  \n //array of salaries, where 15.80 is the salary of Adam, 13.50 is  \n // the salary of Josh, etc. \n double salaries[5] = {15.80, 13.5, 20.9, 12.99, 10.5};  \n Employee *employees = createEmployees(nameList, salaries, 5);  \n  // Other code here\u2026 \n  return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 450.3589782714844,
+                "x1": 555.7250366210938,
+                "y1": 721.2994995117188
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 462.999755859375,
+                        "x1": 68.40116882324219,
+                        "y1": 721.2994995117188
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "Employee* createEmployees(char names[][50], double *salaries, int empCount) \n{ \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 200.8697509765625,
+                "x1": 392.4711608886719,
+                "y1": 377.6935119628906
+            },
+            "sub_areas": [],
+            "text": "node* something(node* head) { \n   node* t = head; \n   if(t==NULL || t->next == NULL )  return t; \n    \n   while(t->next->next != NULL) \n       t = t->next; \n    \n   t->next->next = head; \n   head = t->next; \n   t->next = NULL; \n    \n   return head; \n}"
+        }
+    ],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 376.93975830078125,
+                "x1": 313.25115966796875,
+                "y1": 716.8594970703125
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 61.20000076293945,
+                        "y0": 417.7397766113281,
+                        "x1": 313.25115966796875,
+                        "y1": 689.62353515625
+                    },
+                    "text": "{ \n   }"
+                }
+            ],
+            "text": "int isBalanced(char *e) { \n   struct stack s; \n   initialize(&s); \n   for(int i=0; e[i]!='\\0'; i++) { \n   } \n   ____________________________ ; \n}"
+        }
+    ],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 353.0780944824219,
+                "x1": 360.0469665527344,
+                "y1": 409.60089111328125
+            },
+            "sub_areas": [],
+            "text": "int legacyCount(node *root) { \n   if (root == NULL) return 0; \n   return legacyHelper(root->left, root->data) +  \n          legacyHelper(root->right, root->data); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 420.99810791015625,
+                "x1": 342.0469665527344,
+                "y1": 726.806884765625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 420.99810791015625,
+                        "x1": 342.0469665527344,
+                        "y1": 726.806884765625
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int legacyHelper(node* root, int minAncestor) { \n}"
+        }
+    ],
+    "6": [],
+    "7": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 338.798095703125,
+                "x1": 330.0269470214844,
+                "y1": 701.3668823242188
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 338.798095703125,
+                        "x1": 330.0269470214844,
+                        "y1": 701.3668823242188
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int newNodeCount(TrieNode* root, char* str) { \n}"
+        }
+    ],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 146.749755859375,
+                "x1": 327.65118408203125,
+                "y1": 337.1335144042969
+            },
+            "sub_areas": [],
+            "text": "int foo(int * arr, int n, int value){ \n   int cur = 0, jump = n/2; \n   while (jump > 0) { \n       if (value > arr[cur]) \n           cur += jump; \n       else if (value == arr[cur]) \n           return cur; \n       jump = jump/2; \n   }    \n   return cur; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 353.5397644042969,
+                "x1": 313.25115966796875,
+                "y1": 652.6635131835938
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 353.5397644042969,
+                        "x1": 313.25115966796875,
+                        "y1": 652.6635131835938
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int numJumps(int n, int u, int d) { \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 256.69976806640625,
+                "x1": 406.8711853027344,
+                "y1": 351.8935241699219
+            },
+            "sub_areas": [],
+            "text": "void mergeSort(int array[], int low, int high) { \n   if (low >= high) return; \n   int mid = (low+high)/2; \n   insertionSort(array, low, mid); \n   insertionSort(array, mid+1, high); \n   merge(array, low, mid, high); \n}"
+        }
+    ],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 536.3197631835938,
+                "x1": 486.1011657714844,
+                "y1": 726.6995239257812
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 536.3197631835938,
+                        "x1": 486.1011657714844,
+                        "y1": 726.6995239257812
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int paintFence(int pattern, int paintLoc[], int paintLen) { \n}"
+        }
+    ]
+}

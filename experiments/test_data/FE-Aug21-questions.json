@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0999755859375,
+                    "y1": 719.01953125
+                }
+            },
+            "raw": "Suppose we have an array to store all of the holiday presents we have purchased for this year. Now that \nthe holidays are over and all the presents have been given out, we need to delete our list.  Our array is a \ndynamically allocated array of structures that contains the name of each present and the price.  The name \nof the present is a dynamically allocated string to support different lengths of strings. Write a function\ncalled delete_present_list that will take in the present array and free all the memory space that the array \npreviously took up.  Your function should take 2 parameters: the array called present_list and an integer,\nnum, representing the number of presents in the list and return a null pointer representing the now deleted \nlist. (Note: The array passed to the function may be pointing to NULL, so that case should be handled\nappropriately.) \nstruct present { \nchar *present_name; \nfloat price; \n}; \nstruct present* delete_present_list(struct present* present_list, int \nnum) { \n     \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0220947265625,
+                    "y1": 622.7919921875
+                }
+            },
+            "raw": "Suppose we have a singly linked list implemented with the structure below and a function that takes in the\nhead of the list.  \ntypedef struct node { \n   int num; \n   struct node* next; \n} node; \nint whatDoesItDo (node * head) { \nstruct node * current = head; \nstruct node * other, *temp; \nif (current == NULL) \n       return head; \nother = current->next; \n   if (other == NULL) \n       return head; \n   other = other->next; \n   temp = current->next;  \n   current->next = other->next;  \n   current = other->next; \n   if (current == NULL) { \n       head->next = temp; \n       return head; \n   } \n   other->next = current->next;  \n   current->next = temp; \n   return head;  \n} \nIf we call whatDoesItDo(head) on the following list, show the list after the function has finished. \nhead ->  1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.8780517578125,
+                    "y1": 514.1619873046875
+                }
+            },
+            "raw": "Consider a function that takes in a pointer to a binary tree node and returns a pointer to a binary tree node \ndefined below: \ntypedef struct bintreenode { \n   int data; \n   struct bintreenode* left; \n   struct bintreenode* right; \n} btreenode; \nbtreenode* somefunction(btreenode* root) { \n   if (root == NULL) return NULL; \n   somefunction(root->left); \n   somefunction(root->right); \n   btreenode* tmp = root->left; \n   root->left = root->right; \n   root->right = tmp; \n   return root; \n} \nLet the pointer tree point to the root node of the tree depicted below: \n \n \n \n \n \n20 \n \n \n \n \n/ \n \n\\ \n \n \n \n        42 \n \n13 \n \n \n \n    /         \\                          \\ \n                                                 6         18                       27 \n                                                /         /      \\                    /    \\ \n                                              15     72       9                22   35 \n                                                                                           / \n                                                                                         87 \nIf the line of code tree = somefunction(tree) were executed, draw a picture of the resulting \nbinary tree that the pointer tree would point to.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1000366210938,
+                    "y1": 284.822021484375
+                }
+            },
+            "raw": "Suppose we construct a minheap where each node contains a string, and we order our strings according \nto the following rules: \n1. Given strings a and b, we say a < b if a has fewer characters than b. \n2. If two strings a and b have the same length, we say a < b if a comes before b in alphabetical \norder. \nFurthermore, suppose all the strings in our minheap contain lowercase letters only (so, no punctuation, \nspaces, uppercase letters, and so on), and we do not allow any duplicate strings into the minheap. \nGiven two arbitrary strings in our minheap, x and y, can we safely say that if x is a prefix of y, then y must \nbe in one of x\u2019s subtrees? Note that x may not be stored at the root of the minheap. If so, explain why this \nmust be the case. If not, draw a minheap of strings that very clearly shows this is not necessarily the case \n(and clearly label which string is x and which string is y in your counterexample).",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0999755859375,
+                    "y1": 434.093505859375
+                }
+            },
+            "raw": "Consider the following problem: You are given a set of weights, {w0, w1, w2, \u2026, wn-1} and a target\nweight T. The target weight is placed on one side of a balance scale. The problem is to determine if there \nexists a way to use some subset of the weights to add on either side of the balance so that the scale will \nperfectly balance or not. For example, if T = 12 and the set of weights was {6, 2, 19, 1}, then one \npossible solution would be to place the weights 6 and 1 on the same side of the balance as 12 and place \nthe weight 19 on the other side.  \nBelow is a function that solves this problem recursively, with a wrapper function to make the initial \nrecursive call. In terms of n, the size of the input array of weights, with proof, determine the worst case\nrun time of the wrapper function. (Note: Since only the run time must be analyzed, it's not necessary\nto fully understand WHY the solution works. Rather, the analysis can be done just by looking at \nthe structure of the code.) \nint makeBalance(int weights[], int n, int target) { \n   return makeBalanceRec(weights, n, 0, target); \n} \nint makeBalanceRec(int weights[], int n, int k, int target) { \n   if (k == n) return target == 0; \n   int left = makeBalanceRec(weights, n, k+1, target-weights[k]); \n   if (left) return 1; \n   int right = makeBalanceRec(weights, n, k+1, target+weights[k]); \n   if (right) return 1; \n   return makeBalanceRec(weights, n, k+1, target); \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 560.9539794921875,
+                    "y1": 132.9919891357422
+                }
+            },
+            "raw": "A program processing an array of size 100 took 50 ms to finish and on an array of size 1000 it took 75 \nms to finish. What Big Oh runtime would be most reasonable for the program? (Hint: make a couple\nguesses to the function and see if those guesses are consistent with the run-times listed.)",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0160522460938,
+                    "y1": 473.2335205078125
+                }
+            },
+            "raw": "Write a recursive function that returns the number of bits set to 1 in the binary representation of its input \nparameter, n. For example numBitsOn(17) should return 2, since 17 in binary is 10001. (Note: In order\nto receive full credit, your function's run time must be O(b), where b is the total number of bits in \nn. Since this isn't the bitwise operator question, you don't HAVE to use bitwise operators for full \ncredit, but that's probably the most natural route to the solution.) \nint numBitsOn(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 102.82402038574219,
+                    "x1": 561.06396484375,
+                    "y1": 719.1395263671875
+                }
+            },
+            "raw": "The critical part of the Quick Sort algorithm is the partition. One important part of the partition is the \nselection of the partition element. In general, it's better to have a \"middle value\" relative to the other \nvalues in the subarray to be sorted to be chosen as the partition element. One simple strategy to improve \nthe probability of a good partition element is to select three items at random from the subarray to be \nsorted and use the middle value of those three as the partition element. In this particular problem,\ncomplete the function below so that it takes in an array, a low index to the array and a high index to the \narray, designating a subarray, generates three random indexes in between low and high inclusive (let \nthese be indexA, indexB and indexC), and the returns the corresponding index (either indexA, indexB or \nindexC) to the middle value of the three designated values array[indexA], array[indexB] or \narray[indexC]. A function randInt(a, b) is provided for you to call, which returns a random integer in\nbetween a and b, inclusive. (Note: To make the problem a bit easier, there is no need to make sure \nthat indexA, indexB and indexC are all distinct.) \n// Pre-condition: low and high are valid indexes into array with \n//                high - low > 10 \nint getPartitionIndex(int array[], int low, int high) { \n} \nint randInt(int a, int b) { \n   int base = ((rand()%32768)<<15) + (rand()%32768); \n   return a + base%(b-a+1); \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0759887695312,
+                    "y1": 677.7435302734375
+                }
+            },
+            "raw": "Consider printing out all strings of x A's and y B's, where x \u2265 y-1 such that no two consecutive letters \nare Bs, in alphabetical order. For example, if x = 5 and y = 3, one of the valid strings printed would be \nAABABABA. One way to solve this problem would be to use backtracking, where a string is built up, \nletter by letter (first trying A, then trying B in the current slot). Complete the code below to implement \nthis backtracking solution idea. The correct condition for when you can place As is already in the \ncode. (Hint: You can only place Bs if there are Bs left to place. If there are Bs left, then you must ensure\nthat if there is a previous letter, it is not a B.) \n#include <stdio.h> \n#include <stdlib.h> \nvoid printAll(char buffer[], int k, int a, int b); \nvoid printWrapper(int x, int y); \n// Prints all strings with exactly x A's and y B's in alphabetical \n// order. \nvoid printWrapper(int x, int y) { \n   char* buffer = malloc(sizeof(char)*(x+y+1)); \n   buffer[x+y] = '\\0'; \n   printAll(buffer, 0, x, y); \n   free(buffer); \n} \nvoid printAll(char buffer[], int k, int x, int y) { \n   if (x == 0 && y == 0) { \n       printf(\"%s\\n\", buffer); \n       return; \n   } \n   if (x > y-1) { \n       buffer[k] = 'A' ; \n       printAll(buffer, ______ , ______ , ______ ); \n   } \n   if ( _______ && ( _______ || (_______ && __________________) ) ){ \n       buffer[k] = 'B' ; \n       printAll(buffer, ______ , ______ , ______ ); \n   } \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Backtracking"
+        }
+    }
+}

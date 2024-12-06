@@ -7,13 +7,20 @@
 # TODO: Will separate better in the future - Warren
 
 from enum import Enum, StrEnum
-from typing import List
+from typing import List, Tuple
 
+import pymupdf as fitz  # pymupdf
 from nltk import download as nltk_download
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from pydantic import BaseModel, Field
+
+from parser.elements.rectangle import (
+    Rectangle,
+    build_connectivity_graph,
+    find_connected_components,
+)
 
 NLTK_INITIALIZED: bool = False
 PORTER_STEMMER: PorterStemmer | None = None
@@ -54,9 +61,11 @@ class SectionType(StrEnum):
     ALGORITHMS = "Algorithms"
 
 
-class Page(BaseModel, strict=True):
+class Page(BaseModel, strict=True, arbitrary_types_allowed=True):
     page_type: PageType
     section_type: SectionType
+
+    fitz_page: fitz.Page = Field(exclude=True)  # Prevent serialization
 
     # 0-indexed page numbers, not including the section page
     page_number: int
@@ -70,7 +79,7 @@ class QuestionInputType(str, Enum):
 
     BOOLEAN = "BOOLEAN"
 
-    MULTIPLE_CHOICE = "MULTIPLE_CHOICE"
+    #   MULTIPLE_CHOICE = "MULTIPLE_CHOICE"
 
     SHORT_ANSWER = "SHORT_ANSWER"
     LONG_ANSWER = "LONG_ANSWER"
@@ -126,30 +135,43 @@ class Text(BaseModel, strict=True):
 
     @staticmethod
     def from_string(text: str, parent_text: str, start_index: int) -> "Text":
+        assert start_index != -1
+        begin_index = parent_text.find(text, start_index)
+        if begin_index == -1:
+            print(f"Could not find '{text}' in '{parent_text}'")
+            print(f"Start index: {start_index}")
+            print(f"Parent text: {parent_text}")
+            raise Exception("Could not find text")
+
         return Text(
             text=text,
             location=TextLocation(
-                start_index=start_index,
-                end_index=start_index + len(text),
+                start_index=begin_index,
+                end_index=begin_index + len(text),
             ),
         )
 
 
-class SubQuestion(BaseModel, strict=True):
-    # text excluding the sub-question number and the "a) " prefix
-    original_text: Text
-    filtered_text: Text
+class ExtractionType(StrEnum):
+    DEFAULT = "DEFAULT"
 
-    # eg. "a", "b", "c"
-    identifier: str
-    sub_questions: List["SubQuestion"]
-    extracted_using_underscores: bool
-    points: int | None = None
-    classification: QuestionClassification | None = None
+    CODE_FREE_RESPONSE = "CODE_FREE_RESPONSE"
+    FILL_IN_THE_BLANKS = "FILL_IN_THE_BLANKS"
+    LLM_BASED = "LLM_BASED"
+    LINKED_LIST_MODIFICATION = "LINKED_LIST_MODIFICATION"
+
+
+class ExtractionMetadata(BaseModel, strict=True):
+    extraction_type: ExtractionType
+
+
+ExtractionMetadatas = List[ExtractionMetadata]
 
 
 class Metadata(BaseModel, strict=True):
     # original_text: str = Field(..., exclude=True)
+
+    extraction_type: ExtractionType
 
     generated_name: str | None = None
     removed_stop_words: str | None = None
@@ -158,6 +180,70 @@ class Metadata(BaseModel, strict=True):
     classification: QuestionClassification | None = None
     description: QuestionDescription | None = None
     classification_on_description: QuestionClassification | None = None
+
+    bbox: Rectangle | None = None
+
+    def run_bbox_search(
+        self, original_text: str, fitz_page: List[fitz.Page], draw: bool = False
+    ):
+        if len(fitz_page) > 1:
+            # multi-line question
+            # ignore for now
+            # TODO: Come back to
+            return None
+
+        bboxes: List[Tuple[float, float, float, float]] = fitz_page[0].search_for(
+            original_text
+        )
+
+        if len(bboxes) == 0:
+            print(f"No bboxes found for {original_text}")
+            # raise ValueError(f"No bboxes found for {original_text}")
+            return None
+
+        rectangles: List[Rectangle] = [Rectangle.from_points(*bbox) for bbox in bboxes]
+
+        MAX_DISTANCE = (
+            800  # Maximum allowed distance to consider rectangles as neighbors
+        )
+
+        # Assign an index to each rectangle for easy reference
+        rect_indices = {i: rect for i, rect in enumerate(rectangles)}
+
+        # Step 1: Build the connectivity graph using the function
+        graph = build_connectivity_graph(rect_indices, MAX_DISTANCE)
+
+        # Step 2: Find connected components using the function
+        components = find_connected_components(graph, rect_indices)
+
+        # Step 3: Merge rectangles in each connected component
+        merged_rectangles: List[Rectangle] = []
+
+        for component in components:
+            merged_rect = rect_indices[component[0]]
+            for idx in component[1:]:
+                merged_rect = merged_rect.merge_with(rect_indices[idx])
+            merged_rectangles.append(merged_rect)
+
+        # Step 4: Select the largest rectangle
+        largest_rectangle: Rectangle = max(merged_rectangles, key=lambda r: r.area())
+
+        if draw:
+            annot = fitz_page[0].add_rect_annot(
+                (
+                    largest_rectangle.x0,
+                    largest_rectangle.y0,
+                    largest_rectangle.x1,
+                    largest_rectangle.y1,
+                )
+            )
+            blue = (0, 0, 1)
+            gold = (153 / 255, 240 / 255, 234 / 255)
+            annot.set_border(width=1, dashes=[1, 2])
+            annot.set_colors(stroke=blue, fill=gold)
+            annot.update(opacity=0.5)
+
+        self.bbox = largest_rectangle
 
     def run_nlp_preprocessing(self):
         self.removed_stop_words = self.remove_stop_words(self.original_text)
@@ -189,6 +275,18 @@ class Metadata(BaseModel, strict=True):
                 filtered_sentence.append(w)
 
         return " ".join(filtered_sentence)
+
+
+class SubQuestion(BaseModel, strict=True):
+    # text excluding the sub-question number and the "a) " prefix
+    original_text: Text
+    filtered_text: Text
+
+    # eg. "a", "b", "c"
+    identifier: str
+    sub_questions: List["SubQuestion"]
+    points: int | None = None
+    metadata: Metadata
 
 
 class Question(BaseModel, strict=True):

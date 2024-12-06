@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 557.5680541992188,
+                    "y1": 711.12353515625
+                }
+            },
+            "raw": "Suppose we would like to create an array to store our Must Watch TV list.  Currently our list is stored in \na text file with the name of each TV show on a line by itself. The name of each show consists of only \nletters and underscores and doesn't exceed 127 characters. Write a function called makeTVList that reads \nthese names from a file, allocates memory dynamically to store the names, stores them in a two-\ndimensional character array and returns a pointer to that array.  Your function should take 2 parameters: \na pointer to the file and an integer indicating the number of TV shows in the file.  It should return a pointer \nto the array of shows.  Be sure to allocate memory for the array dynamically and only allocate as much \nspace as is needed. Namely, do not allocate 128 characters to store each show name. Instead dynamically \nallocate an appropriate number of characters as necessary. Use any necessary functions from string.h. \nchar ** makeTVList (FILE *ifp, int numShows) { \n   char buffer[128]; \n   char **TVList = NULL; \n   int i; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.64794921875,
+                    "y1": 724.5635375976562
+                }
+            },
+            "raw": "Suppose we have a stack implemented as a linked list.  The stack is considered \u201cfull\u201d if it has 20 nodes \nand empty if the head pointer is NULL.  The nodes of the stack have the following structure: \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nWrite a function to determine if the stack is full.   \nint isFull(node *stack) { \n \n \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1439819335938,
+                    "y1": 653.0234985351562
+                }
+            },
+            "raw": "(a) (3 pts) Given the following traversals, draw the Binary Search Tree they represent. \nPre-Order:  \n2, 0, 1, 10, 9, 12 \n \nPost-Order:  \n1, 0, 9, 12, 10, 2 \n \nIn-Order:  \n0, 1, 2, 9, 10, 12  \n \n \n \n \n \n \n \n(b) (5 pts) If the nodes of the BST have the following structure, construct a recursive function to count the \nnumber of nodes in the tree. \ntypedef struct bstNode { \n  struct bstNode *left, *right; \n  char word[20]; \n} bstNode; \nint count(bstNode *root){ \n    \n} \n(c) (2 pts) Write a single line of code calling the count function that assigns the number of nodes in the \nleft subtree of the tree pointed to by a pointer myTreePtr to the integer variable leftCount. You may \nassume that myTreePtr is not pointing to NULL and points to an actual bstNode.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Search Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0399780273438,
+                    "y1": 464.00201416015625
+                }
+            },
+            "raw": "(a) (1 pts) In her computer science courses, Maria has learned some interesting things about prime numbers \nand data structures.  She has decided to store some prime numbers in a Max-Heap using the tree \nrepresentation of heaps.  If Maria has stored 125 prime numbers, how tall would the Heap be? \n(b) (2 pts) Here is the Max-Heap after 5 insertions.  Clearly draw a circle in the location where the next \nprime will initially be inserted. Also draw a pointer from the parent of this node initially and clearly \nindicate whether or not the pointer is a left or right pointer. \n \n      1447 \n                           /         \\ \n           881          1291 \n                   /        \\ \n \n607         719 \n(c) (2 pts) Show each step of inserting 1609 into the Max-Heap from part (b). Please draw a different \npicture for each of the different positions 1609 will be in the heap.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0399780273438,
+                    "y1": 301.62200927734375
+                }
+            },
+            "raw": "Determine the average case and worst case run-times, using Big-Oh notation, for the following\nalgorithms or data structure operations. In order to earn credit, your answers must be in terms of the \nappropriate variables given in the question. \nAlgortithm/Operation \nAverage Case \nWorst Case \nPush operation onto a stack implemented with a linked list storing \nn elements. \n \n \nPrinting out each permutation of the integers 1, 2, 3, \u2026, n. (Note: \nprinting a single integer takes O(1) time.) \n \n \nInsertion of a single node into a binary search tree with n nodes. \n \n \nDeletion of a single node of an AVL tree with n nodes. \n \n \nMerging a sorted array of size P with another sorted array of size \nQ, producing a newly allocated sorted array of P+Q elements.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0400390625,
+                    "y1": 657.2319946289062
+                }
+            },
+            "raw": "An algorithm to process a two dimensional array of size n x m takes O(nmlgn) time. If the algorithm \ntakes 1 second to process an array of size n = 220  by m = 25, how long will it take to process an array of \nsize n = 225 by m = 29. Please express your answer in minutes and seconds, with the number of seconds \nin between 0 and 59, inclusive. \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1199340820312,
+                    "y1": 418.6335144042969
+                }
+            },
+            "raw": "Write a recursive function that returns the product of the digits of its integer input parameter, n. You\nmay assume that n is non-negative. For example, productDigits(274) should return 56, since 2 x 7 x 4 = \n56. \nint productDigits(int n) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1199951171875,
+                    "y1": 539.4819946289062
+                }
+            },
+            "raw": "(a) (5 pts) Show the contents of the following array after each iteration of Bubble Sort. The result after \nboth the first and last iteration have been included for convenience. (Note: due to the nature of this \nquestion, relatively little partial credit will be awarded for incorrect answers.) \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \nInitial \n12 \n27 \n6 \n1 \n33 \n19 \n4 \n15 \n1st iter \n12 \n6 \n1 \n27 \n19 \n4 \n15 \n33 \n2nd iter \n \n \n \n \n \n \n \n \n3rd iter \n \n \n \n \n \n \n \n \n4th iter \n \n \n \n \n \n \n \n \n5th iter \n \n \n \n \n \n \n \n \n6th iter \n \n \n \n \n \n \n \n \n7th iter \n1 \n4 \n6 \n12 \n15 \n19 \n27 \n33 \n(b) (5 pts) The array shown below has been partitioned exactly once (first function call in a Quick Sort \nof an array.) Which element was the partition element? Why? \nindex \n0 \n1 \n2 \n3 \n4 \n5 \n6 \n7 \nInitial \n16 \n19 \n13 \n12 \n9 \n27 \n49 \n33 \nPartition Element Index: ______ \nPartition Element Value: ______ \nReason it was the Partition Element:  \n____________________________________________________________________________________ \n____________________________________________________________________________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 560.9500122070312,
+                    "y1": 727.6708984375
+                }
+            },
+            "raw": "For the purposes of this question we define a Top Left Knight's Path to be a sequence of jumps taken by \na single knight piece, starting at the top left corner of a R by C board, which visits each square exactly \nonce. The knight may end on any square on the board. Recall that the way a knight jumps is by either \nmoving 1 square left or right, followed by 2 squares up or down, OR by moving 2 squares left or right,\nfollowed by 1 square up or down. In this question you'll complete a recursive function that counts the \ntotal number of Top Left Knight's Paths for a particular R and C (which will be constants in the code.) \nYour code should use the constants R and C and should still work if the values of these constants were \nchanged. Complete the recursive function below so that it correctly solves this task. Just fill out the \nblanks given to you in the recursive function. \n#include <stdio.h> \n#include <stdlib.h> \n#define R 6 \n#define C 6 \n#define NUMDIR 8 \nconst int DR[] = {-2,-2,-1,-1,1,1,2,2}; \nconst int DC[] = {-1,1,-2,2,-2,2,-1,1}; \nint main() { \n   printf(\"There were %d Top Left Knight Paths.\\n\", countTours()); \n   return 0; \n} \nint countTours() { \n   int used[R][C], i, j; \n   for (i=0; i<R; i++) \n       for (j=0; j<C; j++) \n           used[i][j] = 0; \n   return countToursRec(used, 0, 0, 0); \n} \nint countToursRec(int used[][C], int numMarked, int curR, int curC) { \n   if (numMarked == __________________ ) \n       return  ____; \n   int i, res = 0; \n   for (i=0; i<NUMDIR; i++) { \n       int nextR = _____________________________; \n       int nextC = _____________________________; \n       if (inbounds(nextR, nextC) && _____________________________________ ) { \n           used[nextR][nextC] = ____ ; \n           res += countToursRec(used, _______________, ________ , ________ ); \n           used[nextR][nextC] = ____ ; \n       } \n   } \n   return res; \n} \nint inbounds(int nextR, int nextC) { \n   return nextR >= 0 && nextR < R && nextC >= 0 && nextC < C; \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Backtracking"
+        }
+    }
+}

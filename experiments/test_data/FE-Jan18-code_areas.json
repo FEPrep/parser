@@ -1,0 +1,159 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 76.58399963378906,
+                "y0": 326.6597595214844,
+                "x1": 487.0611572265625,
+                "y1": 571.4235229492188
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 76.58399963378906,
+                        "y0": 326.6597595214844,
+                        "x1": 487.0611572265625,
+                        "y1": 571.4235229492188
+                    },
+                    "text": "{ \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+                }
+            ],
+            "text": "dataTOD * init_dataTOD(int sec, double val, char* name){ \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+        },
+        {
+            "rect": {
+                "x0": 90.02400207519531,
+                "y0": 640.3897705078125,
+                "x1": 356.4711608886719,
+                "y1": 722.0435180664062
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 90.02400207519531,
+                        "y0": 640.3897705078125,
+                        "x1": 356.4711608886719,
+                        "y1": 722.0435180664062
+                    },
+                    "text": "{ \n \n \n \n \n}"
+                }
+            ],
+            "text": "void free_dataTOD(dataTOD *zapThis){ \n \n \n \n \n}"
+        }
+    ],
+    "2": [],
+    "3": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 270.7397766113281,
+                "x1": 277.25115966796875,
+                "y1": 705.843505859375
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 338.6935119628906,
+                        "x1": 277.25115966796875,
+                        "y1": 692.249755859375
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "int eval(int* expr, int len) { \n   stack s; \n   init(&s); \n   int i; \n}"
+        }
+    ],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 90.02400207519531,
+                "y0": 241.93975830078125,
+                "x1": 378.0711669921875,
+                "y1": 717.9635009765625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 90.02400207519531,
+                        "y0": 241.93975830078125,
+                        "x1": 378.0711669921875,
+                        "y1": 717.9635009765625
+                    },
+                    "text": "{ \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+                }
+            ],
+            "text": "bstNode* find_min_leaf(bstNode* root) { \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n}"
+        }
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 119.1497802734375,
+                "x1": 334.8711853027344,
+                "y1": 336.65350341796875
+            },
+            "sub_areas": [],
+            "text": "int f(int array[], int n) { \n   int i, t = 0, a = 0, b = n-1; \n   while (a < b) { \n       for (i=a; i<=b; i++) \n           t += array[i]; \n       if (array[a] < array[(a+b)/2]) \n           b = (a+b)/2-1; \n       else \n           a = (a+b)/2+1; \n   } \n   return t; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 164.6297607421875,
+                "x1": 471.701171875,
+                "y1": 436.5135192871094
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 164.6297607421875,
+                        "x1": 471.701171875,
+                        "y1": 436.5135192871094
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int search(int numbers[], int low, int high, int value) { \n}"
+        }
+    ],
+    "14": [],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 296.6597595214844,
+                "x1": 342.0711669921875,
+                "y1": 405.4335021972656
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   int perm[SIZE]; \n   int used[SIZE]; \n   int i; \n   for (i=0; i<SIZE; i++) used[i] = 0; \n   go(perm, 0, used); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 419.07977294921875,
+                "x1": 493.3011779785156,
+                "y1": 718.2034912109375
+            },
+            "sub_areas": [],
+            "text": "void go(int perm[], int k, int used[]) { \n   if ( _________________ ) { \n       print(perm); \n       return; \n   } \n   int i; \n   for (i=0; i<SIZE; i++) { \n       if ( ___________________________________ ) continue; \n       if ( ___________________________________ ) continue; \n       perm[k] = ____ ; \n       used[ _____ ] = 1 ; \n       go(perm, _______, used); \n       used[ i ] = ___ ; \n   } \n}"
+        }
+    ]
+}

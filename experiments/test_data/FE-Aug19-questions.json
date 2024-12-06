@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1199951171875,
+                    "y1": 724.5635375976562
+                }
+            },
+            "raw": "Consider a binary search tree where each node contains some key integer value and data in the form of a \nlinked list of integers.  The structures are shown below: the tree nodes and list nodes are dynamically \nallocated.  We are going to eventually upgrade the structure, and when we do so, all of the dynamically \nallocated memory will be deleted (including all of the linked lists).  Write a function called \ndeleteTreeList that will take in the root of the tree, freeing all the memory space that the tree \npreviously took up.  Your function should take 1 parameter: a pointer to the root and it should return a \nnull pointer representing the now empty tree.  \ntypedef struct listNode { \n   int value; \n   struct listNode * next; \n} listNode; \ntypedef struct treeNode { \n   struct treeNode * left; \n   struct treeNode * right; \n   int value; \n   listNode * head; \n} treeNode; \ntreeNode * deleteTreeList (treeNode * root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0880126953125,
+                    "y1": 724.08349609375
+                }
+            },
+            "raw": "An alternate method of storing a string is to store each letter of the string in a single node of a linked list, \nwith the first node of the list storing the first letter of the string. Using this method of storage, no null \ncharacter is needed since the next field of the node storing the last letter of the string would simply be a \nnull pointer. Write a function that takes in a pointer to a linked list storing a string and returns a pointer to \na traditional C string storing the same contents. Make sure to dynamically allocate your string in the \nfunction and null terminate it before returning the pointer to the string. Assume that a function, length, \nexists already that you can call in your solution, that takes in a pointer to a node and returns the length of \nthe list it points to. The prototype for this function is provided below after the struct definition. \ntypedef struct node { \n   char letter; \n   struct node* next; \n} node; \nint length(node* head); \nchar* toCString(node * head) { \n      \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.02399826049805,
+                    "y0": 89.86399841308594,
+                    "x1": 561.2080688476562,
+                    "y1": 603.5335083007812
+                }
+            },
+            "raw": "A modified BST node stores the sum of the data values in its sub-tree. Complete writing the insert\nfunction shown below recursively, so that it takes in a pointer to the root of a binary search tree, root, and\nan integer, value, inserts a node storing value in it into the tree and returns a pointer to the root of the \nresulting tree. Notice that this task is more difficult than a usual binary tree insert since the sum values in\nseveral nodes must be updated as well. The struct used to store a node is shown below. \ntypedef struct bstNode { \n  struct bstNode * left, * right; \n  int data; \n  int sum; \n} bstNode; \nbstNode* insert(bstNode * root, int value){ \n   if (root == NULL) { \n       bstNode* res = malloc(sizeof(bstNode)); \n       res->data = ________; \n       res->sum = _________; \n       res->left = ________; \n       res->right = _______; \n       return res; \n   } \n   if (value <= root->data) \n       _________________________________________________ ; \n   else \n       _________________________________________________ ; \n   _________________________________________________ ; \n   return root; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Search Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.02399826049805,
+                    "y0": 89.14402770996094,
+                    "x1": 560.9481201171875,
+                    "y1": 313.7920227050781
+                }
+            },
+            "raw": "The array below shows the storage of a Min-Heap in the middle of an insert operation. \n(a) (1 pt) What was the element that was in the process of being inserted? \n(b) (4 pts) Draw a picture of the heap as a balanced binary tree after the completion of the insertion of the\nitem. \nNote that Index 0 is not shown, because the root of the Heap is at index 1. \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \n7 \n8 \n9 \n10 \n11 \n12 \nHeap Value \n1 \n3 \n7 \n8 \n5 \n2 \n11 \n10 \n12 \n15 \n13 \n9 \nElement in the process of being inserted: ______ \nPicture of the heap as a balanced binary tree after insertion is complete:",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.0040283203125,
+                    "y1": 519.4420166015625
+                }
+            },
+            "raw": "Give the Big-O run-times for each of the following operations in terms of the variables given in the \ndescription. When a particular implementation is not explicitly stated, assume an efficient \nimplementation is used. In order to earn full credit, you must provide a simplified, asymptotically tight \nbound. (For example, if O(n) was the correct answer, O(5n) and O(n2) would not receive full credit,\neven though both are technically correct.) \na) Merging a sorted array of size m with a sorted array of size n \n    into one sorted array. \n \n \n \n \n \n \n \n___________ \nb) Creating a heap out of n unsorted integers. \n \n \n \n \n___________ \nc) Worst case run-time of running a Quick Sort on n integers. \n \n \n___________ \nd) Inserting an element to the front of a linked list with n elements.  \n \n___________ \ne) Deleting m items, one by one, from an AVL tree which originally \n \n   contains n items (n \u2265 m) \n \n \n \n \n \n \n \n___________ \nf) A sequence of p push operations onto a stack that originally had \n   n elements on it. (Assume the stack has enough space to handle \n   the sequence of push operations.)  \n \n \n \n \n \n___________ \ng) Average case run time of an insertion sort on n unsorted integers. \n \n___________ \nh) Calculating ab mod c, using fast modular exponentiation, assuming \n   that each multiply and each mod operation take O(1) time. \n \n \n___________ \ni) Pre-order traversal of a binary tree with height h and n nodes. \n \n \n___________ \nj) Worst case run-time for searching for an element in a  \n   binary search tree with n nodes. \n \n \n \n \n \n \n___________",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 89.50401306152344,
+                    "x1": 561.1199951171875,
+                    "y1": 132.9919891357422
+                }
+            },
+            "raw": "An algorithm to process input data about n cities takes O(\ud835\udc5b!) time. For n = 10, the algorithm runs in 10\nmilliseconds. How many seconds should the algorithm take to run for an input size of n = 12? Put a box \naround your final answer.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.55487060546875,
+                    "x1": 560.810546875,
+                    "y1": 715.6835327148438
+                }
+            },
+            "raw": "The longest increasing subsequence problem is as follows: given a sequence of integers, find the largest subset of \nthose integers such that within the sequence, those integers are in increasing order. For example, for the sequence \n2, 9, 4, 3, 7, 5, 6, 8, has some increasing subsequences of length 5 (one of these is highlighted) but none of length \n6, so the length of the longest increasing subsequence of this sequence is 5. \nIn order to solve this problem recursively, we have to reformulate the problem a little bit. Namely, our input will \nbe: \n1. An array, values, storing the original sequence \n2. An integer, k, representing that we want to only consider the values in the array upto index k, including it. \n3. An integer, max, representing the maximum value allowed in the increasing sequence. \nOur recursive function will return the length of the longest increasing subsequence of values[0..k] such that no \nvalue in the increasing subsequence exceeds max. \nComplete the implementation of this recursive function below: \nint lis(int* values, int k, int max) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0760498046875,
+                    "y1": 243.18199157714844
+                }
+            },
+            "raw": "Quick Sort is not a stable sort. This means that if there are two elements in the input array, a[i] and a[j], \nare considered equal before the sort is executed with i < j, the element originally stored in a[j] may \nappear before the element originally stored in a[i], after the sort completes. Namely, the relative order of \nequivalent elements may not be maintained in the sort. (For example, if we are sorting only by last name \nand in the original list \u201cDoug Adams\u201d appeared before \u201cSandy Adams\u201d, then after the sort, it\u2019s possible\nthat \u201cSandy Adams\u201d could appear before \u201cDoug Adams\u201d.) \nThe reason this is the case is due to the partition function used in Quick Sort. Explain why the partition \nfunction doesn\u2019t maintain the stability property mentioned above and provide a specific example where \nstability isn\u2019t maintained. In your example, you can use letters with subscripts and sort the letters in \nalphabetical order.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.1199951171875,
+                    "y1": 719.6434936523438
+                }
+            },
+            "raw": "Imagine a dating website that asks each user 20 yes/no questions and stores their answers in a single \ninteger in between 0 and 220-1, with the answer to the kth question stored in bit 2k-1, with the bit 0 \nrepresenting the answer no and the bit 1 representing the answer yes for the corresponding question. (So \nfor example, if one person\u2019s answers to questions 1, 3 and 4 were yes and the rest of the answers were \nno, the integer 11012 = 13 would be used to represent her 20 answers to the questions.) Consider the \nproblem of finding the \u201cbest match\u201d for a client out of a list of prospective matches. We consider a \nmatch A for the client to be better than match B if she shares more answers on corresponding questions \nwith A than B. Write a function that takes in an integer representing the client\u2019s answers, an array of \nintegers storing the answers of potential matches, and the length of that array, which returns the index \ninto the array storing the best match for that client. If there are multiple best matches, you may return the \nindex associated with any of them. A function has been given that you may call in your code, if you find \nit useful. \nint count(int mask); \nint bestMatch(int client, int* matches, int length) { \n} \nint count(int mask) { \n   int res = 0, i; \n   for (i=0; i<32; i++) \n       if ((mask & (1<<i)) != 0) \n           res++; \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

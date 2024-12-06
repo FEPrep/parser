@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.06396484375,
+                    "y1": 487.88201904296875
+                }
+            },
+            "raw": "The following function has 5 memory management issues, each one occurring on a different one of the 17 \nlabeled lines of code. Please clearly list which five lines of code have the errors on the slots provided \nbelow. Please list exactly five unique line numbers in between 1 and 17, inclusive. An automatic \ngrade of 0 will be given to anyone who lists MORE than 5 line numbers. \n \nint n = 10; \n \n \n \n \n \n \n// line 1  \nint *p1, *p2, *p3, **p4;  \n \n \n \n// line 2 \nchar str1[100] = \"test string \"; \n \n \n// line 3 \nchar *str2; \n \n \n \n \n \n \n// line 4 \nstrcpy(str2, str1);  \n \n \n \n \n// line 5 \np1 = (int *)malloc(n * sizeof(int)); \n \n// line 6 \np2 = (int *)malloc(n * sizeof(int)); \n \n// line 7 \nfor(int i=0; i<n; i++) \n \n \n \n \n// line 8 \np1[i] = rand()%100;  \n \n \n \n// line 9 \np2 = p1;  \n \n \n \n \n \n \n// line 10 \n*p3 = 50;  \n \n \n \n \n \n \n// line 11 \np4 = (int **) malloc(n * sizeof(int*));  \n// line 12 \nfor(int i=0; i<n; i++) \n \n \n \n \n// line 13 \np4[i] = -5; \n \n \n \n \n \n// line 14 \nfree(p1);  \n \n \n \n \n \n \n// line 15 \nfree(p2);  \n \n \n \n \n \n \n// line 16 \nfree(p4);  \n \n \n \n \n \n \n// line 17 \nLines with Memory Management Errors:  _______ , _______ , _______ , _______ , _______",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 560.7960815429688,
+                    "y1": 705.4595336914062
+                }
+            },
+            "raw": "The structure of each node of a singly linked list is shown below. \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nWrite a function insertAfterN, that takes the head of a linked list, and two integers M and N (M \u2260 N) and\ninserts M after all the nodes containing N.  \nFor example, if M = 200 and N = 6, the linked list 3, 6, 4, 6, 6, 5 will be changed to 3, 6, 200, 4, 6, 200, \n6, 200, 5. \nvoid insertAfterN(node* head, int M, int N) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 560.8699340820312,
+                    "y1": 695.7269287109375
+                }
+            },
+            "raw": "Demonstrate your understanding of recursion by rewriting the following recursive function, which \noperates on a binary tree, as an iterative function. In doing so, you must abide by the following\nrestrictions: \n1. Do not write any helper functions in your solution. \n2. Do not make any recursive calls in your solution. \nint foo(node *root) { \n   if (root == NULL) return 1; \n   if (root->left == NULL && root->right == NULL) return 2; \n   if (root->left == NULL) return 3 * foo(root->right); \n   if (root->right == NULL) return 4 * foo(root->left); \n   if (root->right->data > root->left->data) return 5 * foo(root->right); \n   return 6 * foo(root->left); \n} \nint iterative_foo(node *root) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 561.0999755859375,
+                    "y1": 547.97802734375
+                }
+            },
+            "raw": "This question asks you to explore the best- and worst-case runtimes for adding r new elements to a hash \ntable that already contains q elements. In answering the questions  below, assume the following: \n1. Generating the initial hash value for any given key takes O(1) time. \n2. We are using quadratic probing. \n3. Our hash table is at least half empty, and the length of the table is prime. \n4. There is enough space in the hash table to allow for all r new elements to be inserted without \ntriggering a table expansion. \n5. If the specific placement of the q elements that are already in the hash table is relevant, you may \nassume that they are placed in a way that would facilitate the situation you are describing that \nleads to the best- or worst-case runtime for the r new elements being added to the table. \nNote that this question is not just asking for the runtime for adding a single element. We want the runtime \nfor adding all r elements to the hash table. While the q elements already in the table may impact the \nruntime for adding the r new elements, you do not have to account for the runtime it took to add those q\nelements. Focus only on the cost of adding the r additional elements. \na. (2 pts) In big-oh notation, what is the best-case runtime for adding r new elements to the table? \n \n \n \n \nb. (1 pt) What situation leads to the best-case runtime you listed in part (a)? \n \n \n \n \nc. (5 pts) In big-oh notation, what is the worst-case runtime for adding r new elements to the table? \n \n \n \n \nd. (2 pts) What situation leads to the worst-case runtime you listed in part (c)?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Hash Tables"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.0760498046875,
+                    "y1": 464.2209167480469
+                }
+            },
+            "raw": "What is the worst case Big-Oh runtime for the function f, in terms of its input parameter n? You may \nassume that the array pointed to by arr is of length n. (Grading note: 2 pts will be awarded for the answer,\n8 pts for the proof of the answer. Your proof must include either summations or recurrence relations \nrelated to the code below.) \nint f(int* arr, int n, int minVal) { \n   return fHelp(arr, 0, n-1, minVal); \n} \nint fHelp(int* arr, int low, int high, int minVal) { \n   if (low > high) return 0; \n   if (low == high) return arr[low] >= minVal; \n   int mid = (low+high)/2; \n   int left = fHelp(arr, low, mid, minVal); \n   int right = fHelp(arr, mid+1, high, minVal); \n   int res = left; \n   if (right > left) \n       res = right; \n   int alt = 0, i; \n   for (i=mid; i>=low; i--) { \n       if (arr[i] < minVal) break; \n       alt++; \n   } \n   for (i=mid+1; i<=high; i++) { \n       if (arr[i] < minVal) break; \n       alt++; \n   } \n   if (alt > res) res = alt; \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 561.0459594726562,
+                    "y1": 119.91197967529297
+                }
+            },
+            "raw": "A program that runs an O(Nlog(N)) algorithm to sort an array of N polygons takes 10 seconds to sort \n1,000,000 polygons. How long, in milliseconds, would it be expected for the program to take when sorting \n1,000 polygons?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 76.5948486328125,
+                    "x1": 560.8394165039062,
+                    "y1": 564.9135131835938
+                }
+            },
+            "raw": "The Towers of Hanoi Problem involves starting with a tower of n disks (of all different radii) on a single pole and \ntransferring those disks to a different pole. There are only 3 poles that can hold the disks. The disks can only be \nmoved one at a time, from one pole to another, and a disk must always be the only disk on the pole or be placed on \ntop of a disk that is larger. The initial configuration of disks starts with all of the disks sorted in order on a single \npole, with the smallest disk on top. For the purposes of this problem, let the radii of the disks be 1 cm, 2 cm, 3 cm, \n\u2026, n cm. Let the cost of a single move simply equal the radius of the disk being moved. Define the cost of a solution \nto the puzzle to be the sum of the costs of the moves to solve the puzzle. Complete the function below, using \nrecursion, so that it takes in a single integer, n, the number of disks for the puzzle, and returns the minimal cost for \ntransferring the n disks from the starting pole to either of the other poles. (Note: the actual value of the starting and \nending poles don't affect the answer, so long as they are different poles. The code is relatively short and one can do \nsome math to get an O(1) solution, but what is being tested here is the ability to take a problem, break it down \nrecursively, and implement that solution. Thus, the grading criteria described below is focused on rewarding the \nskill that's being tested, though an alternate, more efficient solution exists.) \nGrading Note: Any iterative or non-recursive solution will get a maximum of 3 points, a recursive solution \nthat takes \u03b8(2n) time will get a maximum of 7 points. To receive full credit, your solution must be recursive \nand run in \u03b8(n) time, where n represents the input value to the function. \nint towersCost(int n) { \n    \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 560.7800903320312,
+                    "y1": 548.7219848632812
+                }
+            },
+            "raw": "(a) (5 pts) Consider running an Insertion Sort on the array shown below. How many swaps will execute\nfor the duration of the algorithm running on the array shown below? Explain how you got your answer. \n35 \n25 \n15 \n29 \n39 \n22 \n19 \n6 \n21 \nReasoning: \nNumber of Swaps: _________ \n(b) (5 pts) List the average case run time of each of the following sorting algorithms, in terms of n, the \nnumber of items being sorted. (Please provide Big-Oh bounds.) \n(i) Insertion Sort \n \n \n \n____________ \n(ii) Selection Sort \n \n \n \n____________ \n(iii) Heap Sort  \n \n \n \n____________ \n(iv) Merge Sort \n \n \n \n____________ \n(v) Quick Sort  \n \n \n \n____________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 544.0559692382812,
+                    "y1": 257.9420166015625
+                }
+            },
+            "raw": "Determine the value of each of these arithmetic expressions in C. Please use the space below for your\nscratch work. \n(i) 43 | 96 \n \n \n________________ \n \n(ii) 117 & 74  \n \n________________ \n \n(iii) 76 ^ 49 \n \n \n________________ \n \n(iv) 11 << 2 \n \n \n________________ \n \n(v) 330 >> 8  \n \n________________",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

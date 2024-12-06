@@ -1,0 +1,159 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 403.57977294921875,
+                "x1": 298.8511657714844,
+                "y1": 716.259521484375
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 403.57977294921875,
+                        "x1": 298.8511657714844,
+                        "y1": 716.259521484375
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int** getPascalsTriangle(int n) { \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 241.789794921875,
+                "x1": 414.0711669921875,
+                "y1": 717.5795288085938
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 241.789794921875,
+                        "x1": 414.0711669921875,
+                        "y1": 717.5795288085938
+                    },
+                    "text": "{       \n \n}"
+                }
+            ],
+            "text": "void printMixed(node* word1, node* word2) {       \n \n}"
+        }
+    ],
+    "3": [],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 488.3381042480469,
+                "x1": 197.99697875976562,
+                "y1": 726.2069091796875
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 499.61810302734375,
+                        "x1": 65.97697448730469,
+                        "y1": 726.2069091796875
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "node *prune(node *root) \n{ \n}"
+        }
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 147.06900024414062,
+                "x1": 331.27508544921875,
+                "y1": 274.20526123046875
+            },
+            "sub_areas": [],
+            "text": "int fun(int N, int M, int ** grid) { \n  int a1 = 0, a2 = 0; \n  for (int i = 0; i < N || i < M; i++) { \n     if (i < N) a1 += grid[i][0]; \n     if (i < M) a2 += grid[0][i]; \n  } \n  if (a1 < a2) return a2; \n  return a1; \n}"
+        }
+    ],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 294.5180969238281,
+                "x1": 288.0269470214844,
+                "y1": 351.1609191894531
+            },
+            "sub_areas": [],
+            "text": "void printExtremeWrapper(int n) { \n   int* perm = malloc(sizeof(int)*n); \n   printExtreme(perm, n, 0, n-1, 0); \n   free(perm); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 362.4381103515625,
+                "x1": 372.0469665527344,
+                "y1": 407.8009033203125
+            },
+            "sub_areas": [],
+            "text": "void printPerm(int* perm, int n) { \n   for (int i=0; i<n; i++) printf(\"%d, \", perm[i]); \n   printf(\"\\n\"); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 407.798095703125,
+                "x1": 438.0469665527344,
+                "y1": 720.4468994140625
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 475.74090576171875,
+                        "x1": 438.0469665527344,
+                        "y1": 709.1641235351562
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "void printExtreme(int* perm, int n, int low, int high, int k) { \n   if (low > high) { \n       printPerm(perm, n); \n       return; \n   } \n}"
+        }
+    ],
+    "14": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 132.58978271484375,
+                "x1": 471.701171875,
+                "y1": 717.219482421875
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 431.7135009765625,
+                        "x1": 471.701171875,
+                        "y1": 703.625732421875
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "void merge(int arr[], int left, int mid, int right)   \n{ \n   int i, j, k; \n   int n1 = mid - left + 1; //size of the left array \n   int n2 =  right - mid; //size of the right array \n   /* create temp arrays */ \n   int *L = (int*) malloc(n1*sizeof(int)); //left array \n   int *R = (int*) malloc(n2*sizeof(int)); //right array \n   /* Copy data to temp arrays L[] and R[] */ \n   for (i = 0; i < n1; i++) \n       L[i] = arr[left + i]; \n   for (j = 0; j < n2; j++) \n       R[j] = arr[mid + 1 + j]; \n   /* Merge the temp arrays back into arr[l..r]*/ \n   i = 0; // Initial index of left subarray \n   j = 0; // Initial index of right subarray \n   k = left; // Initial index of merged subarray \n   // Complete the remaining part of the code that will  \n   // merge L and R array into arr \n}"
+        }
+    ],
+    "15": []
+}

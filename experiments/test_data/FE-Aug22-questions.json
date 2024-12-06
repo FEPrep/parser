@@ -1,0 +1,160 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 571.5408935546875,
+                    "y1": 709.6595458984375
+                }
+            },
+            "raw": "This problem relies on the following Player and the Team struct definitions:  \ntypedef struct Player \n{ \n  char pname[50];   //player's name \n  char country[50]; //player's country \n  int age; \n} Player; \n \ntypedef struct Team \n{ \n    char tname[50];  // team's name \n    Player *players; // all players on the team \n    int numPlayers;  // number of players on the team \n} Team; \n \n  \nWe are making a team of players from multiple countries. There is a text file containing the details of a \nteam, where the first line of the file contains the team name, followed by a single space, followed by the \nnumber of players on the team, N. The next N line contains the data for N players. Each player line contains \nthree tokens, each separated by a space: the player name, country, and age (as an integer). Each team \nname, player name, and country will be a single-word string (no spaces) with a maximum length of 49. \nHere is a sample file: \nNewKnights 5 \nHannan USA 22 \nMabel India 21 \nSamarina Bangladesh 21 \nTamsen USA 21 \nSusan Mexico 22 \n                                                                          \nWrite a function that takes a file pointer and then returns a pointer to a dynamically allocated Team struct \nwith all the information loaded into it. You can assume that the file is already opened in read mode and \nready to read from the beginning of the file. Do not worry about closing the input file with fclose() when \nyou finish reading it. Assume the function that opened the file and called createTeam() will close the file.  \nTeam *createTeam (FILE *fp) { \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.0400390625,
+                    "y1": 704.6195068359375
+                }
+            },
+            "raw": "The structure of a node of a doubly linked list is shown below. \ntypedef struct node { \n   int data; \n   struct node* next; \n   struct node* prev; \n} node; \nWrite a function that takes in a pointer to the head of a doubly linked list (head) and a pointer to a node in \nthat list (me), removes that node (me) from the list, and returns a pointer to the head node of the resulting \ndoubly linked list. You may assume that both head and me are not NULL, and that me points to a node in \nthe list pointed to by head. \nnode* deleteMe(node* head, node* me) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.1119995117188,
+                    "y1": 133.95201110839844
+                }
+            },
+            "raw": "Show the result of inserting the following integers into an initially empty binary search tree. Please draw\na box around your final answer. This is the only portion of your work that will be graded. \nInsert 10, 3, 7, 5, 15, 19, 13, 2, 18 and 9.",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Binary Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 561.0999755859375,
+                    "y1": 492.56201171875
+                }
+            },
+            "raw": "Consider running the Make Heap/Heapify algorithm on the following set of random values (shown stored \nin a heap structure) to convert it to a min heap. In doing so, exactly six swaps will occur between adjacent \nvalues in the heap. When the algorithm concludes, the structure will be valid minheap. Draw the structure\nof the tree after (a) the first three swaps have completed, and (b) when the Make Heap algorithm completes\n(the final valid minheap). Here is the initial tree drawing of the values: \n \n \n \n \n \n16 \n \n \n \n \n    /                 \\ \n                                                             3                   9 \n                                                         /       \\             /      \\ \n                                                       4          1        10      6 \n                                                     /    \\      /   \\ \n                                                   8      2  14   5 \n(a) Draw the minheap here after completing the first three swaps. \n(b) Draw the final minheap.",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ALG ",
+            "sub_category": "Binary Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.1119995117188,
+                    "y1": 493.01800537109375
+                }
+            },
+            "raw": "Write down the worst case run-times for each of the requested operations. You may assume that each \noperation is done with an efficient algorithm. Please leave your answer in simplified Big-Oh form, in \nterms of the variables given in the problem. Thus, please do NOT include any leading constants or\nunnecessary terms. Answers such as O(2n2) or O(n2 + lg n) will receive no credit, even if they are \ntechnically correct. Each part is worth 1 point. \na) Inserting k items, each into the front of a linked list which  \nstarts with n items. \n \n \n \n \n \n \n \n_________________ \nb) Running a floodfill on a grid with r rows and c columns. \n \n \n_________________ \nc) Sorting n elements via the Quick Sort algorithm. \n \n \n \n_________________ \nd) Efficiently forming a heap out of n unsorted items.  \n \n \n_________________ \ne) Removing all of n items, one by one, from a Priority Queue  \n \n_________________ \nthat originally has n items. \nf) Inserting n items, one by one, into a Binary Search Tree. \n \n \n_________________ \ng) Inserting n items, one by one, into a AVL Tree. \n \n \n \n_________________ \nh) Printing out the set of moves to solve the Towers of Hanoi \nwith a tower of n disks. \n \n \n \n \n \n \n_________________ \ni) Merging two sorted lists, one with r elements, the other with \ns elements, into a single sorted list.  \n \n \n \n \n_________________ \nj) Writing out the first 10 Fibonacci numbers.  \n \n \n \n_________________",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 75.91388702392578,
+                    "x1": 561.0099487304688,
+                    "y1": 133.71202087402344
+                }
+            },
+            "raw": "A program takes O(n3) time to process data about a map with n points of interest. For n = 100, the program\ncompletes in 25 milliseconds. The time limit for running the program has been set at a maximum of 12.8 \nseconds. What is the largest value of n  for which the program is expected to complete within the time \nlimit?",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 76.54399108886719,
+                    "x1": 561.0999755859375,
+                    "y1": 639.0908813476562
+                },
+                "14": {
+                    "x0": 54.0,
+                    "y0": 50.388099670410156,
+                    "x1": 342.19000244140625,
+                    "y1": 756.8280029296875
+                }
+            },
+            "raw": "Ten tiles each have strings of in between 1 and 4 letters on them (hardcoded in the code below). The goal \nof this problem is to complete the code below so it counts the number of different orders in which all of \nthe tiles can be placed such that the string they form creates a palindrome (a word that reads the same \nforwards and backwards). All of main, as well as the function which determines if a particular ordering of \nthe tiles forms a palindrome, included on the next page have been given. You may call this function in \nthe function go. Complete the recursive function (named go) to complete the solution. \n#include <stdio.h> \n#include <string.h> \n#define N 10 \n#define MAXLEN 5 \nint go(int perm[], int used[], int k, char tiles[N][MAXLEN]); \nint eval(int perm[], char tiles[N][MAXLEN]); \nchar MYTILES[N][MAXLEN] = {\"at\",\"ta\",\"g\",\"cc\",\"ccac\",\"ca\",\"cc\",\"gag\",\"cga\",\"gc\"}; \nint main(void) { \n   int perm[N]; \n   int used[N]; \n   for (int i=0; i<N; i++) used[i] = 0; \n   int res = go(perm, used, 0, MYTILES); \n   printf(\"Number of tile orderings that create palindromes is %d\\n\", res); \n   return 0; \n} \nint go(int perm[], int used[], int k, char tiles[N][MAXLEN]) { \n   if (k == N)  \n       return _________________________________________ ; \n   int res = 0; \n   for (int i=0; i<N; i++) { \n       if (used[i]) continue; \n       used[i] = ____ ; \n       perm[k] = ____ ; \n       _________________________________________________ ; \n        \n       used[i] = ____ ; \n   } \n   return res; \n} \n\n\nint eval(int perm[], char tiles[N][MAXLEN]) { \n   char tmp[N*MAXLEN]; \n   int idx = 0; \n   for (int i=0; i<N; i++) { \n       int len = strlen(tiles[perm[i]]); \n       for (int j=0; j<len; j++) \n           tmp[idx++] = tiles[perm[i]][j]; \n   } \n   tmp[idx] = '\\0'; \n   for (int i=0; i<idx/2; i++) \n       if (tmp[i] != tmp[idx-1-i]) \n           return 0; \n   return 1; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 76.30400085449219,
+                    "x1": 560.9120483398438,
+                    "y1": 262.50201416015625
+                }
+            },
+            "raw": "Show the result after each iteration of performing Bubble Sort on the array shown below. For convenience, \nthe result after the first and last iterations are provided. The first row of the table contains the original \nvalues of the array. \nIteration \nIndex 0 \nIndex 1 \nIndex 2 \nIndex 3 \nIndex 4 \nIndex 5 \nIndex 6 \nIndex 7 \n0 \n12 \n2 \n8 \n19 \n13 \n7 \n1 \n16 \n1 \n2 \n8 \n12 \n13 \n7 \n1 \n16 \n19 \n2 \n \n \n \n \n \n \n \n \n3 \n \n \n \n \n \n \n \n \n4 \n \n \n \n \n \n \n \n \n5 \n \n \n \n \n \n \n \n \n6 \n \n \n \n \n \n \n \n \n7 \n1 \n2 \n7 \n8 \n12 \n13 \n16 \n19",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 302.17401123046875,
+                    "x1": 561.1240844726562,
+                    "y1": 713.8594970703125
+                }
+            },
+            "raw": "There are 20 light switches, numbered 0 to 19, each which control a single light. Initially, all of the lights \nthe switches control are off. There are several buttons. Each button toggles several switches, when pressed. \nFor example, if a button toggles the switches 3, 5 and 9, then pressing the button changes the state of the \nthree switches 3, 5 and 9, leaving the other switches in the same state. (So, if lights 3 and 5 were on and \nlight 9 was off, after the button is pressed, lights 3 and 5 would be off and light 9 would be on.) Each \nbutton can be stored in a single integer, where the kth bit is set to 1 if that button toggles the kth switch, \nand set to 0 if pressing the button doesn't affect the kth switch. For example, the button described would \nbe stored as the integer 552 since 23 + 25 + 29 = 552. Write a function that takes in an array, buttons, \nstoring the buttons to press and an integer len, representing the length of the array buttons and returns a \nsingle integer storing the state of the lights after each of the buttons has been pressed once, assuming that \nall of the lights were off before any of the button presses. The format for storing the state of the lights \nshould be identical to the format of the buttons. \nint pressButtons(int buttons[], int len) { \n    \n}",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}

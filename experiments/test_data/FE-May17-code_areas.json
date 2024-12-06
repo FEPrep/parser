@@ -1,0 +1,147 @@
+{
+    "0": [],
+    "1": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 229.57977294921875,
+                "x1": 392.4711608886719,
+                "y1": 711.12353515625
+            },
+            "sub_areas": [
+                {
+                    "kind": "partially_filled_free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 297.53350830078125,
+                        "x1": 392.4711608886719,
+                        "y1": 697.52978515625
+                    },
+                    "text": ""
+                }
+            ],
+            "text": "char ** makeTVList (FILE *ifp, int numShows) { \n   char buffer[128]; \n   char **TVList = NULL; \n   int i; \n}"
+        }
+    ],
+    "2": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 228.3797607421875,
+                "x1": 241.2511749267578,
+                "y1": 724.5635375976562
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 228.3797607421875,
+                        "x1": 241.2511749267578,
+                        "y1": 724.5635375976562
+                    },
+                    "text": "{ \n \n \n}"
+                }
+            ],
+            "text": "int isFull(node *stack) { \n \n \n}"
+        }
+    ],
+    "3": [],
+    "4": [],
+    "5": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 406.8397521972656,
+                "x1": 241.2511749267578,
+                "y1": 597.103515625
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 406.8397521972656,
+                        "x1": 241.2511749267578,
+                        "y1": 597.103515625
+                    },
+                    "text": "{ \n    \n}"
+                }
+            ],
+            "text": "int count(bstNode *root){ \n    \n}"
+        }
+    ],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [],
+    "10": [],
+    "11": [],
+    "12": [],
+    "13": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 146.749755859375,
+                "x1": 248.451171875,
+                "y1": 418.6335144042969
+            },
+            "sub_areas": [
+                {
+                    "kind": "free_response",
+                    "code_textarea": {
+                        "x0": 54.0,
+                        "y0": 146.749755859375,
+                        "x1": 248.451171875,
+                        "y1": 418.6335144042969
+                    },
+                    "text": "{ \n}"
+                }
+            ],
+            "text": "int productDigits(int n) { \n}"
+        }
+    ],
+    "14": [],
+    "15": [
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 319.8381042480469,
+                "x1": 462.07696533203125,
+                "y1": 365.2008972167969
+            },
+            "sub_areas": [],
+            "text": "int main() { \n   printf(\"There were %d Top Left Knight Paths.\\n\", countTours()); \n   return 0; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 365.1980895996094,
+                "x1": 300.0469665527344,
+                "y1": 444.4208984375
+            },
+            "sub_areas": [],
+            "text": "int countTours() { \n   int used[R][C], i, j; \n   for (i=0; i<R; i++) \n       for (j=0; j<C; j++) \n           used[i][j] = 0; \n   return countToursRec(used, 0, 0, 0); \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 444.5380859375,
+                "x1": 534.0969848632812,
+                "y1": 682.410888671875
+            },
+            "sub_areas": [],
+            "text": "int countToursRec(int used[][C], int numMarked, int curR, int curC) { \n   if (numMarked == __________________ ) \n       return  ____; \n   int i, res = 0; \n   for (i=0; i<NUMDIR; i++) { \n       int nextR = _____________________________; \n       int nextC = _____________________________; \n       if (inbounds(nextR, nextC) && _____________________________________ ) { \n           used[nextR][nextC] = ____ ; \n           res += countToursRec(used, _______________, ________ , ________ ); \n           used[nextR][nextC] = ____ ; \n       } \n   } \n   return res; \n}"
+        },
+        {
+            "rect": {
+                "x0": 54.0,
+                "y0": 693.828125,
+                "x1": 432.07696533203125,
+                "y1": 727.6708984375
+            },
+            "sub_areas": [],
+            "text": "int inbounds(int nextR, int nextC) { \n   return nextR >= 0 && nextR < R && nextC >= 0 && nextC < C; \n}"
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "Basic Data Structures": {
+        "1": {
+            "rects": {
+                "1": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 561.1199951171875,
+                    "y1": 724.8035278320312
+                }
+            },
+            "raw": "Suppose we have an array of structures containing information about our group for a group project.  Each \nindex should contain a group member\u2019s name and phone number.  The structure is shown below: names \nare stored as dynamically allocated strings and phone numbers are stored as integers.  When the semester \nis over, we will delete this array.  Write a function called deleteGroup that will take in this array and delete \nall the information, freeing all the memory space that the array previously took up.  Your function should \ntake 2 parameters: a pointer to the beginning of the array and an integer indicating the number of group \nmembers.  It should return a null pointer representing the now empty array.  \ntypedef struct GroupMember { \nchar *name; \nint phoneNumber; \n} GroupMember; \nGroupMember* deleteGroup (GroupMember  *group, int numMembers) { \n \nint i; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 5,
+            "category": "DSN ",
+            "sub_category": "Dynamic Memory Management in C"
+        },
+        "2": {
+            "rects": {
+                "2": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0521240234375,
+                    "y1": 724.8035278320312
+                }
+            },
+            "raw": "Suppose we have a linked list implemented with the structure below.  Write a function that will take in a \npointer to the head of a list and inserts a node storing -1 after each even value in the list. If the list is empty \nor there are no even values in the list, no modifications should be made to the list. (For example, if the \ninitial list had 2, 6, 7, 1, 3, and 8, the resulting list would have 2, -1, 6, -1, 7, 1, 8, -1.) \ntypedef struct node { \n   int data; \n   struct node* next; \n} node; \nvoid markEven(node *head) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Linked Lists"
+        }
+    },
+    "Advanced Data Structures": {
+        "1": {
+            "rects": {
+                "5": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 553.43798828125,
+                    "y1": 712.08349609375
+                }
+            },
+            "raw": "Complete writing function shown below recursively, so that it takes in a pointer to the root of a binary \nsearch tree, root,  and an integer, value, and returns the number of nodes in the tree that are divisible by \nvalue. The struct used to store a node is shown below. \ntypedef struct bstNode { \n  struct bstNode *left, *right; \n  int data; \n} bstNode; \nint countDiv(bstNode *root, int value){ \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Binary Search Trees"
+        },
+        "2": {
+            "rects": {
+                "6": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.075927734375,
+                    "y1": 602.9920043945312
+                }
+            },
+            "raw": "Suppose we are storing integers in a Max-Heap using the tree representation of heaps. The following tree \nshows the Max-Heap after 5 insertions.  Show the result of inserting 109 into this heap, showing each step \nof the process. (Hint: You should draw 3 separate tree pictures.) Then, place each value from the resulting \nheap of 6 values into the array in the appropriate indexes corresponding to how a heap is typically stored \nin an array. \n \n      100 \n                           /        \\ \n           90          98 \n                   /        \\ \n \n60              71 \nInsert 109 Step 1: \nInsert 109 Step 2: \nInsert 109 Step 3: \nIndex \n1 \n2 \n3 \n4 \n5 \n6 \nHeap Value",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Heaps"
+        }
+    },
+    "Algorithm Analysis": {
+        "1": {
+            "rects": {
+                "9": {
+                    "x0": 54.0,
+                    "y0": 89.38401794433594,
+                    "x1": 476.2060241699219,
+                    "y1": 257.22198486328125
+                }
+            },
+            "raw": "Consider the following algorithm to find the smallest item in a list of n distinct integers: \n1. Pick an element, x, from the list at random. \n2. Go through every other element in the list. If an element is less than x put it in list 1, and if it's more \nthan x, put it in list 2. (Note: Since all elements in the list are distinct, none will equal x.) \n3. If list 1 is empty, then return x, since it's the smallest element. If list 1 is NOT empty, go back to the \nfirst step, only using list 1. \nIn terms of n, what is the best case run-time of this algorithm? In terms of n, what is the worst case run-\ntime of this algorithm? Please give justifications (both words and equations) for both answers. (Note: 8 \npoints out of the 10 come from the justifications and the actual Big-Oh answers are only worth 1 point \neach.)",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        },
+        "2": {
+            "rects": {
+                "10": {
+                    "x0": 54.0,
+                    "y0": 90.82402038574219,
+                    "x1": 561.1199951171875,
+                    "y1": 644.9920043945312
+                }
+            },
+            "raw": "An algorithm to process an array of size n takes O(\ud835\udc5b\u221a\ud835\udc5b) time. For n = 640,000, the algorithm runs in \n256 milliseconds. How many seconds should the algorithm take to run for an input size of n = \n1,000,000? \n________________",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 5,
+            "category": "ANL ",
+            "sub_category": "Algorithm Analysis"
+        }
+    },
+    "Algorithms": {
+        "1": {
+            "rects": {
+                "13": {
+                    "x0": 54.0,
+                    "y0": 89.55487060546875,
+                    "x1": 560.8312377929688,
+                    "y1": 722.2835083007812
+                }
+            },
+            "raw": "Consider writing a recursive method that raises a polynomial to an exponent, calculating each of its coefficients \nmod a given integer. One way this method could work is checking to see if the exponent is even. If so, raise the \npolynomial to half of the original power. Then, take that result (a polynomial) and multiply it by itself for the \nresult. If the original exponent, exp, was odd, then we could simply first raise the polynomial to exp-1, and then \ntake that result and multiply it by the original polynomial. Implement this algorithm recursively below. You are \ngiven the code for the multiply function and should call it accordingly. A polynomial is stored as an array of \nintegers, where poly[i] is the coefficient to xi. In the function signature, len is the length of the array poly, so poly \nis of degree len-1, exp is the exponent to which we are raising the polynomial and mod is the modulus by which \nwe are calculating each coefficient. \nint* power(int* poly, int len, int exp, int mod) { \n   if (exp == 0) { \n       int* res = malloc(sizeof(int)); \n       res[0] = 1; \n       return res; \n   } \n   if (exp == 1) { \n       int* res = malloc(len*sizeof(int)); \n       int i; \n       for (i=0; i<len; i++) res[i] = poly[i]%mod; \n       return res; \n   } \n   if (exp%2 == 0) { \n       int* tmp = power(poly, _______, _______, mod); \n       int* prod = multiply(___________, ______________,  \n                            ___________, ____________, mod) \n       free(tmp); \n       return prod; \n   } \n   int* tmp = power(poly, ________, __________, mod); \n   int* prod = multiply(_____, _________________________________,  \n                        poly, len, mod); \n   free(tmp); \n   return prod; \n} \nint* multiply(int* poly1, int len1, int* poly2, int len2, int mod) { \n   int* res = calloc(len1+len2-1, sizeof(int)); \n   int i, j; \n   for (i=0; i<len1; i++) \n       for (j=0; j<len2; j++) \n           res[i+j] = (res[i+j] + poly1[i]*poly2[j])%mod; \n   return res; \n}",
+            "sub_questions": [],
+            "question_number": 1,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Recursive Coding"
+        },
+        "2": {
+            "rects": {
+                "14": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 561.0960083007812,
+                    "y1": 718.4434814453125
+                }
+            },
+            "raw": "Consider sorting students, where each student has a first name, last name and a unique ID number. \nAssume all names contain uppercase letters only, so that strcmp does an alphabetic comparison for the \npurposes of this problem. Complete the code below so that it sorts students by last name (A to Z), \nbreaking ties by first name (A to Z), and finally breaking ties between students with identical first and\nlast names by ID number (smallest to largest). For example, if we have the students (EMILIO \nSANCHEZ 17), (ANDREA SANCHEZ 22), and (EMILIO SANCHEZ 10), the correct ordering would \nbe ANDREA SANCHEZ, followed by EMILIO SANCHEZ 10, with EMILIO SANCHEZ 17 last. \ntypedef struct student { \n   char first[20]; \n   char last[20]; \n   int ID; \n} student; \nvoid sort(student** list, int len) { \n   int i,j; \n   for (i=len-1; i>0; i--) { \n       for (j=0; j<i; j++) { \n           if (cmp(list[j], list[j+1]) > 0) { \n               student* tmp = list[j]; \n               list[j] = list[j+1]; \n               list[j+1] = tmp; \n           } \n       } \n   } \n} \nint cmp(student* a, student* b) { \n}",
+            "sub_questions": [],
+            "question_number": 2,
+            "max_points": 10,
+            "category": "DSN ",
+            "sub_category": "Sorting"
+        },
+        "3": {
+            "rects": {
+                "15": {
+                    "x0": 54.0,
+                    "y0": 89.14402770996094,
+                    "x1": 313.27117919921875,
+                    "y1": 472.3935241699219
+                }
+            },
+            "raw": "What is the output of the following program? \n#include <stdio.h> \nint main() { \n   int n = 182, i = 0; \n   while (n > 0) { \n       if ((n & (1<<i)) > 0) { \n           printf(\"%d\\n\", (1<<i)); \n           n ^=(1<<i); \n       } \n       i++; \n   } \n   return 0; \n} \n_________________ \n_________________ \n_________________ \n_________________ \n_________________",
+            "sub_questions": [],
+            "question_number": 3,
+            "max_points": 5,
+            "category": "ALG ",
+            "sub_category": "Bitwise Operators"
+        }
+    }
+}
